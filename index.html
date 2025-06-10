@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>KÓD-AL25 – Expediční deník</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>KÓD‑AL25 – Expediční deník</h1>
+    <form id="entryForm">
+        <input type="text" id="location" placeholder="Název lokality" required><br>
+        <input type="text" id="coordinates" placeholder="GPS souřadnice" required><br>
+        <textarea id="note" placeholder="Poznámka"></textarea><br>
+        <input type="file" id="photo"><br>
+        <button type="submit">Přidat záznam</button>
+    </form>
+    <hr>
+    <div id="entries"></div>
+    <script src="script.js"></script>
+</body>
+</html>
