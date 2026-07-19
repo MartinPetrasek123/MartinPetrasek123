@@ -1,0 +1,35 @@
+{
+  "engine": "CAMB",
+  "camb_version": "2.0.0",
+  "model": "LCDM reference early-universe calculation",
+  "note": "This is not a full R1 Boltzmann implementation; it computes the reference early-universe sector and the fixed-rd replacement target.",
+  "input": {
+    "H0": 68.63124999999998,
+    "Omega_m0": 0.3059375,
+    "ombh2": 0.02237,
+    "omch2": 0.12109416432983389,
+    "mnu_eV": 0.06,
+    "tau": 0.0544,
+    "As": 2.1e-09,
+    "ns": 0.9649
+  },
+  "derived": {
+    "age": 13.655142799367203,
+    "zstar": 1090.0017884547901,
+    "rstar": 144.16195058494307,
+    "thetastar": 1.046120570334072,
+    "DAstar": 13.780624783900949,
+    "zdrag": 1060.0104591310196,
+    "rdrag": 146.81498481942023,
+    "kd": 0.14117247948385023,
+    "thetad": 0.1614845293860046,
+    "zeq": 3429.040375944955,
+    "keq": 0.010464709245920583,
+    "thetaeq": 0.812420077955122,
+    "thetarseq": 0.4490603059210773
+  },
+  "outputs": {
+    "lensed_cls": "tables/camb_lensed_cls_lcdm_reference.csv",
+    "matter_power": "tables/camb_matter_power_lcdm_reference.csv"
+  }
+}

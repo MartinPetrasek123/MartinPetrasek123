@@ -1,0 +1,4 @@
+name,S8,sigma,kind,source
+DES_Y3_cosmic_shear_fiducial,0.759,0.024,cosmic_shear,DESY3_Amon2022_arXiv2105.13543
+KiDS_1000_cosmic_shear_fiducial,0.759,0.0225,cosmic_shear,KiDS1000_Asgari2021_arXiv2007.15633
+HSC_Y3_2PCF_cosmic_shear,0.769,0.0325,cosmic_shear,HSCY3_Li2023_release_page

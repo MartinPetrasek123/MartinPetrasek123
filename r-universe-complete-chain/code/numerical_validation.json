@@ -1,0 +1,35 @@
+{
+  "cases": {
+    "lcdm_limit": {
+      "solver_method": "lcdm_analytic",
+      "newton_iterations": 0,
+      "max_scaled_implicit_residual": 1.649256993557558e-16,
+      "max_relative_newton_vs_bisection": 2.220446049250313e-16,
+      "min_E_on_0_3": 1.0,
+      "max_E_on_0_3": 4.502672817338608
+    },
+    "main_r1": {
+      "solver_method": "newton",
+      "newton_iterations": 4,
+      "max_scaled_implicit_residual": 2.0213626320441344e-16,
+      "max_relative_newton_vs_bisection": 3.3306690738754696e-16,
+      "min_E_on_0_3": 1.0,
+      "max_E_on_0_3": 4.471601919308522
+    },
+    "main_r2": {
+      "solver_method": "newton",
+      "newton_iterations": 4,
+      "max_scaled_implicit_residual": 1.8152023934663593e-16,
+      "max_relative_newton_vs_bisection": 3.3306690738754696e-16,
+      "min_E_on_0_3": 1.0,
+      "max_E_on_0_3": 4.499759186463201
+    }
+  },
+  "lcdm_analytic_validation": {
+    "max_relative_E_error_theta2": 2.220446049250313e-16,
+    "j0_lcdm": 0.9999978839842424,
+    "distance_z2_trapezoid_mpc": 5256.50470961111,
+    "distance_z2_simpson_mpc": 5256.5046831611235,
+    "relative_distance_difference": 5.031858263393474e-09
+  }
+}

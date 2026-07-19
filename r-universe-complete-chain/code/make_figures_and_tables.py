@@ -1,26 +1,20 @@
 #!/usr/bin/env python3
 import json
 import math
-import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-ROOT = Path("/Users/mpetr/Documents/Codex/2026-07-19/m")
-OUT = ROOT / "outputs/r_universe_lcdm_article"
+OUT = Path(__file__).resolve().parents[1]
 FIG = OUT / "figures"
 TAB = OUT / "tables"
 FIG.mkdir(parents=True, exist_ok=True)
 TAB.mkdir(parents=True, exist_ok=True)
 
-SRC = Path("/Users/mpetr/Documents/Codex/2026-07-09/v/work/r_universe_fit")
-sys.path.insert(0, str(SRC))
-import fit_r_universe as base  # noqa: E402
-
-sys.path.insert(0, str(ROOT / "work/r_universe_article"))
-from extended_fit import e_general, background, load_bao, chi2_bao, RD_FIXED  # noqa: E402
+from r_universe_core import DATA, ICOV_SN, RD_FIXED, SN_MB, SN_ZHD, SN_ZHEL, background, e_general, load_bao  # noqa: E402
+from derived_predictions import growth_at_z, growth_solution  # noqa: E402
 
 C = 299792.458
 
@@ -78,8 +72,8 @@ def om_diag(z, om, theta, nu=0.0):
 
 
 def write_summary_tables():
-    ext = json.loads((ROOT / "work/r_universe_article/extended_results.json").read_text())
-    des = json.loads((ROOT / "work/r_universe_article/des_dovekie_results.json").read_text())
+    ext = json.loads((OUT / "code/extended_results.json").read_text())
+    des = json.loads((OUT / "code/des_dovekie_results.json").read_text())
     rows = []
     for block in ext + [des]:
         ref = block["models"]["lcdm"]
@@ -108,8 +102,8 @@ def write_summary_tables():
     # BAO residual table for the main Pantheon+ DR2 fit.
     main = ext[1]["models"]
     rows_bao, cov = load_bao(
-        ROOT / "work/public_bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
-        ROOT / "work/public_bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
+        DATA / "desi_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
+        DATA / "desi_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
     )
     sig = np.sqrt(np.diag(cov))
     data = np.array([r[1] for r in rows_bao])
@@ -123,8 +117,8 @@ def write_summary_tables():
 
 
 def make_plots():
-    ext = json.loads((ROOT / "work/r_universe_article/extended_results.json").read_text())
-    des = json.loads((ROOT / "work/r_universe_article/des_dovekie_results.json").read_text())
+    ext = json.loads((OUT / "code/extended_results.json").read_text())
+    des = json.loads((OUT / "code/des_dovekie_results.json").read_text())
     main = ext[1]["models"]
     lcdm = main["lcdm"]
     r1 = main["r1"]
@@ -158,8 +152,8 @@ def make_plots():
     plt.close()
 
     rows_bao, cov = load_bao(
-        ROOT / "work/public_bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
-        ROOT / "work/public_bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
+        DATA / "desi_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt",
+        DATA / "desi_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt",
     )
     sig = np.sqrt(np.diag(cov))
     data = np.array([r[1] for r in rows_bao])
@@ -180,12 +174,12 @@ def make_plots():
     plt.savefig(FIG / "fig03_desi_dr2_bao_pulls.png", dpi=180)
     plt.close()
 
-    mu_l = model_mu(base.SN_ZHD, base.SN_ZHEL, lcdm["H0"], lcdm["Omega_m0"], 2.0, 0.0)
-    mu_r = model_mu(base.SN_ZHD, base.SN_ZHEL, r1["H0"], r1["Omega_m0"], r1["theta"], 0.0)
-    res_l, off_l = offset_marginalized_residuals(base.SN_MB, mu_l, base.ICOV_SN)
-    res_r, off_r = offset_marginalized_residuals(base.SN_MB, mu_r, base.ICOV_SN)
-    bx, by_l, be_l = weighted_bins(base.SN_ZHD, res_l, 34)
-    _, by_r, be_r = weighted_bins(base.SN_ZHD, res_r, 34)
+    mu_l = model_mu(SN_ZHD, SN_ZHEL, lcdm["H0"], lcdm["Omega_m0"], 2.0, 0.0)
+    mu_r = model_mu(SN_ZHD, SN_ZHEL, r1["H0"], r1["Omega_m0"], r1["theta"], 0.0)
+    res_l, off_l = offset_marginalized_residuals(SN_MB, mu_l, ICOV_SN)
+    res_r, off_r = offset_marginalized_residuals(SN_MB, mu_r, ICOV_SN)
+    bx, by_l, be_l = weighted_bins(SN_ZHD, res_l, 34)
+    _, by_r, be_r = weighted_bins(SN_ZHD, res_r, 34)
     plt.figure(figsize=(7.4, 4.8))
     plt.axhline(0, color="0.5", lw=1)
     plt.errorbar(bx, by_l, yerr=be_l, fmt="o", ms=3, color="black", label="LCDM")
@@ -223,10 +217,14 @@ def make_plots():
     plt.savefig(FIG / "fig05_model_selection.png", dpi=180)
     plt.close()
 
-    growth = pd.read_csv(SRC / "results/growth_table.csv")
+    xs_l, yy_l = growth_solution(lcdm["Omega_m0"], lcdm["theta"], lcdm["nu"])
+    xs_r, yy_r = growth_solution(r1["Omega_m0"], r1["theta"], r1["nu"])
+    z_grid = np.linspace(0.0, 2.5, 80)
+    lcdm_d = np.array([growth_at_z(xs_l, yy_l, float(z))[0] for z in z_grid])
+    r1_d = np.array([growth_at_z(xs_r, yy_r, float(z))[0] for z in z_grid])
     plt.figure(figsize=(7.2, 4.6))
-    plt.plot(growth["z"], growth["D_R_norm_to_today"], "o-", label="R1")
-    plt.plot(growth["z"], growth["D_LCDM_norm_to_today"], "s-", label="LCDM")
+    plt.plot(z_grid, r1_d, "-", label="R1 diagnostic curve")
+    plt.plot(z_grid, lcdm_d, "--", label="LCDM diagnostic curve")
     plt.xlabel("z")
     plt.ylabel("D(z)/D(0)")
     plt.title("Linearni rust normalizovany k dnesku")

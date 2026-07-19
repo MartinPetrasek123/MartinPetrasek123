@@ -6,7 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from extended_fit import (
+from r_universe_core import (
+    DATA,
     RD_FIXED,
     background,
     chi2_bao,
@@ -16,8 +17,8 @@ from extended_fit import (
 )
 
 ROOT = Path(__file__).resolve().parent
-DES = ROOT.parent / "DES-SN5YR/4_DISTANCES_COVMAT"
-BAO = ROOT.parent / "public_bao_data/desi_bao_dr2"
+DES = DATA / "des_dovekie"
+BAO = DATA / "desi_dr2"
 OUT = ROOT / "des_dovekie_results.json"
 
 
