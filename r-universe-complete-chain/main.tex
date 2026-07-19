@@ -44,8 +44,8 @@
 \newcommand{\Om}{\ensuremath{\Omega_{\rm m0}}}
 \newcommand{\chisq}{\ensuremath{\chi^2}}
 \newcommand{\dd}{\mathrm{d}}
-\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.2.3/r-universe-complete-chain}{GitHub release \texttt{v1.2.3}}}
-\newcommand{\release}{\texttt{v1.2.3}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.2.4/r-universe-complete-chain}{GitHub release \texttt{v1.2.4}}}
+\newcommand{\release}{\texttt{v1.2.4}}
 
 \title{\textbf{A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat \texorpdfstring{\LCDM}{LCDM}:\\
 Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits}}
@@ -71,7 +71,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. R1 is AIC-favored in the tested public late-time combinations, but not BIC-favored and not yet a replacement for a full perturbative Boltzmann/CMB implementation.
+tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The result is conditional on the adopted BAO sound-horizon calibration and on a smooth-sector GR growth benchmark. R1 is AIC-favored in the tested public late-time combinations, but not BIC-favored and not yet a replacement for a Bianchi-complete covariant theory or for a full perturbative Boltzmann/CMB implementation.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -180,7 +180,21 @@ E^2-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}
 -\Omega_{\rm m0}(1+z)^3=0.
 \label{eq:r2}
 \end{equation}
-It has one more parameter than R1 and two more than \LCDM. It is not treated as the preferred theory. It is a control experiment: if lower $\chi^2$ is bought only by extra flexibility, BIC should penalize it.
+It has one more parameter than R1 and two more than \LCDM. It is not treated as the preferred theory. It is a control experiment: if lower $\chi^2$ is bought only by extra flexibility, BIC should penalize it. R2 is therefore not used as an independent physical proposal, not used in the main interpretation and not advertised as an RG prediction. Its only role is methodological: to check whether the R1 improvement is merely the first sign that arbitrary redshift-shape freedom can lower $\chi^2$. Because the answer is penalized by BIC, the discussion below keeps R1 as the only physically motivated branch.
+
+\subsection{Bianchi identity and effective-background status}
+
+Equations~\eqref{eq:rhoR} and \eqref{eq:r1} should be read as an effective metric-background closure, not as a completed covariant stress-energy theory. In general relativity the Bianchi identity implies
+\begin{equation}
+\nabla^\mu G_{\mu\nu}=0,\qquad
+\dot\rho_{\rm tot}+3H(\rho_{\rm tot}+p_{\rm tot})=0.
+\end{equation}
+If pressureless matter is separately conserved as $\rho_m\propto a^{-3}$ while $\rho_R$ runs with $H$, then a fundamental embedding must explain where the compensating term lives. There are two logically distinct possibilities. One is an interacting dark-sector description,
+\begin{align}
+\dot\rho_m+3H\rho_m &= Q,\\
+\dot\rho_R+3H(\rho_R+p_R) &= -Q,
+\end{align}
+with $Q=0$ only for the effective background fit used here. The other is a modified-gravity or boundary-condition embedding in which the running component belongs to the geometric side of the field equations rather than to a separately conserved material fluid. The present paper does not derive either completion. It therefore claims only a closed late-time background test of Eq.~\eqref{eq:r1}; it does not claim that the scaling law by itself is a covariantly complete replacement for \LCDM.
 
 \section{Effective conservation and derived background quantities}
 
@@ -233,6 +247,8 @@ r_d=147.09\ {\rm Mpc}.
 \end{equation}
 This is a late-time test. A future complete early-universe model must compute $r_d$.
 
+The fixed sound horizon is a conditional calibration choice, not an R1 prediction. BAO observables measure ratios such as $D_M/r_d$ and $D_H/r_d$, and the calibration of $r_d$ is correlated with early-universe quantities including $\omega_b$, $\omega_c$, radiation, neutrino physics and recombination. Fixing one value therefore suppresses the early--late covariance that a global CMB+BAO fit would need to propagate. The free-$r_d$ test below checks only whether the late-time preference is numerically fragile under a floating scale; it does not replace a self-consistent early-universe R-sector calculation.
+
 For supernovae,
 \begin{equation}
 \mu_{\rm th}=5\log_{10}(D_L/{\rm Mpc})+25,
@@ -281,6 +297,8 @@ where
 \Omega_m(a)=\frac{\Omega_{\rm m0}a^{-3}}{E^2(a)}.
 \end{equation}
 The solver starts at $a=10^{-3}$ with $D\propto a$ and normalizes to $D(0)=1$. The main R1 branch gives a maximum suppression of the normalized $fD$ proxy relative to \LCDM of $3.42\%$ at $z\simeq0.33$. This is not a prediction for $f\sigma_8$ until an amplitude parameter such as $\sigma_{8,0}$ or $A_s$ is specified.
+
+This growth calculation is intentionally a GR-background benchmark. It is not the generic perturbation theory of an RG-driven vacuum sector. In a complete RG implementation, a running $\Lambda(k)$ would generically be accompanied by a running or scale-dependent $G(k)$, modified constraint equations and possibly nontrivial R-sector perturbations. The Poisson equation could then involve $G_{\rm eff}(k,z)$, anisotropic stress or a modified Weyl response. Such terms can suppress, erase or amplify the simple $3.42\%$ $fD$ proxy quoted above. The plotted growth and ISW curves are therefore falsifiable bookkeeping diagnostics for the background history, not final predictions for RSD, weak lensing or CMB cross-correlations.
 
 For a CMB-relevant proxy, the minimal GR Weyl-potential scaling is
 \begin{equation}
@@ -686,9 +704,11 @@ The following items are not completed calculations in this release:
 \begin{enumerate}
 \item the RG mapping from $\Lambda(k)$ and $G(k)$ to $\rho_R(H)$ is a motivated ansatz, not a derived theorem;
 \item no covariant action or complete field equations for the R-sector are supplied;
+\item the separate conservation of pressureless matter together with a running effective $\rho_R(H)$ has not yet been embedded in a covariant Bianchi-consistent theory with an explicit interaction term or modified-gravity boundary sector;
 \item $\theta$ is fitted phenomenologically and is not computed from a specified RG stability matrix;
 \item no ghost or gradient-stability analysis is performed;
-\item the growth equation assumes a smooth R-sector GR closure with $G_{\rm eff}=G$ and $\eta=1$;
+\item the BAO calibration uses a fixed or phenomenologically floated $r_d$ and does not yet propagate the full early--late covariance of $\omega_b$, $\omega_c$, radiation, neutrinos, recombination and drag-epoch physics;
+\item the growth equation assumes a smooth R-sector GR closure with $G_{\rm eff}=G$ and $\eta=1$ rather than a derived modified Poisson equation with running $G(k)$;
 \item no R1 CLASS/CAMB module, R1 CMB spectra, Planck likelihood or global CMB+BAO+SN+RSD/WL inference is completed;
 \item no full MCMC, nested-sampling evidence, posterior covariance matrix or prior-sensitivity scan is yet included.
 \end{enumerate}
