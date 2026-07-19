@@ -1,0 +1,30 @@
+{
+  "dataset": "Pantheon+full + DESI_DR2_BAO + CC",
+  "method": "profile likelihood over theta; H0 and Omega_m0 re-optimized at each fixed theta",
+  "theta_grid_min": 0.9,
+  "theta_grid_max": 2.6,
+  "n_grid": 87,
+  "best": {
+    "theta": 1.6,
+    "chi2_profile": 1410.3750118643889,
+    "H0_profile": 67.94687500000008,
+    "Omega_m0_profile": 0.2921249999999983
+  },
+  "theta_interval_delta_chi2_le_1": [
+    1.42,
+    1.8
+  ],
+  "theta_interval_delta_chi2_le_4": [
+    1.24,
+    2.0
+  ],
+  "lcdm_theta2_profile": {
+    "theta": 2.0,
+    "chi2_profile": 1414.0898506508902,
+    "H0_profile": 68.6289062500001,
+    "Omega_m0_profile": 0.30599999999999744,
+    "delta_chi2": 3.714838786501332
+  },
+  "likelihood_ratio_sigma_approx_theta2": 1.9273917055184533,
+  "profile_csv": "tables/profile_likelihood_theta.csv"
+}

@@ -8,8 +8,8 @@ number in the manuscript.
 ## Package release
 
 - Public package: https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain
-- Manuscript release tag: `v1.1.0`
-- Permanent archive: Zenodo DOI must be minted from the `v1.1.0` GitHub
+- Manuscript release tag: `v1.2.0`
+- Permanent archive: Zenodo DOI must be minted from the `v1.2.0` GitHub
   release before journal submission. No DOI is invented in the draft.
 
 ## Pantheon+
@@ -124,11 +124,20 @@ number in the manuscript.
 
 ## Cosmic chronometers
 
+- Full dataset name: 31-point cosmic chronometer H(z) compilation used for transparent late-time stress testing.
+- Authors: compiled from Simon, Stern, Moresco, Zhang, Ratsimbazafy and related cosmic-chronometer measurements.
+- DOI: individual literature DOIs are not fully resolved in this release; the reference column is explicit and must be upgraded to DOI-complete form before journal submission.
+- URL: values are stored in this release at `data/raw/chronometers/cosmic_chronometers.csv`.
+- Release/version: package release `v1.2.0`.
+- Download/access date: inherited from the previous local pilot compilation; package creation date 2026-07-19.
+- License: not applicable as a manually assembled literature-value table; cite original measurements.
 - Analysis scripts:
   - `code/extended_fit.py`
   - `code/des_dovekie_fit.py`
 - Data representation:
-  - the 31 triplets `(z, H, sigma_H)` are embedded directly in the scripts.
+  - the 31 rows are stored in `data/raw/chronometers/cosmic_chronometers.csv`.
+- SHA256:
+  - `cosmic_chronometers.csv`: `784f6d0387acadb5335f607a2182f48b138eebfa11aa844ce8f9e1904076b36a`
 - Sources represented:
   - Simon, Stern, Moresco, Zhang, Ratsimbazafy and later chronometer
     measurements.
@@ -163,7 +172,11 @@ number in the manuscript.
 | `code/derived_predictions.json` | `code/derived_predictions.py` | best-fit vectors from `extended_results.json` |
 | `code/numerical_validation.json` | `code/numerical_validation.py` | independent bisection, Newton solver, LCDM analytic branch |
 | `code/boltzmann_camb_results.json` | `code/boltzmann_camb.py` | CAMB LCDM reference early-universe sector |
+| `code/robustness_results.json` | `code/robustness_suite.py` | SN-only, BAO-only, CC-only, no-CC, free-rd and BAO jackknife fits |
+| `code/profile_likelihood_results.json` | `code/profile_likelihood.py` | theta profile likelihood with H0/Omega_m re-optimization |
 | `tables/all_model_fits.csv` | `code/make_figures_and_tables.py` | JSON result files |
+| `tables/robustness_suite.csv` | `code/robustness_suite.py` | dataset/sound-horizon robustness summary |
+| `tables/profile_likelihood_theta.csv` | `code/profile_likelihood.py` | profiled theta grid |
 | `tables/desi_dr2_bao_predictions.csv` | `code/make_figures_and_tables.py` | DESI DR2 vector/covariance and best fits |
 | `tables/camb_lensed_cls_lcdm_reference.csv` | `code/boltzmann_camb.py` | CAMB TT/EE/BB/TE lensed spectra |
 | `tables/camb_matter_power_lcdm_reference.csv` | `code/boltzmann_camb.py` | CAMB matter power at z=0,0.5,1,2 |

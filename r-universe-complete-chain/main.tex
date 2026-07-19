@@ -35,10 +35,10 @@
 \newcommand{\chisq}{\ensuremath{\chi^2}}
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\repo}{\url{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain}}
-\newcommand{\release}{\texttt{v1.1.0}}
+\newcommand{\release}{\texttt{v1.2.0}}
 
-\title{\textbf{R-Universe as a Testable Completion of Flat \texorpdfstring{\LCDM}{LCDM}:\\
-Physical Principle, Background Equations, Perturbative Closure, Public Data Fits, and Falsifiable Predictions}}
+\title{\textbf{A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat \texorpdfstring{\LCDM}{LCDM}:\\
+Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits}}
 
 \author{
 Martin Petrášek\\
@@ -53,7 +53,7 @@ Martin Petrášek\\
 \maketitle
 
 \begin{abstract}
-Flat \LCDM is an exceptionally successful empirical model, but it leaves the observed vacuum component as a rigid parameter rather than an explained infrared quantity. This paper presents a complete reproducible late-time calculation for a minimal R-Universe extension. The physical premise is that the locally gravitating late-time vacuum sector is an infrared effective component constrained by global or renormalization-group structure, rather than the raw additive zero-point energy. The minimal branch R1 is defined by
+Flat \LCDM is an exceptionally successful empirical model, but it leaves the observed vacuum component as a rigid parameter rather than an explained infrared quantity. This paper presents a reproducible background-level late-time analysis of a minimal R-Universe infrared-scaling extension, supplemented by conditional subhorizon growth diagnostics. The physical premise is that the locally gravitating late-time vacuum sector may be an infrared effective component constrained by global or renormalization-group structure, rather than the raw additive zero-point energy. The minimal branch R1 is defined by
 \[
 E^2(z)-(1-\Omega_{\rm m0})E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
@@ -61,7 +61,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The full chain is calculated explicitly: physical principle, background dynamics, supernova and BAO distances, analytic supernova-offset marginalization, full-covariance DESI BAO likelihood, cosmic chronometer likelihood, DES-Dovekie cross-check, minimal-GR growth closure, cosmographic diagnostics, Sandage--Loeb drift and an ISW-source proxy. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. For DES-Dovekie STAT+SYS + DESI DR2 BAO + chronometers, R1 gives $\Delta\chi^2=-4.2133$, $\Delta{\rm AIC}=-2.2133$ and $\Delta{\rm BIC}=+3.3172$. R1 is therefore repeatedly AIC-favored in public late-time data, but not yet BIC-favored and not yet a replacement for a full Boltzmann/CMB implementation. All results are obtained within a public, versioned and fully reproducible analysis framework.
+tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. R1 is AIC-favored in the tested public late-time combinations, but not BIC-favored and not yet a replacement for a full perturbative Boltzmann/CMB implementation.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -71,9 +71,9 @@ R-Universe; \LCDM; dark energy; renormalization group; vacuum energy; Pantheon+;
 
 The \LCDM model accurately describes the cosmic microwave background, baryon acoustic oscillations, Type Ia supernovae and large-scale structure \citep{Planck2018VI,DESI2024VI,Brout2022PantheonPlus}. Its success, however, does not explain why the vacuum sector should be a perfectly rigid cosmological constant. The cosmological constant problem remains a structural problem: a constant shift of the matter Lagrangian changes the stress tensor by a metric-proportional vacuum term and should gravitate in ordinary local Einstein equations \citep{Weinberg1989}.
 
-R-Universe is tested here as a conservative but falsifiable late-time completion. It does not assume that local general relativity fails in tested regimes. Instead, it asks whether the cosmological vacuum term entering the homogeneous infrared background can be an effective component generated by a global constraint or renormalization-group flow. The model is deliberately constructed so that \LCDM is recovered exactly. This makes the statistical question sharp: does the one-parameter deformation improve public data enough to pay for its extra parameter?
+R-Universe is tested here as a conservative and falsifiable late-time background extension. It does not assume that local general relativity fails in tested regimes. Instead, it asks whether the cosmological vacuum term entering the homogeneous infrared background can be represented by an effective infrared scaling law motivated by global constraints or renormalization-group flow. The model is deliberately constructed so that \LCDM is recovered exactly at the homogeneous background level. This makes the statistical question sharp: does the one-parameter deformation improve public data enough to pay for its extra parameter?
 
-The paper is organized as a complete calculation rather than a qualitative proposal. The chain is:
+The paper is organized as an audit trail rather than a qualitative proposal. The calculated late-time chain is:
 \[
 \hbox{principle}\rightarrow
 \hbox{background equation}\rightarrow
@@ -115,7 +115,11 @@ Identifying the late-time infrared scale with $k\propto H$ motivates an effectiv
 \rho_R(H)=\rho_{R0}E^{2-\theta}.
 \label{eq:rhoR}
 \end{equation}
-The observational exponent $\theta$ is treated as an effective exponent. A future fundamental derivation must compute it from a specified truncation, regulator, gauge choice and stability matrix. This paper does not hide that missing step; it separates the empirical R1 calculation from the ultraviolet derivation.
+This step is an RG-motivated ansatz, not a derivation from a specified ultraviolet completion. The microscopic relation would be
+\begin{equation}
+\rho_\Lambda(k)=\frac{\Lambda(k)}{8\pi G(k)},
+\end{equation}
+so any running of $G(k)$ changes both the exponent and normalization. The fixed-point contribution $\lambda_*k^2$ maps to a term proportional to $H^2$ if $k=\xi H$ and can be partially degenerate with the left-hand side of the Friedmann equation or with a running Newton coupling. The present R1 model therefore absorbs these unknowns into the empirical normalization and exponent in Eq.~\eqref{eq:rhoR}. Alternative scale identifications such as $k^2\propto R$, $k\propto t^{-1}$, or $k^2\propto H^2+\alpha\dot H$ are not equivalent and are treated as theoretical systematics rather than completed calculations. The observational exponent $\theta$ is therefore an effective exponent $\theta_{\rm obs}$, not a direct measurement of a stability-matrix eigenvalue $\theta_{\rm RG}$. A future fundamental derivation must specify the truncation, regulator, gauge choice, running of $G$, Bianchi identity implementation, and energy exchange or non-exchange between matter and the R-sector.
 
 \section{Background equations}
 
@@ -244,9 +248,9 @@ The total statistic is
 \chi^2_{\rm tot}=\chi^2_{\rm SN}+\chi^2_{\rm BAO}+\chi^2_{\rm CC}.
 \end{equation}
 
-\section{Perturbative and growth closure}
+\section{Conditional subhorizon growth forecast under a smooth R-sector GR closure}
 
-A full perturbation theory requires an action or complete field equations. The present paper therefore states the minimal closure used for a complete late-time consistency calculation:
+A full perturbation theory requires an action or complete field equations. The present paper therefore states the conditional closure used for a late-time diagnostic calculation:
 \begin{enumerate}
 \item pressureless matter is conserved and minimally coupled;
 \item the R-sector is smooth on the subhorizon scales used in the compressed growth check;
@@ -265,7 +269,7 @@ where
 \begin{equation}
 \Omega_m(a)=\frac{\Omega_{\rm m0}a^{-3}}{E^2(a)}.
 \end{equation}
-The solver starts at $a=10^{-3}$ with $D\propto a$ and normalizes to $D(0)=1$. The main R1 branch gives a maximum suppression of the normalized $fD$ proxy relative to \LCDM of $3.42\%$ at $z\simeq0.33$.
+The solver starts at $a=10^{-3}$ with $D\propto a$ and normalizes to $D(0)=1$. The main R1 branch gives a maximum suppression of the normalized $fD$ proxy relative to \LCDM of $3.42\%$ at $z\simeq0.33$. This is not a prediction for $f\sigma_8$ until an amplitude parameter such as $\sigma_{8,0}$ or $A_s$ is specified.
 
 For a CMB-relevant proxy, the minimal GR Weyl-potential scaling is
 \begin{equation}
@@ -276,7 +280,7 @@ The late ISW source is proportional to its time derivative. The code computes a 
 {\cal I}_{\rm R1}=0.1011,\qquad
 {\cal I}_{\Lambda{\rm CDM}}=0.0779.
 \]
-This is a falsifiable proxy, not a full CMB likelihood.
+This proxy is kept as a diagnostic only. A real ISW observable requires $k$-dependent Weyl potentials, line-of-sight integration and survey window functions.
 
 \section{Public data sources and exact data provenance}
 \label{sec:data-provenance}
@@ -293,7 +297,7 @@ Pantheon+ is taken from the public PantheonPlusSH0ES release \citep{PantheonPlus
 \item SHA256(covariance): \texttt{abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc};
 \item script: \texttt{code/extended\_fit.py}.
 \end{itemize}
-The code removes Cepheid calibrators and applies $z_{\rm HD}>0.01$. The retained sample contains $N_{\rm SN}=1580$ supernovae. The data vector is the observed distance-modulus residual after analytic marginalization over an additive magnitude/Hubble intercept. The covariance is restricted to the same mask before inversion. The supernova contribution is Eq.~\eqref{eq:snchi}, so the nuisance offset never appears as a fitted parameter in the AIC/BIC count.
+The code removes Cepheid calibrators and applies $z_{\rm HD}>0.01$. The retained Pantheon+ distance-vector dimension is $N_{\rm SN}=1580$ entries. This is the dimension used in the likelihood and information-criterion bookkeeping; it is not asserted to be the number of unique physical supernovae. The data vector is the observed distance-modulus residual after profiling over an additive magnitude/Hubble intercept. The covariance is restricted to the same mask before inversion. The supernova contribution is Eq.~\eqref{eq:snchi}, so the common nuisance offset never appears as a model-distinguishing fitted parameter.
 
 The explicit computational path is
 \[
@@ -312,7 +316,7 @@ C_{\rm SN}^{-1}
 
 \subsection{DES-Dovekie / DES-SN5YR cross-check}
 
-DES-Dovekie is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. It is used as an independent supernova cross-check, not combined with Pantheon+, because the low-redshift anchor and calibration systematics may overlap. The fit uses:
+DES-Dovekie is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. It is used as an alternative supernova-pipeline cross-check, not as a fully independent confirmation and not combined with Pantheon+, because low-redshift anchors and calibration systematics may overlap. The fit uses:
 \begin{itemize}
 \item input table: \texttt{DES-Dovekie\_HD.csv};
 \item covariance: \texttt{STAT+SYS.npz};
@@ -321,7 +325,7 @@ DES-Dovekie is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanch
 \item SHA256(covariance): \texttt{ffd3124b32148b1372bd95fda9299269f0352a9f8eee02d416c610e38495463b};
 \item script: \texttt{code/des\_dovekie\_fit.py}.
 \end{itemize}
-The DES likelihood uses the published binned Hubble diagram and the supplied STAT+SYS covariance. The same additive supernova offset is analytically marginalized. The final combined vector has $N=1864$ entries after adding DESI DR2 BAO and chronometers; the supernova block contributes $N_{\rm DES}=1820$ distance points in the implemented likelihood.
+The DES likelihood uses the published DES-Dovekie Hubble-diagram product and the supplied STAT+SYS matrix representation. The file \texttt{STAT+SYS.npz} is read as the upper-triangular packed inverse-covariance representation used by the release likelihood file. The same additive supernova offset is profiled. The final combined vector has $N=1864$ entries after adding 13 DESI DR2 BAO observables and 31 chronometer points; the DES supernova block therefore contributes $N_{\rm DES}=1820$ Hubble-diagram entries in the implemented likelihood.
 
 \subsection{DESI DR1 and DR2 BAO}
 
@@ -345,7 +349,7 @@ The sound horizon is fixed to $r_d=147.09\,{\rm Mpc}$ in all late-time compariso
 
 \subsection{Cosmic chronometers}
 
-The chronometer block contains 31 published $H(z)$ points represented explicitly inside \texttt{code/extended\_fit.py} and \texttt{code/des\_dovekie\_fit.py}. The compilation includes measurements from Simon, Stern, Moresco, Zhang, Ratsimbazafy and later literature, with the numerical triplets $(z,H,\sigma_H)$ visible in the code. No covariance between chronometer points is assumed, so the implemented likelihood is the diagonal expression in Eq.~\eqref{eq:baocc}. This choice is conservative for transparency and must be upgraded if a published correlated chronometer covariance is adopted.
+The chronometer block contains 31 published $H(z)$ points stored in \texttt{data/raw/chronometers/cosmic\_chronometers.csv}. The file contains $z$, $H$, statistical uncertainty, reference, method, sample and notes columns. The current calculation uses the listed diagonal statistical uncertainties only. No covariance between chronometer points is assumed, so the implemented likelihood is the diagonal expression in Eq.~\eqref{eq:baocc}. This choice is transparent but incomplete; a correlated chronometer systematic covariance and SPS-model nuisance treatment are required for a final precision inference.
 
 The computational path is
 \[
@@ -393,14 +397,9 @@ The released package includes the exact small public data products used by the s
 
 The full late-time analysis is reproduced by:
 \begin{verbatim}
-python3 code/extended_fit.py
-python3 code/des_dovekie_fit.py
-python3 code/derived_predictions.py
-python3 code/numerical_validation.py
-python3 code/boltzmann_camb.py
-python3 code/make_figures_and_tables.py
+python3 code/run_all.py
 \end{verbatim}
-The first script generates the Pantheon+ full-covariance + DESI DR1/DR2 + chronometer fits. The second generates the DES-Dovekie cross-check. The third computes cosmographic, growth and null-test predictions. The fourth validates the numerical solver independently. The fifth computes the CAMB reference early-universe sector and writes CMB and matter-power outputs. The final script regenerates all figures and CSV tables. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
+\texttt{code/run\_all.py} runs \texttt{extended\_fit.py}, \texttt{des\_dovekie\_fit.py}, \texttt{derived\_predictions.py}, \texttt{numerical\_validation.py}, \texttt{boltzmann\_camb.py}, \texttt{robustness\_suite.py}, \texttt{profile\_likelihood.py} and \texttt{make\_figures\_and\_tables.py}. On the validation machine this full chain completed in $80.82$ seconds. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
 
 \subsection{Global calculation flow}
 
@@ -436,6 +435,10 @@ For a proposed replacement of \LCDM, this is still not the end of the chain: the
 Object & Script & Numerical source & Output file\\
 \midrule
 Table 1--3 & \texttt{extended\_fit.py}, \texttt{des\_dovekie\_fit.py} & Pantheon+, DES-Dovekie, DESI DR1/DR2, chronometers & \texttt{tables/all\_model\_fits.csv}\\
+Robustness table & \texttt{robustness\_suite.py} & SN-only, BAO-only, CC-only, no-CC, free-$r_d$, BAO jackknife & \texttt{tables/robustness\_suite.csv}\\
+Profile likelihood & \texttt{profile\_likelihood.py} & fixed-$\theta$ R1 grid with $H_0,\Omega_{\rm m0}$ re-optimization & \texttt{tables/profile\_likelihood\_theta.csv}\\
+Numerical validation & \texttt{numerical\_validation.py} & Newton solver, independent bisection, Simpson/trapezoid distances & \texttt{code/numerical\_validation.json}\\
+CAMB baseline & \texttt{boltzmann\_camb.py} & reference \LCDM early-universe parameters & \texttt{tables/camb\_lensed\_cls\_lcdm\_reference.csv}\\
 Fig. 1 & \texttt{make\_figures\_and\_tables.py} & \texttt{code/extended\_results.json} & \texttt{fig01\_expansion\_Ez.pdf}\\
 Fig. 2 & \texttt{make\_figures\_and\_tables.py} & best-fit $E(z)$ functions & \texttt{fig02\_om\_diagnostic.pdf}\\
 Fig. 3 & \texttt{make\_figures\_and\_tables.py} & DESI DR2 vector/covariance and best fits & \texttt{desi\_dr2\_bao\_predictions.csv}\\
@@ -448,19 +451,19 @@ Fig. 6 & \texttt{derived\_predictions.py}, \texttt{make\_figures\_and\_tables.py
 
 \subsection{Numerical validation}
 
-The numerical validation file \texttt{code/numerical\_validation.json} is generated by \texttt{code/numerical\_validation.py}. It compares the production Newton solver against an independent bisection implementation on $0\le z\le3$ for the \LCDM limit, the main R1 solution and the main R2 solution. The maximum scaled implicit-equation residuals are
+The numerical validation file \texttt{code/numerical\_validation.json} is generated by \texttt{code/numerical\_validation.py}. It compares the production Newton solver against an independent bisection implementation on $0\le z\le3$ for the \LCDM limit, the main R1 solution and the main R2 solution. Within IEEE-754 double precision, the maximum scaled implicit-equation residuals are
 \[
 1.65\times10^{-16}\quad(\LCDM),\qquad
 2.02\times10^{-16}\quad({\rm R1}),\qquad
 1.82\times10^{-16}\quad({\rm R2}).
 \]
-The maximum relative Newton-versus-bisection differences are $2.22\times10^{-16}$ for \LCDM and $3.33\times10^{-16}$ for both R1 and R2. The \LCDM analytic branch validates the $\theta=2$ limit with maximum relative $E(z)$ error $2.22\times10^{-16}$ and gives $j_0=0.9999979$. A distance-integration check at $z=2$ gives $D_C=5256.50471\,{\rm Mpc}$ by trapezoidal integration and $5256.50468\,{\rm Mpc}$ by Simpson integration, a relative difference of $5.03\times10^{-9}$.
+The maximum relative Newton-versus-bisection differences are $2.22\times10^{-16}$ for \LCDM and $3.33\times10^{-16}$ for both R1 and R2. This does not mean the physical inference is known to 16 decimal places; it means the two implemented root finders return indistinguishable background branches over the tested domain. The \LCDM analytic branch validates the $\theta=2$ limit with maximum relative $E(z)$ error $2.22\times10^{-16}$ and gives $j_0=0.9999979$. A distance-integration check at $z=2$ gives $D_C=5256.50471\,{\rm Mpc}$ by trapezoidal integration and $5256.50468\,{\rm Mpc}$ by Simpson integration, a relative difference of $5.03\times10^{-9}$.
 
 \subsection{Independent verification}
 
 The independent verification is algorithmic rather than cosmetic. The production solver uses Newton iteration initialized on the positive \LCDM-connected branch and falls back to bisection if the scaled residual fails. The validation solver uses bisection directly and never calls the Newton update. Agreement at the $10^{-16}$ level on the production redshift domain demonstrates that the reported background values are not artifacts of a branch jump or Newton convergence failure.
 
-\subsection{Boltzmann and early-universe calculation status}
+\subsection{Reference \texorpdfstring{\LCDM}{LCDM} Boltzmann baseline}
 
 \texttt{code/boltzmann\_camb.py} adds a CAMB reference calculation for the \LCDM best-fit late-time parameters. It computes the early-universe baseline that replaces the purely fixed sound-horizon assumption in the audit trail:
 \[
@@ -473,11 +476,11 @@ It writes \texttt{tables/camb\_lensed\_cls\_lcdm\_reference.csv} and \texttt{tab
 
 \subsection{Statistical robustness status}
 
-The current release contains deterministic best-fit and information-criterion comparisons for the public late-time likelihoods. It does not yet contain a completed MCMC chain, nested-sampling evidence, profile likelihood, corner plot, posterior covariance matrix or prior-sensitivity scan. These objects must be generated before making a Nature-level claim that R-Universe decisively supersedes \LCDM. The manuscript therefore treats the AIC preference as an empirical signal, not as a final Bayesian model-selection result.
+The current release contains deterministic best-fit and information-criterion comparisons plus a one-dimensional profile likelihood for $\theta$. It does not yet contain a completed MCMC chain, nested-sampling evidence, corner plot, posterior covariance matrix or prior-sensitivity scan. These objects must be generated before making a Nature-level claim that R-Universe decisively supersedes \LCDM. The manuscript therefore treats the AIC preference as an empirical signal, not as a final Bayesian model-selection result.
 
 \subsection{Dataset robustness status}
 
-The release contains three fitted combinations: Pantheon+ + DESI DR1 + chronometers, Pantheon+ + DESI DR2 + chronometers, and DES-Dovekie + DESI DR2 + chronometers. Leave-one-BAO-point jackknife, bootstrap resampling, SN-only, BAO-only, chronometer-only, and no-chronometer fits are specified as required robustness products but are not yet claimed as completed in this draft. This prevents the audit record from overstating the present calculation.
+The release contains the three main fitted combinations plus \texttt{code/robustness\_suite.py}, which computes SN-only, BAO-only, chronometer-only, no-chronometer, free-$r_d$, and leave-one-BAO-observable jackknife fits. Bootstrap resampling, alternative SN masks, external Hubble priors and full prior scans are not yet included.
 
 \section{Model selection}
 
@@ -487,6 +490,8 @@ Model comparison uses
 {\rm BIC}=\chi^2+k\ln N,
 \end{equation}
 with $k=2$ for \LCDM, $k=3$ for R1 and $k=4$ for R2 \citep{Akaike1974,Schwarz1978}. Negative $\Delta$ values favor R-Universe relative to \LCDM.
+
+The supernova intercept is common to all compared models. Including it in $k$ would shift all absolute AIC/BIC values equally within a fixed data combination and leave the reported model differences unchanged. The $N$ used in BIC is the dimension of the fitted data vector, e.g. $N=1580+13+31=1624$ for Pantheon+ + DESI DR2 BAO + chronometers. Because the supernova and BAO blocks are correlated, this is an operational BIC convention rather than a true count of statistically independent objects. The BIC values should therefore be read as a standard approximate penalty diagnostic; a nested-sampling evidence calculation is required for final Bayesian model comparison.
 
 \section{Figures}
 
@@ -536,11 +541,20 @@ For R1, the component breakdown is
 \end{align}
 Thus the signal is shared by supernovae and BAO rather than coming from a single data block.
 
+\subsection{Profile likelihood for \texorpdfstring{$\theta$}{theta}}
+
+\texttt{code/profile\_likelihood.py} fixes $\theta$ on a grid and re-optimizes $(H_0,\Omega_{\rm m0})$ for the Pantheon+ + DESI DR2 + chronometer likelihood. The profile minimum is at $\theta=1.60$, $H_0=67.947\,{\rm km\,s^{-1}\,Mpc^{-1}}$ and $\Omega_{\rm m0}=0.2921$. The approximate intervals obtained from the profile are
+\[
+\theta_{\Delta\chi^2\le1}\in[1.42,1.80],\qquad
+\theta_{\Delta\chi^2\le4}\in[1.24,2.00].
+\]
+The \LCDM value $\theta=2$ has $\Delta\chi^2=3.715$, corresponding to a one-parameter likelihood-ratio significance of only $1.93\sigma$ under regularity assumptions. The late-time data therefore show a suggestive preference, not a statistically decisive detection of $\theta\ne2$.
+
 \subsection{DES-Dovekie + DESI DR2 + chronometers}
 
 \begin{table}[H]
 \centering
-\caption{Independent supernova cross-check: DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers.}
+\caption{Alternative supernova-pipeline cross-check: DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers.}
 \begin{tabular}{lrrrrrrrr}
 \toprule
 Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
@@ -552,7 +566,28 @@ R2 & 4 & 67.819 & 0.3131 & 3.244 & 1.074 & 1652.965 & -2.540 & +8.521\\
 \end{tabular}
 \end{table}
 
-The DES-Dovekie cross-check reproduces the direction of the R1 signal outside the Pantheon+ pipeline. It remains AIC-favored but not BIC-favored.
+The DES-Dovekie cross-check reproduces the direction of the R1 signal outside the Pantheon+ pipeline. It remains AIC-favored but not BIC-favored. This is not a fully independent confirmation because the combined likelihood still shares DESI DR2 BAO, chronometers and the same R1 background implementation.
+
+\subsection{Dataset and sound-horizon robustness}
+
+\begin{table}[H]
+\centering
+\caption{R1 robustness tests relative to \LCDM. The table reports deterministic best fits from \texttt{tables/robustness\_suite.csv}; the quoted significance is $\sqrt{-\Delta\chi^2}$ for one extra parameter and is only a rough likelihood-ratio diagnostic.}
+\begin{tabular}{lrrrr}
+\toprule
+Combination & $\theta_{\rm R1}$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+\midrule
+Pantheon only & 1.287 & -0.464 & +1.536 & +6.901\\
+DESI DR2 BAO only & 1.772 & -0.768 & +1.232 & +1.797\\
+Chronometers only & 2.716 & -0.063 & +1.937 & +3.371\\
+Pantheon + DESI DR2 BAO & 1.619 & -3.772 & -1.772 & +3.602\\
+Pantheon + DESI DR2 BAO + CC & 1.623 & -3.704 & -1.704 & +3.689\\
+Same, free $r_d$ & 1.629 & -3.717 & -1.717 & +3.675\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The single-block fits do not establish R1 on their own. The signal appears when supernova distances and DESI DR2 BAO are combined. Removing chronometers barely changes the result, and allowing $r_d$ to float in this late-time stress test gives $r_d=147.13\,{\rm Mpc}$ for R1 and leaves the information-criterion differences nearly unchanged. The leave-one-BAO-observable jackknife is included in \texttt{tables/robustness\_suite.csv}; the R1 $\Delta\chi^2$ remains negative in every tested removal, but the AIC gain ranges from weak to moderate and BIC remains positive.
 
 \section{Falsifiable predictions}
 
@@ -565,6 +600,25 @@ w_R(0)&=-0.93473,\\
 w_R(1)&=-0.85249,\\
 H_\infty/H_0&=0.80695.
 \end{align}
+The profile-likelihood scan gives $\theta_{\Delta\chi^2\le1}\in[1.42,1.80]$ and $\theta_{\Delta\chi^2\le4}\in[1.24,2.00]$. The other derived quantities are currently best-fit derived values; their posterior intervals require the MCMC or nested-sampling stage listed in the limitations.
+
+\begin{table}[H]
+\centering
+\caption{Forecast-style falsification map. Current R1 entries are best-fit values unless an interval is explicitly shown. Final thresholds require posterior propagation and survey-specific forecasts.}
+\begin{tabular}{p{0.19\linewidth}p{0.15\linewidth}p{0.18\linewidth}p{0.18\linewidth}p{0.2\linewidth}}
+\toprule
+Observable & \LCDM & R1 current & Experiment & Falsification threshold\\
+\midrule
+$\theta$ & $2$ & $1.60$; $[1.24,2.00]_{95\%{\rm\ prof.}}$ & DESI DR3, Euclid, Roman & posterior excludes 2 at $>3\sigma$\\
+$Om(z)$ drift & constant & drifting & DESI DR3, Euclid & drift inconsistent with R1 band\\
+$j_0$ & $1$ & $0.934$ & Rubin/Roman SNe & posterior excludes R1 value\\
+$fD$ proxy & baseline & $3.42\%$ max suppression & Euclid, DESI, SKA & full perturbative $f\sigma_8$ disagrees\\
+ISW proxy & baseline & enhanced proxy at $z=1$ & CMB-S4, LSST cross-correlations & full $C_\ell^{Tg}$ rejects sign/amplitude\\
+$r_d$ & CAMB baseline & not yet R1-derived & CMB-S4, DESI & R1 early-sector cannot reproduce BAO+CMB\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 The strongest null tests are:
 \begin{enumerate}
 \item $\theta=2$ must be recovered if future data prefer \LCDM;
@@ -574,26 +628,27 @@ The strongest null tests are:
 \item a global MCMC or nested-sampling analysis must preserve the AIC gain and ideally cross the BIC threshold.
 \end{enumerate}
 
-\section{What is complete and what remains open}
+\section{Current limitations}
 
-The late-time chain is complete: the physical principle is stated, the background equation is closed, the \LCDM limit is exact, all likelihood observables are computed, the public data sources are named, and the numerical results are generated by code.
+The present release is complete only as a background-level late-time reproducibility study with conditional growth diagnostics. The physical motivation is stated, the background equation is closed, the homogeneous \LCDM limit is exact, the public late-time likelihood observables are computed, data provenance is recorded, profile-likelihood and robustness stress tests are included, and the numerical results are generated by public code.
 
-The fundamental theory chain is not yet complete. A final replacement of \LCDM requires:
+The following items are not completed calculations in this release:
 \begin{enumerate}
-\item a covariant action or complete field equations for the R-sector;
-\item a theoretical calculation of $\theta$ from a specified RG stability matrix;
-\item a ghost and gradient-stability analysis;
-\item a CLASS/CAMB implementation including radiation, baryons, neutrinos and recombination;
-\item a full CMB likelihood;
-\item full MCMC or nested-sampling evidence.
+\item the RG mapping from $\Lambda(k)$ and $G(k)$ to $\rho_R(H)$ is a motivated ansatz, not a derived theorem;
+\item no covariant action or complete field equations for the R-sector are supplied;
+\item $\theta$ is fitted phenomenologically and is not computed from a specified RG stability matrix;
+\item no ghost or gradient-stability analysis is performed;
+\item the growth equation assumes a smooth R-sector GR closure with $G_{\rm eff}=G$ and $\eta=1$;
+\item no R1 CLASS/CAMB module, R1 CMB spectra, Planck likelihood or global CMB+BAO+SN+RSD/WL inference is completed;
+\item no full MCMC, nested-sampling evidence, posterior covariance matrix or prior-sensitivity scan is yet included.
 \end{enumerate}
-These are not optional. They are the next falsification gates.
+These are not optional for a claim that R-Universe physically replaces or subsumes \LCDM. They are the next falsification gates.
 
 \section{Conclusion}
 
-R-Universe R1 is a closed, reproducible, one-parameter late-time extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$, computes all late-time distance observables, uses full covariance where available, includes an independent DES-Dovekie supernova cross-check, and gives explicit growth and CMB-proxy predictions under a stated minimal closure.
+R-Universe R1 is a closed, reproducible, one-parameter late-time background extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$ at the homogeneous background level, computes all late-time distance observables used here, uses full covariance where available, includes an alternative DES-Dovekie supernova-pipeline cross-check, and gives conditional growth diagnostics under a stated smooth R-sector GR closure.
 
-The empirical result is precise. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The model is therefore not yet a definitive replacement for \LCDM, but it is a serious AIC-supported, falsifiable extension whose next required test is a full Boltzmann-level and MCMC analysis.
+The empirical result is precise but modest. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The profile-likelihood interval includes $\theta=2$ at approximately the $\Delta\chi^2\le4$ level. The current evidence is therefore suggestive but statistically inconclusive: R1 is an AIC-supported, falsifiable late-time extension, not yet a definitive replacement for \LCDM.
 
 \section*{Data availability}
 
@@ -601,18 +656,15 @@ All observational inputs used in this work are public and the exact small analys
 
 \section*{Code availability}
 
-The complete analysis pipeline, numerical solvers, likelihood implementation, result JSON files, CSV tables and scripts required to reproduce all figures and tables are publicly available at \repo. The manuscript-associated release tag is \release. A permanent Zenodo DOI should be minted from the \release\ GitHub release before journal submission; no DOI is fabricated in this draft. The repository records the Git history, and the release tag fixes the audit target corresponding to this manuscript.
+The complete analysis pipeline, numerical solvers, likelihood implementation, result JSON files, CSV tables and scripts required to reproduce all figures and tables are publicly available at \repo. The manuscript-associated release tag is \release. The package includes \texttt{requirements.txt}, \texttt{environment.yml}, \texttt{Dockerfile}, \texttt{CITATION.cff}, \texttt{codemeta.json} and an MIT license for the analysis code. Third-party observational data retain their original source terms and citation requirements. A permanent Zenodo DOI should be minted from the \release\ GitHub release before journal submission; no DOI is fabricated in this draft. The repository records the Git history, and the release tag fixes the audit target corresponding to this manuscript.
 
 \section*{Reproducibility statement}
 
 From the released package root, the complete late-time calculation is reproduced by running:
 \begin{verbatim}
-python3 code/extended_fit.py
-python3 code/des_dovekie_fit.py
-python3 code/derived_predictions.py
-python3 code/make_figures_and_tables.py
+python3 code/run_all.py
 \end{verbatim}
-The expected primary numerical output is \texttt{tables/all\_model\_fits.csv}. The expected BAO diagnostic output is \texttt{tables/desi\_dr2\_bao\_predictions.csv}. All figure panels included through \texttt{graf.tex} are regenerated in \texttt{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
+The expected primary numerical outputs are \texttt{tables/all\_model\_fits.csv}, \texttt{tables/robustness\_suite.csv}, \texttt{tables/profile\_likelihood\_theta.csv}, \texttt{tables/desi\_dr2\_bao\_predictions.csv}, the CAMB reference spectra and the JSON audit files in \texttt{code/}. All figure panels included through \texttt{graf.tex} are regenerated in \texttt{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
 
 \appendix
 
@@ -686,7 +738,7 @@ The chronometer block is a transparent diagonal likelihood:
 \[
 \chi^2_{\rm CC}=\sum_{i=1}^{31}\frac{[H_i-H_0E(z_i)]^2}{\sigma_{H,i}^2}.
 \]
-The numerical triplets are embedded in the fitting scripts. This makes the code self-auditing but also fixes the limitation: the calculation does not yet include a full correlated chronometer systematic covariance. In the main fit, the chronometer block changes by only $+0.061$ between \LCDM and R1, so the R1 improvement is not driven by chronometer tuning.
+The numerical triplets are stored in \texttt{data/raw/chronometers/cosmic\_chronometers.csv} and loaded by \texttt{code/r\_universe\_core.py}. The calculation does not yet include a full correlated chronometer systematic covariance. In the main fit, the chronometer block changes by only $+0.061$ between \LCDM and R1, so the R1 improvement is not driven by chronometer tuning.
 
 \subsection{Derived predictions calculation record}
 
