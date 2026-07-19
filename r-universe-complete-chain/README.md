@@ -2,7 +2,7 @@
 
 This package accompanies the manuscript:
 
-**R-Universe as a Testable Extension of Flat LCDM: a Complete Late-Time Expansion, DESI DR2 BAO, DES-Dovekie and Growth-of-Structure Study**
+**A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat LCDM: Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits**
 
 ## Contents
 
@@ -46,9 +46,9 @@ The generated JSON, CSV and figure files are the numerical source of the manuscr
 
 ## Versioning and archive
 
-- Manuscript release tag: `v1.2.0`
+- Manuscript release tag: `v1.2.1`
 - GitHub package: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain>
-- A Zenodo DOI should be minted from the `v1.2.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
+- A Zenodo DOI should be minted from the `v1.2.1` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
 - Data filenames, masks, covariance files, vector order and SHA256 checksums are recorded in `data_manifest/data_sources.md`.
 - Reproduction command: `python3 code/run_all.py`.
 - Docker command: `docker build -t r-universe-complete-chain . && docker run --rm r-universe-complete-chain`.
