@@ -35,6 +35,7 @@
 \newcommand{\chisq}{\ensuremath{\chi^2}}
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\repo}{\url{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain}}
+\newcommand{\release}{\texttt{v1.0.0}}
 
 \title{\textbf{R-Universe as a Testable Completion of Flat \texorpdfstring{\LCDM}{LCDM}:\\
 Physical Principle, Background Equations, Perturbative Closure, Public Data Fits, and Falsifiable Predictions}}
@@ -60,7 +61,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The full chain is calculated explicitly: physical principle, background dynamics, supernova and BAO distances, analytic supernova-offset marginalization, full-covariance DESI BAO likelihood, cosmic chronometer likelihood, DES-Dovekie cross-check, minimal-GR growth closure, cosmographic diagnostics, Sandage--Loeb drift and an ISW-source proxy. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. For DES-Dovekie STAT+SYS + DESI DR2 BAO + chronometers, R1 gives $\Delta\chi^2=-4.2133$, $\Delta{\rm AIC}=-2.2133$ and $\Delta{\rm BIC}=+3.3172$. R1 is therefore repeatedly AIC-favored in public late-time data, but not yet BIC-favored and not yet a replacement for a full Boltzmann/CMB implementation. The reproducibility package, code, result JSON files, CSV tables, data manifest and figure generator are provided at \repo.
+tests whether additional shape freedom is statistically justified. The full chain is calculated explicitly: physical principle, background dynamics, supernova and BAO distances, analytic supernova-offset marginalization, full-covariance DESI BAO likelihood, cosmic chronometer likelihood, DES-Dovekie cross-check, minimal-GR growth closure, cosmographic diagnostics, Sandage--Loeb drift and an ISW-source proxy. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. For DES-Dovekie STAT+SYS + DESI DR2 BAO + chronometers, R1 gives $\Delta\chi^2=-4.2133$, $\Delta{\rm AIC}=-2.2133$ and $\Delta{\rm BIC}=+3.3172$. R1 is therefore repeatedly AIC-favored in public late-time data, but not yet BIC-favored and not yet a replacement for a full Boltzmann/CMB implementation. All results are obtained within a public, versioned and fully reproducible analysis framework.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -236,6 +237,7 @@ BAO and chronometer likelihoods are
 \begin{align}
 \chi^2_{\rm BAO}&=\Delta_{\rm BAO}^TC_{\rm BAO}^{-1}\Delta_{\rm BAO},\\
 \chi^2_{\rm CC}&=\sum_i\left[\frac{H_i-H_0E(z_i)}{\sigma_{H,i}}\right]^2.
+\label{eq:baocc}
 \end{align}
 The total statistic is
 \begin{equation}
@@ -254,6 +256,7 @@ A full perturbation theory requires an action or complete field equations. The p
 Under this closure, matter growth satisfies
 \begin{equation}
 \frac{\dd^2D}{\dd\ln a^2}
+\,+\,
 \left[2+\frac{\dd\ln H}{\dd\ln a}\right]\frac{\dd D}{\dd\ln a}
 -\frac{3}{2}\Omega_m(a)D=0,
 \label{eq:growth}
@@ -275,15 +278,170 @@ The late ISW source is proportional to its time derivative. The code computes a 
 \]
 This is a falsifiable proxy, not a full CMB likelihood.
 
-\section{Public data sources}
+\section{Public data sources and exact data provenance}
+\label{sec:data-provenance}
 
-Pantheon+ is taken from the public PantheonPlusSH0ES release \citep{PantheonPlusDataRelease,Brout2022PantheonPlus}. The code removes Cepheid calibrators and objects with $z_{\rm HD}\leq0.01$, leaving 1580 supernovae. The exact mapping is recorded in \texttt{data\_manifest/data\_sources.md}.
+This section is written as an audit trail. Each likelihood block identifies the public source, exact local input files, covariance treatment, selection mask, data-vector size, transformation to theory space and the script that performs the calculation. The same information is mirrored in \texttt{data\_manifest/data\_sources.md}. No numerical result in the paper is produced by a hidden notebook.
 
-DESI BAO data are taken from public DESI DR1/DR2 measurements \citep{DESI2024VI,DESIDR2BAO} through \texttt{CobayaSampler/bao\_data} \citep{CobayaBAOData}. The main fit uses the DESI DR2 all-tracer Gaussian BAO vector and covariance.
+\subsection{Pantheon+ supernova sample}
 
-DES-Dovekie / DES-SN5YR is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. It is used as an independent supernova cross-check and is not added to Pantheon+ because overlap and correlated systematics may exist.
+Pantheon+ is taken from the public PantheonPlusSH0ES release \citep{PantheonPlusDataRelease,Brout2022PantheonPlus}. The fit uses the public distance-modulus table and the full statistical-plus-systematic covariance:
+\begin{itemize}
+\item input table: \texttt{pantheon\_plus.dat};
+\item covariance: \texttt{pantheon\_plus\_stat\_sys.cov};
+\item SHA256(input table): \texttt{1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8};
+\item SHA256(covariance): \texttt{abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc};
+\item script: \texttt{code/extended\_fit.py}.
+\end{itemize}
+The code removes Cepheid calibrators and applies $z_{\rm HD}>0.01$. The retained sample contains $N_{\rm SN}=1580$ supernovae. The data vector is the observed distance-modulus residual after analytic marginalization over an additive magnitude/Hubble intercept. The covariance is restricted to the same mask before inversion. The supernova contribution is Eq.~\eqref{eq:snchi}, so the nuisance offset never appears as a fitted parameter in the AIC/BIC count.
 
-The 31 cosmic chronometer points are explicitly embedded in \texttt{code/extended\_fit.py}. Growth checks use the Sagredo--Nesseris--Sapone compilation and compressed weak-lensing values from DES Y3 and KiDS-1000 \citep{Sagredo2018RSD,Amon2022DESY3,Asgari2021KiDS1000}.
+The explicit computational path is
+\[
+\hbox{Pantheon+ table}
+\rightarrow
+\hbox{Cepheid and }z_{\rm HD}\hbox{ mask}
+\rightarrow
+\{\mu_{\rm obs},z_{\rm HD},z_{\rm hel}\}
+\rightarrow
+C_{\rm SN}^{-1}
+\rightarrow
+\mu_{\rm th}(H_0,\Omega_{\rm m0},\theta,\nu)
+\rightarrow
+\chi^2_{\rm SN}.
+\]
+
+\subsection{DES-Dovekie / DES-SN5YR cross-check}
+
+DES-Dovekie is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. It is used as an independent supernova cross-check, not combined with Pantheon+, because the low-redshift anchor and calibration systematics may overlap. The fit uses:
+\begin{itemize}
+\item input table: \texttt{DES-Dovekie\_HD.csv};
+\item covariance: \texttt{STAT+SYS.npz};
+\item metadata file used for audit: \texttt{DES-Dovekie\_Metadata.csv};
+\item SHA256(input table): \texttt{2f57019d783eaa976df80a41b0054171a2d994ee9808d715ce850c2df5720aaf};
+\item SHA256(covariance): \texttt{ffd3124b32148b1372bd95fda9299269f0352a9f8eee02d416c610e38495463b};
+\item script: \texttt{code/des\_dovekie\_fit.py}.
+\end{itemize}
+The DES likelihood uses the published binned Hubble diagram and the supplied STAT+SYS covariance. The same additive supernova offset is analytically marginalized. The final combined vector has $N=1864$ entries after adding DESI DR2 BAO and chronometers; the supernova block contributes $N_{\rm DES}=1820$ distance points in the implemented likelihood.
+
+\subsection{DESI DR1 and DR2 BAO}
+
+DESI BAO data are taken from public DESI DR1/DR2 measurements \citep{DESI2024VI,DESIDR2BAO} through \texttt{CobayaSampler/bao\_data} \citep{CobayaBAOData}. The main result uses the DESI DR2 all-tracer Gaussian BAO vector:
+\begin{itemize}
+\item DR2 mean vector: \texttt{desi\_bao\_dr2/desi\_gaussian\_bao\_ALL\_GCcomb\_mean.txt};
+\item DR2 covariance: \texttt{desi\_bao\_dr2/desi\_gaussian\_bao\_ALL\_GCcomb\_cov.txt};
+\item SHA256(DR2 mean): \texttt{9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585};
+\item SHA256(DR2 covariance): \texttt{252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509};
+\item DR1 mean vector: \texttt{desi\_2024\_bao\_mean.txt};
+\item DR1 covariance: \texttt{desi\_2024\_bao\_cov.txt};
+\item SHA256(DR1 mean): \texttt{dd2873a0b88459a491af3c0c0307ba059f62df9211d5b976760f310565a1be68};
+\item SHA256(DR1 covariance): \texttt{bbafa9074b51cf1a45e0d10e4f37db8c0e80a5d1d1788857abb7fc49fb21abcc};
+\item script: \texttt{code/extended\_fit.py}.
+\end{itemize}
+The DR2 vector order is explicitly reproduced in \texttt{tables/desi\_dr2\_bao\_predictions.csv}: $D_V/r_d$ at $z=0.295$, $D_M/r_d$ and $D_H/r_d$ at $z=0.510,0.706,0.934,1.321,1.484$, and $D_H/r_d,D_M/r_d$ at $z=2.330$. The covariance is used as a full matrix in
+\[
+\Delta_{\rm BAO}^TC_{\rm BAO}^{-1}\Delta_{\rm BAO}.
+\]
+The sound horizon is fixed to $r_d=147.09\,{\rm Mpc}$ in all late-time comparisons. This is deliberately counted as a limitation: a complete early-universe R-sector calculation must predict $r_d$ rather than import it.
+
+\subsection{Cosmic chronometers}
+
+The chronometer block contains 31 published $H(z)$ points represented explicitly inside \texttt{code/extended\_fit.py} and \texttt{code/des\_dovekie\_fit.py}. The compilation includes measurements from Simon, Stern, Moresco, Zhang, Ratsimbazafy and later literature, with the numerical triplets $(z,H,\sigma_H)$ visible in the code. No covariance between chronometer points is assumed, so the implemented likelihood is the diagonal expression in Eq.~\eqref{eq:baocc}. This choice is conservative for transparency and must be upgraded if a published correlated chronometer covariance is adopted.
+
+The computational path is
+\[
+\{z_i,H_i,\sigma_{H,i}\}
+\rightarrow
+H_{\rm th}(z_i)=H_0E(z_i)
+\rightarrow
+\chi^2_{\rm CC}
+\rightarrow
+\chi^2_{\rm tot}.
+\]
+
+\subsection{Growth and lensing compressed checks}
+
+Growth checks use the Sagredo--Nesseris--Sapone $f\sigma_8$ compilation and compressed weak-lensing values from DES Y3 and KiDS-1000 \citep{Sagredo2018RSD,Amon2022DESY3,Asgari2021KiDS1000}. The hashes of the local audit files are:
+\begin{itemize}
+\item \texttt{rsd\_fsigma8\_sagredo2018\_plus\_boss2024.csv}: \texttt{fe6b4e2e488991751e24d21d3c0a9065a5b1767b1d56cf3fae01c157f95f6e4d};
+\item \texttt{lensing\_s8\_compressed.csv}: \texttt{f2258e1c7b87241190bbb5bb32d1ea01c4ed992d30374820357a541df33e14f2}.
+\end{itemize}
+The present manuscript does not claim a full RSD or weak-lensing likelihood. It computes the minimal-GR growth closure and reports falsifiable changes in $D(z)$, $f(z)$, $fD$ and the ISW-source proxy from \texttt{code/derived\_predictions.py}. This prevents the text from overstating what has been calculated.
+
+\section{Computational reproducibility protocol}
+
+\subsection{Software environment}
+
+The calculations were rerun in the Codex bundled scientific Python environment on macOS, using Python 3 with \texttt{numpy}, \texttt{scipy}, \texttt{pandas} and \texttt{matplotlib}. The public package README specifies the minimal environment as Python 3.10+ with those packages. No private database, GUI operation or manual spreadsheet manipulation is required.
+
+\subsection{Repository layout}
+
+The public package is organized as:
+\begin{verbatim}
+r-universe-complete-chain/
+  main.tex
+  references.bib
+  graf.tex
+  code/
+  data_manifest/
+  figures/
+  tables/
+\end{verbatim}
+The raw public data are not rehosted unless redistribution is allowed by the source repository. Instead, \texttt{data\_manifest/data\_sources.md} records source URLs, exact filenames, local mapping and SHA256 checksums of the files used in the calculation.
+
+\subsection{Execution order}
+
+The full late-time analysis is reproduced by:
+\begin{verbatim}
+python3 code/extended_fit.py
+python3 code/des_dovekie_fit.py
+python3 code/derived_predictions.py
+python3 code/make_figures_and_tables.py
+\end{verbatim}
+The first script generates the Pantheon+ full-covariance + DESI DR1/DR2 + chronometer fits. The second generates the DES-Dovekie cross-check. The third computes cosmographic, growth and null-test predictions. The fourth regenerates all figures and CSV tables. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
+
+\subsection{Global calculation flow}
+
+The complete numerical flow is
+\[
+\hbox{public data files}
+\rightarrow
+\hbox{dataset-specific masks}
+\rightarrow
+\hbox{theory observables}
+\rightarrow
+\hbox{block likelihoods}
+\rightarrow
+\chi^2_{\rm tot}
+\rightarrow
+\hbox{grid/refined minimization}
+\rightarrow
+\hbox{AIC/BIC}
+\rightarrow
+\hbox{CSV/JSON}
+\rightarrow
+\hbox{figures and tables}.
+\]
+For a proposed replacement of \LCDM, this is still not the end of the chain: the required next step is a full Boltzmann implementation with CMB likelihoods and global sampling. The present work closes the late-time public-data calculation; it does not pretend that the early-universe calculation has already been solved.
+
+\subsection{Figure and table provenance}
+
+\begin{table}[H]
+\centering
+\caption{Audit trail from output objects to scripts and numerical sources.}
+\begin{tabular}{p{0.18\linewidth}p{0.25\linewidth}p{0.28\linewidth}p{0.19\linewidth}}
+\toprule
+Object & Script & Numerical source & Output file\\
+\midrule
+Table 1--3 & \texttt{extended\_fit.py}, \texttt{des\_dovekie\_fit.py} & Pantheon+, DES-Dovekie, DESI DR1/DR2, chronometers & \texttt{tables/all\_model\_fits.csv}\\
+Fig. 1 & \texttt{make\_figures\_and\_tables.py} & \texttt{code/extended\_results.json} & \texttt{fig01\_expansion\_Ez.pdf}\\
+Fig. 2 & \texttt{make\_figures\_and\_tables.py} & best-fit $E(z)$ functions & \texttt{fig02\_om\_diagnostic.pdf}\\
+Fig. 3 & \texttt{make\_figures\_and\_tables.py} & DESI DR2 vector/covariance and best fits & \texttt{desi\_dr2\_bao\_predictions.csv}\\
+Fig. 4 & \texttt{make\_figures\_and\_tables.py} & Pantheon+ masked Hubble residuals & \texttt{fig04\_pantheon\_residuals.pdf}\\
+Fig. 5 & \texttt{make\_figures\_and\_tables.py} & AIC/BIC values from all fits & \texttt{fig05\_model\_selection.pdf}\\
+Fig. 6 & \texttt{derived\_predictions.py}, \texttt{make\_figures\_and\_tables.py} & growth closure from Eq.~\eqref{eq:growth} & \texttt{fig06\_growth\_Dz.pdf}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Model selection}
 
@@ -400,6 +558,113 @@ These are not optional. They are the next falsification gates.
 R-Universe R1 is a closed, reproducible, one-parameter late-time extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$, computes all late-time distance observables, uses full covariance where available, includes an independent DES-Dovekie supernova cross-check, and gives explicit growth and CMB-proxy predictions under a stated minimal closure.
 
 The empirical result is precise. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The model is therefore not yet a definitive replacement for \LCDM, but it is a serious AIC-supported, falsifiable extension whose next required test is a full Boltzmann-level and MCMC analysis.
+
+\section*{Data availability}
+
+All observational inputs used in this work are public. Pantheon+ is available from the PantheonPlusSH0ES data release \citep{PantheonPlusDataRelease,Brout2022PantheonPlus}. DESI BAO DR1 and DR2 vectors and covariance matrices are available through the public DESI/Cobaya BAO data repository \citep{DESI2024VI,DESIDR2BAO,CobayaBAOData}. DES-Dovekie / DES-SN5YR distances and covariance matrices are available from the DES-SN5YR public release and Zenodo archive \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. The chronometer and compressed growth/lensing inputs used for the diagnostic checks are listed explicitly in the code and/or manifest. Exact filenames, masks, data-vector sizes and SHA256 checksums are recorded in Section~\ref{sec:data-provenance} and \texttt{data\_manifest/data\_sources.md}.
+
+\section*{Code availability}
+
+The complete analysis pipeline, numerical solvers, likelihood implementation, result JSON files, CSV tables and scripts required to reproduce all figures and tables are publicly available at \repo. The manuscript-associated release tag is \release. A permanent Zenodo DOI should be minted from the \release\ GitHub release before journal submission; no DOI is fabricated in this draft. The repository records the Git history, and the release tag fixes the audit target corresponding to this manuscript.
+
+\section*{Reproducibility statement}
+
+From the released package root, the complete late-time calculation is reproduced by running:
+\begin{verbatim}
+python3 code/extended_fit.py
+python3 code/des_dovekie_fit.py
+python3 code/derived_predictions.py
+python3 code/make_figures_and_tables.py
+\end{verbatim}
+The expected primary numerical output is \texttt{tables/all\_model\_fits.csv}. The expected BAO diagnostic output is \texttt{tables/desi\_dr2\_bao\_predictions.csv}. All figure panels included through \texttt{graf.tex} are regenerated in \texttt{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
+
+\appendix
+
+\section{Computational and data provenance}
+
+\subsection{Parameter vectors and minimization}
+
+The fitted parameter vectors are
+\[
+\Theta_{\Lambda{\rm CDM}}=(H_0,\Omega_{\rm m0}),\qquad
+\Theta_{\rm R1}=(H_0,\Omega_{\rm m0},\theta),\qquad
+\Theta_{\rm R2}=(H_0,\Omega_{\rm m0},\theta,\nu).
+\]
+For each trial vector the solver first computes the positive physical branch of $E(z)$. \LCDM is evaluated analytically. R1 and R2 are evaluated by solving the implicit background equations on the redshift points required by the likelihood and by quadrature for distances. The solution branch is initialized at the \LCDM-connected root and rejected if the denominator in Eq.~\eqref{eq:eprime} crosses a singular value on the evaluated redshift domain.
+
+The likelihood is not optimized independently per dataset. The objective minimized is always the full combined statistic
+\[
+\chi^2_{\rm tot}(\Theta)=
+\chi^2_{\rm SN}(\Theta)+
+\chi^2_{\rm BAO}(\Theta)+
+\chi^2_{\rm CC}(\Theta).
+\]
+The fitted $\chi^2$ values are then decomposed by block after the best-fit vector is identified. This is why the component shifts in the main fit add to the quoted total shift.
+
+\subsection{Pantheon+ calculation record}
+
+The Pantheon+ calculation uses the following deterministic pipeline:
+\begin{enumerate}
+\item read \texttt{pantheon\_plus.dat};
+\item read \texttt{pantheon\_plus\_stat\_sys.cov};
+\item construct the boolean mask \texttt{is\_calibrator == False} and $z_{\rm HD}>0.01$;
+\item apply the same mask to the data vector and covariance rows/columns;
+\item compute $D_C(z_{\rm HD})$ and $D_L=(1+z_{\rm hel})D_C$;
+\item compute $\mu_{\rm th}=5\log_{10}(D_L/{\rm Mpc})+25$;
+\item form residuals $r=\mu_{\rm obs}-\mu_{\rm th}$;
+\item analytically marginalize the additive intercept using Eq.~\eqref{eq:snchi};
+\item return $\chi^2_{\rm SN}$ to the global objective.
+\end{enumerate}
+The final retained Pantheon+ size is $1580$. In the main Pantheon+ + DESI DR2 + chronometer fit, the supernova block contributes $1388.620$ for \LCDM and $1386.116$ for R1 at their respective global best fits.
+
+\subsection{DES-Dovekie calculation record}
+
+The DES-Dovekie calculation is intentionally parallel to Pantheon+:
+\begin{enumerate}
+\item read \texttt{DES-Dovekie\_HD.csv};
+\item read the \texttt{STAT+SYS.npz} covariance matrix;
+\item preserve the published Hubble-diagram ordering;
+\item compute $D_L$ from the candidate cosmology;
+\item analytically marginalize the additive intercept;
+\item combine the resulting $\chi^2_{\rm SN}$ with DESI DR2 BAO and chronometers.
+\end{enumerate}
+The DES-Dovekie cross-check gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$ for R1 relative to \LCDM. Its agreement in sign with Pantheon+ is an important robustness check because it uses a different supernova pipeline and covariance product.
+
+\subsection{DESI DR2 BAO calculation record}
+
+The DESI DR2 BAO vector is evaluated as follows:
+\begin{enumerate}
+\item read \texttt{desi\_gaussian\_bao\_ALL\_GCcomb\_mean.txt};
+\item read \texttt{desi\_gaussian\_bao\_ALL\_GCcomb\_cov.txt};
+\item for each row identify whether the observable is $D_V/r_d$, $D_M/r_d$ or $D_H/r_d$;
+\item compute $D_M$, $D_H$ and $D_V$ from the same $E(z)$ used in the supernova likelihood;
+\item fix $r_d=147.09\,{\rm Mpc}$;
+\item build the prediction vector in the published order;
+\item evaluate the full-covariance quadratic form.
+\end{enumerate}
+For the main fit, the BAO block contributes $10.908$ for \LCDM, $9.638$ for R1 and $8.710$ for R2. The diagonal pulls in \texttt{tables/desi\_dr2\_bao\_predictions.csv} are diagnostic only; the fit uses the full covariance matrix.
+
+\subsection{Chronometer calculation record}
+
+The chronometer block is a transparent diagonal likelihood:
+\[
+\chi^2_{\rm CC}=\sum_{i=1}^{31}\frac{[H_i-H_0E(z_i)]^2}{\sigma_{H,i}^2}.
+\]
+The numerical triplets are embedded in the fitting scripts. This makes the code self-auditing but also fixes the limitation: the calculation does not yet include a full correlated chronometer systematic covariance. In the main fit, the chronometer block changes by only $+0.061$ between \LCDM and R1, so the R1 improvement is not driven by chronometer tuning.
+
+\subsection{Derived predictions calculation record}
+
+\texttt{code/derived\_predictions.py} reads the main best-fit vectors from \texttt{code/extended\_results.json}. It then computes:
+\begin{itemize}
+\item $q_0$ from $E'(z)$;
+\item $j_0$ by differentiating $q(z)$ numerically and validating \LCDM with $j_0=0.999998$;
+\item $w_R(0)$ and $w_R(1)$ using Eq.~\eqref{eq:wR};
+\item the R1 future limit $H_\infty/H_0=(1-\Omega_{\rm m0})^{1/\theta}$;
+\item the Sandage--Loeb velocity drift at $z=2$;
+\item the normalized growth function $D(z)$ and growth rate $f(z)$ from Eq.~\eqref{eq:growth};
+\item a minimal late-ISW source proxy from the redshift derivative of $D(z)(1+z)$.
+\end{itemize}
+The main R1 values are $\theta=1.61484$, $q_0=-0.49164$, $j_0=0.93419$, $w_R(0)=-0.93473$, $w_R(1)=-0.85249$, $H_\infty/H_0=0.80695$, and a maximum normalized $fD$ suppression of $3.42\%$ at $z\simeq0.33$.
 
 \bibliographystyle{unsrtnat}
 \bibliography{references}

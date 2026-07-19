@@ -34,6 +34,13 @@ python3 code/make_figures_and_tables.py
 The scripts expect the public data files listed in `data_manifest/data_sources.md`.
 The generated JSON, CSV and figure files are the numerical source of the manuscript tables and plots.
 
+## Versioning and archive
+
+- Manuscript release tag: `v1.0.0`
+- GitHub package: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain>
+- A Zenodo DOI should be minted from the `v1.0.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
+- Data filenames, masks, covariance files, vector order and SHA256 checksums are recorded in `data_manifest/data_sources.md`.
+
 ## Main numerical result
 
 For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers:
