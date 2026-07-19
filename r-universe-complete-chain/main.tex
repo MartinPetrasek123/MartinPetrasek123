@@ -8,13 +8,18 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ragged2e}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{xurl}
 \usepackage{hyperref}
+\usepackage{xspace}
 \usepackage[numbers,sort&compress]{natbib}
 
 \geometry{margin=2.45cm}
@@ -27,15 +32,19 @@
 \graphicspath{{figures/}}
 \setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt}
 \setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt}
-\emergencystretch=2em
+\emergencystretch=3em
+\sloppy
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\newcommand{\codepath}[1]{\path{#1}}
 
-\newcommand{\LCDM}{\ensuremath{\Lambda{\rm CDM}}}
+\newcommand{\LCDM}{\ensuremath{\Lambda{\rm CDM}}\xspace}
 \newcommand{\Hz}{\ensuremath{H_0}}
 \newcommand{\Om}{\ensuremath{\Omega_{\rm m0}}}
 \newcommand{\chisq}{\ensuremath{\chi^2}}
 \newcommand{\dd}{\mathrm{d}}
-\newcommand{\repo}{\url{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain}}
-\newcommand{\release}{\texttt{v1.2.1}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.2.2/r-universe-complete-chain}{GitHub release \texttt{v1.2.2}}}
+\newcommand{\release}{\texttt{v1.2.2}}
 
 \title{\textbf{A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat \texorpdfstring{\LCDM}{LCDM}:\\
 Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits}}
@@ -291,11 +300,11 @@ This section is written as an audit trail. Each likelihood block identifies the 
 
 Pantheon+ is taken from the public PantheonPlusSH0ES release \citep{PantheonPlusDataRelease,Brout2022PantheonPlus}. The fit uses the public distance-modulus table and the full statistical-plus-systematic covariance:
 \begin{itemize}
-\item input table: \texttt{pantheon\_plus.dat};
-\item covariance: \texttt{pantheon\_plus\_stat\_sys.cov};
-\item SHA256(input table): \texttt{1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8};
-\item SHA256(covariance): \texttt{abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc};
-\item script: \texttt{code/extended\_fit.py}.
+\item input table: \codepath{data/raw/pantheon_plus/pantheon_plus.dat};
+\item covariance: \codepath{data/raw/pantheon_plus/pantheon_plus_stat_sys.cov};
+\item SHA256(input table): \codepath{1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8};
+\item SHA256(covariance): \codepath{abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc};
+\item script: \codepath{code/extended_fit.py}.
 \end{itemize}
 The code removes Cepheid calibrators and applies $z_{\rm HD}>0.01$. The retained Pantheon+ distance-vector dimension is $N_{\rm SN}=1580$ entries. This is the dimension used in the likelihood and information-criterion bookkeeping; it is not asserted to be the number of unique physical supernovae. The data vector is the observed distance-modulus residual after profiling over an additive magnitude/Hubble intercept. The covariance is restricted to the same mask before inversion. The supernova contribution is Eq.~\eqref{eq:snchi}, so the common nuisance offset never appears as a model-distinguishing fitted parameter.
 
@@ -318,12 +327,12 @@ C_{\rm SN}^{-1}
 
 DES-Dovekie is taken from the public DES-SN5YR release \citep{DES2024SN5YR,Sanchez2024DESSN,DESSN5YRRepo}. It is used as an alternative supernova-pipeline cross-check, not as a fully independent confirmation and not combined with Pantheon+, because low-redshift anchors and calibration systematics may overlap. The fit uses:
 \begin{itemize}
-\item input table: \texttt{DES-Dovekie\_HD.csv};
-\item covariance: \texttt{STAT+SYS.npz};
-\item metadata file used for audit: \texttt{DES-Dovekie\_Metadata.csv};
-\item SHA256(input table): \texttt{2f57019d783eaa976df80a41b0054171a2d994ee9808d715ce850c2df5720aaf};
-\item SHA256(covariance): \texttt{ffd3124b32148b1372bd95fda9299269f0352a9f8eee02d416c610e38495463b};
-\item script: \texttt{code/des\_dovekie\_fit.py}.
+\item input table: \codepath{data/raw/des_dovekie/DES-Dovekie_HD.csv};
+\item covariance: \codepath{data/raw/des_dovekie/STAT+SYS.npz};
+\item metadata file used for audit: \codepath{data/raw/des_dovekie/DES-Dovekie_Metadata.csv};
+\item SHA256(input table): \codepath{2f57019d783eaa976df80a41b0054171a2d994ee9808d715ce850c2df5720aaf};
+\item SHA256(covariance): \codepath{ffd3124b32148b1372bd95fda9299269f0352a9f8eee02d416c610e38495463b};
+\item script: \codepath{code/des_dovekie_fit.py}.
 \end{itemize}
 The DES likelihood uses the published DES-Dovekie Hubble-diagram product and the supplied STAT+SYS matrix representation. The file \texttt{STAT+SYS.npz} is read as the upper-triangular packed inverse-covariance representation used by the release likelihood file. The same additive supernova offset is profiled. The final combined vector has $N=1864$ entries after adding 13 DESI DR2 BAO observables and 31 chronometer points; the DES supernova block therefore contributes $N_{\rm DES}=1820$ Hubble-diagram entries in the implemented likelihood.
 
@@ -331,15 +340,15 @@ The DES likelihood uses the published DES-Dovekie Hubble-diagram product and the
 
 DESI BAO data are taken from public DESI DR1/DR2 measurements \citep{DESI2024VI,DESIDR2BAO} through \texttt{CobayaSampler/bao\_data} \citep{CobayaBAOData}. The main result uses the DESI DR2 all-tracer Gaussian BAO vector:
 \begin{itemize}
-\item DR2 mean vector: \texttt{desi\_bao\_dr2/desi\_gaussian\_bao\_ALL\_GCcomb\_mean.txt};
-\item DR2 covariance: \texttt{desi\_bao\_dr2/desi\_gaussian\_bao\_ALL\_GCcomb\_cov.txt};
-\item SHA256(DR2 mean): \texttt{9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585};
-\item SHA256(DR2 covariance): \texttt{252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509};
-\item DR1 mean vector: \texttt{desi\_2024\_bao\_mean.txt};
-\item DR1 covariance: \texttt{desi\_2024\_bao\_cov.txt};
-\item SHA256(DR1 mean): \texttt{dd2873a0b88459a491af3c0c0307ba059f62df9211d5b976760f310565a1be68};
-\item SHA256(DR1 covariance): \texttt{bbafa9074b51cf1a45e0d10e4f37db8c0e80a5d1d1788857abb7fc49fb21abcc};
-\item script: \texttt{code/extended\_fit.py}.
+\item DR2 mean vector: \codepath{data/raw/desi_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt};
+\item DR2 covariance: \codepath{data/raw/desi_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt};
+\item SHA256(DR2 mean): \codepath{9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585};
+\item SHA256(DR2 covariance): \codepath{252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509};
+\item DR1 mean vector: \codepath{data/raw/desi_dr1/desi_2024_bao_mean.txt};
+\item DR1 covariance: \codepath{data/raw/desi_dr1/desi_2024_bao_cov.txt};
+\item SHA256(DR1 mean): \codepath{dd2873a0b88459a491af3c0c0307ba059f62df9211d5b976760f310565a1be68};
+\item SHA256(DR1 covariance): \codepath{bbafa9074b51cf1a45e0d10e4f37db8c0e80a5d1d1788857abb7fc49fb21abcc};
+\item script: \codepath{code/extended_fit.py}.
 \end{itemize}
 The DR2 vector order is explicitly reproduced in \texttt{tables/desi\_dr2\_bao\_predictions.csv}: $D_V/r_d$ at $z=0.295$, $D_M/r_d$ and $D_H/r_d$ at $z=0.510,0.706,0.934,1.321,1.484$, and $D_H/r_d,D_M/r_d$ at $z=2.330$. The covariance is used as a full matrix in
 \[
@@ -349,7 +358,7 @@ The sound horizon is fixed to $r_d=147.09\,{\rm Mpc}$ in all late-time compariso
 
 \subsection{Cosmic chronometers}
 
-The chronometer block contains 31 published $H(z)$ points stored in \texttt{data/raw/chronometers/cosmic\_chronometers.csv}. The file contains $z$, $H$, statistical uncertainty, reference, method, sample and notes columns. The current calculation uses the listed diagonal statistical uncertainties only. No covariance between chronometer points is assumed, so the implemented likelihood is the diagonal expression in Eq.~\eqref{eq:baocc}. This choice is transparent but incomplete; a correlated chronometer systematic covariance and SPS-model nuisance treatment are required for a final precision inference.
+The chronometer block contains 31 published $H(z)$ points stored in \codepath{data/raw/chronometers/cosmic_chronometers.csv}. The file contains $z$, $H$, statistical uncertainty, reference, method, sample and notes columns. The current calculation uses the listed diagonal statistical uncertainties only. No covariance between chronometer points is assumed, so the implemented likelihood is the diagonal expression in Eq.~\eqref{eq:baocc}. This choice is transparent but incomplete; a correlated chronometer systematic covariance and SPS-model nuisance treatment are required for a final precision inference. The no-chronometer fit in Table~\ref{tab:robustness} is therefore treated as the primary robustness check against this limitation.
 
 The computational path is
 \[
@@ -366,8 +375,8 @@ H_{\rm th}(z_i)=H_0E(z_i)
 
 Growth checks use the Sagredo--Nesseris--Sapone $f\sigma_8$ compilation and compressed weak-lensing values from DES Y3 and KiDS-1000 \citep{Sagredo2018RSD,Amon2022DESY3,Asgari2021KiDS1000}. The hashes of the local audit files are:
 \begin{itemize}
-\item \texttt{rsd\_fsigma8\_sagredo2018\_plus\_boss2024.csv}: \texttt{fe6b4e2e488991751e24d21d3c0a9065a5b1767b1d56cf3fae01c157f95f6e4d};
-\item \texttt{lensing\_s8\_compressed.csv}: \texttt{f2258e1c7b87241190bbb5bb32d1ea01c4ed992d30374820357a541df33e14f2}.
+\item \codepath{data/raw/growth/rsd_fsigma8_sagredo2018_plus_boss2024.csv}: \codepath{fe6b4e2e488991751e24d21d3c0a9065a5b1767b1d56cf3fae01c157f95f6e4d};
+\item \codepath{data/raw/growth/lensing_s8_compressed.csv}: \codepath{f2258e1c7b87241190bbb5bb32d1ea01c4ed992d30374820357a541df33e14f2}.
 \end{itemize}
 The present manuscript does not claim a full RSD or weak-lensing likelihood. It computes the minimal-GR growth closure and reports falsifiable changes in $D(z)$, $f(z)$, $fD$ and the ISW-source proxy from \texttt{code/derived\_predictions.py}. This prevents the text from overstating what has been calculated.
 
@@ -429,24 +438,39 @@ For a proposed replacement of \LCDM, this is still not the end of the chain: the
 
 \begin{table}[H]
 \centering
-\caption{Audit trail from output objects to scripts and numerical sources.}
-\begin{tabular}{p{0.18\linewidth}p{0.25\linewidth}p{0.28\linewidth}p{0.19\linewidth}}
+\small
+\caption{Numerical table and JSON provenance. Long filenames are intentionally typeset as breakable paths.}
+\begin{tabularx}{\linewidth}{p{0.19\linewidth}p{0.24\linewidth}Y p{0.22\linewidth}}
 \toprule
 Object & Script & Numerical source & Output file\\
 \midrule
-Table 1--3 & \texttt{extended\_fit.py}, \texttt{des\_dovekie\_fit.py} & Pantheon+, DES-Dovekie, DESI DR1/DR2, chronometers & \texttt{tables/all\_model\_fits.csv}\\
-Robustness table & \texttt{robustness\_suite.py} & SN-only, BAO-only, CC-only, no-CC, free-$r_d$, BAO jackknife & \texttt{tables/robustness\_suite.csv}\\
-Profile likelihood & \texttt{profile\_likelihood.py} & fixed-$\theta$ R1 grid with $H_0,\Omega_{\rm m0}$ re-optimization & \texttt{tables/profile\_likelihood\_theta.csv}\\
-Numerical validation & \texttt{numerical\_validation.py} & Newton solver, independent bisection, Simpson/trapezoid distances & \texttt{code/numerical\_validation.json}\\
-CAMB baseline & \texttt{boltzmann\_camb.py} & reference \LCDM early-universe parameters & \texttt{tables/camb\_lensed\_cls\_lcdm\_reference.csv}\\
-Fig. 1 & \texttt{make\_figures\_and\_tables.py} & \texttt{code/extended\_results.json} & \texttt{fig01\_expansion\_Ez.pdf}\\
-Fig. 2 & \texttt{make\_figures\_and\_tables.py} & best-fit $E(z)$ functions & \texttt{fig02\_om\_diagnostic.pdf}\\
-Fig. 3 & \texttt{make\_figures\_and\_tables.py} & DESI DR2 vector/covariance and best fits & \texttt{desi\_dr2\_bao\_predictions.csv}\\
-Fig. 4 & \texttt{make\_figures\_and\_tables.py} & Pantheon+ masked Hubble residuals & \texttt{fig04\_pantheon\_residuals.pdf}\\
-Fig. 5 & \texttt{make\_figures\_and\_tables.py} & AIC/BIC values from all fits & \texttt{fig05\_model\_selection.pdf}\\
-Fig. 6 & \texttt{derived\_predictions.py}, \texttt{make\_figures\_and\_tables.py} & growth closure from Eq.~\eqref{eq:growth} & \texttt{fig06\_growth\_Dz.pdf}\\
+Fit summary & \codepath{code/extended_fit.py}; \codepath{code/des_dovekie_fit.py} & Pantheon+, DES-Dovekie, DESI DR1/DR2, chronometers & \codepath{tables/all_model_fits.csv}\\
+Robustness & \codepath{code/robustness_suite.py} & SN-only, BAO-only, CC-only, no-CC, free-$r_d$, BAO jackknife & \codepath{tables/robustness_suite.csv}\\
+Profile likelihood & \codepath{code/profile_likelihood.py} & fixed-$\theta$ R1 grid with $H_0,\Omega_{\rm m0}$ re-optimization & \codepath{tables/profile_likelihood_theta.csv}\\
+Validation & \codepath{code/numerical_validation.py} & Newton solver, bisection cross-check, Simpson/trapezoid distances & \codepath{code/numerical_validation.json}\\
+CAMB baseline & \codepath{code/boltzmann_camb.py} & reference \LCDM early-universe parameters & \codepath{code/boltzmann_camb_results.json}\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
+\label{tab:numerical-provenance}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Figure provenance. Every plotted panel is generated by the same public script after the fit and diagnostic JSON files have been regenerated.}
+\begin{tabularx}{\linewidth}{p{0.13\linewidth}p{0.25\linewidth}Y p{0.23\linewidth}}
+\toprule
+Figure & Script & Data or equation source & Output file\\
+\midrule
+Fig.~\ref{fig:expansion} & \codepath{code/make_figures_and_tables.py} & best-fit vectors in \codepath{code/extended_results.json} and Eq.~\eqref{eq:r1} & \codepath{figures/fig01_expansion_Ez.pdf}\\
+Fig.~\ref{fig:om} & \codepath{code/make_figures_and_tables.py} & best-fit $E(z)$ functions and the Om diagnostic definition & \codepath{figures/fig02_om_diagnostic.pdf}\\
+Fig.~\ref{fig:bao} & \codepath{code/make_figures_and_tables.py} & DESI DR2 vector/covariance and best-fit BAO predictions & \codepath{tables/desi_dr2_bao_predictions.csv}\\
+Fig.~\ref{fig:snres} & \codepath{code/make_figures_and_tables.py} & Pantheon+ masked Hubble residuals after intercept profiling & \codepath{figures/fig04_pantheon_residuals.pdf}\\
+Fig.~\ref{fig:modelselection} & \codepath{code/make_figures_and_tables.py} & AIC/BIC values from all deterministic fits & \codepath{figures/fig05_model_selection.pdf}\\
+Fig.~\ref{fig:growth} & \codepath{code/derived_predictions.py}; \codepath{code/make_figures_and_tables.py} & growth closure from Eq.~\eqref{eq:growth} & \codepath{figures/fig06_growth_Dz.pdf}\\
+\bottomrule
+\end{tabularx}
+\label{tab:figure-provenance}
 \end{table}
 
 \subsection{Numerical validation}
@@ -472,7 +496,31 @@ r_{\rm drag}=146.815\,{\rm Mpc},\qquad
 z_{\rm eq}=3429.040,\qquad
 t_0=13.655\,{\rm Gyr}.
 \]
-It writes \texttt{tables/camb\_lensed\_cls\_lcdm\_reference.csv} and \texttt{tables/camb\_matter\_power\_lcdm\_reference.csv}. This is a real Boltzmann calculation for the reference \LCDM sector. It is not yet a complete R1 Boltzmann likelihood, because a genuine R1 implementation must modify the background and perturbation modules so that CAMB/CLASS evolves the implicit R-sector self-consistently through radiation, baryons, neutrinos, recombination and perturbations. Approximating R1 by a CPL dark-energy form inside CAMB would not be the same theory and is therefore not claimed as a result.
+
+\begin{table}[H]
+\centering
+\small
+\caption{CAMB input parameters for the reference \LCDM baseline. Parameters not listed in the JSON record use CAMB 2.0.0 defaults; they must be fixed explicitly in a final CMB likelihood release.}
+\begin{tabular}{lrl}
+\toprule
+Quantity & Value & Role\\
+\midrule
+$H_0$ & $68.63125$ & late-time \LCDM best fit\\
+$\Omega_{\rm m0}$ & $0.3059375$ & late-time \LCDM best fit\\
+$\omega_b$ & $0.02237$ & baryon density input\\
+$\omega_c$ & $0.1210942$ & derived CDM density input\\
+$\sum m_\nu$ & $0.06\,{\rm eV}$ & minimal neutrino mass\\
+$\tau$ & $0.0544$ & optical depth\\
+$A_s$ & $2.10\times10^{-9}$ & scalar amplitude\\
+$n_s$ & $0.9649$ & scalar tilt\\
+\bottomrule
+\end{tabular}
+\label{tab:camb-input}
+\end{table}
+
+The late-time BAO fits use $r_d=147.09\,{\rm Mpc}$, whereas this CAMB reference run gives $r_{\rm drag}=146.815\,{\rm Mpc}$ for the listed \LCDM input parameters, a $0.19\%$ difference. The mismatch is kept visible rather than hidden: the fixed-$r_d$ late-time value is the conventional BAO scale used for model comparison, while Table~\ref{tab:camb-input} is a reference early-universe calculation for the best-fit \LCDM background. A final early-universe R1 analysis must recompute $r_d$ self-consistently and repeat the BAO fit with that value.
+
+The script writes \codepath{tables/camb_lensed_cls_lcdm_reference.csv} and \codepath{tables/camb_matter_power_lcdm_reference.csv}. This is a real Boltzmann calculation for the reference \LCDM sector. It is not yet a complete R1 Boltzmann likelihood, because a genuine R1 implementation must modify the background and perturbation modules so that CAMB/CLASS evolves the implicit R-sector self-consistently through radiation, baryons, neutrinos, recombination and perturbations. Approximating R1 by a CPL dark-energy form inside CAMB would not be the same theory and is therefore not claimed as a result.
 
 \subsection{Statistical robustness status}
 
@@ -503,6 +551,8 @@ The supernova intercept is common to all compared models. Including it in $k$ wo
 
 \begin{table}[H]
 \centering
+\small
+\setlength{\tabcolsep}{4pt}
 \caption{Pantheon+ full covariance + DESI DR1 BAO + cosmic chronometers.}
 \begin{tabular}{lrrrrrrrr}
 \toprule
@@ -521,6 +571,8 @@ The full Pantheon+ covariance weakens the earlier diagonal-covariance signal. R1
 
 \begin{table}[H]
 \centering
+\small
+\setlength{\tabcolsep}{4pt}
 \caption{Main fit: Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers.}
 \begin{tabular}{lrrrrrrrr}
 \toprule
@@ -554,6 +606,8 @@ The \LCDM value $\theta=2$ has $\Delta\chi^2=3.715$, corresponding to a one-para
 
 \begin{table}[H]
 \centering
+\small
+\setlength{\tabcolsep}{4pt}
 \caption{Alternative supernova-pipeline cross-check: DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers.}
 \begin{tabular}{lrrrrrrrr}
 \toprule
@@ -572,22 +626,25 @@ The DES-Dovekie cross-check reproduces the direction of the R1 signal outside th
 
 \begin{table}[H]
 \centering
-\caption{R1 robustness tests relative to \LCDM. The table reports deterministic best fits from \texttt{tables/robustness\_suite.csv}; the quoted significance is $\sqrt{-\Delta\chi^2}$ for one extra parameter and is only a rough likelihood-ratio diagnostic.}
-\begin{tabular}{lrrrr}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\caption{R1 robustness tests relative to \LCDM. The table reports deterministic best fits from \codepath{tables/robustness_suite.csv}. Here $N$ is the fitted vector dimension used in BIC, and $k_\Lambda,k_{\rm R1}$ are the counted model parameters for the corresponding comparison.}
+\begin{tabularx}{\linewidth}{Yrrrrrrr}
 \toprule
-Combination & $\theta_{\rm R1}$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+Combination & $N$ & $k_\Lambda$ & $k_{\rm R1}$ & $\theta_{\rm R1}$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
 \midrule
-Pantheon only & 1.287 & -0.464 & +1.536 & +6.901\\
-DESI DR2 BAO only & 1.772 & -0.768 & +1.232 & +1.797\\
-Chronometers only & 2.716 & -0.063 & +1.937 & +3.371\\
-Pantheon + DESI DR2 BAO & 1.619 & -3.772 & -1.772 & +3.602\\
-Pantheon + DESI DR2 BAO + CC & 1.623 & -3.704 & -1.704 & +3.689\\
-Same, free $r_d$ & 1.629 & -3.717 & -1.717 & +3.675\\
+Pantheon only & 1580 & 2 & 3 & 1.287 & -0.464 & +1.536 & +6.901\\
+DESI DR2 BAO only & 13 & 2 & 3 & 1.772 & -0.768 & +1.232 & +1.797\\
+Chronometers only & 31 & 2 & 3 & 2.716 & -0.063 & +1.937 & +3.371\\
+Pantheon + DESI DR2 BAO & 1593 & 2 & 3 & 1.619 & -3.772 & -1.772 & +3.602\\
+Pantheon + DESI DR2 BAO + CC & 1624 & 2 & 3 & 1.623 & -3.704 & -1.704 & +3.689\\
+Same, free $r_d$ & 1624 & 3 & 4 & 1.629 & -3.717 & -1.717 & +3.675\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
+\label{tab:robustness}
 \end{table}
 
-The single-block fits do not establish R1 on their own. The signal appears when supernova distances and DESI DR2 BAO are combined. Removing chronometers barely changes the result, and allowing $r_d$ to float in this late-time stress test gives $r_d=147.13\,{\rm Mpc}$ for R1 and leaves the information-criterion differences nearly unchanged. The leave-one-BAO-observable jackknife is included in \texttt{tables/robustness\_suite.csv}; the R1 $\Delta\chi^2$ remains negative in every tested removal, but the AIC gain ranges from weak to moderate and BIC remains positive.
+The single-block fits do not establish R1 on their own. The signal appears when supernova distances and DESI DR2 BAO are combined. Removing chronometers barely changes the result. In the free-$r_d$ comparison, $r_d$ is varied in both \LCDM and R1, so the relative parameter-count difference remains $\Delta k=1$. This is why the AIC/BIC differences are nearly unchanged. The best-fit values are $r_d=147.37\,{\rm Mpc}$ for \LCDM and $r_d=147.13\,{\rm Mpc}$ for R1; no interval is quoted because the present release has not yet profiled or sampled the $H_0-r_d-\theta$ degeneracy. The full leave-one-BAO-observable jackknife is printed in Appendix~\ref{app:bao-jackknife}; the R1 $\Delta\chi^2$ remains negative in every tested removal, but the AIC gain ranges from weak to moderate and BIC remains positive.
 
 \section{Falsifiable predictions}
 
@@ -604,19 +661,20 @@ The profile-likelihood scan gives $\theta_{\Delta\chi^2\le1}\in[1.42,1.80]$ and 
 
 \begin{table}[H]
 \centering
-\caption{Forecast-style falsification map. Current R1 entries are best-fit values unless an interval is explicitly shown. Final thresholds require posterior propagation and survey-specific forecasts.}
-\begin{tabular}{p{0.19\linewidth}p{0.15\linewidth}p{0.18\linewidth}p{0.18\linewidth}p{0.2\linewidth}}
+\small
+\caption{Forecast-style null-test map. Because \LCDM is nested inside R1 at $\theta=2$, recovery of $\theta=2$ does not falsify the R1 family; it falsifies only the claim of a detected dynamical late-time deviation. Current R1 entries are best-fit values unless an interval is explicitly shown.}
+\begin{tabularx}{\linewidth}{p{0.16\linewidth}p{0.13\linewidth}p{0.18\linewidth}p{0.18\linewidth}Y}
 \toprule
-Observable & \LCDM & R1 current & Experiment & Falsification threshold\\
+Observable & \LCDM & R1 current & Experiment & Null-test threshold\\
 \midrule
-$\theta$ & $2$ & $1.60$; $[1.24,2.00]_{95\%{\rm\ prof.}}$ & DESI DR3, Euclid, Roman & posterior excludes 2 at $>3\sigma$\\
+$\theta$ & $2$ & $1.60$; $\Delta\chi^2\le4$ interval $[1.24,2.00]$ & DESI DR3, Euclid, Roman & decisive data return to $\theta=2$, removing evidence for a dynamic branch\\
 $Om(z)$ drift & constant & drifting & DESI DR3, Euclid & drift inconsistent with R1 band\\
 $j_0$ & $1$ & $0.934$ & Rubin/Roman SNe & posterior excludes R1 value\\
 $fD$ proxy & baseline & $3.42\%$ max suppression & Euclid, DESI, SKA & full perturbative $f\sigma_8$ disagrees\\
 ISW proxy & baseline & enhanced proxy at $z=1$ & CMB-S4, LSST cross-correlations & full $C_\ell^{Tg}$ rejects sign/amplitude\\
 $r_d$ & CAMB baseline & not yet R1-derived & CMB-S4, DESI & R1 early-sector cannot reproduce BAO+CMB\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The strongest null tests are:
@@ -739,6 +797,87 @@ The chronometer block is a transparent diagonal likelihood:
 \chi^2_{\rm CC}=\sum_{i=1}^{31}\frac{[H_i-H_0E(z_i)]^2}{\sigma_{H,i}^2}.
 \]
 The numerical triplets are stored in \texttt{data/raw/chronometers/cosmic\_chronometers.csv} and loaded by \texttt{code/r\_universe\_core.py}. The calculation does not yet include a full correlated chronometer systematic covariance. In the main fit, the chronometer block changes by only $+0.061$ between \LCDM and R1, so the R1 improvement is not driven by chronometer tuning.
+
+\subsection{DESI DR2 BAO jackknife record}
+\label{app:bao-jackknife}
+
+\begin{center}
+\small
+\begin{longtable}{p{0.30\linewidth}rrrrrrr}
+\caption{Leave-one-BAO-observable jackknife for Pantheon+ + DESI DR2 BAO + chronometers. Each row removes one DESI DR2 observable and refits \LCDM and R1; values are R1 minus \LCDM.}\\
+\toprule
+Removed BAO observable & $N$ & $H_{0,{\rm R1}}$ & $\Omega_{\rm m0,R1}$ & $\theta_{\rm R1}$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+\midrule
+\endfirsthead
+\toprule
+Removed BAO observable & $N$ & $H_{0,{\rm R1}}$ & $\Omega_{\rm m0,R1}$ & $\theta_{\rm R1}$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+\midrule
+\endhead
+\codepath{DV/rd, z=0.295} & 1623 & 68.150 & 0.2894 & 1.597 & -3.698 & -1.698 & +3.694\\
+\codepath{DM/rd, z=0.510} & 1623 & 68.325 & 0.2864 & 1.594 & -3.702 & -1.702 & +3.690\\
+\codepath{DH/rd, z=0.510} & 1623 & 67.950 & 0.2930 & 1.616 & -3.401 & -1.401 & +3.991\\
+\codepath{DM/rd, z=0.706} & 1623 & 67.825 & 0.2978 & 1.666 & -3.171 & -1.171 & +4.221\\
+\codepath{DH/rd, z=0.706} & 1623 & 67.900 & 0.2945 & 1.644 & -2.338 & -0.338 & +5.054\\
+\codepath{DM/rd, z=0.934} & 1623 & 67.950 & 0.2930 & 1.616 & -3.433 & -1.433 & +3.959\\
+\codepath{DH/rd, z=0.934} & 1623 & 67.875 & 0.2883 & 1.503 & -5.226 & -3.226 & +2.166\\
+\codepath{DM/rd, z=1.321} & 1623 & 67.975 & 0.2930 & 1.619 & -3.662 & -1.662 & +3.730\\
+\codepath{DH/rd, z=1.321} & 1623 & 68.000 & 0.2930 & 1.610 & -3.811 & -1.811 & +3.581\\
+\codepath{DM/rd, z=1.484} & 1623 & 68.000 & 0.2930 & 1.616 & -3.769 & -1.769 & +3.623\\
+\codepath{DH/rd, z=1.484} & 1623 & 68.000 & 0.2919 & 1.607 & -3.682 & -1.682 & +3.710\\
+\codepath{DH/rd, z=2.330} & 1623 & 67.925 & 0.2746 & 1.419 & -4.453 & -2.453 & +2.939\\
+\codepath{DM/rd, z=2.330} & 1623 & 67.950 & 0.2900 & 1.582 & -3.765 & -1.765 & +3.627\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\subsection{Chronometer data-vector record}
+
+\begin{center}
+\scriptsize
+\begin{longtable}{rrrrp{0.24\linewidth}p{0.16\linewidth}p{0.16\linewidth}}
+\caption{Chronometer points used in the diagonal $H(z)$ likelihood. DOI and SPS-model fields are blank in the current CSV where the compact audit file inherits the entry from the cited compilation rather than recording a publication-specific DOI. This is a documented limitation of the present chronometer manifest, not hidden metadata.}\\
+\toprule
+$z$ & $H(z)$ & $\sigma_{\rm stat}$ & $\sigma_{\rm sys}$ & Reference & SPS model & Covariance group\\
+\midrule
+\endfirsthead
+\toprule
+$z$ & $H(z)$ & $\sigma_{\rm stat}$ & $\sigma_{\rm sys}$ & Reference & SPS model & Covariance group\\
+\midrule
+\endhead
+0.070 & 69.0 & 19.6 & -- & Zhang et al. 2014 & -- & diagonal\\
+0.090 & 69.0 & 12.0 & -- & Simon et al. 2005 & -- & diagonal\\
+0.120 & 68.6 & 26.2 & -- & Zhang et al. 2014 & -- & diagonal\\
+0.170 & 83.0 & 8.0 & -- & Simon et al. 2005 & -- & diagonal\\
+0.179 & 75.0 & 4.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.199 & 75.0 & 5.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.200 & 72.9 & 29.6 & -- & Zhang et al. 2014 & -- & diagonal\\
+0.270 & 77.0 & 14.0 & -- & Simon et al. 2005 & -- & diagonal\\
+0.280 & 88.8 & 36.6 & -- & Zhang et al. 2014 & -- & diagonal\\
+0.352 & 83.0 & 14.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.3802 & 83.0 & 13.5 & -- & Moresco et al. 2016 & -- & diagonal\\
+0.400 & 95.0 & 17.0 & -- & Simon et al. 2005 & -- & diagonal\\
+0.4004 & 77.0 & 10.2 & -- & Moresco et al. 2016 & -- & diagonal\\
+0.4247 & 87.1 & 11.2 & -- & Moresco et al. 2016 & -- & diagonal\\
+0.4497 & 92.8 & 12.9 & -- & Moresco et al. 2016 & -- & diagonal\\
+0.470 & 89.0 & 49.6 & -- & Ratsimbazafy et al. 2017 & -- & diagonal\\
+0.4783 & 80.9 & 9.0 & -- & Moresco et al. 2016 & -- & diagonal\\
+0.480 & 97.0 & 62.0 & -- & Stern et al. 2010 & -- & diagonal\\
+0.593 & 104.0 & 13.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.680 & 92.0 & 8.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.781 & 105.0 & 12.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.875 & 125.0 & 17.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+0.880 & 90.0 & 40.0 & -- & Stern et al. 2010 & -- & diagonal\\
+0.900 & 117.0 & 23.0 & -- & Simon et al. 2005 & -- & diagonal\\
+1.037 & 154.0 & 20.0 & -- & Moresco et al. 2012 & -- & diagonal\\
+1.300 & 168.0 & 17.0 & -- & Simon et al. 2005 & -- & diagonal\\
+1.363 & 160.0 & 33.6 & -- & Moresco 2015 & -- & diagonal\\
+1.430 & 177.0 & 18.0 & -- & Simon et al. 2005 & -- & diagonal\\
+1.530 & 140.0 & 14.0 & -- & Moresco 2015 & -- & diagonal\\
+1.750 & 202.0 & 40.0 & -- & Simon et al. 2005 & -- & diagonal\\
+1.965 & 186.5 & 50.4 & -- & Moresco 2015 & -- & diagonal\\
+\bottomrule
+\end{longtable}
+\end{center}
 
 \subsection{Derived predictions calculation record}
 

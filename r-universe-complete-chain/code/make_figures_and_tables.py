@@ -126,7 +126,7 @@ def make_plots():
 
     z = np.linspace(0.001, 2.5, 500)
     plt.figure(figsize=(7.2, 4.6))
-    for label, m, color in [("LCDM", lcdm, "black"), ("R1", r1, "tab:blue"), ("R2", r2, "tab:orange")]:
+    for label, m, color in [(r"$\Lambda$CDM", lcdm, "black"), ("R1", r1, "tab:blue"), ("R2", r2, "tab:orange")]:
         plt.plot(z, e_general(z, m["Omega_m0"], m["theta"], m["nu"]), label=label, color=color)
     plt.xlabel("z")
     plt.ylabel(r"$E(z)=H(z)/H_0$")
@@ -139,7 +139,7 @@ def make_plots():
 
     plt.figure(figsize=(7.2, 4.6))
     zz = np.linspace(0.02, 3.0, 500)
-    plt.plot(zz, om_diag(zz, lcdm["Omega_m0"], 2.0, 0.0), color="black", label="LCDM")
+    plt.plot(zz, om_diag(zz, lcdm["Omega_m0"], 2.0, 0.0), color="black", label=r"$\Lambda$CDM")
     plt.plot(zz, om_diag(zz, r1["Omega_m0"], r1["theta"], 0.0), color="tab:blue", label="R1")
     plt.plot(zz, om_diag(zz, r2["Omega_m0"], r2["theta"], r2["nu"]), color="tab:orange", label="R2")
     plt.xlabel("z")
@@ -161,7 +161,7 @@ def make_plots():
     x = np.arange(len(rows_bao))
     plt.figure(figsize=(9.6, 4.8))
     plt.axhline(0, color="0.4", lw=1)
-    for model, dx, color, name in [(lcdm, -0.22, "black", "LCDM"), (r1, 0, "tab:blue", "R1"), (r2, 0.22, "tab:orange", "R2")]:
+    for model, dx, color, name in [(lcdm, -0.22, "black", r"$\Lambda$CDM"), (r1, 0, "tab:blue", "R1"), (r2, 0.22, "tab:orange", "R2")]:
         pred = bao_prediction(rows_bao, model["H0"], model["Omega_m0"], model["theta"], model["nu"])
         pull = (data - pred) / sig
         plt.scatter(x + dx, pull, s=28, label=name, color=color)
@@ -182,7 +182,7 @@ def make_plots():
     _, by_r, be_r = weighted_bins(SN_ZHD, res_r, 34)
     plt.figure(figsize=(7.4, 4.8))
     plt.axhline(0, color="0.5", lw=1)
-    plt.errorbar(bx, by_l, yerr=be_l, fmt="o", ms=3, color="black", label="LCDM")
+    plt.errorbar(bx, by_l, yerr=be_l, fmt="o", ms=3, color="black", label=r"$\Lambda$CDM")
     plt.errorbar(bx, by_r, yerr=be_r, fmt="o", ms=3, color="tab:blue", label="R1")
     plt.xlabel("zHD")
     plt.ylabel("binned SN residual [mag]")
@@ -224,7 +224,7 @@ def make_plots():
     r1_d = np.array([growth_at_z(xs_r, yy_r, float(z))[0] for z in z_grid])
     plt.figure(figsize=(7.2, 4.6))
     plt.plot(z_grid, r1_d, "-", label="R1 diagnostic curve")
-    plt.plot(z_grid, lcdm_d, "--", label="LCDM diagnostic curve")
+    plt.plot(z_grid, lcdm_d, "--", label=r"$\Lambda$CDM diagnostic curve")
     plt.xlabel("z")
     plt.ylabel(r"$D(z)/D(0)$")
     plt.title("Linear growth normalized to today")
