@@ -46,8 +46,8 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\kR}{\ensuremath{\kappa_{\mathcal R}}}
 \newcommand{\MemR}{\ensuremath{\mathcal M_{\mathcal R}}}
-\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.4.0/r-universe-complete-chain}{GitHub release \texttt{v1.4.0}}}
-\newcommand{\release}{\texttt{v1.4.0}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.5.0/r-universe-complete-chain}{GitHub release \texttt{v1.5.0}}}
+\newcommand{\release}{\texttt{v1.5.0}}
 
 \title{\textbf{R-Universe as a Relational-Scale Infrared Attractor:\\
 A Reproducible Late-Time Test and a Falsifiable Perturbation-Propagation Program Beyond Flat \texorpdfstring{\LCDM}{LCDM}}}
@@ -73,7 +73,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, a direct $w$CDM/CPL competitor audit, an absorption-branch scan, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7119$, $\Delta{\rm AIC}=-1.7119$ and $\Delta{\rm BIC}=+3.6808$ relative to \LCDM. A stricter absorption branch, R$\alpha$, uses $\theta(a)=2-\alpha a$, so that \LCDM is recovered exactly at $\alpha=0$ and also as $a\rightarrow0$. It gives $\Delta\chi^2=-4.5008$, $\Delta{\rm AIC}=-2.5008$ and $\Delta{\rm BIC}=+2.8918$, slightly lower AIC than the same-likelihood $w$CDM value $\Delta{\rm AIC}=-2.3155$. BIC still favors \LCDM. The profiled R1 likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The potentially decisive novelty is therefore not a single background statistic. It is the absorption principle and the proposed Level-II consistency triangle relating $\mu(k,z)$, gravitational slip $\eta(k,z)$ and the gravitational-wave luminosity ratio $\Xi(z)=d_L^{\rm GW}/d_L^{\rm EM}$. If one causal kernel cannot make these sectors satisfy the same relational-scale law, R-Universe fails. If it can, \LCDM becomes the frozen local limit of a broader infrared-scale dynamics.
+tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, a direct $w$CDM/CPL competitor audit, an absorption-branch scan, a Laplace posterior/evidence proxy, parameter-free R$\alpha$ master predictions, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7119$, $\Delta{\rm AIC}=-1.7119$ and $\Delta{\rm BIC}=+3.6808$ relative to \LCDM. A stricter absorption branch, R$\alpha$, uses $\theta(a)=2-\alpha a$, so that \LCDM is recovered exactly at $\alpha=0$ and also as $a\rightarrow0$. It gives $\Delta\chi^2=-4.5008$, $\Delta{\rm AIC}=-2.5008$ and $\Delta{\rm BIC}=+2.8918$, slightly lower AIC than the same-likelihood $w$CDM value $\Delta{\rm AIC}=-2.3155$. The Laplace approximation gives $\alpha=0.497\pm0.209$ and prior-dependent $\ln B_{{\rm R}\alpha,\Lambda{\rm CDM}}$ from $-0.36$ to $+1.25$; after the five-branch look-elsewhere correction the background preference has $p\simeq0.158$, so it is a preregisterable signal rather than a discovery. The new falsifiable content is the minimal relational-kernel closure: the same $\alpha$ predicts $\Xi(1)=1.0951$, $\mu(0.01\,h{\rm Mpc}^{-1},1)=1.000712$, $\eta(0.01\,h{\rm Mpc}^{-1},1)=0.999644$, and the master relation $(\eta-1)/(\mu-1)=-1/2$ without additional fitted parameters. If this single-kernel relation fails in joint growth, lensing and standard-siren data, the minimal R$\alpha$ completion fails. If it holds, \LCDM becomes the frozen local limit of a broader infrared-scale dynamics.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -280,6 +280,60 @@ E^2(z)=\Omega_{\rm m0}(1+z)^3+
 This branch, denoted R$\alpha$, absorbs \LCDM in two senses. First, $\alpha=0$ gives the exact flat-\LCDM background for all redshifts. Second, at fixed nonzero $\alpha$, the early limit $a\rightarrow0$ drives $\theta(a)\rightarrow2$, so the branch approaches the standard early-universe expansion rather than perturbing the CMB-calibrated era by construction. The deviation is concentrated at late times, where the public supernova and low-redshift BAO data actually test the vacuum closure.
 
 R$\alpha$ is still a phenomenological background proxy. It does not replace the required Level-II covariant memory kernel. Its purpose is to encode the physical idea that \LCDM is not a rival model bolted beside R-Universe, but a stable zero-running limit inside it.
+
+\subsection{Minimal relational kernel closure}
+\label{sec:kernel-closure}
+
+The Level-II hypothesis is made concrete by introducing a causal scalar kernel
+\begin{equation}
+\kR^2(x)=
+\frac{\displaystyle
+\int_{J^-(x)}\dd^4x'\sqrt{-g(x')}\,
+K_R(x,x')\,\mathcal S_R[g_{\mu\nu},T_{\mu\nu}](x')}
+{\displaystyle
+\int_{J^-(x)}\dd^4x'\sqrt{-g(x')}\,K_R(x,x')},
+\qquad
+K_R(x,x')=0\quad{\rm for}\quad x'\notin J^-(x).
+\label{eq:kappa-kernel}
+\end{equation}
+The scalar $\mathcal S_R$ is chosen so that the homogeneous local-memory limit tracks the expansion scalar, $\kR\rightarrow H/c$, while the first correction to the frozen \LCDM point is proportional to the scale factor. This gives Eq.~\eqref{eq:ralpha-theta} as the first nonzero term in the infrared expansion,
+\begin{equation}
+\theta(a)=2-\alpha a+\mathcal O(\alpha^2a^2).
+\label{eq:theta-expansion}
+\end{equation}
+The important point is not the Taylor series itself, but the hierarchy it imposes: early times and zero running return to \LCDM, while late-time deviations are controlled by one measured amplitude $\alpha$.
+
+To close the perturbative and standard-siren sectors without adding new fitted functions, this paper adopts the minimal kernel response
+\begin{align}
+\beta_R(z)&=\frac{\alpha a}{1+\alpha a},\\
+k_R(z)&=\frac{H(z)}{c\,h},\\
+W_R(k,z)&=\frac{k_R^2(z)}{k^2+k_R^2(z)}.
+\end{align}
+The scalar and tensor propagation functions are then
+\begin{align}
+\mu_R(k,z)-1 &= \beta_R(z)W_R(k,z),\label{eq:muR}\\
+\eta_R(k,z)-1 &= -\frac12\left[\mu_R(k,z)-1\right],\label{eq:etaR}\\
+\frac{\dd\ln\Xi}{\dd\ln(1+z)}&=\frac12\beta_R(z),\qquad c_T=1.\label{eq:xiR}
+\end{align}
+Equations~\eqref{eq:muR}--\eqref{eq:xiR} are the minimal R$\alpha$ closure tested numerically in \codepath{code/ralpha_master_predictions.py}. They are deliberately rigid: once the distance data determine $\alpha$, the functions $\mu$, $\eta$ and $\Xi$ are fixed. This is the first version of the R-consistency relation,
+\begin{equation}
+\boxed{
+\mathcal C_R^{(1)}(k,z)\equiv
+\frac{\eta_R(k,z)-1}{\mu_R(k,z)-1}
++\frac12=0,
+}
+\label{eq:master1}
+\end{equation}
+together with
+\begin{equation}
+\boxed{
+\mathcal C_R^{(2)}(z)\equiv
+\frac{\dd\ln\Xi}{\dd\ln(1+z)}
+-\frac12\frac{\alpha a}{1+\alpha a}=0.
+}
+\label{eq:master2}
+\end{equation}
+These two equations are the proposed killer test. They do not follow from $w$CDM or CPL, which modify the background only and do not predict $\mu$, $\eta$ or $\Xi$ without extra assumptions. Failure of either relation would falsify this minimal Level-II closure even if the background fit remained acceptable.
 
 \subsection{R2 stress branch}
 
@@ -583,7 +637,7 @@ The full late-time analysis is reproduced by:
 \begin{verbatim}
 python3 code/run_all.py
 \end{verbatim}
-\codepath{code/run_all.py} runs the fit, validation, CAMB-reference, robustness, profile-likelihood and figure-generation scripts in the order listed in Table~\ref{tab:numerical-provenance}. On the validation machine this full chain completed in $95.96$ seconds. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
+\codepath{code/run_all.py} runs the fit, validation, CAMB-reference, robustness, profile-likelihood and figure-generation scripts in the order listed in Table~\ref{tab:numerical-provenance}. On the validation machine this full chain completed in $100.75$ seconds. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
 
 \subsection{Global calculation flow}
 
@@ -618,6 +672,8 @@ Robustness & \codepath{code/robustness_suite.py} & SN-only, BAO-only, CC-only, n
 Profile likelihood & \codepath{code/profile_likelihood.py} & fixed-$\theta$ R1 grid with $H_0,\Omega_{\rm m0}$ re-optimization & \codepath{tables/profile_likelihood_theta.csv}\\
 Competitor audit & \codepath{code/competitor_models.py} & \LCDM, $w$CDM, CPL and R1 on the same Pantheon+ + DESI DR2 + CC likelihood & \codepath{tables/competitor_model_comparison.csv}\\
 Absorption scan & \codepath{code/r_running_scan.py} & one-parameter running R branches with exact \LCDM absorption limits & \codepath{tables/r_running_scan.csv}\\
+R$\alpha$ statistics & \codepath{code/ralpha_statistics.py} & Laplace posterior, approximate evidence and look-elsewhere calibration & \codepath{tables/ralpha_laplace_posterior.csv}\\
+R$\alpha$ master predictions & \codepath{code/ralpha_master_predictions.py} & Eqs.~\eqref{eq:muR}--\eqref{eq:master2} evaluated with the distance-fitted $\alpha$ & \codepath{tables/ralpha_master_predictions.csv}\\
 Validation & \codepath{code/numerical_validation.py} & Newton solver, bisection cross-check, Simpson/trapezoid distances & \codepath{code/numerical_validation.json}\\
 CAMB baseline & \codepath{code/boltzmann_camb.py} & reference \LCDM early-universe parameters & \codepath{code/boltzmann_camb_results.json}\\
 \bottomrule
@@ -639,6 +695,8 @@ Fig.~\ref{fig:bao} & \codepath{code/make_figures_and_tables.py} & DESI DR2 vecto
 Fig.~\ref{fig:snres} & \codepath{code/make_figures_and_tables.py} & Pantheon+ masked Hubble residuals after intercept profiling & \codepath{figures/fig04_pantheon_residuals.pdf}\\
 Fig.~\ref{fig:modelselection} & \codepath{code/make_figures_and_tables.py} & AIC/BIC values from all deterministic fits & \codepath{figures/fig05_model_selection.pdf}\\
 Fig.~\ref{fig:growth} & \codepath{code/derived_predictions.py}; \codepath{code/make_figures_and_tables.py} & growth closure from Eq.~\eqref{eq:growth} & \codepath{figures/fig06_growth_Dz.pdf}\\
+Fig.~\ref{fig:ralpha-corner} & \codepath{code/ralpha_statistics.py} & finite-difference Hessian and Gaussian posterior approximation & \codepath{figures/fig07_ralpha_corner.pdf}\\
+Fig.~\ref{fig:ralpha-master} & \codepath{code/ralpha_master_predictions.py} & Eqs.~\eqref{eq:muR}--\eqref{eq:master2} with no additional fitted parameters & \codepath{figures/fig08_ralpha_master_predictions.pdf}\\
 \bottomrule
 \end{tabularx}
 \label{tab:figure-provenance}
@@ -695,7 +753,7 @@ The script writes \codepath{tables/camb_lensed_cls_lcdm_reference.csv} and \code
 
 \subsection{Statistical robustness status}
 
-The current release contains deterministic best-fit and information-criterion comparisons plus a one-dimensional profile likelihood for $\theta$. It does not yet contain a completed MCMC chain, nested-sampling evidence, corner plot, posterior covariance matrix or prior-sensitivity scan. These objects must be generated before making a Nature-level claim that R-Universe decisively supersedes \LCDM. The manuscript therefore treats the AIC preference as an empirical signal, not as a final Bayesian model-selection result.
+The current release contains deterministic best-fit and information-criterion comparisons, a one-dimensional profile likelihood for constant R1, and a Laplace posterior/evidence proxy for R$\alpha$. It also includes a branch-selection calibration for the five running laws tested in Table~\ref{tab:r-running-scan}. What is still missing is a full MCMC or nested-sampling run over the full nuisance-parameter space. The manuscript therefore treats the R$\alpha$ signal as a preregisterable consistency prediction, not as a final Bayesian discovery claim.
 
 \subsection{Dataset robustness status}
 
@@ -830,6 +888,40 @@ Log running & 68.634 & 0.3085 & $\alpha=-0.109$ & 1414.046 & +1.956 & +7.349\\
 
 R$\alpha$ is the strongest background result in the present package: it gives a lower AIC than $w$CDM on the same likelihood while preserving the absorption interpretation that \LCDM is recovered both at $\alpha=0$ and in the early-time limit $a\rightarrow0$. This does not overturn the BIC verdict; flat \LCDM remains the BIC winner because the improvement has not reached the $\Delta\chi^2<-7.392$ one-parameter threshold. The correct claim is therefore: R$\alpha$ is a sharper, physically interpretable late-time compression than constant R1 and is competitive with standard one-parameter dark energy, but it is not yet a decisive replacement for \LCDM.
 
+\subsection{R\texorpdfstring{$\alpha$}{alpha} posterior, evidence proxy and branch-selection calibration}
+
+\codepath{code/ralpha_statistics.py} computes a finite-difference Hessian at the R$\alpha$ best fit and uses the inverse curvature as a Laplace posterior approximation. The result is
+\[
+H_0=67.8625\pm0.566,\qquad
+\Omega_{\rm m0}=0.30227\pm0.00798,\qquad
+\alpha=0.4974\pm0.2093.
+\]
+The dominant correlations are
+\[
+\rho(H_0,\alpha)=-0.633,\qquad
+\rho(H_0,\Omega_{\rm m0})=-0.554,\qquad
+\rho(\Omega_{\rm m0},\alpha)=-0.207.
+\]
+The corresponding corner plot is Fig.~\ref{fig:ralpha-corner}; the numerical covariance is stored in \codepath{code/ralpha_statistics_results.json}.
+
+The same script evaluates a Laplace evidence proxy under three prior-volume choices. For a broad prior, $\ln B_{{\rm R}\alpha,\Lambda{\rm CDM}}=-0.358$; for a mid prior, $\ln B=+0.490$; for a tight prior, $\ln B=+1.252$. Against $w$CDM the corresponding values are $+0.621$, $+0.818$ and $+1.041$. These numbers are not a substitute for nested sampling, but they quantify the current Bayesian status: R$\alpha$ is competitive, not decisively selected.
+
+Because R$\alpha$ was selected after scanning several one-parameter running laws, \codepath{code/ralpha_statistics.py} also calibrates the branch-selection effect. The observed improvement $\Delta\chi^2_{\Lambda{\rm CDM}-{\rm R}\alpha}=4.5008$ has a one-branch $\chi^2_1$ tail probability $p=0.0339$. After a five-branch look-elsewhere correction matching the scan in Table~\ref{tab:r-running-scan}, the calibrated probability is $p=0.1583$. This is why the manuscript treats R$\alpha$ as a preregisterable prediction for future DESI/Euclid/Roman/Rubin tests rather than as a discovery extracted from the present data.
+
+\subsection{R\texorpdfstring{$\alpha$}{alpha} master predictions}
+
+The fitted R$\alpha$ value determines the minimal kernel closure in Eqs.~\eqref{eq:muR}--\eqref{eq:master2}. At the reference scale $k_*=0.01\,h\,{\rm Mpc}^{-1}$, \codepath{code/ralpha_master_predictions.py} gives
+\[
+\Xi(1)=1.09507,\qquad
+\mu(k_*,1)=1.000712,\qquad
+\eta(k_*,1)=0.999644.
+\]
+The predicted standard-siren deviation is therefore much larger than the scalar-sector deviation at this conservative horizon-linked scale. This hierarchy is not arbitrary: it follows from using $k_R=H/(ch)$ in the scalar window while the tensor friction integrates the same $\beta_R$ along the line of sight. The exact master relation
+\[
+\frac{\eta(k,z)-1}{\mu(k,z)-1}=-\frac12
+\]
+is numerically satisfied at every tabulated redshift. The prediction table is \codepath{tables/ralpha_master_predictions.csv}, and the visual summary is Fig.~\ref{fig:ralpha-master}. A future joint standard-siren and weak-lensing analysis can falsify this closure even if the background expansion remains close to R$\alpha$.
+
 \subsection{DES-Dovekie + DESI DR2 + chronometers}
 
 \begin{table}[H]
@@ -931,8 +1023,8 @@ Public late-time background fit & Complete for the datasets listed in Section~\r
 Direct competitor audit & Implemented & $w$CDM has lower AIC than constant R1, while R$\alpha$ has lower AIC than $w$CDM on the same likelihood.\\
 Absorption of \LCDM & Implemented at background level & R$\alpha$ recovers \LCDM at $\alpha=0$ and approaches it as $a\rightarrow0$; a covariant proof is still missing.\\
 Numerical validation & Implemented for the background solver & Root finding, distance integration and \LCDM-limit checks are reproducible.\\
-Full Bayesian inference & Not complete & No final posterior covariance, corner plot, evidence or prior-sensitivity claim is made.\\
-Perturbations and growth & Conditional only & The shown growth curve assumes a smooth R-sector GR closure and is not yet a derived Level-II prediction.\\
+Bayesian inference & Partial & R$\alpha$ has a Laplace posterior, corner plot and prior-sensitive evidence proxy; full nested sampling is still required.\\
+Perturbations and growth & Minimal closure implemented & Eqs.~\eqref{eq:muR}--\eqref{eq:master2} give a parameter-free R$\alpha$ prediction; a covariant action-level perturbation derivation remains the next step.\\
 Boltzmann/CMB likelihood & Reference \LCDM only & No R1 CLASS/CAMB module or Planck likelihood result exists in this release.\\
 Early-universe closure & Not complete for R1 & The R1 sound horizon must be derived self-consistently before claiming a global BAO+CMB solution.\\
 Theory completion & Not complete & No covariant action, stability proof or derived Bianchi-consistent R-sector stress tensor is supplied.\\
@@ -985,7 +1077,7 @@ From the released package root, the complete late-time calculation is reproduced
 \begin{verbatim}
 python3 code/run_all.py
 \end{verbatim}
-The expected primary numerical outputs are \codepath{tables/all_model_fits.csv}, \codepath{tables/competitor_model_comparison.csv}, \codepath{tables/r_running_scan.csv}, \codepath{tables/robustness_suite.csv}, \codepath{tables/profile_likelihood_theta.csv}, \codepath{tables/desi_dr2_bao_predictions.csv}, \codepath{code/competitor_model_results.json}, \codepath{code/r_running_scan_results.json}, the CAMB reference spectra and the JSON audit files in \codepath{code/}. All figure panels included through \codepath{graf.tex} are regenerated in \codepath{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
+The expected primary numerical outputs are \codepath{tables/all_model_fits.csv}, \codepath{tables/competitor_model_comparison.csv}, \codepath{tables/r_running_scan.csv}, \codepath{tables/ralpha_laplace_posterior.csv}, \codepath{tables/ralpha_prior_sensitivity.csv}, \codepath{tables/ralpha_master_predictions.csv}, \codepath{tables/robustness_suite.csv}, \codepath{tables/profile_likelihood_theta.csv}, \codepath{tables/desi_dr2_bao_predictions.csv}, \codepath{code/competitor_model_results.json}, \codepath{code/r_running_scan_results.json}, \codepath{code/ralpha_statistics_results.json}, \codepath{code/ralpha_master_predictions.json}, the CAMB reference spectra and the JSON audit files in \codepath{code/}. All figure panels included through \codepath{graf.tex} are regenerated in \codepath{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
 
 \appendix
 

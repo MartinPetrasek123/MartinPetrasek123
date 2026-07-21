@@ -19,6 +19,8 @@ STEPS = [
     "profile_likelihood.py",
     "competitor_models.py",
     "r_running_scan.py",
+    "ralpha_statistics.py",
+    "ralpha_master_predictions.py",
     "make_figures_and_tables.py",
 ]
 

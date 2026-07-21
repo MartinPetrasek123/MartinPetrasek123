@@ -14,6 +14,9 @@ This package accompanies the manuscript:
 - `tables/all_model_fits.csv` - all fitted model summaries.
 - `tables/competitor_model_comparison.csv` - direct LCDM/wCDM/CPL/R1 audit on the same late-time likelihood.
 - `tables/r_running_scan.csv` - one-parameter running R-branch scan.
+- `tables/ralpha_laplace_posterior.csv` - Laplace posterior intervals for the R-alpha absorption branch.
+- `tables/ralpha_prior_sensitivity.csv` - prior-volume sensitivity of the Laplace evidence proxy.
+- `tables/ralpha_master_predictions.csv` - parameter-free mu/eta/Xi predictions from the minimal relational-kernel closure.
 - `tables/desi_dr2_bao_predictions.csv` - DESI DR2 BAO predictions and diagnostic pulls.
 - `tables/camb_lensed_cls_lcdm_reference.csv` - CAMB reference CMB spectra.
 - `tables/camb_matter_power_lcdm_reference.csv` - CAMB reference matter power.
@@ -29,6 +32,8 @@ This package accompanies the manuscript:
 - `code/profile_likelihood.py` - profiled likelihood scan for theta.
 - `code/competitor_models.py` - independent direct competitor audit for LCDM, wCDM, CPL and R1.
 - `code/r_running_scan.py` - adversarial scan of one-parameter running R branches with an exact LCDM absorption limit.
+- `code/ralpha_statistics.py` - R-alpha Hessian posterior, evidence proxy and look-elsewhere calibration.
+- `code/ralpha_master_predictions.py` - minimal relational-kernel predictions for mu, eta, Sigma, Xi and growth.
 - `code/*.json` - generated numerical results used by the manuscript.
 - `data_manifest/data_sources.md` - source URLs and local file mapping.
 - `requirements.txt`, `environment.yml` - software environment records.
@@ -50,9 +55,9 @@ The generated JSON, CSV and figure files are the numerical source of the manuscr
 
 ## Versioning and archive
 
-- Manuscript release tag: `v1.4.0`
+- Manuscript release tag: `v1.5.0`
 - GitHub package: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain>
-- A Zenodo DOI should be minted from the `v1.4.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
+- A Zenodo DOI should be minted from the `v1.5.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
 - Data filenames, masks, covariance files, vector order and SHA256 checksums are recorded in `data_manifest/data_sources.md`.
 - Reproduction command: `python3 code/run_all.py`.
 - Docker command: `docker build -t r-universe-complete-chain . && docker run --rm r-universe-complete-chain`.
@@ -64,6 +69,8 @@ For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers:
 - R1 vs LCDM: Delta chi2 = -3.7117, Delta AIC = -1.7117, Delta BIC = +3.6809.
 - Direct competitor audit: wCDM has lower AIC than R1 on the same likelihood, while flat LCDM retains the lowest BIC.
 - Running absorption branch `theta(a)=2-alpha a`: Delta chi2 = -4.5008, Delta AIC = -2.5008, Delta BIC = +2.8918. This is lower AIC than wCDM on the same likelihood, but still not lower BIC than LCDM.
+- Laplace posterior for R-alpha: alpha = 0.4974 +/- 0.2093.
+- Minimal kernel closure at z=1 and k=0.01 h/Mpc: Xi = 1.0951, mu = 1.000712, eta = 0.999644, with (eta-1)/(mu-1) = -1/2.
 
 For DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers:
 

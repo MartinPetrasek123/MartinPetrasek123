@@ -1,0 +1,110 @@
+{
+  "model": "Ralpha minimal relational-kernel closure",
+  "source_fit": "r_running_scan_results.json best_AIC",
+  "parameters": {
+    "H0": 67.8625,
+    "Omega_m0": 0.3022734375,
+    "alpha": 0.4974218749999999,
+    "k_star_h_per_Mpc": 0.01
+  },
+  "closure": {
+    "theta_a": "theta(a)=2-alpha*a",
+    "beta_R": "alpha*a/(1+alpha*a)",
+    "k_R_h_per_Mpc": "H(z)/(c h)",
+    "mu_minus_1": "beta_R*k_R^2/(k^2+k_R^2)",
+    "eta_minus_1": "-0.5*(mu-1)",
+    "Xi": "exp[0.5*int_0^z beta_R(z') d ln(1+z')]",
+    "master_relation_1": "(eta-1)/(mu-1)=-1/2",
+    "master_relation_2": "d ln Xi / d ln(1+z)=beta_R/2"
+  },
+  "predictions": [
+    {
+      "z": 0.0,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.000369195460119,
+      "eta": 0.9998154022699405,
+      "Sigma_lensing": 1.0002768625187672,
+      "Xi_GW_over_EM": 1.0,
+      "D_norm": 1.0,
+      "f_growth": 0.513738501566629,
+      "fsigma8_over_sigma8_ref": 0.513738501566629,
+      "delta_kernel": 0.0003691954601190332,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    },
+    {
+      "z": 0.25,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.0004202129819602,
+      "eta": 0.9997898935090199,
+      "Sigma_lensing": 1.0003151155917325,
+      "Xi_GW_over_EM": 1.034971071247116,
+      "D_norm": 0.8793269249524199,
+      "f_growth": 0.638698064757204,
+      "fsigma8_over_sigma8_ref": 0.5616244052560138,
+      "delta_kernel": 0.0004202129819602647,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    },
+    {
+      "z": 0.5,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.0004945849492393,
+      "eta": 0.9997527075253804,
+      "Sigma_lensing": 1.0003708775583615,
+      "Xi_GW_over_EM": 1.060431994366893,
+      "D_norm": 0.775734952685807,
+      "f_growth": 0.7344969201448224,
+      "fsigma8_over_sigma8_ref": 0.5697749335964147,
+      "delta_kernel": 0.0004945849492393392,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    },
+    {
+      "z": 1.0,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.0007122042688341,
+      "eta": 0.9996438978655829,
+      "Sigma_lensing": 1.0005340263928955,
+      "Xi_GW_over_EM": 1.0950681440235401,
+      "D_norm": 0.6165348192942072,
+      "f_growth": 0.8549567144141255,
+      "fsigma8_over_sigma8_ref": 0.527110583425682,
+      "delta_kernel": 0.000712204268834146,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    },
+    {
+      "z": 1.5,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.0010185693809657,
+      "eta": 0.9994907153095172,
+      "Sigma_lensing": 1.0007636676648284,
+      "Xi_GW_over_EM": 1.1175531252581363,
+      "D_norm": 0.5056866139266485,
+      "f_growth": 0.9170531856388126,
+      "fsigma8_over_sigma8_ref": 0.4637415202363373,
+      "delta_kernel": 0.001018569380965634,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    },
+    {
+      "z": 2.0,
+      "k_h_per_Mpc": 0.01,
+      "mu": 1.00140987060786,
+      "eta": 0.99929506469607,
+      "Sigma_lensing": 1.0010569060221122,
+      "Xi_GW_over_EM": 1.1333361178527175,
+      "D_norm": 0.42644769156471046,
+      "f_growth": 0.950197689291683,
+      "fsigma8_over_sigma8_ref": 0.40520961112856024,
+      "delta_kernel": 0.0014098706078599689,
+      "consistency_eta_minus_one_over_mu_minus_one": -0.5
+    }
+  ],
+  "killer_values": {
+    "Xi_z1": 1.0950681168853764,
+    "mu_kstar_z1": 1.0007122042688341,
+    "eta_kstar_z1": 0.9996438978655829,
+    "fD_kstar_z1": 0.527110583425682
+  },
+  "outputs": {
+    "prediction_csv": "tables/ralpha_master_predictions.csv",
+    "figure": "figures/fig08_ralpha_master_predictions.pdf"
+  }
+}

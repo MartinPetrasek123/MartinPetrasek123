@@ -1,0 +1,110 @@
+{
+  "dataset": "Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers",
+  "ndata": 1624,
+  "method": "finite-difference Hessian and Laplace approximation around deterministic best fits",
+  "ralpha": {
+    "best_fit": {
+      "H0": 67.8625,
+      "Omega_m0": 0.3022734375,
+      "alpha": 0.4974218749999999
+    },
+    "chi2": 1409.5891880305899,
+    "AIC": 1415.5891880305899,
+    "BIC": 1431.7671305927547,
+    "covariance": [
+      [
+        0.3205531324217996,
+        -0.002504313994143214,
+        -0.07499787795467759
+      ],
+      [
+        -0.0025043139941432137,
+        6.369025930590082e-05,
+        -0.0003456457919459469
+      ],
+      [
+        -0.07499787795467763,
+        -0.00034564579194594654,
+        0.04378634459971708
+      ]
+    ],
+    "correlation": [
+      [
+        1.0,
+        -0.5542456066416882,
+        -0.6330377621151425
+      ],
+      [
+        -0.5542456066416881,
+        1.0,
+        -0.20697858810118044
+      ],
+      [
+        -0.633037762115143,
+        -0.20697858810118022,
+        1.0
+      ]
+    ],
+    "sigma": {
+      "H0": 0.566174118466925,
+      "Omega_m0": 0.007980617727087348,
+      "alpha": 0.2092518688081831
+    }
+  },
+  "lcdm": {
+    "best_fit": {
+      "H0": 68.63125000000001,
+      "Omega_m0": 0.3059375
+    },
+    "chi2": 1414.0899983340921
+  },
+  "wcdm": {
+    "best_fit": {
+      "H0": 67.89375000000001,
+      "Omega_m0": 0.2984375000000001,
+      "w0": -0.9140624999999999
+    },
+    "chi2": 1409.774522638935
+  },
+  "laplace_evidence_prior_sensitivity": [
+    {
+      "prior_set": "broad",
+      "lnZ_lcdm": -714.8995677758763,
+      "lnZ_wcdm": -715.8786877302945,
+      "lnZ_ralpha": -715.2572606910902,
+      "lnB_ralpha_lcdm": -0.3576929152138746,
+      "lnB_ralpha_wcdm": 0.6214270392042636
+    },
+    {
+      "prior_set": "mid",
+      "lnZ_lcdm": -713.5132734147564,
+      "lnZ_wcdm": -713.8418058030334,
+      "lnZ_ralpha": -713.0236684695832,
+      "lnB_ralpha_lcdm": 0.48960494517325515,
+      "lnB_ralpha_wcdm": 0.8181373334501814
+    },
+    {
+      "prior_set": "tight",
+      "lnZ_lcdm": -712.3093006104305,
+      "lnZ_wcdm": -712.0988364979748,
+      "lnZ_ralpha": -711.0575556132103,
+      "lnB_ralpha_lcdm": 1.2517449972201575,
+      "lnB_ralpha_wcdm": 1.0412808847645465
+    }
+  ],
+  "mock_delta_chi2_calibration": {
+    "observed_delta_chi2_lcdm_minus_ralpha": 4.500810303502249,
+    "single_branch_p_chi2_ge_observed": 0.03366,
+    "five_branch_look_elsewhere_p": 0.157472,
+    "analytic_single_branch_p": 0.03387879589574609,
+    "analytic_five_branch_p": 0.15829856069257475,
+    "ralpha_recovery_power_at_same_signal_delta_chi2_gt_2": 0.760045,
+    "ralpha_recovery_power_at_same_signal_delta_chi2_gt_observed": 0.499671,
+    "simulation_count": 1000000
+  },
+  "outputs": {
+    "posterior_csv": "tables/ralpha_laplace_posterior.csv",
+    "prior_sensitivity_csv": "tables/ralpha_prior_sensitivity.csv",
+    "corner_plot": "figures/fig07_ralpha_corner.pdf"
+  }
+}
