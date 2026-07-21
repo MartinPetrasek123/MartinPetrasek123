@@ -8,8 +8,8 @@ number in the manuscript.
 ## Package release
 
 - Public package: https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain
-- Manuscript release tag: `v1.5.0`
-- Permanent archive: Zenodo DOI must be minted from the `v1.5.0` GitHub
+- Manuscript release tag: `v1.5.1`
+- Permanent archive: Zenodo DOI must be minted from the `v1.5.1` GitHub
   release before journal submission. No DOI is invented in the draft.
 
 ## Pantheon+
@@ -128,7 +128,7 @@ number in the manuscript.
 - Authors: compiled from Simon, Stern, Moresco, Zhang, Ratsimbazafy and related cosmic-chronometer measurements.
 - DOI: individual literature DOIs are not fully resolved in this release; the reference column is explicit and must be upgraded to DOI-complete form before journal submission.
 - URL: values are stored in this release at `data/raw/chronometers/cosmic_chronometers.csv`.
-- Release/version: package release `v1.5.0`.
+- Release/version: package release `v1.5.1`.
 - Download/access date: inherited from the previous local pilot compilation; package creation date 2026-07-21.
 - License: not applicable as a manually assembled literature-value table; cite original measurements.
 - Analysis scripts:
