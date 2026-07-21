@@ -1,0 +1,91 @@
+{
+  "dataset": "Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers",
+  "ndata": 1624,
+  "lcdm_reference_chi2": 1414.0899983340921,
+  "records": [
+    {
+      "model": "Rrun_late_a",
+      "law": "late_a",
+      "k": 3,
+      "H0": 67.8625,
+      "Omega_m0": 0.3022734375,
+      "alpha": 0.4974218749999999,
+      "chi2": 1409.5891880305899,
+      "AIC": 1415.5891880305899,
+      "BIC": 1431.7671305927547,
+      "delta_chi2_vs_lcdm": -4.500810303502249,
+      "delta_AIC_vs_lcdm": -2.5008103035022486,
+      "delta_BIC_vs_lcdm": 2.8918372172192903
+    },
+    {
+      "model": "Rrun_constant",
+      "law": "constant",
+      "k": 3,
+      "H0": 67.96249999999999,
+      "Omega_m0": 0.2922890625000001,
+      "alpha": 0.39382812500000036,
+      "chi2": 1410.3745884409855,
+      "AIC": 1416.3745884409855,
+      "BIC": 1432.5525310031503,
+      "delta_chi2_vs_lcdm": -3.715409893106653,
+      "delta_AIC_vs_lcdm": -1.7154098931066528,
+      "delta_BIC_vs_lcdm": 3.677237627614886
+    },
+    {
+      "model": "Rrun_balanced_1_minus_a2",
+      "law": "balanced_1_minus_a2",
+      "k": 3,
+      "H0": 68.475,
+      "Omega_m0": 0.29521875000000036,
+      "alpha": 0.3333593749999994,
+      "chi2": 1413.2685429479252,
+      "AIC": 1419.2685429479252,
+      "BIC": 1435.44648551009,
+      "delta_chi2_vs_lcdm": -0.8214553861669174,
+      "delta_AIC_vs_lcdm": 1.1785446138330826,
+      "delta_BIC_vs_lcdm": 6.571192134554622
+    },
+    {
+      "model": "Rrun_early_z_over_1pz",
+      "law": "early_z_over_1pz",
+      "k": 3,
+      "H0": 68.58593749999999,
+      "Omega_m0": 0.3007343749999998,
+      "alpha": 0.23718750000000324,
+      "chi2": 1413.9130415979994,
+      "AIC": 1419.9130415979994,
+      "BIC": 1436.0909841601642,
+      "delta_chi2_vs_lcdm": -0.176956736092734,
+      "delta_AIC_vs_lcdm": 1.823043263907266,
+      "delta_BIC_vs_lcdm": 7.215690784628805
+    },
+    {
+      "model": "Rrun_log_running",
+      "law": "log_running",
+      "k": 3,
+      "H0": 68.634375,
+      "Omega_m0": 0.30848437500000003,
+      "alpha": -0.10914062500000003,
+      "chi2": 1414.0464136460516,
+      "AIC": 1420.0464136460516,
+      "BIC": 1436.2243562082165,
+      "delta_chi2_vs_lcdm": -0.04358468804048243,
+      "delta_AIC_vs_lcdm": 1.9564153119595176,
+      "delta_BIC_vs_lcdm": 7.3490628326810565
+    }
+  ],
+  "best_AIC": {
+    "model": "Rrun_late_a",
+    "law": "late_a",
+    "k": 3,
+    "H0": 67.8625,
+    "Omega_m0": 0.3022734375,
+    "alpha": 0.4974218749999999,
+    "chi2": 1409.5891880305899,
+    "AIC": 1415.5891880305899,
+    "BIC": 1431.7671305927547,
+    "delta_chi2_vs_lcdm": -4.500810303502249,
+    "delta_AIC_vs_lcdm": -2.5008103035022486,
+    "delta_BIC_vs_lcdm": 2.8918372172192903
+  }
+}

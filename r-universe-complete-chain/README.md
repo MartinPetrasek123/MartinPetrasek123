@@ -12,6 +12,8 @@ This package accompanies the manuscript:
 - `figures/` - generated figures.
 - `data/raw/` - exact public data files used by the released scripts.
 - `tables/all_model_fits.csv` - all fitted model summaries.
+- `tables/competitor_model_comparison.csv` - direct LCDM/wCDM/CPL/R1 audit on the same late-time likelihood.
+- `tables/r_running_scan.csv` - one-parameter running R-branch scan.
 - `tables/desi_dr2_bao_predictions.csv` - DESI DR2 BAO predictions and diagnostic pulls.
 - `tables/camb_lensed_cls_lcdm_reference.csv` - CAMB reference CMB spectra.
 - `tables/camb_matter_power_lcdm_reference.csv` - CAMB reference matter power.
@@ -25,6 +27,8 @@ This package accompanies the manuscript:
 - `code/boltzmann_camb.py` - CAMB reference early-universe calculation.
 - `code/robustness_suite.py` - SN/BAO/CC/free-rd and BAO jackknife robustness tests.
 - `code/profile_likelihood.py` - profiled likelihood scan for theta.
+- `code/competitor_models.py` - independent direct competitor audit for LCDM, wCDM, CPL and R1.
+- `code/r_running_scan.py` - adversarial scan of one-parameter running R branches with an exact LCDM absorption limit.
 - `code/*.json` - generated numerical results used by the manuscript.
 - `data_manifest/data_sources.md` - source URLs and local file mapping.
 - `requirements.txt`, `environment.yml` - software environment records.
@@ -46,9 +50,9 @@ The generated JSON, CSV and figure files are the numerical source of the manuscr
 
 ## Versioning and archive
 
-- Manuscript release tag: `v1.3.0`
+- Manuscript release tag: `v1.4.0`
 - GitHub package: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain>
-- A Zenodo DOI should be minted from the `v1.3.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
+- A Zenodo DOI should be minted from the `v1.4.0` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
 - Data filenames, masks, covariance files, vector order and SHA256 checksums are recorded in `data_manifest/data_sources.md`.
 - Reproduction command: `python3 code/run_all.py`.
 - Docker command: `docker build -t r-universe-complete-chain . && docker run --rm r-universe-complete-chain`.
@@ -58,9 +62,11 @@ The generated JSON, CSV and figure files are the numerical source of the manuscr
 For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers:
 
 - R1 vs LCDM: Delta chi2 = -3.7117, Delta AIC = -1.7117, Delta BIC = +3.6809.
+- Direct competitor audit: wCDM has lower AIC than R1 on the same likelihood, while flat LCDM retains the lowest BIC.
+- Running absorption branch `theta(a)=2-alpha a`: Delta chi2 = -4.5008, Delta AIC = -2.5008, Delta BIC = +2.8918. This is lower AIC than wCDM on the same likelihood, but still not lower BIC than LCDM.
 
 For DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers:
 
 - R1 vs LCDM: Delta chi2 = -4.2133, Delta AIC = -2.2133, Delta BIC = +3.3172.
 
-The R1 branch is therefore AIC-favored but not BIC-favored in the present late-time data-only implementation.
+The R1 branch is therefore suggestive but not decisive in the present late-time data-only implementation. The package must not be cited as a discovery claim or as a completed replacement for LCDM until the Level-II perturbative/CMB program is implemented and survives direct comparison with standard dark-energy parameterizations.

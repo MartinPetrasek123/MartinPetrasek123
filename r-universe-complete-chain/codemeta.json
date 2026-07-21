@@ -2,9 +2,9 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "name": "R-Universe complete-chain late-time reproducibility package",
-  "version": "v1.3.0",
-  "datePublished": "2026-07-19",
-  "codeRepository": "https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.3.0/r-universe-complete-chain",
+  "version": "v1.4.0",
+  "datePublished": "2026-07-21",
+  "codeRepository": "https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.4.0/r-universe-complete-chain",
   "programmingLanguage": "Python",
   "runtimePlatform": "Python 3.12",
   "license": "https://spdx.org/licenses/MIT.html",
@@ -24,5 +24,5 @@
     "sympy==1.14.0",
     "camb==2.0.0"
   ],
-  "description": "Reproducible public-data package for a late-time background-level test of an infrared-scaling extension of flat LambdaCDM, including data provenance, validation, robustness tests, profile likelihood and a reference LCDM CAMB baseline."
+  "description": "Reproducible public-data package for a late-time background-level test of R-Universe, including data provenance, validation, robustness tests, profile likelihood, direct competitor audits, an absorption branch in which LambdaCDM is recovered as the zero-running and early-time limit, and a reference LCDM CAMB baseline."
 }

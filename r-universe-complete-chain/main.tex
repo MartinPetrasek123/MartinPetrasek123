@@ -46,8 +46,8 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\kR}{\ensuremath{\kappa_{\mathcal R}}}
 \newcommand{\MemR}{\ensuremath{\mathcal M_{\mathcal R}}}
-\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.3.0/r-universe-complete-chain}{GitHub release \texttt{v1.3.0}}}
-\newcommand{\release}{\texttt{v1.3.0}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.4.0/r-universe-complete-chain}{GitHub release \texttt{v1.4.0}}}
+\newcommand{\release}{\texttt{v1.4.0}}
 
 \title{\textbf{R-Universe as a Relational-Scale Infrared Attractor:\\
 A Reproducible Late-Time Test and a Falsifiable Perturbation-Propagation Program Beyond Flat \texorpdfstring{\LCDM}{LCDM}}}
@@ -73,7 +73,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The potentially decisive novelty is therefore not the present background fit. It is the proposed Level-II consistency triangle relating $\mu(k,z)$, gravitational slip $\eta(k,z)$ and the gravitational-wave luminosity ratio $\Xi(z)=d_L^{\rm GW}/d_L^{\rm EM}$. If one causal kernel cannot make these sectors satisfy the same relational-scale law, R-Universe fails. If it can, \LCDM becomes the frozen local limit of a broader infrared-scale dynamics.
+tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, a direct $w$CDM/CPL competitor audit, an absorption-branch scan, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7119$, $\Delta{\rm AIC}=-1.7119$ and $\Delta{\rm BIC}=+3.6808$ relative to \LCDM. A stricter absorption branch, R$\alpha$, uses $\theta(a)=2-\alpha a$, so that \LCDM is recovered exactly at $\alpha=0$ and also as $a\rightarrow0$. It gives $\Delta\chi^2=-4.5008$, $\Delta{\rm AIC}=-2.5008$ and $\Delta{\rm BIC}=+2.8918$, slightly lower AIC than the same-likelihood $w$CDM value $\Delta{\rm AIC}=-2.3155$. BIC still favors \LCDM. The profiled R1 likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The potentially decisive novelty is therefore not a single background statistic. It is the absorption principle and the proposed Level-II consistency triangle relating $\mu(k,z)$, gravitational slip $\eta(k,z)$ and the gravitational-wave luminosity ratio $\Xi(z)=d_L^{\rm GW}/d_L^{\rm EM}$. If one causal kernel cannot make these sectors satisfy the same relational-scale law, R-Universe fails. If it can, \LCDM becomes the frozen local limit of a broader infrared-scale dynamics.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -101,8 +101,10 @@ No fit number in this manuscript is quoted without a code path. The local and Gi
 \item \codepath{code/extended_fit.py}: Pantheon+ full-covariance + DESI DR1/DR2 + chronometer fits;
 \item \codepath{code/des_dovekie_fit.py}: DES-Dovekie STAT+SYS + DESI DR2 + chronometer cross-check;
 \item \codepath{code/derived_predictions.py}: cosmographic, growth and null-test predictions;
+\item \codepath{code/r_running_scan.py}: one-parameter running R branches with exact \LCDM absorption limits;
 \item \codepath{code/make_figures_and_tables.py}: figure and table generation;
 \item \codepath{tables/all_model_fits.csv}: all fitted model summaries;
+\item \codepath{tables/r_running_scan.csv}: absorption-branch scan results;
 \item \codepath{tables/desi_dr2_bao_predictions.csv}: BAO predictions and diagnostic pulls;
 \item \codepath{data_manifest/data_sources.md}: public source URLs and local file mapping.
 \end{itemize}
@@ -255,6 +257,29 @@ at the background level. The limit is regular on the physical branch because
 \rightarrow 2E>0
 \end{equation}
 at $\theta=2$ for $E>0$. The numerical solver therefore follows the positive branch connected to \LCDM. This is implemented in \codepath{code/extended_fit.py}.
+
+\subsection{\texorpdfstring{\LCDM}{LCDM} absorption principle}
+
+The stronger R-Universe objective is not merely to beat \LCDM by a small distance-likelihood number. It is to make \LCDM appear as the frozen member of a wider infrared-scale dynamics. The minimal absorption requirements are
+\begin{align}
+{\rm A1:}\quad &\alpha=0 \Rightarrow \mathcal M_{\rm R\alpha}=\mathcal M_{\Lambda{\rm CDM}},\\
+{\rm A2:}\quad &a\rightarrow0 \Rightarrow \theta(a)\rightarrow2,\\
+{\rm A3:}\quad &a\simeq1 \Rightarrow \theta(a)\neq2\ {\rm only\ if\ late\ data\ demand\ it}.
+\end{align}
+A minimal one-parameter realization is
+\begin{equation}
+\theta(a)=2-\alpha a,\qquad a=(1+z)^{-1},
+\label{eq:ralpha-theta}
+\end{equation}
+with
+\begin{equation}
+E^2(z)=\Omega_{\rm m0}(1+z)^3+
+(1-\Omega_{\rm m0})E^{2-\theta(a)}(z).
+\label{eq:ralpha}
+\end{equation}
+This branch, denoted R$\alpha$, absorbs \LCDM in two senses. First, $\alpha=0$ gives the exact flat-\LCDM background for all redshifts. Second, at fixed nonzero $\alpha$, the early limit $a\rightarrow0$ drives $\theta(a)\rightarrow2$, so the branch approaches the standard early-universe expansion rather than perturbing the CMB-calibrated era by construction. The deviation is concentrated at late times, where the public supernova and low-redshift BAO data actually test the vacuum closure.
+
+R$\alpha$ is still a phenomenological background proxy. It does not replace the required Level-II covariant memory kernel. Its purpose is to encode the physical idea that \LCDM is not a rival model bolted beside R-Universe, but a stable zero-running limit inside it.
 
 \subsection{R2 stress branch}
 
@@ -558,7 +583,7 @@ The full late-time analysis is reproduced by:
 \begin{verbatim}
 python3 code/run_all.py
 \end{verbatim}
-\codepath{code/run_all.py} runs the fit, validation, CAMB-reference, robustness, profile-likelihood and figure-generation scripts in the order listed in Table~\ref{tab:numerical-provenance}. On the validation machine this full chain completed in $80.82$ seconds. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
+\codepath{code/run_all.py} runs the fit, validation, CAMB-reference, robustness, profile-likelihood and figure-generation scripts in the order listed in Table~\ref{tab:numerical-provenance}. On the validation machine this full chain completed in $95.96$ seconds. The output JSON files are not independent evidence; they are machine-readable records of the preceding solver results.
 
 \subsection{Global calculation flow}
 
@@ -591,6 +616,8 @@ Object & Script & Numerical source & Output file\\
 Fit summary & \codepath{code/extended_fit.py}; \codepath{code/des_dovekie_fit.py} & Pantheon+, DES-Dovekie, DESI DR1/DR2, chronometers & \codepath{tables/all_model_fits.csv}\\
 Robustness & \codepath{code/robustness_suite.py} & SN-only, BAO-only, CC-only, no-CC, free-$r_d$, BAO jackknife & \codepath{tables/robustness_suite.csv}\\
 Profile likelihood & \codepath{code/profile_likelihood.py} & fixed-$\theta$ R1 grid with $H_0,\Omega_{\rm m0}$ re-optimization & \codepath{tables/profile_likelihood_theta.csv}\\
+Competitor audit & \codepath{code/competitor_models.py} & \LCDM, $w$CDM, CPL and R1 on the same Pantheon+ + DESI DR2 + CC likelihood & \codepath{tables/competitor_model_comparison.csv}\\
+Absorption scan & \codepath{code/r_running_scan.py} & one-parameter running R branches with exact \LCDM absorption limits & \codepath{tables/r_running_scan.csv}\\
 Validation & \codepath{code/numerical_validation.py} & Newton solver, bisection cross-check, Simpson/trapezoid distances & \codepath{code/numerical_validation.json}\\
 CAMB baseline & \codepath{code/boltzmann_camb.py} & reference \LCDM early-universe parameters & \codepath{code/boltzmann_camb_results.json}\\
 \bottomrule
@@ -695,10 +722,10 @@ The supernova intercept is common to all compared models. Including it in $k$ wo
 
 \begin{table}[H]
 \centering
-\small
+\scriptsize
 \setlength{\tabcolsep}{4pt}
 \caption{Pantheon+ full covariance + DESI DR1 BAO + cosmic chronometers.}
-\begin{tabular}{lrrrrrrrr}
+\begin{tabularx}{\linewidth}{Yrrrrrrrr}
 \toprule
 Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
 \midrule
@@ -706,7 +733,7 @@ Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{
 R1 & 3 & 68.050 & 0.2936 & 1.627 & 0.000 & 1413.759 & -0.047 & +5.345\\
 R2 & 4 & 68.119 & 0.3169 & 3.727 & 1.314 & 1412.395 & +0.589 & +11.373\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The full Pantheon+ covariance weakens the earlier diagonal-covariance signal. R1 improves $\chi^2$, but the AIC gain is nearly zero and BIC disfavors it.
@@ -715,10 +742,10 @@ The full Pantheon+ covariance weakens the earlier diagonal-covariance signal. R1
 
 \begin{table}[H]
 \centering
-\small
+\scriptsize
 \setlength{\tabcolsep}{4pt}
 \caption{Main fit: Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers.}
-\begin{tabular}{lrrrrrrrr}
+\begin{tabularx}{\linewidth}{Yrrrrrrrr}
 \toprule
 Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
 \midrule
@@ -726,7 +753,7 @@ Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{
 R1 & 3 & 67.975 & 0.2928 & 1.615 & 0.000 & 1410.378 & -1.712 & +3.681\\
 R2 & 4 & 67.894 & 0.3045 & 2.408 & 0.508 & 1409.444 & -0.646 & +10.139\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 For R1, the component breakdown is
@@ -755,14 +782,62 @@ For the main Pantheon+ + DESI DR2 + chronometer vector, $N=1624$. R1 has one mor
 \end{align}
 The measured value is $\Delta\chi^2=-3.7117$. Thus the current public late-time data cross the AIC threshold but miss the BIC threshold by $3.6809$ in $\chi^2$. This is the quantitative standard future data must beat. A genuinely textbook-level result would require not only crossing this background threshold, but also satisfying the Level-II consistency condition in Eq.~\eqref{eq:r-triangle}.
 
+\subsection{Direct competitor-model audit}
+
+\codepath{code/competitor_models.py} repeats the main Pantheon+ full covariance + DESI DR2 BAO + chronometer calculation for flat \LCDM, constant-$w$ dark energy, CPL and R1. This is a necessary adversarial test: if a generic dark-energy parameterization explains the same distance pattern more efficiently than R1, then R1 cannot claim a unique background-level victory.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Direct competitor audit on the same main late-time likelihood. Differences are relative to flat \LCDM. Lower AIC/BIC is better.}
+\begin{tabularx}{\linewidth}{p{0.10\linewidth}rrrrYrrr}
+\toprule
+Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & Extra parameter(s) & $\chi^2$ & $\Delta\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+\midrule
+\LCDM & 2 & 68.631 & 0.3059 & -- & 1414.090 & 0 & 0 & 0\\
+$w$CDM & 3 & 67.894 & 0.2984 & $w_0=-0.914$ & 1409.775 & -4.315 & -2.315 & +3.077\\
+CPL & 4 & 67.856 & 0.3070 & $w_0=-0.886,\ w_a=-0.256$ & 1409.439 & -4.651 & -0.651 & +10.134\\
+R1 & 3 & 67.969 & 0.2928 & $\theta=1.614$ & 1410.378 & -3.712 & -1.712 & +3.681\\
+\bottomrule
+\end{tabularx}
+\label{tab:competitor-audit}
+\end{table}
+
+The result is deliberately not spun in favor of R1. On this late-time background likelihood, $w$CDM has lower AIC than constant-exponent R1, while \LCDM retains the lowest BIC. R1 remains a compact physically motivated deformation with an exact \LCDM limit, but it is not the unique or best one-parameter empirical compression of the current distance data. This motivates the stricter absorption test below: can a branch designed to contain \LCDM as an early-time and zero-running limit compete with $w$CDM without adding CPL-like freedom?
+
+\subsection{Absorption-branch scan}
+
+\codepath{code/r_running_scan.py} tests one-parameter running R branches of the form in Eq.~\eqref{eq:ralpha}, all with the same fitted parameter count as R1 and $w$CDM. The best branch is R$\alpha$ with $\theta(a)=2-\alpha a$.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{One-parameter R-branch scan on the main Pantheon+ full covariance + DESI DR2 BAO + chronometer likelihood. All rows have $k=3$ and contain flat \LCDM at the zero-running point.}
+\begin{tabularx}{\linewidth}{p{0.26\linewidth}rrrrrr}
+\toprule
+Branch & $H_0$ & $\Omega_{\rm m0}$ & Shape & $\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
+\midrule
+R$\alpha$: $\theta(a)=2-\alpha a$ & 67.862 & 0.3023 & $\alpha=0.497$ & 1409.589 & -2.501 & +2.892\\
+R1: constant $\theta$ & 67.962 & 0.2923 & $\alpha=0.394$ & 1410.375 & -1.715 & +3.677\\
+Early running & 68.586 & 0.3007 & $\alpha=0.237$ & 1413.913 & +1.823 & +7.216\\
+Log running & 68.634 & 0.3085 & $\alpha=-0.109$ & 1414.046 & +1.956 & +7.349\\
+\bottomrule
+\end{tabularx}
+\label{tab:r-running-scan}
+\end{table}
+
+R$\alpha$ is the strongest background result in the present package: it gives a lower AIC than $w$CDM on the same likelihood while preserving the absorption interpretation that \LCDM is recovered both at $\alpha=0$ and in the early-time limit $a\rightarrow0$. This does not overturn the BIC verdict; flat \LCDM remains the BIC winner because the improvement has not reached the $\Delta\chi^2<-7.392$ one-parameter threshold. The correct claim is therefore: R$\alpha$ is a sharper, physically interpretable late-time compression than constant R1 and is competitive with standard one-parameter dark energy, but it is not yet a decisive replacement for \LCDM.
+
 \subsection{DES-Dovekie + DESI DR2 + chronometers}
 
 \begin{table}[H]
 \centering
-\small
+\scriptsize
 \setlength{\tabcolsep}{4pt}
 \caption{Alternative supernova-pipeline cross-check: DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers.}
-\begin{tabular}{lrrrrrrrr}
+\begin{tabularx}{\linewidth}{Yrrrrrrrr}
 \toprule
 Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{\rm AIC}$ & $\Delta{\rm BIC}$\\
 \midrule
@@ -770,7 +845,7 @@ Model & $k$ & $H_0$ & $\Omega_{\rm m0}$ & $\theta$ & $\nu$ & $\chi^2$ & $\Delta{
 R1 & 3 & 67.944 & 0.2916 & 1.593 & 0.000 & 1655.291 & -2.213 & +3.317\\
 R2 & 4 & 67.819 & 0.3131 & 3.244 & 1.074 & 1652.965 & -2.540 & +8.521\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The DES-Dovekie cross-check reproduces the direction of the R1 signal outside the Pantheon+ pipeline. It remains AIC-favored but not BIC-favored. This is not a fully independent confirmation because the combined likelihood still shares DESI DR2 BAO, chronometers and the same R1 background implementation.
@@ -839,6 +914,35 @@ The strongest null tests are:
 \item a global MCMC or nested-sampling analysis must preserve the AIC gain and ideally cross the BIC threshold.
 \end{enumerate}
 
+\section{Submission-readiness audit}
+
+This manuscript is intentionally written as an audit trail, but auditability alone is not sufficient for a high-impact physics claim. Table~\ref{tab:readiness} records the current gate status. The status column is part of the scientific result: a weak or incomplete gate cannot be hidden behind a strong narrative.
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Submission-readiness gates for a claim that R-Universe is a complete replacement or strict extension of \LCDM.}
+\begin{tabularx}{\linewidth}{p{0.24\linewidth}p{0.18\linewidth}Y}
+\toprule
+Gate & Current status & Consequence\\
+\midrule
+Public late-time background fit & Complete for the datasets listed in Section~\ref{sec:data-provenance} & Constant R1 and R$\alpha$ both improve AIC over \LCDM, but neither beats \LCDM by BIC.\\
+Direct competitor audit & Implemented & $w$CDM has lower AIC than constant R1, while R$\alpha$ has lower AIC than $w$CDM on the same likelihood.\\
+Absorption of \LCDM & Implemented at background level & R$\alpha$ recovers \LCDM at $\alpha=0$ and approaches it as $a\rightarrow0$; a covariant proof is still missing.\\
+Numerical validation & Implemented for the background solver & Root finding, distance integration and \LCDM-limit checks are reproducible.\\
+Full Bayesian inference & Not complete & No final posterior covariance, corner plot, evidence or prior-sensitivity claim is made.\\
+Perturbations and growth & Conditional only & The shown growth curve assumes a smooth R-sector GR closure and is not yet a derived Level-II prediction.\\
+Boltzmann/CMB likelihood & Reference \LCDM only & No R1 CLASS/CAMB module or Planck likelihood result exists in this release.\\
+Early-universe closure & Not complete for R1 & The R1 sound horizon must be derived self-consistently before claiming a global BAO+CMB solution.\\
+Theory completion & Not complete & No covariant action, stability proof or derived Bianchi-consistent R-sector stress tensor is supplied.\\
+\bottomrule
+\end{tabularx}
+\label{tab:readiness}
+\end{table}
+
+The present release is therefore not a finished Nature-level replacement claim. Its defensible contribution is narrower and sharper: it provides a reproducible late-time background test, exposes the exact numerical strength of the signal, shows where ordinary dark-energy fits remain competitive, and defines the perturbative/CMB calculations that must succeed before the program can be elevated to a complete theory.
+
 \section{Current limitations}
 
 The present release is complete only as a background-level late-time reproducibility study with conditional growth diagnostics. The physical motivation is stated, the background equation is closed, the homogeneous \LCDM limit is exact, the public late-time likelihood observables are computed, data provenance is recorded, profile-likelihood and robustness stress tests are included, and the numerical results are generated by public code.
@@ -854,6 +958,8 @@ The following items are not completed calculations in this release:
 \item the growth equation assumes a smooth R-sector GR closure with $G_{\rm eff}=G$ and $\eta=1$ rather than a derived modified Poisson equation with running $G(k)$;
 \item no R1 CLASS/CAMB module, R1 CMB spectra, Planck likelihood or global CMB+BAO+SN+RSD/WL inference is completed;
 \item no full MCMC, nested-sampling evidence, posterior covariance matrix or prior-sensitivity scan is yet included.
+\item the direct competitor audit in Table~\ref{tab:competitor-audit} shows that $w$CDM currently gives a lower AIC than constant-exponent R1 on the same late-time likelihood;
+\item the absorption branch R$\alpha$ in Table~\ref{tab:r-running-scan} improves on $w$CDM in AIC, but flat \LCDM still retains the lowest BIC.
 \end{enumerate}
 These are not optional for a claim that R-Universe physically replaces or subsumes \LCDM. They are the next falsification gates.
 
@@ -861,9 +967,9 @@ These are not optional for a claim that R-Universe physically replaces or subsum
 
 R-Universe R1 is a closed, reproducible, one-parameter late-time background extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$ at the homogeneous background level, computes all late-time distance observables used here, uses full covariance where available, includes an alternative DES-Dovekie supernova-pipeline cross-check, and gives conditional growth diagnostics under a stated smooth R-sector GR closure. This Level-I result is not presented as the full theory. It is the audit-complete infrared limit of a broader Level-II proposal in which the vacuum closure is generated by a causal relational scale rather than inserted as a rigid constant or arbitrary equation of state.
 
-The empirical result is precise but modest. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The profile-likelihood interval includes $\theta=2$ at approximately the $\Delta\chi^2\le4$ level. The current evidence is therefore suggestive but statistically inconclusive: R1 is an AIC-supported, falsifiable late-time extension, not yet a definitive replacement for \LCDM.
+The empirical result is precise but modest. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$ for constant-exponent R1. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The direct competitor audit is stricter: $w$CDM has a lower AIC than constant R1. The absorption branch R$\alpha$, however, gives $\Delta\chi^2=-4.5008$ and $\Delta{\rm AIC}=-2.5008$ while retaining \LCDM as both a zero-running and early-time limit. That is the strongest present background-level result. It still does not beat \LCDM by BIC. The current evidence is therefore suggestive but statistically inconclusive: R-Universe is best framed as an absorption program in which \LCDM is the frozen limit of a broader infrared-scale dynamics, not yet as a completed replacement for \LCDM.
 
-The reason the program may still matter is sharper than the present $\chi^2$ improvement. If the same causal memory kernel that produces the infrared background attractor also predicts a nontrivial relation among $\mu(k,z)$, $\eta(k,z)$ and $\Xi(z)$, then R-Universe would connect distance data, structure growth, gravitational slip and standard-siren propagation in a way that ordinary background-degenerate models do not. That is the possible textbook-changing result. It has not been demonstrated here; it has been formulated as the next decisive test.
+The reason the program may still matter is sharper than the present $\chi^2$ improvement. The valuable claim is absorption: \LCDM is not discarded, but recovered as the frozen, early-time and zero-running limit of a relational infrared theory. If the same causal memory kernel that produces the R$\alpha$ background attractor also predicts a nontrivial relation among $\mu(k,z)$, $\eta(k,z)$ and $\Xi(z)$, then R-Universe would connect distance data, structure growth, gravitational slip and standard-siren propagation in a way that ordinary background-degenerate models do not. That is the possible textbook-changing result. It has not been demonstrated here; it has been formulated as the next decisive test.
 
 \section*{Data availability}
 
@@ -879,7 +985,7 @@ From the released package root, the complete late-time calculation is reproduced
 \begin{verbatim}
 python3 code/run_all.py
 \end{verbatim}
-The expected primary numerical outputs are \codepath{tables/all_model_fits.csv}, \codepath{tables/robustness_suite.csv}, \codepath{tables/profile_likelihood_theta.csv}, \codepath{tables/desi_dr2_bao_predictions.csv}, the CAMB reference spectra and the JSON audit files in \codepath{code/}. All figure panels included through \codepath{graf.tex} are regenerated in \codepath{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
+The expected primary numerical outputs are \codepath{tables/all_model_fits.csv}, \codepath{tables/competitor_model_comparison.csv}, \codepath{tables/r_running_scan.csv}, \codepath{tables/robustness_suite.csv}, \codepath{tables/profile_likelihood_theta.csv}, \codepath{tables/desi_dr2_bao_predictions.csv}, \codepath{code/competitor_model_results.json}, \codepath{code/r_running_scan_results.json}, the CAMB reference spectra and the JSON audit files in \codepath{code/}. All figure panels included through \codepath{graf.tex} are regenerated in \codepath{figures/}. The calculations were rerun before release generation and the citation/figure references in the \LaTeX\ source were checked for consistency.
 
 \appendix
 

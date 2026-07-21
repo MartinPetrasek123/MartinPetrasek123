@@ -8,8 +8,8 @@ number in the manuscript.
 ## Package release
 
 - Public package: https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain
-- Manuscript release tag: `v1.3.0`
-- Permanent archive: Zenodo DOI must be minted from the `v1.3.0` GitHub
+- Manuscript release tag: `v1.4.0`
+- Permanent archive: Zenodo DOI must be minted from the `v1.4.0` GitHub
   release before journal submission. No DOI is invented in the draft.
 
 ## Pantheon+
@@ -19,7 +19,7 @@ number in the manuscript.
 - DOI: not explicitly provided in the GitHub data repository; cite Brout et al. 2022 and the public repository.
 - Public repository: https://github.com/PantheonPlusSH0ES/DataRelease
 - Release/version: public repository main branch; source repository last public update visible as 2022-12-21.
-- Download/access date: 2026-07-19.
+- Download/access date: 2026-07-21.
 - License: not explicitly stated in the source repository at access time.
 - Reference paper: Brout et al. 2022, The Pantheon+ Analysis: Cosmological
   Constraints.
@@ -48,7 +48,7 @@ number in the manuscript.
 - DOI: DESI DR2 BAO paper DOI is cited through the publication record; repository DOI not explicitly stated.
 - Public repository for vectors/covariances: https://github.com/CobayaSampler/bao_data
 - Release/version: `bao_data` release `v2.6`, latest public release listed 2025-03-20.
-- Download/access date: 2026-07-19.
+- Download/access date: 2026-07-21.
 - License: not explicitly stated in the source repository at access time.
 - DESI DR2 BAO paper: arXiv:2503.14738.
 - Analysis script: `code/extended_fit.py`
@@ -81,7 +81,7 @@ number in the manuscript.
 - DOI: DESI DR1 BAO papers cited through publication records; repository DOI not explicitly stated.
 - Public repository for vectors/covariances: https://github.com/CobayaSampler/bao_data
 - Release/version: `bao_data` public release series, DESI 2024 files.
-- Download/access date: 2026-07-19.
+- Download/access date: 2026-07-21.
 - License: not explicitly stated in the source repository at access time.
 - DESI DR1 papers: arXiv:2404.03000, arXiv:2404.03001, arXiv:2404.03002.
 - Analysis script: `code/extended_fit.py`
@@ -99,8 +99,8 @@ number in the manuscript.
 - Authors: DES Collaboration, DES Supernova Program, Sanchez et al., Vincenzi et al.
 - Public repository: https://github.com/des-science/DES-SN5YR
 - Zenodo DOI: https://doi.org/10.5281/zenodo.12720778
-- Release/version: source README notes the original DES-SN5YR results at repository tag `1.3`; this package uses the public files accessed on 2026-07-19.
-- Download/access date: 2026-07-19.
+- Release/version: source README notes the original DES-SN5YR results at repository tag `1.3`; this package uses the public files accessed on 2026-07-21.
+- Download/access date: 2026-07-21.
 - License: not explicitly stated in the source repository at access time.
 - Reference papers: DES-SN5YR cosmology release and Sanchez et al. 2024.
 - Analysis script: `code/des_dovekie_fit.py`
@@ -128,8 +128,8 @@ number in the manuscript.
 - Authors: compiled from Simon, Stern, Moresco, Zhang, Ratsimbazafy and related cosmic-chronometer measurements.
 - DOI: individual literature DOIs are not fully resolved in this release; the reference column is explicit and must be upgraded to DOI-complete form before journal submission.
 - URL: values are stored in this release at `data/raw/chronometers/cosmic_chronometers.csv`.
-- Release/version: package release `v1.3.0`.
-- Download/access date: inherited from the previous local pilot compilation; package creation date 2026-07-19.
+- Release/version: package release `v1.4.0`.
+- Download/access date: inherited from the previous local pilot compilation; package creation date 2026-07-21.
 - License: not applicable as a manually assembled literature-value table; cite original measurements.
 - Analysis scripts:
   - `code/extended_fit.py`
