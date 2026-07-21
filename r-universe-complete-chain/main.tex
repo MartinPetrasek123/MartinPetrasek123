@@ -44,11 +44,13 @@
 \newcommand{\Om}{\ensuremath{\Omega_{\rm m0}}}
 \newcommand{\chisq}{\ensuremath{\chi^2}}
 \newcommand{\dd}{\mathrm{d}}
-\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.2.4/r-universe-complete-chain}{GitHub release \texttt{v1.2.4}}}
-\newcommand{\release}{\texttt{v1.2.4}}
+\newcommand{\kR}{\ensuremath{\kappa_{\mathcal R}}}
+\newcommand{\MemR}{\ensuremath{\mathcal M_{\mathcal R}}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.3.0/r-universe-complete-chain}{GitHub release \texttt{v1.3.0}}}
+\newcommand{\release}{\texttt{v1.3.0}}
 
-\title{\textbf{A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat \texorpdfstring{\LCDM}{LCDM}:\\
-Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits}}
+\title{\textbf{R-Universe as a Relational-Scale Infrared Attractor:\\
+A Reproducible Late-Time Test and a Falsifiable Perturbation-Propagation Program Beyond Flat \texorpdfstring{\LCDM}{LCDM}}}
 
 \author{
 Martin Petrášek\\
@@ -56,14 +58,14 @@ Martin Petrášek\\
 \small ORCID: \href{https://orcid.org/0009-0007-4512-9528}{0009-0007-4512-9528}
 }
 
-\date{Draft version: 19 July 2026}
+\date{Draft version: 21 July 2026}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-Flat \LCDM is an exceptionally successful empirical model, but it leaves the observed vacuum component as a rigid parameter rather than an explained infrared quantity. This paper presents a reproducible background-level late-time analysis of a minimal R-Universe infrared-scaling extension, supplemented by conditional subhorizon growth diagnostics. The physical premise is that the locally gravitating late-time vacuum sector may be an infrared effective component constrained by global or renormalization-group structure, rather than the raw additive zero-point energy. The minimal branch R1 is defined by
+Flat \LCDM is an exceptionally successful empirical model, but it leaves the observed vacuum component as a rigid parameter rather than an explained infrared quantity. This paper reformulates R-Universe around one central claim: the measured late-time vacuum term is the homogeneous infrared attractor of an internally determined relational scale, not a primitive cosmological constant and not merely an arbitrary dark-energy equation of state. The work is deliberately split into two levels. Level I is the fully reproducible late-time background limit tested here. Level II is the proposed physical completion: a causal relational scale \kR determined by past geometry and stress history, whose nonlocal memory should link expansion, structure growth, gravitational slip and standard-siren propagation. The Level-I branch R1 is defined by
 \[
 E^2(z)-(1-\Omega_{\rm m0})E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
@@ -71,7 +73,7 @@ and contains flat \LCDM exactly and regularly at $\theta=2$. A second stress bra
 \[
 E^2(z)-(1-\Omega_{\rm m0})(1+z)^\nu E^{2-\theta}(z)-\Omega_{\rm m0}(1+z)^3=0,
 \]
-tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The result is conditional on the adopted BAO sound-horizon calibration and on a smooth-sector GR growth benchmark. R1 is AIC-favored in the tested public late-time combinations, but not BIC-favored and not yet a replacement for a Bianchi-complete covariant theory or for a full perturbative Boltzmann/CMB implementation.
+tests whether additional shape freedom is statistically justified. The calculated chain includes the homogeneous background dynamics, supernova and BAO distances, profiled supernova intercepts, full-covariance DESI BAO likelihoods, cosmic chronometers, an alternative DES-Dovekie supernova-pipeline cross-check, numerical validation, profile likelihood in $\theta$, dataset robustness tests, a free-$r_d$ stress test, and a reference \LCDM CAMB baseline. For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers, R1 gives $\Delta\chi^2=-3.7117$, $\Delta{\rm AIC}=-1.7117$ and $\Delta{\rm BIC}=+3.6809$ relative to \LCDM. The profiled likelihood gives $\theta=1.60$ with approximate $\Delta\chi^2\le1$ interval $[1.42,1.80]$ and $\Delta\chi^2\le4$ interval $[1.24,2.00]$; thus $\theta=2$ is only a suggestive $\simeq1.93\sigma$ late-time deviation, not a discovery. The potentially decisive novelty is therefore not the present background fit. It is the proposed Level-II consistency triangle relating $\mu(k,z)$, gravitational slip $\eta(k,z)$ and the gravitational-wave luminosity ratio $\Xi(z)=d_L^{\rm GW}/d_L^{\rm EM}$. If one causal kernel cannot make these sectors satisfy the same relational-scale law, R-Universe fails. If it can, \LCDM becomes the frozen local limit of a broader infrared-scale dynamics.
 \end{abstract}
 
 \noindent\textbf{Keywords:}
@@ -105,11 +107,93 @@ No fit number in this manuscript is quoted without a code path. The local and Gi
 \item \codepath{data_manifest/data_sources.md}: public source URLs and local file mapping.
 \end{itemize}
 
+\subsection{One-sentence contribution}
+
+The central contribution is this:
+\begin{quote}
+\emph{R-Universe proposes that the observed late-time vacuum closure is the homogeneous infrared attractor of a causal relational scale, so that \LCDM is the frozen local limit while the real smoking-gun test is a constrained relation among expansion, growth, gravitational slip and standard-siren propagation.}
+\end{quote}
+This sentence is intentionally stronger than the statistical result and narrower than a declaration of victory. The present paper computes the Level-I background test completely. It also states the Level-II structure that would make the idea genuinely new rather than a relabeling of known dark-sector degeneracies.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Separation between the audit-complete result and the proposed physical novelty. This table is the guardrail against overstating the current calculation.}
+\begin{tabularx}{\linewidth}{p{0.18\linewidth}Y Y}
+\toprule
+Layer & What is claimed here & What would make it decisive\\
+\midrule
+Level I background & A reproducible late-time infrared branch with exact \LCDM limit at $\theta=2$ & Robust preference after AIC/BIC/evidence and against $w$CDM/CPL/RVM competitors\\
+Conservation completion & Bianchi consistency is identified as a required embedding condition & A covariant action or field-equation system with explicit exchange or geometric-sector closure\\
+Relational scale & \kR is proposed as the internal scale-setting principle & Derivation from a causal stationarity law, not the ansatz $k\sim H$\\
+Attractor & $H\Omega_{\mathcal R}^{1/\theta}={\rm const.}$ is proposed as the homogeneous IR attractor & Stability proof of the attractor and absence of pathological branches\\
+Smoking gun & A consistency triangle among $\mu$, $\eta$ and $\Xi$ is formulated & Joint Euclid/Rubin/DESI/SKA/standard-siren confirmation with one kernel\\
+\bottomrule
+\end{tabularx}
+\label{tab:levels}
+\end{table}
+
 \section{Physical principle}
 
 \subsection{Vacuum energy as an infrared observable}
 
 The physical premise is not that arbitrary model flexibility should be added to \LCDM. It is that the observed vacuum component may be an infrared observable rather than the raw microscopic vacuum energy. Vacuum-energy sequestering frameworks show how global variables and constraints can remove sensitivity of local curvature to additive vacuum-energy shifts \citep{KaloperPadilla2014,KaloperPadilla2015}. R-Universe uses this as motivation, not as a completed derivation: the empirical model below is self-contained and can be falsified without assuming a unique microscopic sequestering implementation.
+
+\subsection{Relational scale instead of external cutoff}
+
+The new physical claim is not the algebraic background curve by itself. Similar homogeneous histories can arise from interacting vacuum or decomposed Chaplygin-type descriptions \citep{Wands2012,WangWands2013}. The proposed R-Universe novelty is the scale-setting rule behind the curve. A universe with no external clock or ruler should not receive its infrared scale from outside the system. The scale should be determined by internal causal relations:
+\begin{equation}
+\kR(x)=\mathcal K[g_{\mu\nu},T_{\mu\nu};J^-(x)].
+\label{eq:krel}
+\end{equation}
+Here $J^-(x)$ is the causal past of the event $x$. The simplest mathematical skeleton is a causal memory operator,
+\begin{equation}
+\MemR[X](x)=
+\frac{
+\displaystyle\int_{J^-(x)}\dd^4y\sqrt{-g(y)}\,K_\ell(x,y)X(y)
+}{
+\displaystyle\int_{J^-(x)}\dd^4y\sqrt{-g(y)}\,K_\ell(x,y)
+},
+\label{eq:memory}
+\end{equation}
+where $K_\ell(x,y)$ has support only in the causal past. A stationary relational-scale law can then be written schematically as
+\begin{equation}
+\frac{\delta\Gamma_{\mathcal R}[g_{\mu\nu},\Psi,\kR,\MemR]}{\delta\ln\kR(x)}=0.
+\label{eq:kstationary}
+\end{equation}
+Equation~\eqref{eq:kstationary} is not yet a complete action. It is the target that a fundamental R-Universe completion must meet. It also explains why the purely local ansatz $k\sim H$ is insufficient as a final principle: it erases the causal history that \kR is supposed to encode.
+
+\subsection{Infrared attractor}
+
+In a spatially flat homogeneous limit, $\Theta=\nabla_\mu u^\mu=3H$ and a sharply localized memory kernel gives $\kR\simeq H$. If the running component scales as $\rho_{\mathcal R}\propto\kR^{2-\theta}$, then
+\begin{equation}
+\Omega_{\mathcal R}=\frac{\rho_{\mathcal R}}{\rho_{\rm tot}}
+\propto\frac{H^{2-\theta}}{H^2}
+\propto H^{-\theta},
+\end{equation}
+so the invariant
+\begin{equation}
+H\Omega_{\mathcal R}^{1/\theta}=I_0
+\label{eq:ir-attractor}
+\end{equation}
+emerges in the local homogeneous infrared limit. The operational Level-I model tested in this paper is the late-time background realization of Eq.~\eqref{eq:ir-attractor}. The important shift is conceptual: the invariant is not treated as a primitive axiom, but as the candidate attractor of a deeper causal scale law.
+
+Define the attractor mismatch
+\begin{equation}
+\mathcal A =
+\ln\frac{H}{H_0}
++\frac{1}{\theta}\ln\frac{\Omega_{\mathcal R}}{\Omega_{\mathcal R0}}.
+\end{equation}
+A minimal well-posed completion should contain a relaxation equation of the form
+\begin{equation}
+u^\mu\nabla_\mu\mathcal A
+=-\Gamma_{\mathcal R}\mathcal A
++\epsilon_{\rm mem}\mathcal S_{\rm mem},
+\qquad
+\Gamma_{\mathcal R}>0,
+\label{eq:attractor-relaxation}
+\end{equation}
+where $\mathcal S_{\rm mem}$ vanishes in the local homogeneous limit. This is a falsifiable mathematical requirement: if no covariant, stable, causal theory can generate Eq.~\eqref{eq:attractor-relaxation}, the Level-II R-Universe does not exist.
 
 \subsection{Renormalization-group scaling}
 
@@ -310,6 +394,56 @@ The late ISW source is proportional to its time derivative. The code computes a 
 {\cal I}_{\Lambda{\rm CDM}}=0.0779.
 \]
 This proxy is kept as a diagnostic only. A real ISW observable requires $k$-dependent Weyl potentials, line-of-sight integration and survey window functions.
+
+\section{Level-II smoking-gun tests}
+
+Background expansion alone is dark-degenerate: many theories can reproduce nearly the same $H(z)$, including interacting vacuum, Chaplygin-type decompositions, $w$CDM and CPL-like phenomenology \citep{Wands2012,WangWands2013,Copeland2006}. The reason R-Universe could become important is not that R1 lowers $\chi^2$ by a few units. It is that a single causal relational scale should control several sectors that are usually parameterized independently.
+
+In Newtonian gauge,
+\begin{equation}
+\dd s^2=-(1+2\Psi)\dd t^2+a^2(t)(1-2\Phi)\dd{\bf x}^2.
+\end{equation}
+Define
+\begin{equation}
+\mu(k,z)=\frac{G_{\rm eff}(k,z)}{G},\qquad
+\eta(k,z)=\frac{\Phi(k,z)}{\Psi(k,z)},\qquad
+\Xi(z)=\frac{d_L^{\rm GW}(z)}{d_L^{\rm EM}(z)}.
+\end{equation}
+\LCDM gives $\mu=1$, $\eta=1$ and $\Xi=1$ up to standard small corrections. Generic dark-energy backgrounds can alter $H(z)$ while leaving these functions unrelated or freely parameterized. A Level-II R-Universe completion should instead impose a constrained relation because the same \kR controls vacuum response, effective coupling and tensor propagation friction.
+
+The minimal proposed null combination is
+\begin{equation}
+\boxed{
+\mathcal T_R(k,z)
+\equiv
+\left[\eta(k,z)-1\right]
++\frac{1}{2}\left[\mu(k,z)-1\right]
+-\frac{\dd\ln\Xi(z)}{\dd\ln a}\,\mathcal W(k,z)
+=0
+}
+\label{eq:r-triangle}
+\end{equation}
+up to higher-order memory terms. The window $\mathcal W(k,z)$ is determined by the same kernel $K_\ell$ that appears in Eq.~\eqref{eq:memory}; in the local homogeneous limit $\mathcal W\to1$. Equation~\eqref{eq:r-triangle} is the cleanest near-term way to make R-Universe more than a background fit. It can be wrong in a measurable way.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Comparison of the distinctive Level-II R-Universe test against common alternatives.}
+\begin{tabularx}{\linewidth}{p{0.18\linewidth}Y Y}
+\toprule
+Framework & Typical late-time freedom & What distinguishes R-Universe if Level II works\\
+\midrule
+\LCDM & fixed vacuum, $\mu=\eta=\Xi=1$ & recovered as the frozen local limit $\theta=2$ and $\mathcal T_R=0$ trivially\\
+$w$CDM/CPL & free equation-of-state history & can mimic distances but has no necessary $\mu$--$\eta$--$\Xi$ triangle\\
+Interacting vacuum/Chaplygin & background exchange can mimic Level I & does not by itself require a causal relational kernel linking standard sirens to slip\\
+Generic modified gravity & flexible $\mu$, $\eta$ and tensor friction & can fit sectors independently; R-Universe predicts one kernel for all three\\
+Level-II R-Universe & causal memory scale \kR & success requires a shared kernel fitting expansion, growth, slip and GW propagation\\
+\bottomrule
+\end{tabularx}
+\label{tab:competitors}
+\end{table}
+
+The high-impact prediction is therefore not a single best-fit number. It is a multi-observable consistency condition: after calibrating the memory kernel on distances and growth, the same kernel must predict the gravitational slip and standard-siren distance ratio without adding an independent function for each sector. Failure of Eq.~\eqref{eq:r-triangle} would falsify the Level-II theory even if the Level-I background fit remains acceptable.
 
 \section{Public data sources and exact data provenance}
 \label{sec:data-provenance}
@@ -612,6 +746,15 @@ Thus the signal is shared by supernovae and BAO rather than coming from a single
 \]
 The \LCDM value $\theta=2$ has $\Delta\chi^2=3.715$, corresponding to a one-parameter likelihood-ratio significance of only $1.93\sigma$ under regularity assumptions. The late-time data therefore show a suggestive preference, not a statistically decisive detection of $\theta\ne2$.
 
+\subsection{Exact victory threshold}
+
+For the main Pantheon+ + DESI DR2 + chronometer vector, $N=1624$. R1 has one more fitted background parameter than flat \LCDM. Therefore the exact information-criterion thresholds are
+\begin{align}
+\Delta{\rm AIC}<0 &\Longleftrightarrow \Delta\chi^2<-2,\\
+\Delta{\rm BIC}<0 &\Longleftrightarrow \Delta\chi^2<-\ln(1624)=-7.392.
+\end{align}
+The measured value is $\Delta\chi^2=-3.7117$. Thus the current public late-time data cross the AIC threshold but miss the BIC threshold by $3.6809$ in $\chi^2$. This is the quantitative standard future data must beat. A genuinely textbook-level result would require not only crossing this background threshold, but also satisfying the Level-II consistency condition in Eq.~\eqref{eq:r-triangle}.
+
 \subsection{DES-Dovekie + DESI DR2 + chronometers}
 
 \begin{table}[H]
@@ -716,9 +859,11 @@ These are not optional for a claim that R-Universe physically replaces or subsum
 
 \section{Conclusion}
 
-R-Universe R1 is a closed, reproducible, one-parameter late-time background extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$ at the homogeneous background level, computes all late-time distance observables used here, uses full covariance where available, includes an alternative DES-Dovekie supernova-pipeline cross-check, and gives conditional growth diagnostics under a stated smooth R-sector GR closure.
+R-Universe R1 is a closed, reproducible, one-parameter late-time background extension of flat \LCDM. It exactly contains \LCDM at $\theta=2$ at the homogeneous background level, computes all late-time distance observables used here, uses full covariance where available, includes an alternative DES-Dovekie supernova-pipeline cross-check, and gives conditional growth diagnostics under a stated smooth R-sector GR closure. This Level-I result is not presented as the full theory. It is the audit-complete infrared limit of a broader Level-II proposal in which the vacuum closure is generated by a causal relational scale rather than inserted as a rigid constant or arbitrary equation of state.
 
 The empirical result is precise but modest. Pantheon+ full covariance + DESI DR2 + chronometers gives $\Delta\chi^2=-3.7117$ and $\Delta{\rm AIC}=-1.7117$. DES-Dovekie + DESI DR2 + chronometers gives $\Delta\chi^2=-4.2133$ and $\Delta{\rm AIC}=-2.2133$. In both cases BIC remains positive. The profile-likelihood interval includes $\theta=2$ at approximately the $\Delta\chi^2\le4$ level. The current evidence is therefore suggestive but statistically inconclusive: R1 is an AIC-supported, falsifiable late-time extension, not yet a definitive replacement for \LCDM.
+
+The reason the program may still matter is sharper than the present $\chi^2$ improvement. If the same causal memory kernel that produces the infrared background attractor also predicts a nontrivial relation among $\mu(k,z)$, $\eta(k,z)$ and $\Xi(z)$, then R-Universe would connect distance data, structure growth, gravitational slip and standard-siren propagation in a way that ordinary background-degenerate models do not. That is the possible textbook-changing result. It has not been demonstrated here; it has been formulated as the next decisive test.
 
 \section*{Data availability}
 
