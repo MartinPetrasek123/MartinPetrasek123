@@ -29,8 +29,11 @@
   citecolor=blue!55!black,
   urlcolor=blue!55!black
 }
-\graphicspath{{figures/}}
+% Figures are included with explicit figures/... paths in graf.tex.
 \setkeys{Gin}{draft=false}
+\makeatletter
+\Gin@draftfalse
+\makeatother
 \setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt}
 \setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt}
 \emergencystretch=3em
@@ -47,8 +50,8 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\kR}{\ensuremath{\kappa_{\mathcal R}}}
 \newcommand{\MemR}{\ensuremath{\mathcal M_{\mathcal R}}}
-\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.5.3/r-universe-complete-chain}{GitHub release \texttt{v1.5.3}}}
-\newcommand{\release}{\texttt{v1.5.3}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.5.4/r-universe-complete-chain}{GitHub release \texttt{v1.5.4}}}
+\newcommand{\release}{\texttt{v1.5.4}}
 
 \title{\textbf{R-Universe as a Relational-Scale Infrared Attractor:\\
 A Reproducible Late-Time Test and a Falsifiable Perturbation-Propagation Program Beyond Flat \texorpdfstring{\LCDM}{LCDM}}}
