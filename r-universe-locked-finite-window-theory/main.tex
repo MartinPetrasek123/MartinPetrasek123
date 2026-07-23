@@ -1,0 +1,363 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage[final]{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage[numbers,sort&compress]{natbib}
+
+\geometry{margin=2.45cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+% Figures are collected in graf.tex; root filenames are used for Overleaf compatibility.
+\setkeys{Gin}{draft=false}
+\makeatletter
+\Gin@draftfalse
+\makeatother
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt}
+\emergencystretch=3em
+\sloppy
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\DeclareRobustCommand{\codepath}[1]{\path{#1}}
+\newcommand{\doiurl}[1]{\href{https://doi.org/#1}{doi:\,#1}}
+
+\newcommand{\chisq}{\ensuremath{\chi^2}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\kR}{\ensuremath{\kappa_{\mathcal R}}}
+\newcommand{\MemR}{\ensuremath{\mathcal M_{\mathcal R}}}
+\newcommand{\repo}{\href{https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.5.4/r-universe-complete-chain}{GitHub release \texttt{v1.5.4}}}
+\newcommand{\release}{\texttt{v1.5.4}}
+
+\title{\textbf{R-Universe:\\
+A Locked Finite-Window Calibration Theory of Geometry and Cosmic Expansion}}
+
+\author{
+Martin Petrášek\\
+\small Institute for Resonant Synthesis and Field Physics (IRSFP), Prague, Czech Republic\\
+\small ORCID: \href{https://orcid.org/0009-0007-4512-9528}{0009-0007-4512-9528}
+}
+
+\date{Draft version: 23 July 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+R-Universe is formulated here as a primary finite-window theory of geometric calibration. The starting point is not a dark component added to a pre-existing Friedmann equation, but a replacement of the pointwise gravitational response by a causal calibration law. The fundamental field is a scalar calibration variable $R_c$ obeying the retarded finite-window equation $(1-\ell^2\Box)R_c=-T/M_{\rm Pl}^2$. The locked theory uses one fixed window,
+\begin{equation*}
+W(R_c)=\frac{R_*}{R_c+R_*},
+\end{equation*}
+and the three functions
+\begin{equation*}
+F=1+\xi W(1-W),\qquad Z=Z_0W^2,
+\qquad U=U_*W^2(1-W)^2.
+\end{equation*}
+These functions return the theory to ordinary local geometric response at both ends of the calibration range, $R_c\ll R_*$ and $R_c\gg R_*$, while activating modification only in the finite-window transition. A direct integration of the locked background equations gives an exactly closed R-critical budget $\Omega_m^R+\Omega_r^R+\Omega_R=1$ and a self-accelerating calibration-dominated branch with $q=-0.485$, $F=1.370$, $W=0.920$, and $c_T^2=1$ on the reporting surface. The same computation also exposes the present weakness of this first locked branch: $\Omega_m^R$ is nearly erased on that branch, so the action is mathematically closed but not yet a phenomenologically acceptable complete cosmology. This is the intended criterion: the theory is defined, integrated and allowed to fail quantitatively.
+\end{abstract}
+
+\noindent\textbf{Keywords:} R-Universe; finite-window calibration; causal gravity; scalar--tensor cosmology; modified Friedmann equations; cosmic acceleration; perturbations.
+
+\section{Core Principle}
+
+R-Universe replaces instantaneous pointwise gravitational response by causal finite-window calibration. The primitive relation is
+\begin{equation}
+G_{\mu\nu}+\mathcal C_{\mu\nu}
+=\frac{1}{M_{\rm Pl}^2}\mathcal W_\ell T_{\mu\nu},
+\label{eq:core-relation}
+\end{equation}
+where $\mathcal W_\ell$ is a retarded finite-window operator and $\mathcal C_{\mu\nu}$ is the covariant correction required by the Bianchi identity. The defining conservation condition is
+\begin{equation}
+\nabla^\mu\left(\mathcal W_\ell T_{\mu\nu}-M_{\rm Pl}^2\mathcal C_{\mu\nu}\right)=0.
+\label{eq:conservation-core}
+\end{equation}
+This is the central replacement: geometry responds to a causally calibrated source, not to an infinitely sharp local sample of stress energy.
+
+The finite-window operator is fixed as the retarded resolvent
+\begin{equation}
+\mathcal W_\ell=(1-\ell^2\Box_{\rm ret})^{-1}.
+\label{eq:retarded-window}
+\end{equation}
+The sign convention is chosen so that the local auxiliary-field representation is hyperbolic and retarded.
+
+\section{Locked Action}
+
+The local variational form uses a calibration scalar $R_c$ and a Lagrange multiplier $\lambda$:
+\begin{equation}
+\boxed{
+S_R=\int\dd^4x\sqrt{-g}\left[
+\frac{M_{\rm Pl}^2}{2}F(R_c)\mathcal R
+-\frac{Z(R_c)}{2}\nabla_\mu R_c\nabla^\mu R_c
+-U(R_c)
++\lambda\left((1-\ell^2\Box)R_c+\frac{T}{M_{\rm Pl}^2}\right)
+\right]+S_m.
+}
+\label{eq:locked-action}
+\end{equation}
+Here $\mathcal R$ is the Ricci scalar. The calibration source is
+\begin{equation}
+\mathcal I[g,T]=-\frac{T}{M_{\rm Pl}^2}.
+\label{eq:cal-source}
+\end{equation}
+Variation with respect to $\lambda$ gives the exact finite-window equation
+\begin{equation}
+\boxed{(1-\ell^2\Box)R_c=-\frac{T}{M_{\rm Pl}^2}.}
+\label{eq:calibration-equation}
+\end{equation}
+The retarded solution branch is part of the theory and is not selected after the calculation.
+
+The window and locked functions are
+\begin{align}
+W(R_c)&=\frac{R_*}{R_c+R_*},\label{eq:Wlocked}\\
+F(R_c)&=1+\xi W(1-W),\label{eq:Flocked}\\
+Z(R_c)&=Z_0W^2,\label{eq:Zlocked}\\
+U(R_c)&=U_*W^2(1-W)^2.\label{eq:Ulocked}
+\end{align}
+No additional redshift function, expansion history, or constant vacuum term is inserted. The modification lives only in the transition window. In the two limits,
+\begin{equation}
+R_c\ll R_*:\quad W\to1,\quad F\to1,\quad U\to0,
+\end{equation}
+\begin{equation}
+R_c\gg R_*:\quad W\to0,\quad F\to1,\quad U\to0.
+\end{equation}
+Thus dense local systems and the high-density early branch both return to the uncalibrated geometric response, while the finite-window regime $R_c\sim R_*$ carries the new dynamics.
+
+\section{Field Equations}
+
+Metric variation gives
+\begin{equation}
+\boxed{
+M_{\rm Pl}^2F G_{\mu\nu}
+=T_{\mu\nu}^{(m)}+T_{\mu\nu}^{(R)}
++M_{\rm Pl}^2\left(\nabla_\mu\nabla_\nu F-g_{\mu\nu}\Box F\right)
++T_{\mu\nu}^{(\lambda)}.
+}
+\label{eq:metric-equation}
+\end{equation}
+The calibration stress tensor is
+\begin{equation}
+T_{\mu\nu}^{(R)}=Z\nabla_\mu R_c\nabla_\nu R_c
+-g_{\mu\nu}\left[\frac{Z}{2}(\nabla R_c)^2+U\right].
+\label{eq:TR}
+\end{equation}
+This is not a dark-fluid addition. The same field changes the effective Planck mass, the background expansion, the perturbative response, and the relation between matter and geometry.
+
+\section{Background Equations}
+
+For a flat FLRW metric and a homogeneous calibration field, the first equation is
+\begin{equation}
+\boxed{
+3M_{\rm Pl}^2F H^2
+=\rho_m+\rho_r+\frac12Z\dot R_c^2+U
+-3M_{\rm Pl}^2H\dot F+\rho_\lambda.
+}
+\label{eq:friedmann1locked}
+\end{equation}
+The second equation is
+\begin{equation}
+\boxed{
+-2M_{\rm Pl}^2F\dot H
+=\rho_m+\frac43\rho_r+Z\dot R_c^2
++M_{\rm Pl}^2(\ddot F-H\dot F)+\rho_\lambda+p_\lambda.
+}
+\label{eq:friedmann2locked}
+\end{equation}
+For dust plus radiation, $T=-\rho_m$, and Eq.~\eqref{eq:calibration-equation} becomes
+\begin{equation}
+\boxed{\ddot R_c+3H\dot R_c+\ell^{-2}R_c=\ell^{-2}\rho_m/M_{\rm Pl}^2.}
+\label{eq:Rflrw}
+\end{equation}
+The numerical background calculation in this release uses the reduced branch $\rho_\lambda=p_\lambda=0$ after enforcing the finite-window equation. This is the minimal directly integrated branch; a later multiplier-dynamical branch must keep $T_{\mu\nu}^{(\lambda)}$ explicitly.
+
+The R-critical density variables are defined by
+\begin{align}
+\Omega_m^R&=\frac{\rho_m}{3M_{\rm Pl}^2F H^2},\label{eq:OmmR}\\
+\Omega_r^R&=\frac{\rho_r}{3M_{\rm Pl}^2F H^2},\label{eq:OmrR}\\
+\Omega_R&=\frac{\frac12Z\dot R_c^2+U-3M_{\rm Pl}^2H\dot F+\rho_\lambda}{3M_{\rm Pl}^2F H^2}.
+\label{eq:OmcalR}
+\end{align}
+Then the first equation gives the exact closure relation
+\begin{equation}
+\boxed{\Omega_m^R+\Omega_r^R+\Omega_R=1.}
+\label{eq:Rclosure}
+\end{equation}
+
+\section{Perturbative Sector}
+
+In Newtonian gauge,
+\begin{equation}
+\dd s^2=-(1+2\Psi)\dd t^2+a^2(1-2\Phi)\dd\mathbf x^2.
+\end{equation}
+Linearization of the same locked functions gives
+\begin{align}
+-\frac{k^2}{a^2}\Psi&=4\pi G\,\mu(k,a)\rho_m\Delta_m,\label{eq:mu}\\
+\Phi&=\eta(k,a)\Psi,\label{eq:eta}\\
+-\frac{k^2}{a^2}(\Phi+\Psi)&=8\pi G\,\Sigma(k,a)\rho_m\Delta_m.
+\label{eq:sigma}
+\end{align}
+In the quasistatic scalar--tensor limit the expected form is
+\begin{equation}
+\mu(k,a)=\frac1F\left[1+\frac{2F_R^2}{ZF+3F_R^2}
+\frac{k^2/a^2}{k^2/a^2+m_R^2}\right],
+\label{eq:mu-form}
+\end{equation}
+with
+\begin{equation}
+m_R^2=\frac{U_{RR}^{\rm eff}}{Z_{\rm eff}}.
+\end{equation}
+The slip is
+\begin{equation}
+\eta(k,a)=\frac{1-\epsilon(k,a)}{1+\epsilon(k,a)},
+\qquad
+\epsilon(k,a)=\frac{F_R^2}{ZF+2F_R^2}
+\frac{k^2/a^2}{k^2/a^2+m_R^2}.
+\label{eq:eta-form}
+\end{equation}
+Thus $\mu$, $\eta$ and $\Sigma$ are not independent functions. They are consequences of $F$, $Z$ and $U$.
+
+The tensor quadratic action is
+\begin{equation}
+S_T^{(2)}=\frac18\int\dd t\dd^3x\,a^3M_{\rm Pl}^2F
+\left[\dot h_{ij}^2-\frac{(\nabla h_{ij})^2}{a^2}\right].
+\label{eq:tensorlocked}
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{Q_T=M_{\rm Pl}^2F>0,\qquad c_T^2=1.}
+\label{eq:tensor-gates}
+\end{equation}
+The scalar quadratic action must have
+\begin{equation}
+S_s^{(2)}=\int\dd t\dd^3x\,a^3Q_s
+\left[\dot\zeta^2-c_s^2\frac{(\nabla\zeta)^2}{a^2}\right],
+\end{equation}
+with
+\begin{equation}
+\boxed{Q_s>0,\qquad c_s^2>0.}
+\label{eq:scalar-stability}
+\end{equation}
+The current calculation verifies $F>0$, $Z>0$ and $c_T^2=1$ on the integrated branch. It does not yet compute the full scalar quadratic action.
+
+\section{Numerical Integration of the Locked Branch}
+
+The script \codepath{code/locked_r_universe.py} integrates Eqs.~\eqref{eq:friedmann1locked} and \eqref{eq:Rflrw} directly in dimensionless units $M_{\rm Pl}=1$. With $\dot R_c=V$, the constraint is solved as the positive root of
+\begin{equation}
+3F H^2+3F_RVH-\left(\rho_m+\rho_r+\frac12ZV^2+U\right)=0.
+\label{eq:Hroot}
+\end{equation}
+The evolution equations are
+\begin{align}
+\dot a&=aH,\\
+\dot R_c&=V,\\
+\dot V&=\ell^{-2}\rho_m-\ell^{-2}R_c-3HV.
+\end{align}
+A coarse locked-parameter scan over $\{\xi,Z_0,U_*,R_*,\ell\}$ selects the branch with the smallest combined background score. The selected parameter set is
+\begin{equation}
+\xi=5.0,
+\qquad
+Z_0=0.05,
+\qquad
+U_*=1.5,
+\qquad
+R_*=0.2,
+\qquad
+\ell=0.7.
+\label{eq:locked-params}
+\end{equation}
+The matter and radiation normalizations used for this dimensionless branch are
+\begin{equation}
+\rho_{m0}=0.05,
+\qquad
+\rho_{r0}=10^{-4}.
+\end{equation}
+At the reporting surface $a=0.99784$, the integrated branch gives
+\begin{align}
+W&=0.91956,&F&=1.36986,&G_{\rm unscreened}/G&=0.73000,\nonumber\\
+\Omega_m^R&=3.96\times10^{-12},&\Omega_r^R&=7.93\times10^{-15},&\Omega_R&=0.999999999996,\nonumber\\
+q&=-0.48495,&\Omega_m^R+\Omega_r^R+\Omega_R&=1.000000000000.
+\label{eq:locked-result}
+\end{align}
+At the first integrated point $a=10^{-2}$,
+\begin{align}
+W&=4.00\times10^{-6},&F&=1.000020,\nonumber\\
+\Omega_m^R&=0.83333,&\Omega_r^R&=0.16667,&\Omega_R&=4.00\times10^{-16}.
+\label{eq:locked-early}
+\end{align}
+The calculation therefore proves three things about the locked equations. First, the R-critical density closure is numerically exact. Second, the branch returns to the high-density uncalibrated limit at early times. Third, the same locked equations can self-accelerate. The branch is not yet a viable complete cosmology because the transition chosen by the coarse scan erases the R-critical matter fraction at the reporting surface. This is a quantitative failure mode of the first locked branch, not an ambiguity in the equations.
+
+\input{graf.tex}
+
+\section{Computational Provenance}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Files that reproduce the locked-branch calculation.}
+\begin{tabularx}{\linewidth}{p{0.28\linewidth}Y}
+\toprule
+Object & Role\\
+\midrule
+\codepath{code/locked_r_universe.py} & Direct integration and parameter scan for the locked finite-window equations\\
+\codepath{code/locked_r_universe_results.json} & Machine-readable summary of parameters, closure, acceleration and stability gates\\
+\codepath{tables/locked_r_universe_background.csv} & Full sampled background branch\\
+\codepath{figures/fig01_locked_r_universe_background.pdf} & Figure generated from the sampled branch\\
+\codepath{graf.tex} & Single-figure inclusion block for this version\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Completion Gates}
+
+This version defines the new theory and integrates its first locked branch. The remaining calculations are now unambiguous:
+\begin{enumerate}
+\item keep the locked functions in Eqs.~\eqref{eq:Wlocked}--\eqref{eq:Ulocked};
+\item include the full multiplier stress tensor $T_{\mu\nu}^{(\lambda)}$ rather than the reduced branch;
+\item derive the full scalar quadratic action and compute $Q_s$ and $c_s^2$;
+\item compute $\mu$, $\eta$ and $\Sigma$ from Eqs.~\eqref{eq:mu-form}--\eqref{eq:eta-form};
+\item implement the same equations in a Boltzmann solver;
+\item search parameter space for a branch that keeps a nonzero R-critical matter fraction while maintaining acceleration and $F>0$.
+\end{enumerate}
+No function may be changed after these gates are declared. Failure of these gates means failure of this locked R-Universe theory.
+
+\section{Conclusion}
+
+The manuscript now states a new theory rather than a comparative model. The defining move is the finite-window calibration equation, not an added dark component. The locked functions return the geometry to its uncalibrated response at both small and large calibration field values and activate only in the transition window. The first direct numerical integration is mathematically closed and self-accelerating, but it also exposes a severe branch problem: the selected reduced branch becomes almost entirely calibration-dominated. This is useful because it turns the next step into a precise calculation rather than a narrative choice. The theory is now fixed; what remains is to find whether its full multiplier branch and perturbations admit a physically acceptable universe.
+
+\section*{Code availability}
+
+The reproduction command for the locked calculation is
+\begin{verbatim}
+/Users/mpetr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 code/locked_r_universe.py
+\end{verbatim}
+The output files are \codepath{code/locked_r_universe_results.json}, \codepath{tables/locked_r_universe_background.csv} and \codepath{figures/fig01_locked_r_universe_background.pdf}.
+
+\section*{Data availability}
+
+This version is a theoretical and numerical branch calculation. It does not use observational datasets. The numerical data product is the generated background table \codepath{tables/locked_r_universe_background.csv}.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

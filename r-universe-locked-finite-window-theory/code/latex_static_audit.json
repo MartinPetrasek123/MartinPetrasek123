@@ -1,0 +1,18 @@
+{
+  "missing_refs": [],
+  "duplicate_labels": [],
+  "includegraphics": [
+    "figures/fig01_locked_r_universe_background.pdf"
+  ],
+  "missing_graphics": [],
+  "placeholder_count": 0,
+  "forbidden_phrase_hits": {
+    "LCDM": 0,
+    "Pantheon": 0,
+    "DESI": 0,
+    "benchmark": 0,
+    "against": 0,
+    "relative to": 0,
+    "standard cosmology": 0
+  }
+}
