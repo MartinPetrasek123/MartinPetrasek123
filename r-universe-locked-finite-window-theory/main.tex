@@ -66,7 +66,7 @@ Martin Petrášek\\
 \maketitle
 
 \begin{abstract}
-R-Universe is formulated here as a primary finite-window theory of geometric calibration. The starting point is not a dark component added to a pre-existing Friedmann equation, but a replacement of the pointwise gravitational response by a causal calibration law. The fundamental field is a scalar calibration variable $R_c$ obeying the retarded finite-window equation $(1-\ell^2\Box)R_c=-T/M_{\rm Pl}^2$. The locked theory uses one fixed window,
+R-Universe is tested here through a deliberately narrow finite-window localization: a scalar calibration variable $R_c$ is sourced by the trace $T$ of the matter stress tensor through $(1-\ell^2\Box)R_c=-T/M_{\rm Pl}^2$. This is not yet a tensor calibration of the full source $T_{\mu\nu}$. It is the first hard local test of whether an exact finite-window constraint can be imposed by a Lagrange multiplier without introducing an unphysical scalar mode. The locked prototype uses one fixed window,
 \begin{equation*}
 W(R_c)=\frac{R_*}{R_c+R_*},
 \end{equation*}
@@ -75,32 +75,44 @@ and the three functions
 F=1+\xi W(1-W),\qquad Z=Z_0W^2,
 \qquad U=U_*W^2(1-W)^2.
 \end{equation*}
-These functions return the theory to ordinary local geometric response at both ends of the calibration range, $R_c\ll R_*$ and $R_c\gg R_*$, while activating modification only in the finite-window transition. The decisive calculation in this release is not a fit but the full multiplier stability gate. After integrating the multiplier term by parts, the scalar kinetic Hessian in the field velocities $(\dot R_c,\dot\lambda)$ is $K=\begin{pmatrix}Z&\ell^2\\\ell^2&0\end{pmatrix}$, with determinant $-\ell^4$. Therefore for every finite nonzero $\ell$ and positive $Z$ the two kinetic eigenvalues have opposite signs. The hard Lagrange-multiplier realization of the finite-window theory contains a ghost scalar degree of freedom before any data fitting. A reduced background branch is still integrated as a diagnostic, but it is not a physical solution of the full action because it omits $T_{\mu\nu}^{(\lambda)}$. The result is a useful failure: the finite-window principle survives as a target, while this specific multiplier action does not.
+These functions make $F\to1$ and $U\to0$ at both ends of the calibration range while activating modification only in the finite-window transition; this by itself is not a proof of a complete general-relativistic limit because the auxiliary kinetic and trace-coupling sectors must also decouple. The decisive calculation in this release is not a fit but the multiplier stability gate. After integrating the multiplier term by parts, the scalar kinetic Hessian in the field velocities $(\dot R_c,\dot\lambda)$ is $K=\begin{pmatrix}Z&\ell^2\\\ell^2&0\end{pmatrix}$, with determinant $-\ell^4$. The non-minimal $F(R_c)\mathcal R$ term adds a positive contribution to the $R_cR_c$ entry after the metric kinetic mixing is diagonalized, but the determinant remains negative, $\det K_E=-\ell^4/F^2$, for $F>0$. Therefore the hard Lagrange-multiplier localization has an indefinite scalar kinetic signature before any data fitting. A reduced background branch is integrated only as a diagnostic; it is not a physical solution of the full action because it omits $T_{\mu\nu}^{(\lambda)}$ and does not close the matter variation induced by $\lambda T$. The result is a useful no-go statement for this localization, not a disproof of the finite-window principle.
 \end{abstract}
 
 \noindent\textbf{Keywords:} R-Universe; finite-window calibration; causal gravity; scalar--tensor cosmology; modified Friedmann equations; cosmic acceleration; perturbations.
 
 \section{Core Principle}
 
-R-Universe replaces instantaneous pointwise gravitational response by causal finite-window calibration. The primitive relation is
+The broad R-Universe target is to replace instantaneous pointwise gravitational response by finite-window calibration. A tensor version of that target would have the schematic form
 \begin{equation}
 G_{\mu\nu}+\mathcal C_{\mu\nu}
 =\frac{1}{M_{\rm Pl}^2}\mathcal W_\ell T_{\mu\nu},
 \label{eq:core-relation}
 \end{equation}
-where $\mathcal W_\ell$ is a retarded finite-window operator and $\mathcal C_{\mu\nu}$ is the covariant correction required by the Bianchi identity. The defining conservation condition is
+where $\mathcal W_\ell$ is a finite-window operator and $\mathcal C_{\mu\nu}$ is the covariant correction required by the Bianchi identity. The defining conservation condition would be
 \begin{equation}
 \nabla^\mu\left(\mathcal W_\ell T_{\mu\nu}-M_{\rm Pl}^2\mathcal C_{\mu\nu}\right)=0.
 \label{eq:conservation-core}
 \end{equation}
-This is the central replacement: geometry responds to a causally calibrated source, not to an infinitely sharp local sample of stress energy.
+The local action tested in this paper does not realize Eq.~\eqref{eq:core-relation}. It realizes only a scalar trace localization,
+\begin{equation}
+(1-\ell^2\Box)R_c=-\frac{T}{M_{\rm Pl}^2}.
+\label{eq:trace-only}
+\end{equation}
+This distinction is essential. Radiation has $T=0$ but $T_{\mu\nu}\neq0$, so a trace-sourced calibration field does not calibrate the full gravitational source. A true tensor finite-window theory would require an auxiliary tensor or constrained tensor operator, for example
+\begin{equation}
+(1-\ell^2\Box)X_{\mu\nu}=\frac{T_{\mu\nu}}{M_{\rm Pl}^2},
+\qquad
+\nabla^\mu X_{\mu\nu}=0,
+\label{eq:tensor-target}
+\end{equation}
+or an equivalent covariant construction. The present manuscript is therefore a no-go test of the trace-scalar Lagrange-multiplier localization, not the completed tensor theory.
 
-The finite-window operator is fixed as the retarded resolvent
+The desired causal branch is the retarded resolvent
 \begin{equation}
 \mathcal W_\ell=(1-\ell^2\Box_{\rm ret})^{-1}.
 \label{eq:retarded-window}
 \end{equation}
-The sign convention is chosen so that the local auxiliary-field representation is hyperbolic and retarded.
+A single-copy local variational action does not by itself select the retarded Green function; its Euler--Lagrange equations allow homogeneous solutions. The retarded branch must be imposed by boundary conditions or by an in-in effective action. This is the standard subtlety in local representations of nonlocal operators and is one reason the stability gate below is treated as a test of a localization, not as a finished causal theory \citep{MaggioreMancarella2014,Woodard2014,FoffaMaggiore2014}.
 
 \section{Locked Action}
 
@@ -152,6 +164,18 @@ Variation with respect to $R_c$ gives the independent multiplier equation
 \end{equation}
 Thus the full background system contains at least $\{a,H,R_c,\dot R_c,\lambda,\dot\lambda,\rho_m,\rho_r\}$. The multiplier cannot be used to impose Eq.~\eqref{eq:calibration-equation} and then removed from the stress tensor.
 
+The dimensions are fixed by Eq.~\eqref{eq:calibration-equation}. In units with $c=\hbar=1$,
+\begin{equation}
+[R_c]=[R_*]=M^2,\qquad [\ell]=M^{-1},\qquad [U_*]=M^4,\qquad [Z_0]=M^{-2},\qquad [\lambda]=M^2.
+\label{eq:dimensions}
+\end{equation}
+The numerical scan below uses a dimensionless reporting scale $H_*$ with
+\begin{equation}
+R_*=0.2H_*^2,\qquad U_*=1.5M_{\rm Pl}^2H_*^2,\qquad Z_0=0.05H_*^{-2},\qquad \ell=0.7H_*^{-1}.
+\label{eq:units}
+\end{equation}
+The parameter labelled $\rho_{m0}$ in the code is therefore a dimensionless branch normalization, not a measured present-day matter density.
+
 The window and locked functions are
 \begin{align}
 W(R_c)&=\frac{R_*}{R_c+R_*},\label{eq:Wlocked}\\
@@ -166,7 +190,14 @@ R_c\ll R_*:\quad W\to1,\quad F\to1,\quad U\to0,
 \begin{equation}
 R_c\gg R_*:\quad W\to0,\quad F\to1,\quad U\to0.
 \end{equation}
-Thus dense local systems and the high-density early branch both return to the uncalibrated geometric response, while the finite-window regime $R_c\sim R_*$ carries the new dynamics.
+These limits prove only $F\to1$ and $U\to0$. They do not prove full recovery of ordinary local gravity, because $Z(\nabla R_c)^2$, $-\ell^2\nabla_\mu\lambda\nabla^\mu R_c$ and $\lambda T/M_{\rm Pl}^2$ can still contribute. A complete local-gravity limit requires all auxiliary sectors to decouple.
+
+The rational window also has a pole at
+\begin{equation}
+R_c=-R_*.
+\label{eq:window-pole}
+\end{equation}
+The homogeneous dust branch used here remains in $R_c>0$, but this is not a proof of an invariant field domain under perturbations or in vacuum regions. A successor theory must either prove $R_c>-R_*$ for admissible data or replace Eq.~\eqref{eq:Wlocked} by a regular window such as $W=(1+(R_c/R_*)^2)^{-1}$.
 
 \section{Field Equations}
 
@@ -186,7 +217,25 @@ T_{\mu\nu}^{(R)}=Z\nabla_\mu R_c\nabla_\nu R_c
 -g_{\mu\nu}\left[\frac{Z}{2}(\nabla R_c)^2+U\right].
 \label{eq:TR}
 \end{equation}
-This is not a dark-fluid addition. The same field changes the effective Planck mass, the background expansion, the perturbative response, and the relation between matter and geometry.
+The multiplier stress tensor is not optional. From the derivative and algebraic pieces in Eq.~\eqref{eq:ibp-action}, it contains terms of the form
+\begin{equation}
+T_{\mu\nu}^{(\lambda,{\rm der})}
+=\ell^2\left[
+\nabla_\mu\lambda\nabla_\nu R_c+\nabla_\nu\lambda\nabla_\mu R_c
+-g_{\mu\nu}\nabla_\alpha\lambda\nabla^\alpha R_c
+\right],
+\label{eq:Tlambda-der}
+\end{equation}
+and an algebraic part from $\lambda R_c$. The trace coupling requires still more care because
+\begin{equation}
+\delta T=T_{\mu\nu}\delta g^{\mu\nu}
++g^{\alpha\beta}\frac{\delta T_{\alpha\beta}}{\delta g^{\mu\nu}}\delta g^{\mu\nu}
+\equiv \left(T_{\mu\nu}+\Theta_{\mu\nu}\right)\delta g^{\mu\nu}.
+\label{eq:Theta}
+\end{equation}
+Therefore the term $\lambda T/M_{\rm Pl}^2$ generally contributes a matter-Lagrangian-dependent tensor proportional to $T_{\mu\nu}+\Theta_{\mu\nu}$ and also modifies the matter equations. Standard continuity equations for matter and radiation cannot be assumed until this sector is specified \citep{Harko2011,NojiriOdintsov2011}. This is another reason the reduced branch below is diagnostic only.
+
+The tensor target in Eq.~\eqref{eq:tensor-target}, the trace-scalar localization in Eq.~\eqref{eq:trace-only}, and the degeneracy requirement discussed below sit in the same technical territory as causal nonlocal gravity, scalar--tensor stability and degenerate higher-order scalar--tensor theories \citep{MaggioreMancarella2014,FoffaMaggiore2014,Woodard2014,Langlois2016,DHOST2018}. The tensor speed condition is also constrained by multimessenger bounds \citep{CreminelliVernizzi2017,EzquiagaZumalacarregui2017}.
 
 \section{Background Equations}
 
@@ -214,6 +263,15 @@ For dust plus radiation, $T=-\rho_m$, and Eq.~\eqref{eq:calibration-equation} be
 \label{eq:Rflrw}
 \end{equation}
 The reduced numerical background shown below sets $\rho_\lambda=p_\lambda=0$ only as a diagnostic of the non-multiplier subsystem. It is not a physical solution of Eq.~\eqref{eq:ibp-action}. The full theory must keep $T_{\mu\nu}^{(\lambda)}$ and evolve $\lambda$ with Eq.~\eqref{eq:Rvariation}.
+
+The explicit homogeneous derivative contribution would include
+\begin{equation}
+\rho_{\lambda,{\rm der}}=\ell^2\dot\lambda\dot R_c,
+\qquad
+p_{\lambda,{\rm der}}=\ell^2\dot\lambda\dot R_c,
+\label{eq:lambdader-rhop}
+\end{equation}
+together with algebraic and matter-variation terms from $\lambda R_c+\lambda T/M_{\rm Pl}^2$. Since these terms are not included in \codepath{code/locked_r_universe.py}, that script does not solve the complete action.
 
 The R-critical density variables are defined by
 \begin{align}
@@ -266,22 +324,49 @@ with $K_+>0$ and $K_-<0$ for $Z>0$. This is a background-independent ghost in th
 \min K_-=-0.490000.
 \label{eq:ghost-result}
 \end{equation}
-The verdict is therefore immediate: this locked multiplier action is not viable in its present form. No background fit can repair a propagating ghost.
+Because $\det K\neq0$, the pair $(R_c,\lambda)$ is not a degenerate constraint system at the homogeneous kinetic level. The variable called a multiplier has become part of a propagating two-scalar sector, with one negative kinetic direction.
 
-\section{Perturbative Sector}
+The non-minimal term $F(R_c)\mathcal R$ cannot remove this conclusion by adding a positive contribution only to the $R_cR_c$ entry. In an Einstein-frame estimate, the scalar entry becomes
+\begin{equation}
+Z_E=\frac{Z}{F}+\frac32\left(\frac{F_{,R}}{F}\right)^2,
+\label{eq:ZE}
+\end{equation}
+and the off-diagonal term scales as $\ell^2/F$. Thus
+\begin{equation}
+K_E\simeq
+\begin{pmatrix}
+Z_E&\ell^2/F\\
+\ell^2/F&0
+\end{pmatrix},
+\qquad
+\boxed{\det K_E=-\frac{\ell^4}{F^2}<0}
+\label{eq:KE}
+\end{equation}
+for $F>0$. Numerically, \codepath{code/full_lambda_stability_gate.py} finds
+\begin{equation}
+\min K_+^E=0.454615,
+\qquad
+\max K_-^E=-2.59309\times10^{-4},
+\qquad
+\min K_-^E=-0.489990.
+\label{eq:ghost-result-E}
+\end{equation}
+The homogeneous Hessian therefore already has indefinite signature. The final theorem for the full metric-scalar system would require an ADM analysis and elimination of lapse and shift, but the present gate is strong enough to rule out parameter tuning as a cure. A background fit cannot repair a non-degenerate negative kinetic mode \citep{Langlois2016,DHOST2018}.
+
+\section{Perturbative Status}
 
 In Newtonian gauge,
 \begin{equation}
 \dd s^2=-(1+2\Psi)\dd t^2+a^2(1-2\Phi)\dd\mathbf x^2.
 \end{equation}
-Linearization of the same locked functions gives
+For a healthy one-scalar successor theory, linear observables would be organized by
 \begin{align}
 -\frac{k^2}{a^2}\Psi&=4\pi G\,\mu(k,a)\rho_m\Delta_m,\label{eq:mu}\\
 \Phi&=\eta(k,a)\Psi,\label{eq:eta}\\
 -\frac{k^2}{a^2}(\Phi+\Psi)&=8\pi G\,\Sigma(k,a)\rho_m\Delta_m.
 \label{eq:sigma}
 \end{align}
-In the quasistatic scalar--tensor limit the expected form is
+In the quasistatic limit of a simpler healthy scalar--tensor theory, the expected form would be
 \begin{equation}
 \mu(k,a)=\frac1F\left[1+\frac{2F_R^2}{ZF+3F_R^2}
 \frac{k^2/a^2}{k^2/a^2+m_R^2}\right],
@@ -299,7 +384,7 @@ The slip is
 \frac{k^2/a^2}{k^2/a^2+m_R^2}.
 \label{eq:eta-form}
 \end{equation}
-Thus $\mu$, $\eta$ and $\Sigma$ are not independent functions. They are consequences of $F$, $Z$ and $U$.
+These formulae are not the perturbation equations of the failed hard-multiplier action. That action contains two scalar combinations, kinetic mixing, a trace-matter coupling and an indefinite kinetic signature. The equations above are retained only to specify what a future ghost-free one-scalar successor must derive from its own quadratic action; they are not predictions of Eq.~\eqref{eq:ibp-action}.
 
 The tensor quadratic action is
 \begin{equation}
@@ -307,7 +392,7 @@ S_T^{(2)}=\frac18\int\dd t\dd^3x\,a^3M_{\rm Pl}^2F
 \left[\dot h_{ij}^2-\frac{(\nabla h_{ij})^2}{a^2}\right].
 \label{eq:tensorlocked}
 \end{equation}
-Therefore
+For the pure gravitational tensor sector on a homogeneous background, and assuming no additional anisotropic tensor coupling from the matter interaction,
 \begin{equation}
 \boxed{Q_T=M_{\rm Pl}^2F>0,\qquad c_T^2=1.}
 \label{eq:tensor-gates}
@@ -322,7 +407,7 @@ with
 \boxed{Q_s>0,\qquad c_s^2>0.}
 \label{eq:scalar-stability}
 \end{equation}
-The current calculation verifies $F>0$, $Z>0$ and $c_T^2=1$ on the integrated branch. It does not yet compute the full scalar quadratic action.
+The current calculation verifies $F>0$, $Z>0$ and $c_T^2=1$ on the integrated branch. It also shows that the hard-multiplier scalar Hessian is indefinite. It does not replace the required ADM scalar perturbation calculation.
 
 \section{Numerical Integration of the Locked Branch}
 
@@ -356,8 +441,17 @@ The matter and radiation normalizations used for this dimensionless branch are
 \qquad
 \rho_{r0}=10^{-4}.
 \end{equation}
+These labels are code normalizations in the scale system of Eq.~\eqref{eq:units}. The branch is not normalized to a measured present-day Hubble scale. This is visible from the reporting values
+\begin{equation}
+H=5.56335\times10^4,\qquad
+\rho_m=5.03247\times10^{-2},\qquad
+\rho_r=1.00649\times10^{-4},
+\label{eq:reporting-rhos}
+\end{equation}
+obtained at $a=0.99784$. The small value of $\Omega_m^R$ below is therefore produced by the enormous dimensionless $H^2$ on the reduced branch, not by a measured matter density.
 At the reporting surface $a=0.99784$, the integrated branch gives
 \begin{align}
+R_c&=1.74963\times10^{-2},&\dot R_c&=-4.29621\times10^3,&U&=8.20799\times10^{-3},\nonumber\\
 W&=0.91956,&F&=1.36986,&G_{\rm unscreened}/G&=0.73000,\nonumber\\
 \Omega_m^R&=3.96\times10^{-12},&\Omega_r^R&=7.93\times10^{-15},&\Omega_R&=0.999999999996,\nonumber\\
 q&=-0.48495,&\Omega_m^R+\Omega_r^R+\Omega_R&=1.000000000000.
@@ -369,7 +463,17 @@ W&=4.00\times10^{-6},&F&=1.000020,\nonumber\\
 \Omega_m^R&=0.83333,&\Omega_r^R&=0.16667,&\Omega_R&=4.00\times10^{-16}.
 \label{eq:locked-early}
 \end{align}
-The reduced calculation proves only a limited diagnostic point: if the multiplier stress tensor is omitted, the remaining subsystem can produce exact R-critical closure and self-acceleration, but it erases the R-critical matter fraction. Because the full multiplier kinetic gate already fails by Eq.~\eqref{eq:detK}, this branch must not be presented as a physical solution of the locked action.
+The reduced calculation proves only a limited diagnostic point: if the multiplier stress tensor is omitted, the remaining subsystem can produce exact R-critical closure and self-acceleration, but it erases the R-critical matter fraction. It is not a consistent truncation of the action, because it keeps the calibration equation enforced by $\lambda$ while discarding the stress tensor and independent equation of the same field. The second Friedmann equation must therefore be treated as a residual diagnostic,
+\begin{equation}
+\mathcal E_2=
+-2M_{\rm Pl}^2F\dot H
+-\left[
+\rho_m+\frac43\rho_r+Z\dot R_c^2
++M_{\rm Pl}^2(\ddot F-H\dot F)
+\right],
+\label{eq:E2residual}
+\end{equation}
+not as a solved equation. Because the full multiplier kinetic gate already fails by Eq.~\eqref{eq:detK}, this branch must not be presented as a physical solution of the locked action.
 
 \input{graf.tex}
 
@@ -384,9 +488,13 @@ The reduced calculation proves only a limited diagnostic point: if the multiplie
 Object & Role\\
 \midrule
 \codepath{code/locked_r_universe.py} & Direct integration and parameter scan for the locked finite-window equations\\
+\codepath{code/full_lambda_stability_gate.py} & Jordan-frame and Einstein-frame kinetic Hessian test for the hard multiplier localization\\
 \codepath{code/locked_r_universe_results.json} & Machine-readable summary of parameters, closure, acceleration and stability gates\\
+\codepath{code/full_lambda_stability_gate_results.json} & Machine-readable no-go result for the multiplier scalar sector\\
 \codepath{tables/locked_r_universe_background.csv} & Full sampled background branch\\
+\codepath{tables/full_lambda_stability_gate.csv} & Kinetic eigenvalues evaluated on the sampled branch\\
 \codepath{figures/fig01_locked_r_universe_background.pdf} & Figure generated from the sampled branch\\
+\codepath{figures/fig02_full_lambda_ghost_gate.pdf} & Figure generated from the kinetic gate\\
 \codepath{graf.tex} & Single-figure inclusion block for this version\\
 \bottomrule
 \end{tabularx}
@@ -394,12 +502,14 @@ Object & Role\\
 
 \section{Completion Gates}
 
-This version defines the locked multiplier theory and performs the first decisive internal test. Since the hard multiplier kinetic matrix has a negative eigenvalue, the required next steps are not data fitting but repair or replacement of the multiplier sector:
+This version defines the trace-scalar locked multiplier theory and performs the first decisive internal test. Since the hard multiplier kinetic matrix has a negative eigenvalue, the required next steps are not data fitting but replacement of the multiplier sector:
 \begin{enumerate}
-\item keep the locked functions in Eqs.~\eqref{eq:Wlocked}--\eqref{eq:Ulocked};
-\item replace the hard multiplier by a healthy auxiliary field, degenerate constraint, or non-propagating construction;
+\item decide whether the next theory is trace-scalar, tensorial, or fundamentally nonlocal in the in-in sense;
+\item replace the hard multiplier by a healthy relaxational field, a truly degenerate constraint with $\det K=0$, or a nonlocal retarded prescription;
+\item remove or regularize the pole in Eq.~\eqref{eq:window-pole};
+\item specify the matter Lagrangian and compute the full $\Theta_{\mu\nu}$ contribution;
 \item only then derive the full scalar quadratic action and compute $Q_s$ and $c_s^2$;
-\item compute $\mu$, $\eta$ and $\Sigma$ from Eqs.~\eqref{eq:mu-form}--\eqref{eq:eta-form};
+\item derive $\mu$, $\eta$ and $\Sigma$ from the actual quadratic action, not from the one-scalar template in Eqs.~\eqref{eq:mu-form}--\eqref{eq:eta-form};
 \item implement the same equations in a Boltzmann solver;
 \item search parameter space for a branch that keeps a nonzero R-critical matter fraction while maintaining acceleration and $F>0$.
 \end{enumerate}
@@ -407,19 +517,19 @@ No function may be changed after these gates are declared. The present hard-mult
 
 \section{Conclusion}
 
-The manuscript now states and tests a concrete finite-window theory. The result is decisive for this version: the hard Lagrange-multiplier implementation is not viable because its scalar kinetic Hessian has determinant $-\ell^4$ and therefore one negative eigenvalue for every finite nonzero $\ell$. The reduced background branch is retained only as a diagnostic and is not a physical solution of the full action. This is a useful failure: it ends the multiplier realization quickly and cleanly, while preserving a precise target for the next R-Universe construction, namely a ghost-free finite-window auxiliary sector with the same locked transition principle.
+The manuscript now states and tests a concrete trace-scalar finite-window localization. The result is decisive for this version: the hard Lagrange-multiplier implementation is not viable because its scalar kinetic Hessian has determinant $-\ell^4$ in the Jordan homogeneous gate and $-\ell^4/F^2$ after the positive Einstein-frame scalar contribution is included. The reduced background branch is retained only as a diagnostic and is not a physical solution of the full action. This is a useful no-go result for one localization, not a disproof of the finite-window principle. The next R-Universe construction must be either a healthy relaxational scalar theory, a genuinely degenerate constrained theory, a tensorial calibration theory, or a nonlocal in-in theory with retarded boundary conditions built in from the start.
 
 \section*{Code availability}
 
 The reproduction command for the locked calculation is
 \begin{verbatim}
-/Users/mpetr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 code/locked_r_universe.py
+/Users/mpetr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 code/run_all.py
 \end{verbatim}
 The output files are \codepath{code/locked_r_universe_results.json}, \codepath{code/full_lambda_stability_gate_results.json}, \codepath{tables/locked_r_universe_background.csv}, \codepath{tables/full_lambda_stability_gate.csv}, \codepath{figures/fig01_locked_r_universe_background.pdf} and \codepath{figures/fig02_full_lambda_ghost_gate.pdf}.
 
 \section*{Data availability}
 
-This version is a theoretical and numerical branch calculation. It does not use observational datasets. The numerical data product is the generated background table \codepath{tables/locked_r_universe_background.csv}.
+This version is a theoretical and numerical branch calculation. It does not use observational datasets. The numerical data products are \codepath{tables/locked_r_universe_background.csv} and \codepath{tables/full_lambda_stability_gate.csv}.
 
 \bibliographystyle{unsrtnat}
 \bibliography{references}
