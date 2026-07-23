@@ -2,10 +2,10 @@
   "missing_refs": [],
   "duplicate_labels": [],
   "includegraphics": [
-    "figures/fig01_locked_r_universe_background.pdf"
+    "figures/fig01_locked_r_universe_background.pdf",
+    "figures/fig02_full_lambda_ghost_gate.pdf"
   ],
-  "missing_graphics": [],
-  "placeholder_count": 0,
+  "missing_graphics_in_root": [],
   "forbidden_phrase_hits": {
     "LCDM": 0,
     "Pantheon": 0,
@@ -13,6 +13,10 @@
     "benchmark": 0,
     "against": 0,
     "relative to": 0,
-    "standard cosmology": 0
+    "standard cosmology": 0,
+    "kgb_reconstruction": 0,
+    "Enter Caption": 0,
+    "fig:placeholder": 0,
+    "Fig. ??": 0
   }
 }

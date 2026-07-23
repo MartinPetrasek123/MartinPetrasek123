@@ -35,6 +35,7 @@ def static_audit() -> None:
 def main() -> None:
     start = time.time()
     subprocess.run([PY, str(ROOT / 'code' / 'locked_r_universe.py')], cwd=ROOT, check=True)
+    subprocess.run([PY, str(ROOT / 'code' / 'full_lambda_stability_gate.py')], cwd=ROOT, check=True)
     static_audit()
     print(f'[run_all] locked R-Universe reproduction completed in {time.time() - start:.2f} s')
 

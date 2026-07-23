@@ -1,0 +1,21 @@
+{
+  "gate": "full multiplier scalar kinetic Hessian",
+  "kinetic_matrix": "[[Z(R), ell^2], [ell^2, 0]]",
+  "determinant": "-ell^4",
+  "background_independent_conclusion": "For any finite nonzero ell and positive Z, det(K)<0, so the two eigenvalues have opposite signs. The Lagrange-multiplier action contains a ghost scalar degree of freedom before data fitting.",
+  "current_branch": {
+    "ell": 0.7,
+    "min_Z": 7.999936000384001e-13,
+    "min_K_plus": 0.49000000000039995,
+    "max_K_minus": -0.46563734009269536,
+    "min_K_minus": -0.4899999999995999,
+    "all_K_plus_positive": true,
+    "all_K_minus_negative": true
+  },
+  "verdict": "FAIL: locked Lagrange-multiplier finite-window action is not viable in this form",
+  "possible_next_theory_move": "Replace the hard multiplier by a healthy auxiliary field or a degenerate constrained construction whose kinetic matrix has no negative propagating eigenvalue.",
+  "outputs": {
+    "csv": "tables/full_lambda_stability_gate.csv",
+    "figure": "figures/fig02_full_lambda_ghost_gate.pdf"
+  }
+}

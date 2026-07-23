@@ -75,7 +75,7 @@ and the three functions
 F=1+\xi W(1-W),\qquad Z=Z_0W^2,
 \qquad U=U_*W^2(1-W)^2.
 \end{equation*}
-These functions return the theory to ordinary local geometric response at both ends of the calibration range, $R_c\ll R_*$ and $R_c\gg R_*$, while activating modification only in the finite-window transition. A direct integration of the locked background equations gives an exactly closed R-critical budget $\Omega_m^R+\Omega_r^R+\Omega_R=1$ and a self-accelerating calibration-dominated branch with $q=-0.485$, $F=1.370$, $W=0.920$, and $c_T^2=1$ on the reporting surface. The same computation also exposes the present weakness of this first locked branch: $\Omega_m^R$ is nearly erased on that branch, so the action is mathematically closed but not yet a phenomenologically acceptable complete cosmology. This is the intended criterion: the theory is defined, integrated and allowed to fail quantitatively.
+These functions return the theory to ordinary local geometric response at both ends of the calibration range, $R_c\ll R_*$ and $R_c\gg R_*$, while activating modification only in the finite-window transition. The decisive calculation in this release is not a fit but the full multiplier stability gate. After integrating the multiplier term by parts, the scalar kinetic Hessian in the field velocities $(\dot R_c,\dot\lambda)$ is $K=\begin{pmatrix}Z&\ell^2\\\ell^2&0\end{pmatrix}$, with determinant $-\ell^4$. Therefore for every finite nonzero $\ell$ and positive $Z$ the two kinetic eigenvalues have opposite signs. The hard Lagrange-multiplier realization of the finite-window theory contains a ghost scalar degree of freedom before any data fitting. A reduced background branch is still integrated as a diagnostic, but it is not a physical solution of the full action because it omits $T_{\mu\nu}^{(\lambda)}$. The result is a useful failure: the finite-window principle survives as a target, while this specific multiplier action does not.
 \end{abstract}
 
 \noindent\textbf{Keywords:} R-Universe; finite-window calibration; causal gravity; scalar--tensor cosmology; modified Friedmann equations; cosmic acceleration; perturbations.
@@ -116,17 +116,41 @@ S_R=\int\dd^4x\sqrt{-g}\left[
 }
 \label{eq:locked-action}
 \end{equation}
-Here $\mathcal R$ is the Ricci scalar. The calibration source is
+Here $\mathcal R$ is the Ricci scalar. Integrating the multiplier term by parts gives the dynamically transparent form
+\begin{equation}
+\boxed{
+S_R=\int\dd^4x\sqrt{-g}\left[
+\frac{M_{\rm Pl}^2}{2}F\mathcal R
+-\frac{Z}{2}(\nabla R_c)^2-U
++\lambda R_c
+-\ell^2\nabla_\mu\lambda\nabla^\mu R_c
++\lambda\frac{T}{M_{\rm Pl}^2}
+\right]+S_m .
+}
+\label{eq:ibp-action}
+\end{equation}
+The calibration source is
 \begin{equation}
 \mathcal I[g,T]=-\frac{T}{M_{\rm Pl}^2}.
 \label{eq:cal-source}
 \end{equation}
-Variation with respect to $\lambda$ gives the exact finite-window equation
+Variation with respect to $\lambda$ gives the finite-window equation
 \begin{equation}
 \boxed{(1-\ell^2\Box)R_c=-\frac{T}{M_{\rm Pl}^2}.}
 \label{eq:calibration-equation}
 \end{equation}
-The retarded solution branch is part of the theory and is not selected after the calculation.
+Variation with respect to $R_c$ gives the independent multiplier equation
+\begin{equation}
+\boxed{
+\ell^2\Box\lambda+\lambda
++\frac{M_{\rm Pl}^2}{2}F_{,R}\mathcal R
++\frac12 Z_{,R}(\nabla R_c)^2
++Z\Box R_c
+-U_{,R}=0.
+}
+\label{eq:Rvariation}
+\end{equation}
+Thus the full background system contains at least $\{a,H,R_c,\dot R_c,\lambda,\dot\lambda,\rho_m,\rho_r\}$. The multiplier cannot be used to impose Eq.~\eqref{eq:calibration-equation} and then removed from the stress tensor.
 
 The window and locked functions are
 \begin{align}
@@ -189,7 +213,7 @@ For dust plus radiation, $T=-\rho_m$, and Eq.~\eqref{eq:calibration-equation} be
 \boxed{\ddot R_c+3H\dot R_c+\ell^{-2}R_c=\ell^{-2}\rho_m/M_{\rm Pl}^2.}
 \label{eq:Rflrw}
 \end{equation}
-The numerical background calculation in this release uses the reduced branch $\rho_\lambda=p_\lambda=0$ after enforcing the finite-window equation. This is the minimal directly integrated branch; a later multiplier-dynamical branch must keep $T_{\mu\nu}^{(\lambda)}$ explicitly.
+The reduced numerical background shown below sets $\rho_\lambda=p_\lambda=0$ only as a diagnostic of the non-multiplier subsystem. It is not a physical solution of Eq.~\eqref{eq:ibp-action}. The full theory must keep $T_{\mu\nu}^{(\lambda)}$ and evolve $\lambda$ with Eq.~\eqref{eq:Rvariation}.
 
 The R-critical density variables are defined by
 \begin{align}
@@ -203,6 +227,46 @@ Then the first equation gives the exact closure relation
 \boxed{\Omega_m^R+\Omega_r^R+\Omega_R=1.}
 \label{eq:Rclosure}
 \end{equation}
+
+
+\section{Full Multiplier Kinetic Gate}
+
+The decisive scalar-sector test can be performed before any observational fit. From Eq.~\eqref{eq:ibp-action}, the homogeneous kinetic terms for the two scalar variables are
+\begin{equation}
+L_{\rm kin}=a^3\left[\frac12 Z(R_c)\dot R_c^2+\ell^2\dot\lambda\dot R_c\right].
+\label{eq:Lkin}
+\end{equation}
+Therefore the velocity Hessian in the basis $(\dot R_c,\dot\lambda)$ is
+\begin{equation}
+\boxed{
+K=
+\begin{pmatrix}
+Z(R_c)&\ell^2\\
+\ell^2&0
+\end{pmatrix}.
+}
+\label{eq:Kmatrix}
+\end{equation}
+Its determinant is
+\begin{equation}
+\boxed{\det K=-\ell^4.}
+\label{eq:detK}
+\end{equation}
+For every finite nonzero $\ell$, $\det K<0$. Hence the two eigenvalues have opposite signs,
+\begin{equation}
+K_\pm=\frac12\left[Z\pm\sqrt{Z^2+4\ell^4}\right],
+\label{eq:Keigs}
+\end{equation}
+with $K_+>0$ and $K_-<0$ for $Z>0$. This is a background-independent ghost in the hard Lagrange-multiplier construction. The script \codepath{code/full_lambda_stability_gate.py} evaluates Eq.~\eqref{eq:Keigs} on the integrated branch and finds
+\begin{equation}
+\min K_+=0.490000,
+\qquad
+\max K_-=-0.465637,
+\qquad
+\min K_-=-0.490000.
+\label{eq:ghost-result}
+\end{equation}
+The verdict is therefore immediate: this locked multiplier action is not viable in its present form. No background fit can repair a propagating ghost.
 
 \section{Perturbative Sector}
 
@@ -305,7 +369,7 @@ W&=4.00\times10^{-6},&F&=1.000020,\nonumber\\
 \Omega_m^R&=0.83333,&\Omega_r^R&=0.16667,&\Omega_R&=4.00\times10^{-16}.
 \label{eq:locked-early}
 \end{align}
-The calculation therefore proves three things about the locked equations. First, the R-critical density closure is numerically exact. Second, the branch returns to the high-density uncalibrated limit at early times. Third, the same locked equations can self-accelerate. The branch is not yet a viable complete cosmology because the transition chosen by the coarse scan erases the R-critical matter fraction at the reporting surface. This is a quantitative failure mode of the first locked branch, not an ambiguity in the equations.
+The reduced calculation proves only a limited diagnostic point: if the multiplier stress tensor is omitted, the remaining subsystem can produce exact R-critical closure and self-acceleration, but it erases the R-critical matter fraction. Because the full multiplier kinetic gate already fails by Eq.~\eqref{eq:detK}, this branch must not be presented as a physical solution of the locked action.
 
 \input{graf.tex}
 
@@ -330,20 +394,20 @@ Object & Role\\
 
 \section{Completion Gates}
 
-This version defines the new theory and integrates its first locked branch. The remaining calculations are now unambiguous:
+This version defines the locked multiplier theory and performs the first decisive internal test. Since the hard multiplier kinetic matrix has a negative eigenvalue, the required next steps are not data fitting but repair or replacement of the multiplier sector:
 \begin{enumerate}
 \item keep the locked functions in Eqs.~\eqref{eq:Wlocked}--\eqref{eq:Ulocked};
-\item include the full multiplier stress tensor $T_{\mu\nu}^{(\lambda)}$ rather than the reduced branch;
-\item derive the full scalar quadratic action and compute $Q_s$ and $c_s^2$;
+\item replace the hard multiplier by a healthy auxiliary field, degenerate constraint, or non-propagating construction;
+\item only then derive the full scalar quadratic action and compute $Q_s$ and $c_s^2$;
 \item compute $\mu$, $\eta$ and $\Sigma$ from Eqs.~\eqref{eq:mu-form}--\eqref{eq:eta-form};
 \item implement the same equations in a Boltzmann solver;
 \item search parameter space for a branch that keeps a nonzero R-critical matter fraction while maintaining acceleration and $F>0$.
 \end{enumerate}
-No function may be changed after these gates are declared. Failure of these gates means failure of this locked R-Universe theory.
+No function may be changed after these gates are declared. The present hard-multiplier action has already failed the kinetic gate; the finite-window idea must move to a ghost-free realization.
 
 \section{Conclusion}
 
-The manuscript now states a new theory rather than a comparative model. The defining move is the finite-window calibration equation, not an added dark component. The locked functions return the geometry to its uncalibrated response at both small and large calibration field values and activate only in the transition window. The first direct numerical integration is mathematically closed and self-accelerating, but it also exposes a severe branch problem: the selected reduced branch becomes almost entirely calibration-dominated. This is useful because it turns the next step into a precise calculation rather than a narrative choice. The theory is now fixed; what remains is to find whether its full multiplier branch and perturbations admit a physically acceptable universe.
+The manuscript now states and tests a concrete finite-window theory. The result is decisive for this version: the hard Lagrange-multiplier implementation is not viable because its scalar kinetic Hessian has determinant $-\ell^4$ and therefore one negative eigenvalue for every finite nonzero $\ell$. The reduced background branch is retained only as a diagnostic and is not a physical solution of the full action. This is a useful failure: it ends the multiplier realization quickly and cleanly, while preserving a precise target for the next R-Universe construction, namely a ghost-free finite-window auxiliary sector with the same locked transition principle.
 
 \section*{Code availability}
 
@@ -351,7 +415,7 @@ The reproduction command for the locked calculation is
 \begin{verbatim}
 /Users/mpetr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 code/locked_r_universe.py
 \end{verbatim}
-The output files are \codepath{code/locked_r_universe_results.json}, \codepath{tables/locked_r_universe_background.csv} and \codepath{figures/fig01_locked_r_universe_background.pdf}.
+The output files are \codepath{code/locked_r_universe_results.json}, \codepath{code/full_lambda_stability_gate_results.json}, \codepath{tables/locked_r_universe_background.csv}, \codepath{tables/full_lambda_stability_gate.csv}, \codepath{figures/fig01_locked_r_universe_background.pdf} and \codepath{figures/fig02_full_lambda_ghost_gate.pdf}.
 
 \section*{Data availability}
 
