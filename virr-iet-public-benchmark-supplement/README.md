@@ -12,10 +12,10 @@ Processing date: 2026-08-01
 
 | ID | File | Purpose | SHA-256 |
 | --- | --- | --- | --- |
-| S0 | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.pdf` | Rendered manuscript PDF | `008e21b2eeb7b6f28f0c7fbe89762155f818f172e47f35bae63ba9a377ea2ba0` |
-| S0-DOCX | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.docx` | Editable manuscript in the VLSIE/IET Word template | `84de263856fb5dc3334b457cf2ca701d0e9c8852f7cb28677020fe5e036d6107` |
+| S0 | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.pdf` | Rendered manuscript PDF | `bd65b3c73c4dce02f69b1e4ebc1d44d0868e8a4ece41d565f0e50b97ae4c41b4` |
+| S0-DOCX | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.docx` | Editable manuscript in the VLSIE/IET Word template | `0ec3d8f2783a9735993430702dd797f90c5db4cc76743bbc533115825c7685c9` |
 | S1 | `supplement/mlperf_tiny_v1_3_virr_reproducibility_table.csv` | Derived 27-row MLPerf Tiny v1.3 VIRR_task calculation table | `f91ab7618e2042d714b1faa3022834243ea869177a359b6e28dadac84ac40c86` |
-| S2 | `supplement/reproduce_mlperf_tiny_v1_3_virr.py` | Parser used to reproduce S1 from a local MLPerf Tiny v1.3 results checkout | `e72d853918152416f7e94f90a8789e1c68e83b36f3ff3f5878bfac80e006f656` |
+| S2 | `supplement/reproduce_mlperf_tiny_v1_3_virr.py` | Parser used to reproduce S1 from a local MLPerf Tiny v1.3 results checkout | `e23a2b682c2c73edaa187fbbbe387a213ec03bcfc57d5a27eb60db994f6c0074` |
 
 ## Public input dataset
 
@@ -24,15 +24,22 @@ Processing date: 2026-08-01
 - Commit used in the manuscript: `cd605ea0981306693c9e19765a15801c776988dc`
 - Number of parsed power-result rows in S1: `27`
 
-## Reproduce S1
+## Reproduce S1 byte-for-byte
 
 ```bash
+python3 -m pip install numpy
+mkdir -p work
 git clone https://github.com/mlcommons/tiny_results_v1.3.git
 cd tiny_results_v1.3
 git checkout cd605ea0981306693c9e19765a15801c776988dc
 cd ..
-python3 supplement/reproduce_mlperf_tiny_v1_3_virr.py tiny_results_v1.3 reproduced.csv
+mv tiny_results_v1.3 work/tiny_results_v1.3
+python3 supplement/reproduce_mlperf_tiny_v1_3_virr.py work/tiny_results_v1.3 reproduced.csv
+cmp supplement/mlperf_tiny_v1_3_virr_reproducibility_table.csv reproduced.csv
+sha256sum reproduced.csv
 ```
+
+The final checksum should be `f91ab7618e2042d714b1faa3022834243ea869177a359b6e28dadac84ac40c86`. The `work/tiny_results_v1.3` path is intentional because S1 records each public MLPerf source file in the `source_file` column.
 
 The parser computes:
 
