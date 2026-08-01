@@ -12,10 +12,10 @@ Processing date: 2026-08-01
 
 | ID | File | Purpose | SHA-256 |
 | --- | --- | --- | --- |
-| S0 | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.pdf` | Rendered manuscript PDF | `5c6ac03577fa3b6d72d3a962c282a854e71f624320c4e03d7678d743d0104592` |
-| S0-DOCX | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.docx` | Editable manuscript in the VLSIE/IET Word template | `4da6de9077074e0c6250c872c14acabd1490e52fc46b5b9dee0084f8a06eb868` |
+| S0 | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.pdf` | Rendered manuscript PDF | `008e21b2eeb7b6f28f0c7fbe89762155f818f172e47f35bae63ba9a377ea2ba0` |
+| S0-DOCX | `supplement/VLSIE2026_IET_VIRR_Public_Benchmark_Demonstration.docx` | Editable manuscript in the VLSIE/IET Word template | `84de263856fb5dc3334b457cf2ca701d0e9c8852f7cb28677020fe5e036d6107` |
 | S1 | `supplement/mlperf_tiny_v1_3_virr_reproducibility_table.csv` | Derived 27-row MLPerf Tiny v1.3 VIRR_task calculation table | `f91ab7618e2042d714b1faa3022834243ea869177a359b6e28dadac84ac40c86` |
-| S2 | `supplement/reproduce_mlperf_tiny_v1_3_virr.py` | Parser used to reproduce S1 from a local MLPerf Tiny v1.3 results checkout | `12b2c24812fd7affa70da536e9416ae5ba17176c7e7fdef261d7873a131e8066` |
+| S2 | `supplement/reproduce_mlperf_tiny_v1_3_virr.py` | Parser used to reproduce S1 from a local MLPerf Tiny v1.3 results checkout | `e72d853918152416f7e94f90a8789e1c68e83b36f3ff3f5878bfac80e006f656` |
 
 ## Public input dataset
 

@@ -8,10 +8,10 @@ Usage:
 from __future__ import annotations
 
 import csv
+import argparse
 import math
 import re
 import subprocess
-import sys
 from pathlib import Path
 
 
@@ -46,8 +46,24 @@ def parse_accuracy(path: Path) -> tuple[str, str]:
 
 
 def main() -> None:
-    repo = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("work/tiny_results_v1.3")
-    out = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("mlperf_tiny_v1_3_virr_reproducibility_table.csv")
+    parser = argparse.ArgumentParser(
+        description="Reproduce the MLPerf Tiny v1.3 VIRR_task table from a local results checkout."
+    )
+    parser.add_argument(
+        "repo",
+        nargs="?",
+        default="work/tiny_results_v1.3",
+        help="Path to the local MLPerf Tiny v1.3 results repository.",
+    )
+    parser.add_argument(
+        "out",
+        nargs="?",
+        default="mlperf_tiny_v1_3_virr_reproducibility_table.csv",
+        help="Output CSV path.",
+    )
+    args = parser.parse_args()
+    repo = Path(args.repo)
+    out = Path(args.out)
     fields = [
         "dataset_version", "commit_hash", "benchmark", "submitter", "system",
         "source_file", "trial_energies_uJ_per_outcome", "median_uJ_per_outcome",
