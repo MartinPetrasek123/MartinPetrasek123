@@ -10,16 +10,18 @@ The public canonical location is
 
 1. `main.tex` -- full manuscript. It contains the primary action, the exact
    background reconstruction, the controlled recovery limit, the local GR
-   matching rule, the PPN prediction, the tensor result, and the exact CMB
-   likelihood contract.
-2. `graf.tex` -- insert this figure block in `main.tex` with
-   `\input{graf.tex}` after the RFG-R recovery equations.
+   matching rule, the PPN prediction, the tensor result, the exact
+   canonical-scalar reference reduction, and the CMB likelihood contract.
+2. `download.png`, `download-1.png`, `download-2.png` -- the three figures
+   included directly by `main.tex`.
 3. `r_universe_completion/docs/completion_derivation.md` -- complete RFG-R
    action-level derivation and limits.
 4. `r_universe_completion/CALCULATION_MANIFEST.md` -- claim-to-file mapping.
-5. `r_universe_completion/docs/likelihood_pipeline.md` -- required full
+5. `r_universe_completion/docs/canonical_scalar_reduction.md` -- complete
+   sourced lapse--shift reduction for RFG-R plus one canonical scalar.
+6. `r_universe_completion/docs/likelihood_pipeline.md` -- required full
    matter/CMB/PPN data-likelihood calculation, including rejection rules.
-6. `r_universe_completion/scripts/run_all.sh` -- deterministic local
+7. `r_universe_completion/scripts/run_all.sh` -- deterministic local
    validation and output generation.
 
 ## Reproduce the internal RFG-R checks
@@ -32,15 +34,18 @@ bash r_universe_completion/scripts/run_all.sh
 
 The command validates regularity, recovery of the original cosmological
 branch, potential reconstruction, background closure, positive tensor kinetic
-normalization, local GR matching, and the Cassini likelihood factor. It also
-regenerates the committed tables and figures.
+normalization, local GR matching, the Cassini likelihood factor, and the
+canonical-scalar GR/reference-branch checks. It also regenerates the committed
+tables and figures.
 
 ## Scientific status
 
 RFG-R is a defined low-energy multiscale EFT, not a declaration that it has
 already replaced LambdaCDM. Its local PPN prediction follows from the stated
-exact-GR matching domain. Its matter/CMB calculation is a complete
-implementation and likelihood specification, but no compiled RFG-R
+exact-GR matching domain. The package derives the sourced scalar reduction for
+one canonical scalar and checks its GR limit, but this does not replace a
+multi-fluid cosmological perturbation calculation. Its matter/CMB calculation
+is a complete likelihood specification, but no compiled RFG-R
 Einstein--Boltzmann module or joint Planck/BAO/SN/RSD/GW posterior is included
 yet. The public package and manuscript state this boundary explicitly.
 
@@ -50,6 +55,8 @@ yet. The public package and manuscript state this boundary explicitly.
 - [RFG-R figure block](graf.tex)
 - [Action derivation](r_universe_completion/docs/completion_derivation.md)
 - [Calculation manifest](r_universe_completion/CALCULATION_MANIFEST.md)
+- [Canonical-scalar derivation](r_universe_completion/docs/canonical_scalar_reduction.md)
+- [Canonical-scalar code](r_universe_completion/scripts/canonical_scalar.py)
 - [Matter/CMB/PPN likelihood protocol](r_universe_completion/docs/likelihood_pipeline.md)
 - [Core model code](r_universe_completion/scripts/rfg_regularized.py)
 - [Validation code](r_universe_completion/scripts/validate_completion.py)

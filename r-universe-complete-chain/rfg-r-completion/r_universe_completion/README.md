@@ -12,6 +12,8 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
   `O((epsilon/X)^p)`;
 - a local GR matching domain that makes the PPN prediction unambiguous;
 - universal minimal coupling of matter to the Jordan metric;
+- an exact sourced lapse--shift reduction for one canonical scalar field,
+  including a General-Relativity normalization check;
 - a full linear Einstein-Boltzmann likelihood protocol, with stability checks
   before every likelihood evaluation.
 
@@ -60,6 +62,8 @@ the Sun the code obtains `W about 6e22`.
 - `paper/R_Universe_RFG_R_Completion.pdf` - standalone paper.
 - `docs/completion_derivation.md` - full mathematical definition and limits.
 - `docs/likelihood_pipeline.md` - matter, CMB, and PPN likelihood protocol.
+- `docs/canonical_scalar_reduction.md` - exact canonical-scalar quadratic
+  reduction and its executable stability diagnostic.
 - `scripts/rfg_regularized.py` - background solver, potential reconstruction,
   and ADM coefficient table.
 - `scripts/validate_completion.py` - independent numerical checks.
@@ -74,7 +78,8 @@ bash scripts/run_all.sh
 
 The command checks the exact local limit, high-X recovery, potential
 reconstruction, background closure, positive tensor normalization, and the PPN
-domain. It then generates the tables and figures.
+domain. It also checks the canonical-scalar General-Relativity limit and its
+reference sourced-constraint diagnostic, then generates the tables and figures.
 
 ## Empirical Rule
 

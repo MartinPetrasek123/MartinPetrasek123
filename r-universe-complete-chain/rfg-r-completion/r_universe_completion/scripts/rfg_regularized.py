@@ -22,6 +22,9 @@ class RFGRegularizedParams:
     omega_m0: float = 0.30000
     omega_r0: float = 9.0e-5
     theta: float = 1.6
+    # Published conditional-branch representative.  The separate
+    # regularization audit demonstrates why this is not a globally healthy
+    # completion and must not be treated as one.
     epsilon: float = 1.0e-8
     p: int = 4
 
@@ -54,12 +57,46 @@ def _denominator(x: float, p: RFGRegularizedParams) -> float:
     return x**p.p + p.epsilon**p.p
 
 
+def _transition_terms(x: float, p: RFGRegularizedParams) -> tuple[float, float]:
+    """Return s=X^p/(X^p+epsilon^p) and A*f without overflow.
+
+    The regular response can be evaluated at very early cosmological times only
+    after factoring out the larger of X and epsilon.  In particular, the
+    direct X**p representation overflows for the high-order regularizations
+    needed to keep Q positive throughout the transition.
+    """
+    if x == 0.0:
+        return 0.0, 0.0
+    nu = 1.0 + p.theta / p.p
+    if x >= p.epsilon:
+        ratio = (p.epsilon / x) ** p.p
+        denom = 1.0 + ratio
+        s = 1.0 / denom
+        correction = p.A * x ** (-p.theta) / denom**nu
+    else:
+        ratio = (x / p.epsilon) ** p.p
+        denom = 1.0 + ratio
+        s = ratio / denom
+        correction = p.A * p.epsilon ** (-p.theta) * ratio / denom**nu
+    return s, correction
+
+
 def response(x: float, p: RFGRegularizedParams) -> float:
     """Regularized relational term in E^2 = S + response(E)."""
     _positive_x(x)
-    d = _denominator(x, p)
+    if x == 0.0:
+        return 0.0
     nu = 1.0 + p.theta / p.p
-    return p.omega_R0 * x ** (p.p + 2) / d**nu
+    if x >= p.epsilon:
+        ratio = (p.epsilon / x) ** p.p
+        return p.omega_R0 * x ** (2.0 - p.theta) / (1.0 + ratio) ** nu
+    ratio = (x / p.epsilon) ** p.p
+    return (
+        p.omega_R0
+        * p.epsilon ** (2.0 - p.theta)
+        * (x / p.epsilon) ** (p.p + 2)
+        / (1.0 + ratio) ** nu
+    )
 
 
 def response_prime(x: float, p: RFGRegularizedParams) -> float:
@@ -67,37 +104,25 @@ def response_prime(x: float, p: RFGRegularizedParams) -> float:
     _positive_x(x)
     if x == 0.0:
         return 0.0
-    d = _denominator(x, p)
     nu = 1.0 + p.theta / p.p
-    return (
-        p.omega_R0
-        * x ** (p.p + 1)
-        * d ** (-nu - 1.0)
-        * ((p.p + 2.0) * d - nu * p.p * x**p.p)
-    )
+    s, _ = _transition_terms(x, p)
+    return response(x, p) * (p.p + 2.0 - nu * p.p * s) / x
 
 
 def Q(x: float, p: RFGRegularizedParams) -> float:
     """Regularized coefficient multiplying intrinsic and extrinsic curvature."""
     _positive_x(x)
-    d = _denominator(x, p)
-    nu = 1.0 + p.theta / p.p
-    return 1.0 - p.A * x**p.p / d**nu
+    _, correction = _transition_terms(x, p)
+    return 1.0 - correction
 
 
 def Q_prime(x: float, p: RFGRegularizedParams) -> float:
     _positive_x(x)
     if x == 0.0:
         return 0.0
-    d = _denominator(x, p)
     nu = 1.0 + p.theta / p.p
-    derivative = (
-        p.p
-        * x ** (p.p - 1)
-        * d ** (-nu - 1.0)
-        * (p.epsilon**p.p + (1.0 - nu) * x**p.p)
-    )
-    return -p.A * derivative
+    s, correction = _transition_terms(x, p)
+    return -correction * p.p * (1.0 - nu * s) / x
 
 
 def Q_second(x: float, p: RFGRegularizedParams) -> float:
@@ -106,6 +131,19 @@ def Q_second(x: float, p: RFGRegularizedParams) -> float:
         return 0.0 if p.p > 2 else math.nan
     step = max(1.0e-7 * x, 1.0e-14)
     return (Q_prime(x + step, p) - Q_prime(max(0.0, x - step), p)) / (x + step - max(0.0, x - step))
+
+
+def Q_minimum(p: RFGRegularizedParams) -> tuple[float, float]:
+    """Return the exact global minimum of Q and the X at which it occurs."""
+    ratio = p.p / p.theta
+    x_star = p.epsilon * ratio ** (1.0 / p.p)
+    correction_max = (
+        p.A
+        * p.epsilon ** (-p.theta)
+        * ratio
+        / (1.0 + ratio) ** (1.0 + p.theta / p.p)
+    )
+    return 1.0 - correction_max, x_star
 
 
 def original_response(x: float, p: RFGRegularizedParams) -> float:
@@ -120,10 +158,13 @@ def original_Q(x: float, p: RFGRegularizedParams) -> float:
 
 def source_for_potential(x: float, p: RFGRegularizedParams) -> float:
     """F in V - X V_X = 3 F for the exact regularized branch."""
-    return x * x - response(x, p) - x * x * Q(x, p) - x**3 * Q_prime(x, p)
+    # Evaluate X^2(1-Q) directly.  Writing X^2-X^2Q loses the leading
+    # low-X term to cancellation when Q rounds to 1 in double precision.
+    _, correction = _transition_terms(x, p)
+    return x * x * correction - response(x, p) - x**3 * Q_prime(x, p)
 
 
-def potential(x: float, p: RFGRegularizedParams, points: int = 4097) -> float:
+def potential(x: float, p: RFGRegularizedParams, points: int | None = None) -> float:
     """The representative with no linear-in-X boundary contribution.
 
     V(X) = -3 X integral_0^X F(s)/s^2 ds.
@@ -132,6 +173,11 @@ def potential(x: float, p: RFGRegularizedParams, points: int = 4097) -> float:
     _positive_x(x)
     if x == 0.0:
         return 0.0
+    if points is None:
+        # Resolve increasingly sharp but smooth high-p transitions.  The
+        # p=4 legacy representative retains 4097 points; p=32 uses 32769.
+        refinement = max(1, math.ceil(p.p / 4.0))
+        points = 4097 * refinement - (refinement - 1)
     # The transition is centered at epsilon, so a linear grid would miss it by
     # many orders of magnitude.  Integrate in log X after an analytic origin cap.
     origin_cap = p.epsilon * 1.0e-4
@@ -141,14 +187,37 @@ def potential(x: float, p: RFGRegularizedParams, points: int = 4097) -> float:
     integral_origin = f_small * origin_cap ** (p.p + 1) / (p.p + 1.0)
     log_grid = np.linspace(math.log(origin_cap), math.log(x), points)
     grid = np.exp(log_grid)
-    d = grid**p.p + p.epsilon**p.p
     nu = 1.0 + p.theta / p.p
-    r = p.omega_R0 * grid ** (p.p + 2) / d**nu
-    q = 1.0 - p.A * grid**p.p / d**nu
-    qx = -p.A * p.p * grid ** (p.p - 1) * d ** (-nu - 1.0) * (
-        p.epsilon**p.p + (1.0 - nu) * grid**p.p
-    )
-    f_values = grid * grid - r - grid * grid * q - grid**3 * qx
+    r = np.empty_like(grid)
+    q = np.empty_like(grid)
+    qx = np.empty_like(grid)
+    q_correction = np.empty_like(grid)
+    upper = grid >= p.epsilon
+    lower = ~upper
+    if np.any(upper):
+        ratio = (p.epsilon / grid[upper]) ** p.p
+        denom = 1.0 + ratio
+        s = 1.0 / denom
+        r[upper] = p.omega_R0 * grid[upper] ** (2.0 - p.theta) / denom**nu
+        correction = p.A * grid[upper] ** (-p.theta) / denom**nu
+        q[upper] = 1.0 - correction
+        q_correction[upper] = correction
+        qx[upper] = -correction * p.p * (1.0 - nu * s) / grid[upper]
+    if np.any(lower):
+        ratio = (grid[lower] / p.epsilon) ** p.p
+        denom = 1.0 + ratio
+        s = ratio / denom
+        r[lower] = (
+            p.omega_R0
+            * p.epsilon ** (2.0 - p.theta)
+            * (grid[lower] / p.epsilon) ** (p.p + 2)
+            / denom**nu
+        )
+        correction = p.A * p.epsilon ** (-p.theta) * ratio / denom**nu
+        q[lower] = 1.0 - correction
+        q_correction[lower] = correction
+        qx[lower] = -correction * p.p * (1.0 - nu * s) / grid[lower]
+    f_values = grid * grid * q_correction - r - grid**3 * qx
     integral = integral_origin + float(np.trapz((f_values / (grid * grid)) * grid, log_grid))
     return -3.0 * x * integral
 

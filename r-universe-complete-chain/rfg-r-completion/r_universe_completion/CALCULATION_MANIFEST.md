@@ -10,6 +10,7 @@
 | Local GR matching function | `scripts/ppn_likelihood.py` | Solar Weyl ratio at one AU |
 | PPN prediction in local domain | `scripts/ppn_likelihood.py` | `gamma=beta=1`, `alpha1=alpha2=0` |
 | Cassini likelihood factor | `scripts/ppn_likelihood.py` | Direct Gaussian evaluation |
+| Canonical-scalar sourced constraint reduction | `docs/canonical_scalar_reduction.md` | Exact Schur complement; GR limit `K=6`, `c_s^2=1` |
 | Full CMB/matter likelihood definition | `docs/likelihood_pipeline.md` | Action-derivative input and stability gate |
 | Standalone article | `paper/R_Universe_RFG_R_Completion.pdf` | Rendered PDF and text extraction |
 
@@ -31,5 +32,5 @@ max relative branch error  <= 1e-12
 max density closure error  <= 1e-11
 min Q_T                    > 0
 Solar W at one AU          > 1e9
+canonical scalar GR limit  K=6, c_s^2=1
 ```
-

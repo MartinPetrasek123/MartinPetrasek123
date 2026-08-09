@@ -41,8 +41,9 @@ def main() -> None:
     ]
     max_response_error = max(response_errors)
     max_q_relative_error = max(q_errors)
-    # The analytic correction is O((epsilon/X)^p) <= 2.5e-32 here; double
-    # precision arithmetic itself saturates near 1e-15 at the largest X.
+    # This is only a conditional X>=0.8 branch check.  The separate
+    # regularization audit tests the global transition and proves that the
+    # present RFG-R class is not a globally healthy completion.
     assert max_response_error < 1.0e-12
     assert max_q_relative_error < 1.0e-12
 
@@ -79,7 +80,7 @@ def main() -> None:
     local_ppn = ppn_parameters(solar_ratio)
     assert local_ppn == {"gamma": 1.0, "beta": 1.0, "alpha1": 0.0, "alpha2": 0.0}
 
-    print("RFG-R completion validation OK")
+    print("RFG-R conditional-branch validation OK")
     print(f"max high-X response error  = {max_response_error:.3e}")
     print(f"max high-X Q error         = {max_q_relative_error:.3e}")
     print(f"max potential ODE residual = {max_potential_residual:.3e}")
