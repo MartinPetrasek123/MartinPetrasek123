@@ -1,7 +1,7 @@
 # R-Universe global R-alpha KGB completion
 
-This package turns the R-alpha background already fitted in
-`/Users/mpetr/Desktop/R-Universe 1` into one explicit, globally defined,
+This package turns the R-alpha background already fitted in the accompanying
+late-time R-Universe manuscript into one explicit, globally defined,
 luminal KGB action.  It replaces the missing `kgb_reconstruction.py` named by
 that manuscript with reproducible code and closes the scalar no-ghost and
 no-gradient conditions analytically and numerically.
