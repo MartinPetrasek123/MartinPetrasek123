@@ -15,7 +15,9 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
 - an exact sourced lapse--shift reduction for one canonical scalar field,
   including a General-Relativity normalization check;
 - a full linear Einstein-Boltzmann likelihood protocol, with stability checks
-  before every likelihood evaluation.
+  before every likelihood evaluation;
+- an exact ADM-to-extended-EFT map, including the nonzero
+  `bar_m5 delta R3 delta K` coefficient required by the action.
 
 The resulting physical picture is simple: a relational response is active on
 homogeneous Hubble-scale geometry, while the locally resolved weak-field EFT is
@@ -62,11 +64,16 @@ the Sun the code obtains `W about 6e22`.
 - `paper/R_Universe_RFG_R_Completion.pdf` - standalone paper.
 - `docs/completion_derivation.md` - full mathematical definition and limits.
 - `docs/likelihood_pipeline.md` - matter, CMB, and PPN likelihood protocol.
+- `docs/extended_eft_mapping.md` - exact action-to-extended-EFT map and the
+  public-backend compatibility boundary.
 - `docs/canonical_scalar_reduction.md` - exact canonical-scalar quadratic
   reduction and its executable stability diagnostic.
 - `scripts/rfg_regularized.py` - background solver, potential reconstruction,
   and ADM coefficient table.
 - `scripts/validate_completion.py` - independent numerical checks.
+- `scripts/extended_eft_mapping.py` - executable extended-EFT coefficient
+  table, including `bar_m5`.
+- `scripts/validate_extended_eft_mapping.py` - independent mapping checks.
 - `scripts/ppn_likelihood.py` - local GR matching and Cassini likelihood.
 - `generated/` - tables and figures generated from the scripts.
 
@@ -84,7 +91,10 @@ reference sourced-constraint diagnostic, then generates the tables and figures.
 ## Empirical Rule
 
 The included CMB/matter protocol is a full-spectrum likelihood definition, not
-a compressed-distance surrogate. It must be evaluated with the official Planck
-likelihood data and a full 3+1 Einstein-Boltzmann backend before any statement
-about empirical preference over LCDM is made. The package never substitutes a
-background fit for a CMB fit.
+a compressed-distance surrogate. The exact action map has a nonzero extended
+`bar_m5 delta R3 delta K` coefficient. The public stock H-EFTCAMB interface
+does not expose it, so it is only a GR reference calculation, not an RFG-R
+prediction engine. An extended 3+1 Einstein-Boltzmann module and the official
+Planck likelihood data are required before any statement about empirical
+preference over LCDM is made. The package never substitutes a background fit
+for a CMB fit.

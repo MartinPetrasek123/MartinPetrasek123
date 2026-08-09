@@ -24,8 +24,10 @@ For each proposed point:
 1. Solve `E^2=Omega_m0 a^-3+Omega_r0 a^-4+R_epsilon(E)` on the positive branch.
 2. Reject if a root is absent, density closure fails, or `Q_T<=0` anywhere on
    `a in [1e-8,1]`.
-3. Evaluate the exact ADM derivatives from `rfg_regularized.py` and write the
-   table used by the 3+1 Einstein-Boltzmann module.
+3. Evaluate the exact ADM derivatives from `rfg_regularized.py`, map them
+   with `extended_eft_mapping.py`, and write
+   `generated/tables/extended_eft_mapping.csv`. The map contains the nonzero
+   extended coefficient `bar_m5=-M_Pl^2 Q_X/(3H0)`.
 4. Evolve the full scalar, vector, and tensor linear system without a
    quasi-static approximation. The scalar constraints must be solved with the
    standard photon-baryon, neutrino, baryon, and CDM hierarchy present.
@@ -34,10 +36,14 @@ For each proposed point:
 6. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
    `f sigma8(z)`, and the standard-siren distance ratio.
 
-H-EFTCAMB is an appropriate public backend because it evolves full linear
-modified-gravity perturbations and exposes a full 3+1 EFT implementation with
-stability checks. The RFG-R action derivatives, rather than a fitted CPL
-surrogate, are the source of its cosmological functions.
+The downloaded public H-EFTCAMB revision is useful as a compiled GR reference
+and for checking the standard six-function EFT interface. It is not an exact
+RFG-R backend: its exposed `Omega`, `gamma_1` through `gamma_6` input set has
+no `bar_m5 delta R3 delta K` operator. Setting that coefficient to zero would
+change the RFG-R action. The RFG-R Boltzmann module must therefore add this
+extended operator to the scalar equations and stability checks before any
+RFG-R spectrum or likelihood is evaluated. The action derivatives, rather
+than a fitted CPL surrogate, remain the source of its cosmological functions.
 
 ## 3. Likelihoods
 
@@ -78,31 +84,37 @@ measurements can be added as Gaussian factors with their published covariance.
 
 ## 5. Reproducible Execution Boundary
 
-The repository contains every RFG-R function and every deterministic rejection
-condition. A full CMB likelihood requires two external public inputs that are
-not vendored here: a compiled H-EFTCAMB installation and the official Planck
+The repository contains every RFG-R background function, the exact
+ADM-to-extended-EFT map, and every deterministic rejection condition available
+before the multi-fluid reduction. A full CMB likelihood requires an RFG-R
+extension of a Boltzmann solver that retains `bar_m5`, plus the official Planck
 likelihood data package. The input/output contract is explicit:
 
 ```text
-input:  generated/tables/eft_coefficients.csv
-theory: full 3+1 RFG-R action derivative module
+input:  generated/tables/extended_eft_mapping.csv
+theory: full 3+1 RFG-R action-derivative module extended by bar_m5
 output: C_ell, P(k,z), f sigma8, and a stability flag
 data:   Planck Legacy Archive likelihood packages
 sampler: Cobaya nested or MCMC sampler
 ```
 
-This boundary is operational, not theoretical: the action, variables,
-parameters, output observables, datasets, and rejection rules are all fixed.
-No empirical result is claimed until the external likelihood is actually run.
+The boundary is operational: the action, variables, exact map, output
+observables, datasets, and rejection rules are fixed. It is not an executed
+likelihood. No empirical result is claimed until the extended solver and the
+external likelihood are actually run.
 
 ## 6. References For The Pipeline
 
 1. B. Hu et al., Effective Field Theory of Cosmic Acceleration: an
    implementation in CAMB, Phys. Rev. D 89, 103530 (2014), arXiv:1312.5742.
-2. G. Ye et al., H-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of
-   EFTCAMB for Covariant Horndeski Gravity, arXiv:2603.01662 (2026).
-3. Planck Collaboration V, Planck 2018 results. V. CMB power spectra and
+2. N. Frusciante, G. Papadomanolakis and A. Silvestri, An Extended action for
+   the effective field theory of dark energy: stability analysis and a complete
+   guide to the mapping at the basis of EFTCAMB, arXiv:1601.04064 (2016).
+3. G. Ye et al., H-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of
+   EFTCAMB for Covariant Horndeski Gravity, arXiv:2603.01662 (2026). This is
+   a reference-backend citation, not evidence that its public operator basis
+   contains the RFG-R extended coefficient.
+4. Planck Collaboration V, Planck 2018 results. V. CMB power spectra and
    likelihoods, Astron. Astrophys. 641, A5 (2020), arXiv:1907.12875.
-4. B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using
+5. B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using
    radio links with the Cassini spacecraft, Nature 425, 374-376 (2003).
-
