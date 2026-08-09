@@ -53,6 +53,7 @@ yet. The public package and manuscript state this boundary explicitly.
 - [PPN likelihood code](r_universe_completion/scripts/ppn_likelihood.py)
 - [Generated tables and figures](r_universe_completion/generated)
 - [Standalone RFG-R paper](r_universe_completion/paper/R_Universe_RFG_R_Completion.pdf)
+- [SHA-256 integrity manifest](SHA256SUMS)
 
 For a citable release, create an immutable GitHub release and archive that
 release with Zenodo before journal submission. Do not cite a DOI until Zenodo
