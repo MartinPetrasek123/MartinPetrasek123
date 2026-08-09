@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this RFG-R source and reproducibility package, please cite the manuscript and its immutable archived release."
+title: "Relational Capacity Dynamics, Relational Foliation Gravity, and RFG-R"
+authors:
+  - family-names: "Petrasek"
+    given-names: "Martin"
+    orcid: "https://orcid.org/0009-0007-4512-9528"
+repository-code: "https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain/rfg-r-completion"
+license: "MIT"
+abstract: "Complete manuscript source and executable RFG-R effective-theory calculations, including regularization, local-GR matching, PPN likelihood, and a full matter/CMB likelihood specification."
