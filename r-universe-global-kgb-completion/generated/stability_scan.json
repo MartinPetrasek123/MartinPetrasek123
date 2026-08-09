@@ -1,0 +1,24 @@
+{
+  "range": {
+    "alpha": [
+      0.02,
+      0.95
+    ],
+    "Omega_m0": [
+      0.24,
+      0.38
+    ],
+    "a": [
+      1e-08,
+      1000.0
+    ],
+    "samples": 240
+  },
+  "global_minima": {
+    "sound_numerator": 9.161241663058206e-07,
+    "D": 9.161241663058206e-07,
+    "Qs_over_Mpl2": 4.5806125527919097e-07,
+    "cs2": 1.0
+  },
+  "verdict": "PASS: physical scalar stability discriminants are positive throughout the scan"
+}

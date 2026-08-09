@@ -1,0 +1,42 @@
+{
+  "model": "global R-alpha luminal KGB completion",
+  "input": {
+    "H0_km_s_Mpc": 67.8625,
+    "Omega_b_h2": 0.02237,
+    "T_CMB_K": 2.7255,
+    "z_drag_reference": 1060.01
+  },
+  "sound_horizon_background_gate": {
+    "r_s_KGB_Mpc": 147.89395328267335,
+    "r_s_same_parameter_LCDM_Mpc": 147.8939532827458,
+    "relative_difference": -4.898303984646191e-13
+  },
+  "epochs": {
+    "BBN_z_1e9": {
+      "a": 1e-09,
+      "Omega_R": 7.679881147575549e-33,
+      "relative_H_minus_LCDM": 0.0,
+      "mu_infinity_minus_one": 2.259322326738441e-05,
+      "alpha_B": -4.518535047109375e-05,
+      "Q_s_over_Mpl2": 2.2591106418410455e-05
+    },
+    "recombination_z_1090": {
+      "a": 0.0009165902841429881,
+      "Omega_R": 1.3445814747533016e-09,
+      "relative_H_minus_LCDM": 3.0691005292737827e-12,
+      "mu_infinity_minus_one": 3.62391050636816e-05,
+      "alpha_B": -4.5185349858307643e-05,
+      "Q_s_over_Mpl2": 1.4084395749506853e-05
+    },
+    "drag_z_1060": {
+      "a": 0.0009424981856909926,
+      "Omega_R": 1.4719993776611375e-09,
+      "relative_H_minus_LCDM": 3.439470930288735e-12,
+      "mu_infinity_minus_one": 3.6389298987721896e-05,
+      "alpha_B": -4.518534978128437e-05,
+      "Q_s_over_Mpl2": 1.402626348358679e-05
+    }
+  },
+  "verdict": "PASS: the R-sector background and the action-derived early scalar response are small before recombination; the sound-horizon background shift is explicitly quantified.",
+  "scope": "This is a pre-recombination background-and-EFT input calculation. It is not a CMB angular-spectrum or Planck likelihood; those require evolving photon, baryon, neutrino, metric, and KGB scalar perturbations in a Boltzmann solver."
+}
