@@ -12,12 +12,14 @@ The public canonical location is
    background reconstruction, the controlled recovery limit, the local GR
    matching rule, the PPN prediction, the tensor result, and the exact CMB
    likelihood contract.
-2. `r_universe_completion/docs/completion_derivation.md` -- complete RFG-R
+2. `graf.tex` -- insert this figure block in `main.tex` with
+   `\input{graf.tex}` after the RFG-R recovery equations.
+3. `r_universe_completion/docs/completion_derivation.md` -- complete RFG-R
    action-level derivation and limits.
-3. `r_universe_completion/CALCULATION_MANIFEST.md` -- claim-to-file mapping.
-4. `r_universe_completion/docs/likelihood_pipeline.md` -- required full
+4. `r_universe_completion/CALCULATION_MANIFEST.md` -- claim-to-file mapping.
+5. `r_universe_completion/docs/likelihood_pipeline.md` -- required full
    matter/CMB/PPN data-likelihood calculation, including rejection rules.
-5. `r_universe_completion/scripts/run_all.sh` -- deterministic local
+6. `r_universe_completion/scripts/run_all.sh` -- deterministic local
    validation and output generation.
 
 ## Reproduce the internal RFG-R checks
@@ -45,6 +47,7 @@ yet. The public package and manuscript state this boundary explicitly.
 ## Stable public links
 
 - [Manuscript source](main.tex)
+- [RFG-R figure block](graf.tex)
 - [Action derivation](r_universe_completion/docs/completion_derivation.md)
 - [Calculation manifest](r_universe_completion/CALCULATION_MANIFEST.md)
 - [Matter/CMB/PPN likelihood protocol](r_universe_completion/docs/likelihood_pipeline.md)
