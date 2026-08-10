@@ -98,6 +98,16 @@ The final antisymmetry value is IEEE double-precision cancellation at the
 smallest wavenumbers; the direct symbolic action has an exactly symmetric
 mixing matrix.
 
+The extended audit samples 193 scale factors on
+`a in [1e-8,1]` and 601 wavenumbers on `k/H0 in [1e-5,1e7]`, for both
+benchmarks (386 by 601 action evaluations). It finds no sign-changing
+curvature-constraint root, keeps `Q_T>0` and the lapse--shift determinant
+nonzero, and records a minimum normalized `abs(mu_zeta)` of `1.0`. Run it
+with `rfg_xi_dense_dae_audit.py`; the recorded output is regression-checked by
+`validate_rfg_xi_dense_dae_audit.py` and stored in
+`generated/tables/rfg_xi_dense_dae_audit.csv`. This remains a finite numerical
+domain check, not a substitute for a transfer calculation.
+
 ## Scope
 
 This removes the specific DAE singularity of the original RFG-R reference
