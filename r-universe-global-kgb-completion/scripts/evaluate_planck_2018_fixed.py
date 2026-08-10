@@ -23,12 +23,6 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SPECTRA = ROOT / "generated" / "heftcamb"
-DEFAULT_CLIPY = Path(
-    "/Users/mpetr/Documents/Codex/2026-08-09/m/work/cobaya-planck-2018/code/planck/clipy"
-)
-DEFAULT_PLANCK = Path(
-    "/Users/mpetr/Documents/Codex/2026-08-09/m/work/cobaya-planck-2018/data/planck_2018/baseline/plc_3.0"
-)
 
 
 def parse_args() -> argparse.Namespace:
@@ -39,12 +33,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--planck-base", type=Path,
-        default=Path(os.environ.get("PLANCK_2018_BASE", DEFAULT_PLANCK)),
+        default=os.environ.get("PLANCK_2018_BASE"),
         help="Planck plc_3.0 directory containing the official likelihood files.",
     )
     parser.add_argument(
         "--clipy-source", type=Path,
-        default=Path(os.environ.get("CLIPY_SOURCE", DEFAULT_CLIPY)),
+        default=os.environ.get("CLIPY_SOURCE"),
         help="Directory containing the clipy package source.",
     )
     parser.add_argument(
@@ -56,7 +50,12 @@ def parse_args() -> argparse.Namespace:
         default=ROOT / "generated" / "planck_2018_fixed_loglike.json",
         help="JSON report path.",
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.planck_base is None:
+        parser.error("set PLANCK_2018_BASE or pass --planck-base")
+    if args.clipy_source is None:
+        parser.error("set CLIPY_SOURCE or pass --clipy-source")
+    return args
 
 
 def require_path(path: Path, label: str) -> None:
