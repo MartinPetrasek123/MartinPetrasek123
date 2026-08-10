@@ -15,7 +15,7 @@
 | Extended scalar-action audit | `scripts/extended_eft_scalar_stability.py` | Reduced action, lapse/shift determinant and scalar kinetic test |
 | Photon--baryon--CDM--neutrino reduction | `docs/photon_baryon_cdm_neutrino_reduction.md` | Exact Sorkin--Schutz Schur complement, infinite photon/neutrino hierarchy, GR rational-rank and RFG-R inertia audits |
 | Multi-fluid DAE closure | `scripts/rfg_dae_closure.py` | Exact `Delta_i` transformation, analytic Schur-complement time derivative, and singular curvature-constraint surface |
-| RFG-RXi completion | `scripts/rfg_xi_completion.py` | Directly derived Xi(R3+sigma^2) increments, unchanged FLRW background, and no-root finite-grid DAE audits at unfitted Xi=1 and Xi=2 |
+| RFG-RXi completion | `scripts/rfg_xi_completion.py`, `scripts/validate_rfg_xi_metric_equations.py` | Directly derived Xi(R3+sigma^2) increments in the lapse, shift, trace, and traceless equations; unchanged FLRW background; and no-root finite-grid DAE audits at unfitted Xi=1 and Xi=2 |
 | RFG-RXi direct data factors | `scripts/rfg_xi_observables.py` | Exact background/tensor observables plus the locally matched Cassini likelihood for Xi=1 and Xi=2; explicitly not a CMB likelihood |
 | GR CAMB spectrum/transfer reference | `scripts/gr_reference_camb.py` | Pinned CAMB 2.0.1 regression for lensed CMB, lensing potential and linear matter transfer; never an RFG-R spectrum |
 | GR Planck low-ell+lensing interface | `scripts/gr_planck_lowell_lensing.py` | Executed official low-T, low-E and lensing likelihood regression at the pinned GR point; high-ell nuisance vector not guessed |

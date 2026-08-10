@@ -119,6 +119,8 @@ the Sun the code obtains `W about 6e22`.
   action.
 - `scripts/validate_rfg_xi_completion.py` - symbolic and DAE regression test
   for RFG-RXi.
+- `scripts/validate_rfg_xi_metric_equations.py` - exact symbolic regression
+  for all four scalar metric equations of the RFG-RXi action.
 - `scripts/rfg_xi_observables.py` - action-defined RFG-RXi background,
   tensor, and local PPN observable grid.
 - `scripts/validate_rfg_xi_observables.py` - independent RFG-RXi observable

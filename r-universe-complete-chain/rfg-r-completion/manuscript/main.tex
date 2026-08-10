@@ -2338,6 +2338,31 @@ modified without a fitted background function:
 \end{equation}
 Equations~\eqref{eq:RFGR-Xi-action}--\eqref{eq:RFGR-Xi-matrices} define
 RFG-R\(\Xi\), not a reinterpretation of the singular reference action.
+Keeping the scalar traceless metric mode until after variation gives the
+following exact additions to the lapse, shift, trace, and traceless Euler
+residuals:
+\begin{align}
+ \Delta\mathcal E_\alpha&=2\Xi ak^2\zeta,&
+ \Delta\mathcal E_\beta&=\frac{2\Xi\beta k^4}{3a}, \notag\\
+ \Delta\mathcal E_\zeta&=-2\Xi ak^2(\alpha+\zeta),&
+ \Delta\mathcal E_E&=-\frac{2\Xi ak^4}{3}
+ \left(H\beta+\alpha+\dot\beta+\zeta\right).
+ \label{eq:RFGR-Xi-metric-residuals}
+\end{align}
+Thus this is not an Einstein-equation substitution. In the gauge
+\(s=k^2\beta/a^2\), the directly varied traceless equation is
+\begin{align}
+ \dot s={}&-\left[3H+\frac{\dot Q_\epsilon}{Q_\epsilon+\Xi}
+ +\frac{Q_{\epsilon,X}}{3(Q_\epsilon+\Xi)}\frac{k^2}{a^2}\right]s
+ -\frac{k^2}{a^2}(\alpha+\zeta) \notag\\
+ &+\frac{Q_{\epsilon,X}}{Q_\epsilon+\Xi}\frac{k^2}{a^2}
+ \left(H\alpha-\dot\zeta\right)-\frac{\Pi}{Q_\epsilon+\Xi}.
+ \label{eq:RFGR-Xi-traceless-evolution}
+\end{align}
+Here \(\Pi\) is the total kinetic anisotropic stress. The symbolic regression
+of all four residuals and the executable form of
+Eq.~\eqref{eq:RFGR-Xi-traceless-evolution} are in
+\RFGRepoNamed{scripts/validate\_rfg\_xi\_metric\_equations.py}{the RFG-RXi metric-equation test}.
 
 The constant \(\Xi\) is a new dimensionless EFT coefficient, not a fitted
 cosmological parameter in this work. For the unfitted normalization benchmark
@@ -2351,7 +2376,8 @@ kinetic block has inertia \((4,0,0)\) at every audited point. The direct
 symbolic identity, audit, and table are reproducible from
 \RFGRepoNamed{docs/rfg\_xi\_completion.md}{the RFG-RXi derivation},
 \RFGRepoNamed{scripts/rfg\_xi\_completion.py}{the RFG-RXi audit},
-\RFGRepoNamed{scripts/validate\_rfg\_xi\_completion.py}{its regression test}, and
+\RFGRepoNamed{scripts/validate\_rfg\_xi\_completion.py}{its regression test},
+\RFGRepoNamed{scripts/validate\_rfg\_xi\_metric\_equations.py}{the exact metric-equation regression}, and
 \RFGRepoNamed{generated/tables/rfg\_xi\_completion\_audit.csv}{the audit table}.
 
 \paragraph{Directly evaluated RFG-R\(\Xi\) factors.}

@@ -47,6 +47,30 @@ Thus the only finite matrices changed are
 with exact rates dot(Delta D)=dot(Delta M)=-2H Delta D. The symbolic
 identity is checked by validate_rfg_xi_completion.py.
 
+Keeping the scalar traceless metric deformation until after variation gives
+the full metric increments, in the same real-mode normalization,
+
+```text
+Delta E_lapse      =  2 Xi a k^2 zeta,
+Delta E_shift      =  2 Xi beta k^4/(3a),
+Delta E_trace      = -2 Xi a k^2 (alpha+zeta),
+Delta E_traceless  = -2 Xi a k^4 (H beta+alpha+beta_dot+zeta)/3.
+```
+
+Consequently the action-defined traceless equation is
+
+```text
+dot(s) = -[3H + Qdot/(Q+Xi) + Q_X k^2/(3(Q+Xi)a^2)] s
+         -(k^2/a^2)(alpha+zeta)
+         +(Q_X/(Q+Xi))(k^2/a^2)(H alpha-dot(zeta))
+         -Pi/(Q+Xi).
+```
+
+This is not the Einstein equation: the completion changes every scalar metric
+Euler residual listed above. `validate_rfg_xi_metric_equations.py` derives
+the four increments symbolically and verifies the executable shear equation
+against the exact `Q -> Q+Xi` identity.
+
 ## Reference audit
 
 Xi is a new dimensionless EFT coefficient. It is not inferred from any data in

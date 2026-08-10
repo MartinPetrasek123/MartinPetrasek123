@@ -317,6 +317,7 @@ def spatial_traceless_shear_rhs_from_coefficients(
     zeta_dot: float,
     shear: float,
     anisotropic_stress: float,
+    xi_completion: float = 0.0,
 ) -> float:
     """Return dot(s) from the scalar spatial-traceless field equation.
 
@@ -327,15 +328,18 @@ def spatial_traceless_shear_rhs_from_coefficients(
     total Pi/M_Pl^2 H0^2 of the photon, massless-neutrino and massive-neutrino
     kinetic moments.
     """
-    if a <= 0.0 or k_over_h0 <= 0.0 or q == 0.0:
-        raise ValueError("a, k_over_h0 and q must be nonzero on the physical branch")
+    q_total = q + xi_completion
+    if a <= 0.0 or k_over_h0 <= 0.0 or q_total == 0.0:
+        raise ValueError("a, k_over_h0 and Q+Xi must be nonzero on the physical branch")
+    if not math.isfinite(xi_completion):
+        raise ValueError("xi_completion must be finite")
     gradient = k_over_h0 * k_over_h0 / (a * a)
     return (
-        -(3.0 * hubble + q_dot / q + q_x * gradient / (3.0 * q)) * shear
+        -(3.0 * hubble + q_dot / q_total + q_x * gradient / (3.0 * q_total)) * shear
         - gradient * (alpha + zeta)
-        + gradient * hubble * q_x * alpha / q
-        - gradient * q_x * zeta_dot / q
-        - anisotropic_stress / q
+        + gradient * hubble * q_x * alpha / q_total
+        - gradient * q_x * zeta_dot / q_total
+        - anisotropic_stress / q_total
     )
 
 
@@ -349,8 +353,13 @@ def spatial_traceless_shear_rhs(
     zeta_dot: float,
     shear: float,
     anisotropic_stress: float,
+    xi_completion: float = 0.0,
 ) -> float:
-    """Evaluate the action-derived RFG-R shear equation on the background."""
+    """Evaluate the action-derived RFG-RXi shear equation on the background.
+
+    The directly varied background-null operator shifts the tensor coefficient
+    as Q -> Q+Xi while leaving Q_X and its time derivative unchanged.
+    """
     row = extended_eft_coefficients(a, params)
     h = float(row["E"])
     q = float(row["Q"])
@@ -368,6 +377,7 @@ def spatial_traceless_shear_rhs(
         zeta_dot=zeta_dot,
         shear=shear,
         anisotropic_stress=anisotropic_stress,
+        xi_completion=xi_completion,
     )
 
 
