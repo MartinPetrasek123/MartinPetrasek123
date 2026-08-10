@@ -10,10 +10,10 @@
   "provenance": {
     "evaluator": "scripts/evaluate_planck_2018_fixed.py",
     "reports": {
-      "nodes_201": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_201",
-      "nodes_601": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_601",
-      "turn_on_a_1e-3": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/turn_on/a_1e-3",
-      "turn_on_a_1e-4": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/turn_on/a_1e-4"
+      "nodes_201": "generated/heftcamb/convergence/nodes_201",
+      "nodes_601": "generated/heftcamb/convergence/nodes_601",
+      "turn_on_a_1e-3": "generated/heftcamb/turn_on/a_1e-3",
+      "turn_on_a_1e-4": "generated/heftcamb/turn_on/a_1e-4"
     },
     "solver_convergence": "generated/heftcamb/convergence/heftcamb_convergence.json",
     "solver_generator": "scripts/generate_heftcamb_rph.py"

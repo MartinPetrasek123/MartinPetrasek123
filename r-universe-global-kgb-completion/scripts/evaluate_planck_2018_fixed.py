@@ -124,6 +124,14 @@ def scalar_value(value: Any) -> float:
     return float(np.asarray(value))
 
 
+def report_path(path: Path, external_label: str) -> str:
+    """Keep public reports reproducible without exposing machine-specific paths."""
+    try:
+        return str(path.resolve().relative_to(ROOT))
+    except ValueError:
+        return external_label
+
+
 def evaluate(label: str, likelihood: Any, cls: np.ndarray, nuisance: dict[str, float]) -> dict[str, Any]:
     lmax = [int(item) for item in likelihood.get_lmax()]
     # Some official low-ell implementations multiply an entire input row by
@@ -182,8 +190,8 @@ def main() -> None:
             "comparison to LambdaCDM."
         ),
         "inputs": {
-            "spectra_dir": str(args.spectra_dir.resolve()),
-            "planck_base": str(args.planck_base.resolve()),
+            "spectra_dir": report_path(args.spectra_dir, "external spectrum directory supplied at runtime"),
+            "planck_base": report_path(args.planck_base, "external Planck 2018 plc_3.0 distribution"),
             "a_planck_fixed": args.a_planck,
             "lensed_ell_max": int(lensed[-1, 0]),
             "lenspotential_ell_max": int(unlensed_with_phi[-1, 0]),

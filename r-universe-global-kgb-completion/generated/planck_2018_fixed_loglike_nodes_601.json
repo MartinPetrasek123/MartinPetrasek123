@@ -70,8 +70,8 @@
     "a_planck_fixed": 1.0,
     "lensed_ell_max": 2600,
     "lenspotential_ell_max": 2700,
-    "planck_base": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/cobaya-planck-2018/data/planck_2018/baseline/plc_3.0",
-    "spectra_dir": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_601",
+    "planck_base": "external Planck 2018 plc_3.0 distribution",
+    "spectra_dir": "generated/heftcamb/convergence/nodes_601",
     "spectrum_convention": {
       "cmb": "CAMB D_ell converted to raw C_ell before clik evaluation",
       "phi_phi": "CAMB D_ell^phi_phi converted to raw C_ell^phi_phi before clik evaluation"
