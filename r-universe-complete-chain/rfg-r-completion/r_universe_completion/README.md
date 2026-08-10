@@ -125,6 +125,10 @@ the Sun the code obtains `W about 6e22`.
   audit on the CMB-to-late-time integration domain.
 - `scripts/validate_rfg_xi_dense_dae_audit.py` - regression check for the
   recorded extended RFG-RXi DAE audit.
+- `scripts/rfg_xi_finite_action_solver.py` - implicit action-level DAE solver
+  kernel for the RFG-RXi finite material reduction.
+- `scripts/validate_rfg_xi_finite_action_solver.py` - finite trajectory,
+  linearity, constraint, and exact GR-action-limit checks for that kernel.
 - `scripts/rfg_xi_observables.py` - action-defined RFG-RXi background,
   tensor, and local PPN observable grid.
 - `scripts/validate_rfg_xi_observables.py` - independent RFG-RXi observable

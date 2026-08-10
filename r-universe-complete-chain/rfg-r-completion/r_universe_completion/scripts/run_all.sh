@@ -14,6 +14,8 @@ python3 scripts/validate_rfg_xi_completion.py
 python3 scripts/validate_rfg_xi_metric_equations.py
 python3 scripts/rfg_xi_dense_dae_audit.py
 python3 scripts/validate_rfg_xi_dense_dae_audit.py
+python3 scripts/rfg_xi_finite_action_solver.py
+python3 scripts/validate_rfg_xi_finite_action_solver.py
 python3 scripts/rfg_xi_observables.py
 python3 scripts/validate_rfg_xi_observables.py
 python3 scripts/generate_outputs.py
