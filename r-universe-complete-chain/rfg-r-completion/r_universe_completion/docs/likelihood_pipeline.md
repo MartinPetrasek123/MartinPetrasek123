@@ -41,9 +41,9 @@ For each proposed point:
 7. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
    `f sigma8(z)`, and the standard-siren distance ratio.
 
-The downloaded public H-EFTCAMB revision is useful as a compiled GR reference
-and for checking the standard six-function EFT interface. It is not an exact
-RFG-R backend: its exposed `Omega`, `gamma_1` through `gamma_6` input set has
+The audited public H-EFTCAMB source is useful for checking the standard
+six-function EFT interface. It is not an exact RFG-R backend: its exposed
+`Omega`, `gamma_1` through `gamma_6` input set has
 no `bar_m5 delta R3 delta K` operator. Setting that coefficient to zero would
 change the RFG-R action. The RFG-R Boltzmann module must therefore add this
 extended operator to the scalar equations and stability checks before any
@@ -70,6 +70,30 @@ neutrino anisotropic-stress sectors remain exact kinetic hierarchies. The
 existing one-canonical-scalar diagnostic is not a substitute for that system.
 Adding a gravitational kinetic operator would define a different theory and
 would have to be stated, derived, and tested as such.
+
+## 2.2 Executed GR Infrastructure Reference
+
+The standard photon/baryon/CDM/neutrino, recombination, lensing and transfer
+machinery was executed with the pinned public `camb==2.0.1` wheel at the
+published Planck 2018 TT,TE,EE+lowE+lensing posterior means. The generated
+reference has `sigma8(z=0)=0.8110325278646`; lensed CMB, lensing-potential and
+linear-matter samples are written to `generated/tables/gr_camb_reference.csv`.
+`scripts/validate_gr_reference_camb.py` reproduces the pinned values.
+
+Official Planck low-T, low-E and lensing components were also executed through
+Cobaya 3.6.2 using the Planck BBN-consistency preset and the defined nominal
+calibration `A_planck=1`. The individual values and the combined
+`-2 ln L=428.3415086187` are recorded in
+`generated/tables/gr_planck_2018_lowell_lensing.csv`; their regression script
+is `scripts/validate_gr_planck_lowell_lensing.py`.
+
+This is a GR data-interface test only. Stock CAMB has `bar_m5=0`, whereas
+RFG-R has a nonzero mapped coefficient. It does not produce an RFG-R spectrum,
+posterior, best fit or comparison to LCDM. The official high-ell Plik package
+is installed but not assigned guessed calibration/foreground values; it must
+enter an actual joint fit. Details and commands are in
+`docs/gr_camb_reference.md`, `docs/planck_data_reference.md`, and
+`docs/backend_capability_audit.md`.
 
 ## 3. Likelihoods
 
@@ -126,8 +150,9 @@ data:   Planck Legacy Archive likelihood packages
 sampler: Cobaya nested or MCMC sampler
 ```
 
-The remaining boundary is numerical/data-facing: no RFG-R spectra, posterior,
-or CMB/matter likelihood has been executed. No empirical result is claimed.
+The remaining RFG-R boundary is numerical/data-facing: no RFG-R spectra,
+posterior, or CMB/matter likelihood has been executed. The executed GR
+reference does not change that statement.
 
 ## 6. References For The Pipeline
 

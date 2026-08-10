@@ -109,16 +109,15 @@ def _reduced_coefficients(a: float, k_over_h0: float, params: RFGRegularizedPara
 
 
 def _gradient(a: float, k_over_h0: float, params: RFGRegularizedParams) -> float:
-    """G after integrating the zeta-dot*zeta term in Eq. (110) by parts."""
-    reduced = _reduced_coefficients(a, k_over_h0, params)
-    # This branch is kinetically degenerate before a scalar sound speed is
-    # evaluated.  Keep the derivative only as a diagnostic if a future,
-    # nondegenerate action is supplied.
-    step = 2.0e-4
-    plus = _reduced_coefficients(a * math.exp(step), k_over_h0, params)["V_bar"]
-    minus = _reduced_coefficients(a * math.exp(-step), k_over_h0, params)["V_bar"]
-    v_dot = reduced["E"] * (plus - minus) / (2.0 * step)
-    return reduced["B_bar"] - 0.5 * (v_dot + 3.0 * reduced["E"] * reduced["V_bar"])
+    """Reject an undefined pure-gravity sound-speed calculation.
+
+    The audited RFG-R branch has an identically degenerate scalar kinetic
+    coefficient. Evaluating a putative gradient by numerically differentiating
+    another reduced coefficient would not create a physical propagation speed.
+    A nondegenerate action would require its own analytic derivative map.
+    """
+    del a, k_over_h0, params
+    raise RuntimeError("the pure-gravity scalar gradient is undefined on the degenerate RFG-R branch")
 
 
 def scalar_stability_row(a: float, k_over_h0: float, params: RFGRegularizedParams) -> dict[str, float]:

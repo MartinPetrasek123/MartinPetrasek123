@@ -81,9 +81,9 @@ derivatives and checks the exact `bar_m5=-M_Pl^2 Q_X/(3H0)` identity.
 
 ## Backend consequence
 
-The downloaded and compiled public H-EFTCAMB revision exports only the usual
-`Omega`, `gamma_1` through `gamma_6` operator set. A source search confirms
-that it has no `bar_m5 delta R3 delta K` coefficient. Therefore it is suitable
+The audited public H-EFTCAMB source exports only the usual `Omega`, `gamma_1`
+through `gamma_6` operator set. A source search confirms that it has no
+`bar_m5 delta R3 delta K` coefficient. Therefore it is suitable
 for an unmodified GR reference calculation but cannot yield an exact RFG-R
 CMB, lensing, or matter prediction. Independently, the executed
 [`extended_eft_scalar_audit.md`](extended_eft_scalar_audit.md) finds that the

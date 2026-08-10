@@ -20,6 +20,8 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
   untruncated photon-polarization/neutrino kinetic hierarchy;
 - a full linear Einstein-Boltzmann likelihood protocol, still awaiting a
   solver implementation and an executed data run;
+- an executed CAMB 2.0.1 GR spectrum and Planck low-ell+lensing data-interface
+  reference, explicitly separated from an RFG-R prediction;
 - an exact ADM-to-extended-EFT map, including the nonzero
   `bar_m5 delta R3 delta K` coefficient required by the action.
 
@@ -77,6 +79,12 @@ the Sun the code obtains `W about 6e22`.
   photon-polarization and neutrino kinetic hierarchy.
 - `docs/canonical_scalar_reduction.md` - exact canonical-scalar quadratic
   reduction and its executable stability diagnostic.
+- `docs/backend_capability_audit.md` - source-level audit showing why stock
+  H-EFTCAMB is not an RFG-R backend.
+- `docs/gr_camb_reference.md` - pinned GR/CAMB spectrum reference and its
+  strict RFG-R boundary.
+- `docs/planck_data_reference.md` - executed official Planck low-ell+lensing
+  GR reference and the high-ell nuisance-parameter boundary.
 - `scripts/rfg_regularized.py` - background solver, potential reconstruction,
   and ADM coefficient table.
 - `scripts/validate_completion.py` - independent numerical checks.
@@ -92,6 +100,10 @@ the Sun the code obtains `W about 6e22`.
   phase-space interface.
 - `scripts/validate_multifluid_reduction.py` - rational GR rank test and the
   425-point RFG-R multi-fluid core audit.
+- `scripts/gr_reference_camb.py` - pinned GR spectrum, lensing, and transfer
+  reference; never an RFG-R spectrum.
+- `scripts/gr_planck_lowell_lensing.py` - official Planck low-T, low-E and
+  lensing likelihood at that GR reference point.
 - `scripts/ppn_likelihood.py` - local GR matching and Cassini likelihood.
 - `generated/` - tables and figures generated from the scripts.
 
@@ -106,6 +118,15 @@ reconstruction, background closure, positive tensor normalization, and the PPN
 domain. It also checks the canonical-scalar General-Relativity limit and its
 reference sourced-constraint diagnostic, reproduces the pure-gravity
 extended-EFT scalar degeneracy, and runs the exact multi-fluid core audit.
+
+The external GR/data-interface regressions use public CAMB/Cobaya packages and
+are intentionally not part of `run_all.sh`:
+
+```bash
+python -m pip install 'camb==2.0.1' 'cobaya==3.6.2'
+python scripts/validate_gr_reference_camb.py
+python scripts/validate_gr_planck_lowell_lensing.py --packages-path /path/to/cobaya-planck-2018
+```
 
 ## Empirical Rule
 

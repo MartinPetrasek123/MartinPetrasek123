@@ -90,7 +90,7 @@ E^2=\Omega_{m0}a^{-3}+\Omega_{r0}a^{-4}+\Omega_{R0}E^{2-\theta},
 \]
 together with a proof of existence and uniqueness of the expanding branch, exact expressions for the logarithmic Hubble derivative, deceleration parameter, effective equation of state, acceleration--capacity identity, early- and late-time asymptotics, and a falsifiable standard-siren distance relation with \(c_T=1\).
 
-The RFG-R extension introduced here is a separate, explicitly defined low-energy multiscale EFT. It regularizes the \(X\to0\) action, preserves the original homogeneous branch to controlled order, and matches exactly to GR in a specified local-curvature domain. It consequently gives a definite local PPN prediction. Its regularized action, potential reconstruction, numerical validation, and Cassini likelihood factor are supplied as executable source files. For RFG-R coupled to one minimally coupled canonical scalar, the sourced lapse--shift constraints and the reduced quadratic action are also evaluated exactly, including the GR normalization check \(K=6\), \(c_s^2=1\). The action is mapped exactly into the extended EFT basis; the map forces a nonzero \(\bar m_5\,\delta{}^{(3)}R\,\delta K\) operator that is absent from the public stock H-EFTCAMB input basis. The complete \emph{pure-gravity} extended-EFT scalar action is degenerate, but the sourced photon--baryon--CDM--neutrino constraint reduction and untruncated kinetic hierarchy are derived directly from the same action. The associated data likelihood has not been executed, so no claim is made that either construction has displaced \(\Lambda\)CDM.
+The RFG-R extension introduced here is a separate, explicitly defined low-energy multiscale EFT. It regularizes the \(X\to0\) action, preserves the original homogeneous branch to controlled order, and matches exactly to GR in a specified local-curvature domain. It consequently gives a definite local PPN prediction. Its regularized action, potential reconstruction, numerical validation, and Cassini likelihood factor are supplied as executable source files. For RFG-R coupled to one minimally coupled canonical scalar, the sourced lapse--shift constraints and the reduced quadratic action are also evaluated exactly, including the GR normalization check \(K=6\), \(c_s^2=1\). The action is mapped exactly into the extended EFT basis; the map forces a nonzero \(\bar m_5\,\delta{}^{(3)}R\,\delta K\) operator that is absent from the public stock H-EFTCAMB input basis. The complete \emph{pure-gravity} extended-EFT scalar action is degenerate, but the sourced photon--baryon--CDM--neutrino constraint reduction and untruncated kinetic hierarchy are derived directly from the same action. An external GR/CAMB spectrum and Planck low-ell+lensing reference has been executed to validate the data interface; the associated RFG-R data likelihood has not, so no claim is made that either construction has displaced \(\Lambda\)CDM.
 \end{abstract}
 
 \bigskip
@@ -186,7 +186,7 @@ RFG-R canonical scalar & Computed reference-sector reduction & For one minimally
 Layer & Status in this manuscript & Precise content \\
 \midrule
 RFG-R multi-fluid core & Computed action reduction and kinetic hierarchy & Exact Sorkin--Schutz constraint matrix, full \(\bar m_5\) contribution, rational GR rank check, documented RFG-R inertia audit, photon polarization and massless/massive neutrino kinetic equations. \\
-Matter/CMB likelihood & Reproducible computation contract; not evaluated & The action derivatives and hierarchy are specified, including nonzero \(\bar m_5\delta{}^{(3)}R\delta K\). An implementation retaining that operator and an actual joint data run remain outstanding. \\
+Matter/CMB likelihood & GR data-interface reference executed; RFG-R not evaluated & CAMB 2.0.1 and official Planck low-ell+lensing components run at a fixed GR point. The RFG-R action derivatives and hierarchy include nonzero \(\bar m_5\delta{}^{(3)}R\delta K\); an implementation retaining that operator and an actual joint RFG-R data run remain outstanding. \\
 \bottomrule
 \end{tabular}%
 }
@@ -1980,11 +1980,12 @@ a different, nondegenerate sourced Hessian.  The decisive missing object is
 therefore the complete photon--baryon--CDM--neutrino kinetic and gradient
 matrix derived from the same action.
 
-The compiled public H-EFTCAMB revision used for a GR reference calculation
-exposes the usual \(\Omega,\gamma_1,\ldots,\gamma_6\) interface, but not the
-coefficient in Eq.~\eqref{eq:RFGR-m5-operator}.  It therefore cannot produce
-an exact RFG-R CMB, lensing, or matter spectrum without an extension of its
-scalar equations and stability checks.  Independently of that backend gap,
+The audited public H-EFTCAMB source exposes the usual
+\(\Omega,\gamma_1,\ldots,\gamma_6\) interface, but not the coefficient in
+Eq.~\eqref{eq:RFGR-m5-operator}; the source-level audit is public in
+\RFGRepoNamed{docs/backend\_capability\_audit.md}{the backend audit}. It therefore
+cannot produce an exact RFG-R CMB, lensing, or matter spectrum without an
+extension of its scalar equations and stability checks. Independently of that backend gap,
 Eq.~\eqref{eq:RFGR-extended-scalar-audit} blocks a direct one-scalar EFT run.
 This is a precise implementation boundary, not a negative data result and not
 a licence to omit the operator.  The full kinetic Hessian must be obtained by
@@ -2011,6 +2012,44 @@ solver must implement the physical multi-fluid reduction, retain
 Eq.~\eqref{eq:RFGR-m5-operator}, reproduce its GR limit, and then be coupled
 to that interface.  This is intentionally not a claim that the likelihood in
 Eq.~\eqref{eq:RFGR-likelihood} has already been evaluated.
+
+\subsubsection{Executed GR data-interface reference}
+\label{sec:gr-planck-reference}
+
+The ordinary radiation, recombination, lensing and data-interface machinery
+has been exercised separately in GR using CAMB~\cite{CAMB} version 2.0.1 and
+the Planck 2018 TT,TE,EE+lowE+lensing posterior-mean cosmological inputs
+\(H_0=67.36\,{\rm km\,s^{-1}\,Mpc^{-1}}\),
+\(\omega_b=0.02237\), \(\omega_c=0.1200\),
+\(\tau=0.0544\), \(\ln(10^{10}A_s)=3.044\), \(n_s=0.9649\), and a
+BBN-consistent helium fraction
+\cite{Planck}. The pinned numerical reference gives
+\(\sigma_8(0)=0.8110325278646\) together with reproducible lensed
+\(TT\), \(TE\), \(EE\), lensing-potential, and linear-matter samples in
+\RFGRepoNamed{generated/tables/gr\_camb\_reference.csv}{the GR CAMB CSV}.
+The exact generator and regression test are
+\RFGRepoNamed{scripts/gr\_reference\_camb.py}{the CAMB generator} and
+\RFGRepoNamed{scripts/validate\_gr\_reference\_camb.py}{its regression test}.
+
+The official Planck low-temperature, low-polarization and lensing components
+were then evaluated at that fixed GR point. Their directly computed values are
+\begin{equation}
+ \ln\mathcal L_{\rm lowT}^{\rm GR}=-11.7117375873,\qquad
+ \ln\mathcal L_{\rm lowE}^{\rm GR}=-198.063447867,\qquad
+ \ln\mathcal L_{\rm lens}^{\rm GR}=-4.39556885539,
+ \label{eq:gr-planck-lowell-components}
+\end{equation}
+or \(-2\ln\mathcal L_{\rm low\ell+lens}^{\rm GR}=428.341508619\).
+The machine result, execution script and regression test are public in
+\RFGRepoNamed{generated/tables/gr\_planck\_2018\_lowell\_lensing.csv}{the likelihood CSV},
+\RFGRepoNamed{scripts/gr\_planck\_lowell\_lensing.py}{the likelihood script}, and
+\RFGRepoNamed{scripts/validate\_gr\_planck\_lowell\_lensing.py}{its regression test}.
+The high-\(\ell\) Plik package is installed but deliberately not evaluated
+with guessed foreground and calibration parameters: those form part of a
+documented joint fit. This reference validates the public data path only. It
+sets \(\bar m_5=0\) because CAMB is GR, and is therefore neither an RFG-R
+likelihood nor evidence for RFG-R against \(\Lambda\)CDM; see
+\RFGRepoNamed{docs/planck\_data\_reference.md}{the data-reference note}.
 
 \subsubsection{Exact photon--baryon--CDM--neutrino reduction}
 \label{sec:rfgr-multifluid-reduction}
@@ -3527,6 +3566,13 @@ B.~Hu, M.~Raveri, N.~Frusciante and A.~Silvestri,
 ``Effective Field Theory of Cosmic Acceleration: an implementation in CAMB,''
 \emph{Phys.\ Rev.\ D} \textbf{89}, 103530 (2014).
 \doi{10.1103/PhysRevD.89.103530}
+
+\bibitem{CAMB}
+A.~Lewis, A.~Challinor and A.~Lasenby,
+``Efficient computation of cosmic microwave background anisotropies in closed
+Friedmann--Robertson--Walker models,''
+\emph{Astrophys.\ J.} \textbf{538}, 473--476 (2000), arXiv:astro-ph/9911177.
+\doi{10.1086/309179}
 
 \bibitem{ExtendedEFTMap}
 N.~Frusciante, G.~Papadomanolakis and A.~Silvestri,

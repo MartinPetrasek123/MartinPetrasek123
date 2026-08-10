@@ -171,7 +171,7 @@ def main() -> None:
         P("R-Universe RFG-R", st["title"]),
         P("A regular multiscale completion with a scalar-action audit and empirical protocol", st["title"]),
         P("Martin Petrasek", st["author"]),
-        P("<b>Abstract.</b> RFG-R is a precisely specified low-energy completion of the R-Universe preferred-foliation branch. It regularizes the X=0 weak-field singularity while retaining the reconstructed cosmological background and luminal tensor propagation to O((epsilon/X)^p). The completion has two explicit domains: a cosmological relational action and a locally GR-matched weak-field EFT. The potential is reconstructed by quadrature from the prescribed branch rather than postulated. The local domain has gamma=beta=1 and alpha1=alpha2=0. The exact ADM-to-extended-EFT map contains a nonzero bar_m5 delta R3 delta K operator. An executed pure-gravity scalar audit retains that operator and finds a degenerate zeta-dot-squared coefficient, while the sourced photon--baryon--CDM--neutrino constraint action and untruncated kinetic hierarchy are explicitly derived. No RFG-R spectrum or CMB likelihood is evaluated. This paper defines the model, the audited limitation, and the empirical protocol; it makes no data-preference claim.", st["abstract"]),
+        P("<b>Abstract.</b> RFG-R is a precisely specified low-energy completion of the R-Universe preferred-foliation branch. It regularizes the X=0 weak-field singularity while retaining the reconstructed cosmological background and luminal tensor propagation to O((epsilon/X)^p). The completion has two explicit domains: a cosmological relational action and a locally GR-matched weak-field EFT. The potential is reconstructed by quadrature from the prescribed branch rather than postulated. The local domain has gamma=beta=1 and alpha1=alpha2=0. The exact ADM-to-extended-EFT map contains a nonzero bar_m5 delta R3 delta K operator. An executed pure-gravity scalar audit retains that operator and finds a degenerate zeta-dot-squared coefficient, while the sourced photon--baryon--CDM--neutrino constraint action and untruncated kinetic hierarchy are explicitly derived. A pinned GR/CAMB spectrum and Planck low-ell+lensing data-interface reference have also been executed. No RFG-R spectrum or CMB likelihood is evaluated. This paper defines the model, the audited limitation, and the empirical protocol; it makes no data-preference claim.", st["abstract"]),
         P("<b>Keywords:</b> modified gravity; preferred foliation; CMB; post-Newtonian tests; effective field theory; standard sirens", st["body"]),
         P("1. The completion problem", st["h1"]),
         P("The R-Universe homogeneous branch is predictive for H(a), the effective relational equation of state, and the tensor distance ratio. Its original response Q(X)=1-A X^(-theta), however, is singular in the X=0 limit used by a standard static weak-field expansion. A genuine empirical theory therefore needs a definition of its local limit as well as a derived linear matter and radiation system. RFG-R supplies the local completion and the action-level inputs for the latter. It is deliberately an effective low-energy model: cosmological geometry activates the relational response, while resolved local gravity is matched to General Relativity.", st["body"]),
@@ -204,7 +204,7 @@ def main() -> None:
         P("The sourced photon--baryon--CDM--neutrino finite quadratic constraint action is now reduced by an exact Schur complement. Its GR check has rank(K)=4 in rational arithmetic, and its 425-point RFG-R reference audit has inertia (positive, negative, null)=(4,0,1). Photon polarization and neutrino anisotropic stress remain untruncated kinetic hierarchies; massive neutrinos retain epsilon=sqrt(q^2+a^2m_nu^2). The remaining task is an action-faithful 3+1 Einstein-Boltzmann implementation with recombination and lensing. It must reject any point with a singular physical constraint matrix, a ghost, a gradient instability, or Q_T<=0. Accepted points would export TT, TE, EE, lensing, P(k,z), f sigma8(z), and the standard-siren distance.", st["body"]),
         P("6. Data protocol", st["h1"]),
         Spacer(1, 7),
-        P("The baseline log likelihood is ln L=ln L_Planck18+ln L_lensing+ln L_BAO+ln L_SN+ln L_RSD+ln L_PPN+ln L_GW. Planck is to be evaluated with the official low-ell temperature and polarization, high-ell TT/TE/EE, and lensing packages; the solver must be a full modified-gravity Einstein-Boltzmann solver rather than a quasi-static growth approximation. The public stock H-EFTCAMB interface is a useful GR reference, but it does not expose bar_m5 delta R3 delta K and is not an exact RFG-R solver. Cobaya may sample the joint likelihood only after an action-faithful extended solver, including recombination and lensing, is implemented and validated.", st["body"]),
+        P("The baseline log likelihood is ln L=ln L_Planck18+ln L_lensing+ln L_BAO+ln L_SN+ln L_RSD+ln L_PPN+ln L_GW. A pinned CAMB 2.0.1 GR calculation at the Planck posterior-mean reference point, with the same BBN-consistent helium fraction as the likelihood preset, gives sigma8=0.8110325278646. The official Planck low-T, low-E and lensing components were evaluated there, giving -2 ln L=428.341508619; this tests only the GR data interface. High-ell Plik is installed but not evaluated with guessed nuisance parameters. The public stock H-EFTCAMB interface does not expose bar_m5 delta R3 delta K and is not an exact RFG-R solver. Cobaya may sample the RFG-R joint likelihood only after an action-faithful extended solver, including recombination and lensing, is implemented and validated.", st["body"]),
         P("The completion defines a falsifiable route, but no RFG-R spectrum or data likelihood has yet been evaluated. Whether the model is preferred, allowed, or ruled out remains an empirical question; no conclusion follows from background algebra, local matching, a finite-core audit, or the pure-gravity audit alone.", st["body"]),
         P("7. Numerical verification", st["h1"]),
     ]
@@ -219,6 +219,8 @@ def main() -> None:
         ["canonical reference grid", "Delta>0, K>0, G1>0, G2>=0 within numerical tolerance"],
         ["pure-gravity extended-EFT scalar audit", "2,401/2,401 degenerate; standalone c_s undefined"],
         ["multi-fluid finite core", "GR rank(K)=4 exactly; RFG-R inertia (4,0,1) on 425 points"],
+        ["GR CAMB 2.0.1 reference", "sigma8(z=0)=0.8110325278646"],
+        ["GR Planck low-ell+lensing", "-2 ln L=428.341508619; not an RFG-R likelihood"],
         ["Solar W at 1 AU", "5.756e22; local GR domain"],
     ]
     table = Table(table_data, colWidths=[7.4 * cm, 8.1 * cm], repeatRows=1)
@@ -239,7 +241,7 @@ def main() -> None:
     ]))
     story += [table, Spacer(1, 10)]
     story += [
-        P("The checks are generated by scripts/run_all.sh. They test the action-defined completion and reproduce its pure-gravity scalar gate; they do not constitute a CMB or matter likelihood.", st["body"]),
+        P("The action checks are generated by scripts/run_all.sh. The two separately pinned CAMB/Cobaya regressions verify only the public GR transport and data interface. Neither set constitutes an RFG-R CMB or matter likelihood.", st["body"]),
         P("References", st["h1"]),
         P("[1] M. Petrasek, Relational Capacity Dynamics and its Preferred-Foliation Completion (2026).", st["ref"]),
         P("[2] B. Hu, M. Raveri, N. Frusciante, and A. Silvestri, Effective Field Theory of Cosmic Acceleration: an implementation in CAMB, Phys. Rev. D 89, 103530 (2014), arXiv:1312.5742.", st["ref"]),
@@ -247,6 +249,7 @@ def main() -> None:
         P("[4] G. Ye et al., H-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of EFTCAMB for Covariant Horndeski Gravity, arXiv:2603.01662 (2026).", st["ref"]),
         P("[5] Planck Collaboration, Planck 2018 results. V. CMB power spectra and likelihoods, Astron. Astrophys. 641, A5 (2020), arXiv:1907.12875.", st["ref"]),
         P("[6] B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using radio links with the Cassini spacecraft, Nature 425, 374-376 (2003).", st["ref"]),
+        P("[7] A. Lewis, A. Challinor, and A. Lasenby, Efficient computation of cosmic microwave background anisotropies in closed Friedmann--Robertson--Walker models, Astrophys. J. 538, 473-476 (2000), arXiv:astro-ph/9911177.", st["ref"]),
     ]
     doc.build(story, onFirstPage=page_number, onLaterPages=page_number)
     print(OUT)

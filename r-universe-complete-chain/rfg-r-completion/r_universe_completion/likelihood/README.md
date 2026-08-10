@@ -2,7 +2,9 @@
 
 This directory intentionally does not vendor either Planck data or a modified
 Einstein-Boltzmann code. Both are third-party distributions with their own
-licenses and release procedures.
+licenses and release procedures. Official Planck 2018 packages may be installed
+in a separate local Cobaya directory; the executed GR reference is documented
+in `../docs/planck_data_reference.md` and is not an RFG-R result.
 
 ## Required Runtime
 
@@ -31,7 +33,18 @@ RFG-R implementation.
    the solver before spectra are computed.
 
 4. Install the official Planck 2018 likelihood code and data from the Planck
-Legacy Archive, then connect them to Cobaya.
+Legacy Archive, then connect them to Cobaya. The executed GR reference used:
+
+```bash
+cobaya-install -p /path/to/cobaya-planck-2018 --no-set-global \
+  planck_2018_lowl.TT planck_2018_lowl.EE \
+  planck_2018_highl_plik.TTTEEE planck_2018_lensing.clik
+python ../scripts/validate_gr_planck_lowell_lensing.py \
+  --packages-path /path/to/cobaya-planck-2018
+```
+
+The high-ell package is installed but not evaluated without its full nuisance
+model. The low-ell+lensing result validates only the GR data path.
 
 ## Mandatory Per-Sample Gate
 
