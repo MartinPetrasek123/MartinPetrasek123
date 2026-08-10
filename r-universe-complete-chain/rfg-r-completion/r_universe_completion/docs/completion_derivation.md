@@ -207,7 +207,19 @@ The generated `eft_coefficients.csv` records the background functions and
 derivatives needed to implement these formulas without numerical
 differentiation of a singular branch.
 
-The Boltzmann backend must evolve the exact linear constraint system together
-with photons, baryons, CDM, massive neutrinos, recombination, and lensing. The
-protocol in `likelihood_pipeline.md` specifies the likelihood and rejection
-rules.
+Before a species hierarchy can be evolved, the exact extended-EFT map must be
+checked in the corresponding scalar operator basis. The executed
+[`extended_eft_scalar_audit.md`](extended_eft_scalar_audit.md) retains the
+nonzero `bar_m5 delta R3 delta K` coefficient and finds that the *pure-gravity*
+coefficient of `zeta_dot^2` is degenerate on the reference branch. This rules
+out passing the action directly to a conventional one-scalar EFT/Boltzmann
+backend. It does not by itself decide the physical, matter-coupled rank,
+because matter sources the lapse and shift constraints.
+
+The unresolved required calculation is the joint photon--baryon--CDM--neutrino
+quadratic action from the same RFG-R action, including the extended operator.
+Only after its constrained kinetic and gradient matrices, initial conditions,
+and GR limit are derived may a Boltzmann backend evolve recombination,
+lensing, and the exact linear constraint system. The protocol in
+`likelihood_pipeline.md` specifies the resulting likelihood and rejection
+rules; it is not an executed CMB/matter result.

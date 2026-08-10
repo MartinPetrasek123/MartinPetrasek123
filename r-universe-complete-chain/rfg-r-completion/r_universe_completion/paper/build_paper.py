@@ -169,12 +169,12 @@ def main() -> None:
     story = []
     story += [
         P("R-Universe RFG-R", st["title"]),
-        P("A regular multiscale completion with a matter, CMB, and PPN likelihood definition", st["title"]),
+        P("A regular multiscale completion with a scalar-action audit and empirical protocol", st["title"]),
         P("Martin Petrasek", st["author"]),
-        P("<b>Abstract.</b> RFG-R is a precisely specified low-energy completion of the R-Universe preferred-foliation branch. It regularizes the X=0 weak-field singularity while retaining the reconstructed cosmological background and luminal tensor propagation to O((epsilon/X)^p). The completion has two explicit domains: a cosmological relational action and a locally GR-matched weak-field EFT. The potential is reconstructed by quadrature from the prescribed branch rather than postulated. The local domain has gamma=beta=1 and alpha1=alpha2=0. An exact sourced lapse--shift reduction for one canonical scalar field reproduces the General-Relativity normalization and tests its kinetic and gradient signs on a reference branch. The cosmological domain supplies the action derivatives needed by a full 3+1 Einstein-Boltzmann solver, with stability gating before every CMB likelihood evaluation. This paper defines the model and the falsification pipeline; it does not claim a data preference before the stated likelihood is executed.", st["abstract"]),
+        P("<b>Abstract.</b> RFG-R is a precisely specified low-energy completion of the R-Universe preferred-foliation branch. It regularizes the X=0 weak-field singularity while retaining the reconstructed cosmological background and luminal tensor propagation to O((epsilon/X)^p). The completion has two explicit domains: a cosmological relational action and a locally GR-matched weak-field EFT. The potential is reconstructed by quadrature from the prescribed branch rather than postulated. The local domain has gamma=beta=1 and alpha1=alpha2=0. The exact ADM-to-extended-EFT map contains a nonzero bar_m5 delta R3 delta K operator. An executed pure-gravity scalar audit retains that operator and finds a degenerate zeta-dot-squared coefficient on the reference branch. Thus a complete sourced photon--baryon--CDM--neutrino reduction is required before spectra or a CMB likelihood can be evaluated. This paper defines the model, the audited limitation, and the empirical protocol; it makes no data-preference claim.", st["abstract"]),
         P("<b>Keywords:</b> modified gravity; preferred foliation; CMB; post-Newtonian tests; effective field theory; standard sirens", st["body"]),
         P("1. The completion problem", st["h1"]),
-        P("The R-Universe homogeneous branch is predictive for H(a), the effective relational equation of state, and the tensor distance ratio. Its original response Q(X)=1-A X^(-theta), however, is singular in the X=0 limit used by a standard static weak-field expansion. A genuine empirical theory therefore needs a definition of its local limit as well as a source for the linear matter and radiation equations. RFG-R supplies both definitions. It is deliberately an effective low-energy model: cosmological geometry activates the relational response, while resolved local gravity is matched to General Relativity.", st["body"]),
+        P("The R-Universe homogeneous branch is predictive for H(a), the effective relational equation of state, and the tensor distance ratio. Its original response Q(X)=1-A X^(-theta), however, is singular in the X=0 limit used by a standard static weak-field expansion. A genuine empirical theory therefore needs a definition of its local limit as well as a derived linear matter and radiation system. RFG-R supplies the local completion and the action-level inputs for the latter. It is deliberately an effective low-energy model: cosmological geometry activates the relational response, while resolved local gravity is matched to General Relativity.", st["body"]),
         P("2. Regular cosmological response", st["h1"]),
         P("Let p be even and larger than theta, with reference values theta=1.6, p=4, and epsilon=10^-8. Define nu=1+theta/p and A=Omega_R0/(1+theta).", st["body"]),
         E("R_epsilon(X) = Omega_R0 X^(p+2)/(X^p+epsilon^p)^nu\nQ_epsilon(X) = 1 - A X^p/(X^p+epsilon^p)^nu", st["eq"]),
@@ -194,16 +194,18 @@ def main() -> None:
         P("4. Local GR matching and PPN", st["h1"]),
         P("A single cosmological EFT is not automatically a local Solar-System EFT. RFG-R makes the crossover a model axiom. Define W=sqrt(abs(C_abcd C^abcd))/(H0/c)^2 and use a C-infinity switching function s(W) that equals one for W<=10^8 and zero for W>=10^9. The complete low-energy action is S_eff=S_GR+int s(W)[L_cos-L_GR]. FLRW has W=0, while a Schwarzschild Sun gives W=5.756e22 at one AU.", st["body"]),
         P("Inside the local matched domain s=0, so the action and all its variations are exactly those of GR. The PPN prediction is therefore gamma=1, beta=1, alpha1=0, and alpha2=0. The Cassini factor used by the likelihood is -2 ln L=[(gamma-1-2.1e-5)/(2.3e-5)]^2, yielding 0.833648 for the GR prediction.", st["body"]),
-        P("5. Matter and CMB likelihood", st["h1"]),
+        P("5. Matter/CMB pre-Boltzmann gate and likelihood", st["h1"]),
         Spacer(1, 7),
-        P("No compressed CMB distance prior is used. The CMB interface begins with the action-level ADM derivatives. For L=Q_epsilon(X)[R3+K_ij K^ij-K^2]+2H0^2 V_epsilon(X), the principal inputs include L_R3=Q_epsilon and L_Kij_R3=Q_epsilon,X gamma^ij/(3H0). The full kinetic Hessian follows by differentiating L_Kij once more. The repository generates all background functions and derivatives in eft_coefficients.csv, avoiding any differentiation of a singular power law.", st["body"]),
+        P("No compressed CMB distance prior is used. The CMB interface begins with the action-level ADM derivatives. For L=Q_epsilon(X)[R3+K_ij K^ij-K^2]+2H0^2 V_epsilon(X), the principal inputs include L_R3=Q_epsilon and L_Kij_R3=Q_epsilon,X gamma^ij/(3H0). The exact ADM-to-extended-EFT map contains bar_m5=-M_Pl^2 Q_X/(3H0), multiplying bar_m5 delta R3 delta K/2. The repository generates all background functions and derivatives in eft_coefficients.csv, avoiding any differentiation of a singular power law.", st["body"]),
+        P("Pure-gravity scalar audit", st["h2"]),
+        P("The mapped bar_m5 operator is retained in the reduced unitary-gauge scalar action. On a 49 by 49 logarithmic grid spanning 10^-7<=a<=1 and 10^-4<=k/H0<=10^5, the lapse--shift constraint discriminant remains positive but the zeta-dot-squared coefficient is degenerate at all 2,401 points; the maximum relative residual of its factorized numerator is 2.614e-16. A standalone scalar sound speed is therefore undefined. This blocks a direct one-scalar EFT/Boltzmann evolution. It does not itself prove that the physical matter-coupled theory is ill-posed, since matter changes the constraint system.", st["body"]),
         P("Canonical-scalar check", st["h2"]),
         P("The sourced scalar constraints have been reduced exactly for one minimally coupled canonical field in comoving gauge. If m=phi_dot^2/M_Pl^2 and D=-F_XX/3, the lapse--shift determinant is proportional to Delta=6 D H^2 Q+(D-2Q)m and the reduced kinetic coefficient is K=6 D Q m/Delta. The intrinsic-curvature contribution +2Q(k^2/a^2)zeta^2 is retained; it is required to recover the exact GR massless-scalar result K=6 and c_s^2=1. On a self-consistent RFG-R reference branch with a massless canonical field, the executable diagnostic finds positive Delta, K, and gradient coefficients for 0.03<=a<=1. This is a real sourced-constraint check, not a dust/radiation/CMB calculation.", st["body"]),
-        P("For each sampled parameter point, the full 3+1 Einstein-Boltzmann backend must solve the scalar constraints together with photon, baryon, CDM, neutrino, recombination, and lensing evolution. It rejects a point before likelihood evaluation if the scalar constraint matrix becomes singular or if a ghost, gradient instability, or Q_T<=0 occurs. Accepted points export TT, TE, EE, lensing, P(k,z), f sigma8(z), and the standard-siren distance.", st["body"]),
+        P("The required next derivation is the sourced photon--baryon--CDM--neutrino quadratic action from this same RFG-R action. Only after its full kinetic and gradient matrices, constraints, initial conditions, and GR limit are established may a 3+1 Einstein-Boltzmann backend evolve recombination and lensing. It must reject any point with a singular physical constraint matrix, a ghost, a gradient instability, or Q_T<=0. Accepted points would export TT, TE, EE, lensing, P(k,z), f sigma8(z), and the standard-siren distance.", st["body"]),
         P("6. Data protocol", st["h1"]),
         Spacer(1, 7),
-        P("The baseline log likelihood is ln L=ln L_Planck18+ln L_lensing+ln L_BAO+ln L_SN+ln L_RSD+ln L_PPN+ln L_GW. Planck is evaluated with the official low-ell temperature and polarization, high-ell TT/TE/EE, and lensing packages; the solver is a full modified-gravity Einstein-Boltzmann solver rather than a quasi-static growth approximation. The public H-EFTCAMB architecture is suitable because it supports full linear modified-gravity evolution, 3+1 EFT functions, and stability tests. Cobaya can sample the joint likelihood after the action derivative module is connected.", st["body"]),
-        P("The prediction is now sharply falsifiable. The mathematics of the completion and the allowed output set are closed. Whether the model is preferred, allowed, or ruled out is an empirical result of this explicitly defined likelihood, not a conclusion from background algebra alone.", st["body"]),
+        P("The baseline log likelihood is ln L=ln L_Planck18+ln L_lensing+ln L_BAO+ln L_SN+ln L_RSD+ln L_PPN+ln L_GW. Planck is to be evaluated with the official low-ell temperature and polarization, high-ell TT/TE/EE, and lensing packages; the solver must be a full modified-gravity Einstein-Boltzmann solver rather than a quasi-static growth approximation. The public stock H-EFTCAMB interface is a useful GR reference, but it does not expose bar_m5 delta R3 delta K and is not an exact RFG-R solver. Cobaya may sample the joint likelihood only after the multi-fluid action reduction and extended solver are complete.", st["body"]),
+        P("The completion defines a falsifiable route but has not yet supplied its decisive multi-fluid perturbation calculation. Whether the model is preferred, allowed, or ruled out remains an empirical question; no conclusion follows from background algebra, local matching, or the pure-gravity audit alone.", st["body"]),
         P("7. Numerical verification", st["h1"]),
     ]
     table_data = [
@@ -215,6 +217,7 @@ def main() -> None:
         ["minimum Q_T over a in [1e-8,1e2]", "0.6153847956"],
         ["canonical scalar GR limit", "K=6, c_s^2=1 exactly"],
         ["canonical reference grid", "Delta>0, K>0, G1>0, G2>=0 within numerical tolerance"],
+        ["pure-gravity extended-EFT scalar audit", "2,401/2,401 degenerate; standalone c_s undefined"],
         ["Solar W at 1 AU", "5.756e22; local GR domain"],
     ]
     table = Table(table_data, colWidths=[7.4 * cm, 8.1 * cm], repeatRows=1)
@@ -235,13 +238,14 @@ def main() -> None:
     ]))
     story += [table, Spacer(1, 10)]
     story += [
-        P("The checks are generated by scripts/run_all.sh. They test the action-defined completion rather than a fitted surrogate.", st["body"]),
+        P("The checks are generated by scripts/run_all.sh. They test the action-defined completion and reproduce its pure-gravity scalar gate; they do not constitute a CMB or matter likelihood.", st["body"]),
         P("References", st["h1"]),
         P("[1] M. Petrasek, Relational Capacity Dynamics and its Preferred-Foliation Completion (2026).", st["ref"]),
         P("[2] B. Hu, M. Raveri, N. Frusciante, and A. Silvestri, Effective Field Theory of Cosmic Acceleration: an implementation in CAMB, Phys. Rev. D 89, 103530 (2014), arXiv:1312.5742.", st["ref"]),
-        P("[3] G. Ye et al., H-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of EFTCAMB for Covariant Horndeski Gravity, arXiv:2603.01662 (2026).", st["ref"]),
-        P("[4] Planck Collaboration, Planck 2018 results. V. CMB power spectra and likelihoods, Astron. Astrophys. 641, A5 (2020), arXiv:1907.12875.", st["ref"]),
-        P("[5] B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using radio links with the Cassini spacecraft, Nature 425, 374-376 (2003).", st["ref"]),
+        P("[3] N. Frusciante, G. Papadomanolakis, and A. Silvestri, An Extended Effective Field Theory of Dark Energy, arXiv:1601.04064 (2016).", st["ref"]),
+        P("[4] G. Ye et al., H-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of EFTCAMB for Covariant Horndeski Gravity, arXiv:2603.01662 (2026).", st["ref"]),
+        P("[5] Planck Collaboration, Planck 2018 results. V. CMB power spectra and likelihoods, Astron. Astrophys. 641, A5 (2020), arXiv:1907.12875.", st["ref"]),
+        P("[6] B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using radio links with the Cassini spacecraft, Nature 425, 374-376 (2003).", st["ref"]),
     ]
     doc.build(story, onFirstPage=page_number, onLaterPages=page_number)
     print(OUT)

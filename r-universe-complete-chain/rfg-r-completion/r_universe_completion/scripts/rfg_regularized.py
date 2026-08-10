@@ -218,7 +218,9 @@ def potential(x: float, p: RFGRegularizedParams, points: int | None = None) -> f
         q_correction[lower] = correction
         qx[lower] = -correction * p.p * (1.0 - nu * s) / grid[lower]
     f_values = grid * grid * q_correction - r - grid**3 * qx
-    integral = integral_origin + float(np.trapz((f_values / (grid * grid)) * grid, log_grid))
+    # ``trapezoid`` is the supported NumPy 2.x spelling; it is also present
+    # in the NumPy versions supported by the package.
+    integral = integral_origin + float(np.trapezoid((f_values / (grid * grid)) * grid, log_grid))
     return -3.0 * x * integral
 
 

@@ -28,12 +28,17 @@ For each proposed point:
    with `extended_eft_mapping.py`, and write
    `generated/tables/extended_eft_mapping.csv`. The map contains the nonzero
    extended coefficient `bar_m5=-M_Pl^2 Q_X/(3H0)`.
-4. Evolve the full scalar, vector, and tensor linear system without a
-   quasi-static approximation. The scalar constraints must be solved with the
-   standard photon-baryon, neutrino, baryon, and CDM hierarchy present.
-5. Reject a point when the module reports a ghost, gradient instability,
+4. Before coupling any species hierarchy, reduce the complete extended EFT
+   *pure-gravity* scalar action, including ``bar_m5 delta R3 delta K``. If its
+   scalar kinetic term vanishes, derive the full sourced multi-fluid kinetic
+   matrix instead of treating a gravity-only sound speed as physical.
+5. Only after a non-degenerate, constrained multi-fluid system has been
+   established, evolve the full scalar, vector, and tensor linear system
+   without a quasi-static approximation. The scalar constraints must be solved
+   with the standard photon-baryon, neutrino, baryon, and CDM hierarchy present.
+6. Reject a point when the module reports a ghost, gradient instability,
    singular constraint matrix, or non-positive tensor kinetic coefficient.
-6. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
+7. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
    `f sigma8(z)`, and the standard-siren distance ratio.
 
 The downloaded public H-EFTCAMB revision is useful as a compiled GR reference
@@ -44,6 +49,26 @@ change the RFG-R action. The RFG-R Boltzmann module must therefore add this
 extended operator to the scalar equations and stability checks before any
 RFG-R spectrum or likelihood is evaluated. The action derivatives, rather
 than a fitted CPL surrogate, remain the source of its cosmological functions.
+
+## 2.1 Executed RFG-R Gate
+
+The exact pure-gravity reduced action was evaluated by
+`scripts/extended_eft_scalar_stability.py` on
+`a in [10^-7,1]` and `k/H0 in [10^-4,10^5]`.  It retains the mapped nonzero
+`bar_m5` coefficient and the nonzero `W7` term.  The lapse/shift constraint
+discriminant is positive, but the coefficient of `zeta_dot^2` cancels on all
+2,401 sampled points.  Hence the *pure-gravity* scalar quadratic action is
+degenerate and its standalone scalar sound speed is undefined.  This is a
+strong-coupling/closure gate, not a successful stability result.
+
+Consequently the reference RFG-R branch cannot be passed directly to a
+single-scalar EFT/Boltzmann backend.  A Planck, BAO, RSD, or matter-power
+likelihood requires the physical photon--baryon--CDM--neutrino reduction from
+the same action.  Its combined kinetic matrix must show whether matter lifts
+the degeneracy or whether an additional constraint removes the scalar.  The
+existing one-canonical-scalar diagnostic is not a substitute for that system.
+Adding a gravitational kinetic operator instead would define a different
+theory and would have to be stated, derived, and tested as such.
 
 ## 3. Likelihoods
 
@@ -85,10 +110,11 @@ measurements can be added as Gaussian factors with their published covariance.
 ## 5. Reproducible Execution Boundary
 
 The repository contains every RFG-R background function, the exact
-ADM-to-extended-EFT map, and every deterministic rejection condition available
-before the multi-fluid reduction. A full CMB likelihood requires an RFG-R
-extension of a Boltzmann solver that retains `bar_m5`, plus the official Planck
-likelihood data package. The input/output contract is explicit:
+ADM-to-extended-EFT map, and the decisive pre-Boltzmann pure-gravity gate.
+The present action does not pass directly to a one-scalar backend. A full CMB
+likelihood first requires the physical multi-fluid RFG-R reduction retaining
+`bar_m5`, then an extension of a Boltzmann solver and the official Planck
+likelihood data package. The input/output contract for that calculation is:
 
 ```text
 input:  generated/tables/extended_eft_mapping.csv
@@ -98,10 +124,9 @@ data:   Planck Legacy Archive likelihood packages
 sampler: Cobaya nested or MCMC sampler
 ```
 
-The boundary is operational: the action, variables, exact map, output
-observables, datasets, and rejection rules are fixed. It is not an executed
-likelihood. No empirical result is claimed until the extended solver and the
-external likelihood are actually run.
+The boundary is operational: the required multi-fluid reduction has not yet
+been derived. No empirical result is claimed and no CMB/matter likelihood is
+reported.
 
 ## 6. References For The Pipeline
 

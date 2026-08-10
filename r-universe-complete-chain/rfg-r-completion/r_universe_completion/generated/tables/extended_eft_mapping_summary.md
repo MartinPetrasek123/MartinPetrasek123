@@ -17,3 +17,6 @@ This coefficient is nonzero on the reference cosmological branch.
 Stock H-EFTCAMB exposes gamma_1...gamma_6 but no bar_m5 deltaR3 deltaK
 operator, so the table is an exact theory input rather than a completed
 stock-H-EFTCAMB spectrum run.
+The companion pure-gravity scalar audit is degenerate on its 2,401-point
+(a,k) grid; a sourced multi-fluid reduction is required before spectra
+or CMB/matter likelihoods can be evaluated.

@@ -85,6 +85,9 @@ The downloaded and compiled public H-EFTCAMB revision exports only the usual
 `Omega`, `gamma_1` through `gamma_6` operator set. A source search confirms
 that it has no `bar_m5 delta R3 delta K` coefficient. Therefore it is suitable
 for an unmodified GR reference calculation but cannot yield an exact RFG-R
-CMB, lensing, or matter prediction. An RFG-R Boltzmann implementation must
-add the extended operator to the scalar equations and its stability checks,
-then validate a GR limit before an observational likelihood is run.
+CMB, lensing, or matter prediction. Independently, the executed
+[`extended_eft_scalar_audit.md`](extended_eft_scalar_audit.md) finds that the
+pure-gravity RFG-R scalar kinetic coefficient is degenerate. An RFG-R
+Boltzmann implementation must therefore first derive the sourced
+photon--baryon--CDM--neutrino reduction, retain the extended operator in that
+system, and validate a GR limit before an observational likelihood is run.

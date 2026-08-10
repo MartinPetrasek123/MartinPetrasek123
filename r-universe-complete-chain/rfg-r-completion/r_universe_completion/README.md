@@ -14,8 +14,10 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
 - universal minimal coupling of matter to the Jordan metric;
 - an exact sourced lapse--shift reduction for one canonical scalar field,
   including a General-Relativity normalization check;
-- a full linear Einstein-Boltzmann likelihood protocol, with stability checks
-  before every likelihood evaluation;
+- a pure-gravity extended-EFT scalar audit, which finds a degenerate scalar
+  kinetic coefficient and therefore blocks a direct one-scalar Boltzmann run;
+- a full linear Einstein-Boltzmann likelihood protocol whose necessary next
+  step is a sourced physical multi-fluid reduction;
 - an exact ADM-to-extended-EFT map, including the nonzero
   `bar_m5 delta R3 delta K` coefficient required by the action.
 
@@ -66,6 +68,8 @@ the Sun the code obtains `W about 6e22`.
 - `docs/likelihood_pipeline.md` - matter, CMB, and PPN likelihood protocol.
 - `docs/extended_eft_mapping.md` - exact action-to-extended-EFT map and the
   public-backend compatibility boundary.
+- `docs/extended_eft_scalar_audit.md` - full pure-gravity scalar-action audit
+  retaining `bar_m5`, including the numerical degeneracy result.
 - `docs/canonical_scalar_reduction.md` - exact canonical-scalar quadratic
   reduction and its executable stability diagnostic.
 - `scripts/rfg_regularized.py` - background solver, potential reconstruction,
@@ -74,6 +78,10 @@ the Sun the code obtains `W about 6e22`.
 - `scripts/extended_eft_mapping.py` - executable extended-EFT coefficient
   table, including `bar_m5`.
 - `scripts/validate_extended_eft_mapping.py` - independent mapping checks.
+- `scripts/extended_eft_scalar_stability.py` - complete pure-gravity extended
+  EFT scalar audit; deliberately returns failure on a degenerate action.
+- `scripts/validate_extended_eft_scalar_stability.py` - regression test for
+  that physical failure result.
 - `scripts/ppn_likelihood.py` - local GR matching and Cassini likelihood.
 - `generated/` - tables and figures generated from the scripts.
 
@@ -86,15 +94,16 @@ bash scripts/run_all.sh
 The command checks the exact local limit, high-X recovery, potential
 reconstruction, background closure, positive tensor normalization, and the PPN
 domain. It also checks the canonical-scalar General-Relativity limit and its
-reference sourced-constraint diagnostic, then generates the tables and figures.
+reference sourced-constraint diagnostic, then reproduces the pure-gravity
+extended-EFT scalar degeneracy and generates the tables and figures.
 
 ## Empirical Rule
 
 The included CMB/matter protocol is a full-spectrum likelihood definition, not
 a compressed-distance surrogate. The exact action map has a nonzero extended
-`bar_m5 delta R3 delta K` coefficient. The public stock H-EFTCAMB interface
-does not expose it, so it is only a GR reference calculation, not an RFG-R
-prediction engine. An extended 3+1 Einstein-Boltzmann module and the official
-Planck likelihood data are required before any statement about empirical
-preference over LCDM is made. The package never substitutes a background fit
-for a CMB fit.
+`bar_m5 delta R3 delta K` coefficient. Its standalone pure-gravity scalar
+kinetic coefficient is degenerate, so the physical multi-fluid reduction must
+be derived before an RFG-R Boltzmann run. The public stock H-EFTCAMB interface
+also does not expose `bar_m5`, so it is only a GR reference calculation, not
+an RFG-R prediction engine. The package never substitutes a background fit for
+a CMB fit or claims empirical preference over LCDM.
