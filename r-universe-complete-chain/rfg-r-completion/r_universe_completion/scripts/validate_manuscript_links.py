@@ -24,6 +24,34 @@ GRAPHIC_RE = re.compile(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}")
 REPO_RE = re.compile(r"\\RFGRepo(?:Named|Path)\{([^}]+)\}")
 REPO_URL_RE = re.compile(r"\\newcommand\{\\RFGRepoURL\}\{([^}]+)\}")
 ENVIRONMENT_RE = re.compile(r"\\(begin|end)\{([A-Za-z*]+)\}")
+MATH_COMMAND_RE = re.compile(
+    r"\\(?:alpha|beta|gamma|delta|epsilon|eta|theta|zeta|Xi|Pi|rho|"
+    r"sigma|mu|nu|Omega|dot|ddot|frac|sqrt|sum|int|partial|mathrm|rm|"
+    r"mathcal|mathbf|operatorname)\b"
+)
+MATH_ENVIRONMENTS = {
+    "align",
+    "align*",
+    "aligned",
+    "alignedat",
+    "array",
+    "bmatrix",
+    "cases",
+    "displaymath",
+    "equation",
+    "equation*",
+    "gather",
+    "gather*",
+    "math",
+    "matrix",
+    "multline",
+    "multline*",
+    "pmatrix",
+    "smallmatrix",
+    "split",
+    "Vmatrix",
+    "vmatrix",
+}
 
 
 def _tex_path(value: str) -> Path:
@@ -89,6 +117,59 @@ def _environment_errors(source: str) -> list[str]:
     return errors
 
 
+def _math_mode_errors(source: str) -> list[str]:
+    """Find mathematical tokens that LaTeX would reject in ordinary prose."""
+    document_marker = r"\begin{document}"
+    start = source.find(document_marker)
+    body = source[start + len(document_marker) :] if start >= 0 else source
+    errors: list[str] = []
+    math_depth = 0
+    dollar_mode: str | None = None
+    i = 0
+    while i < len(body):
+        if body[i] == "%" and (i == 0 or body[i - 1] != "\\"):
+            newline = body.find("\n", i)
+            i = len(body) if newline < 0 else newline + 1
+            continue
+        begin_end = ENVIRONMENT_RE.match(body, i)
+        if begin_end:
+            action, environment = begin_end.groups()
+            if environment in MATH_ENVIRONMENTS:
+                math_depth += 1 if action == "begin" else -1
+            i = begin_end.end()
+            continue
+        if body.startswith(r"\(", i) or body.startswith(r"\[", i):
+            math_depth += 1
+            i += 2
+            continue
+        if body.startswith(r"\)", i) or body.startswith(r"\]", i):
+            math_depth = max(0, math_depth - 1)
+            i += 2
+            continue
+        if body[i] == "$" and (i == 0 or body[i - 1] != "\\"):
+            marker = "$$" if body.startswith("$$", i) else "$"
+            if dollar_mode is None:
+                dollar_mode = marker
+                math_depth += 1
+            elif dollar_mode == marker:
+                dollar_mode = None
+                math_depth = max(0, math_depth - 1)
+            i += len(marker)
+            continue
+        if math_depth == 0:
+            if body[i] in "_^" and (i == 0 or body[i - 1] != "\\"):
+                line = body.count("\n", 0, i) + 1
+                errors.append(f"raw '{body[i]}' outside math mode near document line {line}")
+            command = MATH_COMMAND_RE.match(body, i)
+            if command:
+                line = body.count("\n", 0, i) + 1
+                errors.append(f"math command {command.group(0)} outside math mode near document line {line}")
+                i = command.end()
+                continue
+        i += 1
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manuscript", type=Path, required=True)
@@ -112,6 +193,7 @@ def main() -> int:
     figures = GRAPHIC_RE.findall(source)
     missing_figures = [figure for figure in figures if _local_figure_path(manuscript, figure) is None]
     environment_errors = _environment_errors(source)
+    math_errors = _math_mode_errors(source)
 
     repo_paths = [_tex_path(value) for value in REPO_RE.findall(source)]
     missing_repo_paths = [path.as_posix() for path in repo_paths if not (package_root / path).is_file()]
@@ -127,6 +209,8 @@ def main() -> int:
         failures.append("missing figures: " + ", ".join(missing_figures))
     if environment_errors:
         failures.append("environment structure: " + "; ".join(environment_errors))
+    if math_errors:
+        failures.append("math-mode structure: " + "; ".join(math_errors))
     if missing_repo_paths:
         failures.append("missing linked calculations: " + ", ".join(missing_repo_paths))
 
