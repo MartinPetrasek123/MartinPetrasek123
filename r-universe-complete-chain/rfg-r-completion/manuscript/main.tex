@@ -186,8 +186,8 @@ RFG-R canonical scalar & Computed reference-sector reduction & For one minimally
 Layer & Status in this manuscript & Precise content \\
 \midrule
 RFG-R multi-fluid core & Computed action, hierarchy, and DAE closure & Exact Sorkin--Schutz constraint matrix, full \(\bar m_5\) contribution, spatial metric equations, rational GR rank check, documented RFG-R inertia audit, and a derived finite-\(k\) curvature-constraint singularity. \\
-RFG-R\(\Xi\) completion & New action; finite DAE gate passed & The background-null \(\Xi({}^{(3)}R+\sigma_{ij}\sigma^{ij})\) operator is directly varied. At \(\Xi=1\), its 49-by-81 \((a,k)\) audit has no sampled \(\mu_\zeta\) root, but it has no completed Boltzmann or data calculation. \\
-Matter/CMB likelihood & GR data-interface reference executed; no R-Universe likelihood & CAMB 2.0.1 and official Planck low-ell+lensing components run at a fixed GR point. The original RFG-R DAE coefficient \(\mu_\zeta\) crosses zero, while RFG-R\(\Xi\) has not been through an action-faithful Boltzmann solver or joint likelihood. \\
+RFG-R\(\Xi\) completion & New action; finite DAE gate and local data factor passed & The background-null \(\Xi({}^{(3)}R+\sigma_{ij}\sigma^{ij})\) operator is directly varied. At \(\Xi=1\) and \(\Xi=2\), separate 49-by-81 \((a,k)\) audits have no sampled \(\mu_\zeta\) root; the local Cassini factor is computed exactly in the GR-matched domain. \\
+Matter/CMB likelihood & GR data-interface reference executed; no R-Universe cosmological likelihood & CAMB 2.0.1 and official Planck low-ell+lensing components run at a fixed GR point. The original RFG-R DAE coefficient \(\mu_\zeta\) crosses zero, while RFG-R\(\Xi\) has not been through an action-faithful Boltzmann solver or joint CMB/matter likelihood. \\
 \bottomrule
 \end{tabular}%
 }
@@ -2354,6 +2354,34 @@ symbolic identity, audit, and table are reproducible from
 \RFGRepoNamed{scripts/validate\_rfg\_xi\_completion.py}{its regression test}, and
 \RFGRepoNamed{generated/tables/rfg\_xi\_completion\_audit.csv}{the audit table}.
 
+\paragraph{Directly evaluated RFG-R\(\Xi\) factors.}
+The local Weyl switch is exactly zero in the Solar-System matching domain, so
+the \(\Xi\) operator is absent there and the action gives
+\begin{equation}
+ \gamma_{\rm PPN}=\beta_{\rm PPN}=1,\qquad
+ \alpha_1=\alpha_2=0,\qquad
+ -2\ln\mathcal L_{\rm Cassini}=0.8336483932 .
+ \label{eq:RFGR-Xi-Cassini}
+\end{equation}
+This is a directly evaluated Cassini data factor for both \(\Xi=1\) and
+\(\Xi=2\), not a surrogate for a CMB likelihood. The corresponding exact
+tensor prediction is
+\begin{equation}
+ Q_T^\Xi(a)=Q_\epsilon(a)+\Xi,\qquad c_T^2=1,\qquad
+ \frac{d_L^{\rm GW}}{d_L^{\rm EM}}=
+ \left[\frac{Q_T^\Xi(1)}{Q_T^\Xi(a)}\right]^{1/2}.
+ \label{eq:RFGR-Xi-direct-observables}
+\end{equation}
+At the Planck-recorded background input, the action yields
+\(d_L^{\rm GW}/d_L^{\rm EM}=0.9565968846\) at \(z\simeq1\) for \(\Xi=1\),
+and \(0.9717969466\) for \(\Xi=2\). The full grid, the exact Cassini factor,
+and the linked DAE diagnostics are public in
+\RFGRepoNamed{docs/rfg\_xi\_validated\_factors.md}{the direct-factor note},
+\RFGRepoNamed{scripts/rfg\_xi\_observables.py}{the observable generator},
+\RFGRepoNamed{scripts/validate\_rfg\_xi\_observables.py}{its regression test},
+\RFGRepoNamed{generated/tables/rfg\_xi\_observables.csv}{the observable grid}, and
+\RFGRepoNamed{generated/tables/rfg\_xi\_validated\_factors.csv}{the factor summary}.
+
 This is a viability gate for a distinct R-Universe action, not a CMB fit,
 posterior, or a proof of nonlinear health. Initial conditions, the complete
 Boltzmann integration, gradient and nonlinear stability, and an observational
@@ -3579,7 +3607,7 @@ The following are not yet completed and must not be presented as proved:
 \item For RFG-R plus one minimally coupled canonical scalar, the sourced lapse--shift system and exact reduced quadratic action are derived. The GR stiff-field normalization \(K=6\), \(c_s^2=1\) is recovered, and the published reference branch has positive \(\Delta\), \(K\), and \(G_1\), with \(G_2\) non-negative to numerical precision. This is a one-field internal check, not a physical multi-fluid cosmology.
 \item The RFG-R action is exactly mapped into the extended EFT basis. The required \(\bar m_5\delta{}^{(3)}R\delta K\) coefficient is nonzero on the reference branch and has an independent numerical validation. The complete pure-gravity extended-EFT scalar audit retains that operator and finds a degenerate \(\dot\zeta^2\) coefficient on all 2,401 reference \((a,k)\) points. The public stock Boltzmann backend also lacks \(\bar m_5\), so it supplies a GR reference calculation rather than an RFG-R CMB prediction.
 \item The RFG-R photon--baryon--CDM--neutrino finite constraint action is explicitly reduced, with a rational-arithmetic GR rank check and a data-documented RFG-R reference inertia audit. Photon polarization and neutrino anisotropic stress remain in their exact kinetic hierarchies, including the unprojected massive-neutrino equation. The full matter/CMB likelihood has fixed data, spectra and rejection rules, but has not yet been evaluated; an action-faithful Einstein--Boltzmann solver and a data run are still required.
-\item RFG-R\(\Xi\) is a separately defined R-Universe action, obtained by direct quadratic variation of the background-null operator \(\Xi({}^{(3)}R+\sigma_{ij}\sigma^{ij})\). It preserves the R-Universe homogeneous branch and \(c_T=1\). At the unfitted normalization benchmark \(\Xi=1\), the exact 49-by-81 multi-fluid DAE audit finds no curvature-constraint zero, with positive tensor and material kinetic diagnostics; the independent \(\Xi=2\) audit has the same no-root result. This is a finite-grid internal viability result only; it is not a global stability proof or an observational fit.
+\item RFG-R\(\Xi\) is a separately defined R-Universe action, obtained by direct quadratic variation of the background-null operator \(\Xi({}^{(3)}R+\sigma_{ij}\sigma^{ij})\). It preserves the R-Universe homogeneous branch and \(c_T=1\). At the unfitted normalization benchmark \(\Xi=1\), the exact 49-by-81 multi-fluid DAE audit finds no curvature-constraint zero, with positive tensor and material kinetic diagnostics; the independent \(\Xi=2\) audit has the same no-root result. The locally matched Cassini factor is directly evaluated as \(-2\ln\mathcal L_{\rm Cassini}=0.8336483932\) for both benchmarks, while a full CMB/matter likelihood remains uncomputed. This is finite-grid internal viability evidence, not a global stability proof or an observational fit.
 \end{enumerate}
 
 

@@ -24,6 +24,8 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
 - a separate RFG-RXi action, derived from the background-null foliation
   operator `Xi(R3+sigma^2)`, which clears the declared finite-grid DAE root
   audit without fitting its parameter to a cosmological data product;
+- direct RFG-RXi background/tensor observables and the valid local Cassini
+  factor for Xi=1 and Xi=2, explicitly separated from an uncomputed CMB fit;
 - an executed CAMB 2.0.1 GR spectrum and Planck low-ell+lensing data-interface
   reference, explicitly separated from an RFG-R prediction;
 - an exact ADM-to-extended-EFT map, including the nonzero
@@ -117,6 +119,10 @@ the Sun the code obtains `W about 6e22`.
   action.
 - `scripts/validate_rfg_xi_completion.py` - symbolic and DAE regression test
   for RFG-RXi.
+- `scripts/rfg_xi_observables.py` - action-defined RFG-RXi background,
+  tensor, and local PPN observable grid.
+- `scripts/validate_rfg_xi_observables.py` - independent RFG-RXi observable
+  regression checks.
 - `scripts/gr_reference_camb.py` - pinned GR spectrum, lensing, and transfer
   reference; never an RFG-R spectrum.
 - `scripts/gr_planck_lowell_lensing.py` - official Planck low-T, low-E and

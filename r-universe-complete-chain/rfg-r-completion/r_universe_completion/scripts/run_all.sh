@@ -11,6 +11,8 @@ python3 scripts/rfg_dae_closure.py
 python3 scripts/validate_rfg_dae_closure.py
 python3 scripts/rfg_xi_completion.py
 python3 scripts/validate_rfg_xi_completion.py
+python3 scripts/rfg_xi_observables.py
+python3 scripts/validate_rfg_xi_observables.py
 python3 scripts/generate_outputs.py
 python3 scripts/ppn_likelihood.py
 python3 scripts/validate_manuscript_links.py --manuscript ../manuscript/main.tex --package-root .

@@ -16,6 +16,7 @@
 | Photon--baryon--CDM--neutrino reduction | `docs/photon_baryon_cdm_neutrino_reduction.md` | Exact Sorkin--Schutz Schur complement, infinite photon/neutrino hierarchy, GR rational-rank and RFG-R inertia audits |
 | Multi-fluid DAE closure | `scripts/rfg_dae_closure.py` | Exact `Delta_i` transformation, analytic Schur-complement time derivative, and singular curvature-constraint surface |
 | RFG-RXi completion | `scripts/rfg_xi_completion.py` | Directly derived Xi(R3+sigma^2) increments, unchanged FLRW background, and no-root finite-grid DAE audits at unfitted Xi=1 and Xi=2 |
+| RFG-RXi direct data factors | `scripts/rfg_xi_observables.py` | Exact background/tensor observables plus the locally matched Cassini likelihood for Xi=1 and Xi=2; explicitly not a CMB likelihood |
 | GR CAMB spectrum/transfer reference | `scripts/gr_reference_camb.py` | Pinned CAMB 2.0.1 regression for lensed CMB, lensing potential and linear matter transfer; never an RFG-R spectrum |
 | GR Planck low-ell+lensing interface | `scripts/gr_planck_lowell_lensing.py` | Executed official low-T, low-E and lensing likelihood regression at the pinned GR point; high-ell nuisance vector not guessed |
 | Full CMB/matter likelihood definition | `docs/likelihood_pipeline.md` | Exact action and hierarchy interface specified; no RFG-R or RFG-RXi spectra or data likelihood has been evaluated |
@@ -44,7 +45,8 @@ extended-EFT map           analytic action derivatives; finite-difference regres
 extended scalar action     degenerate zeta-dot squared coefficient on 2,401-point (a,k) grid
 multi-fluid core           exact GR rank(K)=4; RFG-R reference inertia (4,0,1) on 425 points
 multi-fluid DAE            zeta is algebraically constrained, but mu_zeta=0 has 24/49 root-bearing scale factors; a=1 root k/H0=2.51545672221
-RFG-RXi DAE               unfitted Xi=1 and Xi=2 have no sampled mu_zeta root on separate 49x81 (a,k) grids; no data likelihood has been run
+RFG-RXi DAE               unfitted Xi=1 and Xi=2 have no sampled mu_zeta root on separate 49x81 (a,k) grids; no cosmological data likelihood has been run
+RFG-RXi direct factors    Cassini -2 ln L=0.8336483931947068; c_T-1=0; dL_GW/dL_EM(z~1)=0.9565968846 (Xi=1), 0.9717969466 (Xi=2)
 GR CAMB reference          CAMB 2.0.1, sigma8(z=0)=0.8110325278646
 GR Planck low-ell+lensing  -2 ln L=428.3415086187 at the fixed GR reference point
 ```

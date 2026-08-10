@@ -96,6 +96,29 @@ Xi-dependent hierarchy throughout recombination and propagation.  It may not
 reuse an RFG-R transfer function across the rejected curvature-constraint
 surface or declare the GR/CAMB reference to be an RFG-RXi prediction.
 
+### Directly Evaluated RFG-RXi Factors
+
+The local Weyl matching switch is exactly zero in the Solar-System domain.
+The RFG-RXi operator is therefore absent from the local action, giving
+`gamma=beta=1`, `alpha1=alpha2=0`, and the directly evaluated Cassini factor
+`-2 ln L_Cassini=0.8336483932` for both Xi=1 and Xi=2. The same action gives
+the exact tensor relation
+
+```text
+Q_T^Xi(a)=Q_epsilon(a)+Xi,
+c_T=1,
+dL_GW/dL_EM=sqrt(Q_T^Xi(1)/Q_T^Xi(a)).
+```
+
+At the stated Planck-recorded background input, the deterministic prediction
+at z approximately 1 is `0.9565968846` for Xi=1 and `0.9717969466` for Xi=2.
+These are action-defined partial factors, not a combined cosmological
+likelihood or a comparison with LambdaCDM. The generator, validation, and
+tables are `scripts/rfg_xi_observables.py`,
+`scripts/validate_rfg_xi_observables.py`,
+`generated/tables/rfg_xi_observables.csv`, and
+`generated/tables/rfg_xi_validated_factors.csv`.
+
 ## 2.3 Executed GR Infrastructure Reference
 
 The standard photon/baryon/CDM/neutrino, recombination, lensing and transfer
