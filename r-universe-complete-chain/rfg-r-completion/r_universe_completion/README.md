@@ -16,8 +16,10 @@ RFG-R is not a rhetorical strengthening of the original branch. It specifies:
   including a General-Relativity normalization check;
 - a pure-gravity extended-EFT scalar audit, which finds a degenerate scalar
   kinetic coefficient and therefore blocks a direct one-scalar Boltzmann run;
-- a full linear Einstein-Boltzmann likelihood protocol whose necessary next
-  step is a sourced physical multi-fluid reduction;
+- an exact photon--baryon--CDM--neutrino finite constraint reduction and an
+  untruncated photon-polarization/neutrino kinetic hierarchy;
+- a full linear Einstein-Boltzmann likelihood protocol, still awaiting a
+  solver implementation and an executed data run;
 - an exact ADM-to-extended-EFT map, including the nonzero
   `bar_m5 delta R3 delta K` coefficient required by the action.
 
@@ -70,6 +72,9 @@ the Sun the code obtains `W about 6e22`.
   public-backend compatibility boundary.
 - `docs/extended_eft_scalar_audit.md` - full pure-gravity scalar-action audit
   retaining `bar_m5`, including the numerical degeneracy result.
+- `docs/photon_baryon_cdm_neutrino_reduction.md` - exact finite
+  photon--baryon--CDM--neutrino constraint reduction plus the untruncated
+  photon-polarization and neutrino kinetic hierarchy.
 - `docs/canonical_scalar_reduction.md` - exact canonical-scalar quadratic
   reduction and its executable stability diagnostic.
 - `scripts/rfg_regularized.py` - background solver, potential reconstruction,
@@ -82,6 +87,11 @@ the Sun the code obtains `W about 6e22`.
   EFT scalar audit; deliberately returns failure on a degenerate action.
 - `scripts/validate_extended_eft_scalar_stability.py` - regression test for
   that physical failure result.
+- `scripts/multifluid_reduction.py` - exact Sorkin--Schutz constraint blocks,
+  Schur reduction, Thomson terms, massless hierarchy, and massive-neutrino
+  phase-space interface.
+- `scripts/validate_multifluid_reduction.py` - rational GR rank test and the
+  425-point RFG-R multi-fluid core audit.
 - `scripts/ppn_likelihood.py` - local GR matching and Cassini likelihood.
 - `generated/` - tables and figures generated from the scripts.
 
@@ -94,16 +104,16 @@ bash scripts/run_all.sh
 The command checks the exact local limit, high-X recovery, potential
 reconstruction, background closure, positive tensor normalization, and the PPN
 domain. It also checks the canonical-scalar General-Relativity limit and its
-reference sourced-constraint diagnostic, then reproduces the pure-gravity
-extended-EFT scalar degeneracy and generates the tables and figures.
+reference sourced-constraint diagnostic, reproduces the pure-gravity
+extended-EFT scalar degeneracy, and runs the exact multi-fluid core audit.
 
 ## Empirical Rule
 
 The included CMB/matter protocol is a full-spectrum likelihood definition, not
 a compressed-distance surrogate. The exact action map has a nonzero extended
-`bar_m5 delta R3 delta K` coefficient. Its standalone pure-gravity scalar
-kinetic coefficient is degenerate, so the physical multi-fluid reduction must
-be derived before an RFG-R Boltzmann run. The public stock H-EFTCAMB interface
-also does not expose `bar_m5`, so it is only a GR reference calculation, not
-an RFG-R prediction engine. The package never substitutes a background fit for
-a CMB fit or claims empirical preference over LCDM.
+`bar_m5 delta R3 delta K` coefficient. Its finite physical multi-fluid
+constraint reduction and its untruncated kinetic hierarchy are now supplied,
+but the public stock H-EFTCAMB interface still does not expose `bar_m5`; it is
+only a GR reference calculation, not an RFG-R prediction engine. The package
+never substitutes a background fit for a CMB fit or claims empirical
+preference over LCDM.

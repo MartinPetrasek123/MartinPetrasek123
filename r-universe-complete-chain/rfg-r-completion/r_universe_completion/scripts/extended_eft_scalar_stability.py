@@ -30,22 +30,15 @@ ROOT = Path(__file__).resolve().parents[1]
 TABLES = ROOT / "generated" / "tables"
 
 
-def _time_derivative(func, a: float, params: RFGRegularizedParams) -> float:
-    """Central derivative in H0 units, with d/dt = E d/dln(a)."""
-    step = 2.0e-4
-    center = extended_eft_coefficients(a, params)
-    plus = func(a * math.exp(step), params)
-    minus = func(a * math.exp(-step), params)
-    return center["E"] * (plus - minus) / (2.0 * step)
-
-
 def _w_coefficients(a: float, params: RFGRegularizedParams) -> dict[str, float]:
     """Return W_i of Eqs. (85)--(86), in units H0=M_Pl=1."""
     row = extended_eft_coefficients(a, params)
     h = row["E"]
     q = row["Q"]
     omega_dot = row["Q_X"] * row["Hdot_over_H0_sq"]
-    m5_dot = _time_derivative(lambda aa, pp: extended_eft_coefficients(aa, pp)["m5_bar_hat"], a, params)
+    # bar_m5=-Q_X/3, therefore dot(bar_m5)=-Q_XX dot(H)/3 exactly.
+    # This is a defining action derivative, not a finite-difference input.
+    m5_dot = -row["Q_XX"] * row["Hdot_over_H0_sq"] / 3.0
 
     w0 = -(q + 3.0 * h * row["m5_bar_hat"] + 3.0 * m5_dot) / a**2
     w1 = (
@@ -118,11 +111,13 @@ def _reduced_coefficients(a: float, k_over_h0: float, params: RFGRegularizedPara
 def _gradient(a: float, k_over_h0: float, params: RFGRegularizedParams) -> float:
     """G after integrating the zeta-dot*zeta term in Eq. (110) by parts."""
     reduced = _reduced_coefficients(a, k_over_h0, params)
-    v_dot = _time_derivative(
-        lambda aa, pp: _reduced_coefficients(aa, k_over_h0, pp)["V_bar"],
-        a,
-        params,
-    )
+    # This branch is kinetically degenerate before a scalar sound speed is
+    # evaluated.  Keep the derivative only as a diagnostic if a future,
+    # nondegenerate action is supplied.
+    step = 2.0e-4
+    plus = _reduced_coefficients(a * math.exp(step), k_over_h0, params)["V_bar"]
+    minus = _reduced_coefficients(a * math.exp(-step), k_over_h0, params)["V_bar"]
+    v_dot = reduced["E"] * (plus - minus) / (2.0 * step)
     return reduced["B_bar"] - 0.5 * (v_dot + 3.0 * reduced["E"] * reduced["V_bar"])
 
 
@@ -184,7 +179,7 @@ def main() -> None:
     if degenerate_rows:
         raise RuntimeError(
             "RFG-R has a degenerate pure-gravity quadratic scalar kinetic term on the audited branch; "
-            "a full multi-fluid reduction is required before a CMB/matter likelihood."
+            "the sourced multi-fluid reduction and kinetic hierarchy must be implemented in a full solver before a CMB/matter likelihood."
         )
     if min_kinetic <= 0.0:
         raise RuntimeError("scalar ghost found in gravity-sector audit")

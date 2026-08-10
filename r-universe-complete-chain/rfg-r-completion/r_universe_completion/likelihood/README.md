@@ -23,12 +23,12 @@ requirements.
 standalone scalar kinetic coefficient, so a one-scalar backend is not an
 RFG-R implementation.
 
-3. Derive and implement the sourced photon--baryon--CDM--neutrino RFG-R
-quadratic system, including `bar_m5 delta R3 delta K`, using
-`../docs/completion_derivation.md` and
-`../generated/tables/eft_coefficients.csv`. Its kinetic matrix, constraints,
-initial conditions, and GR limit must be validated before spectra are
-computed.
+3. Implement the already derived sourced photon--baryon--CDM--neutrino RFG-R
+   system, including `bar_m5 delta R3 delta K`, from
+   `../docs/photon_baryon_cdm_neutrino_reduction.md` and
+   `../scripts/multifluid_reduction.py`. Its finite constraint matrix, exact
+   kinetic hierarchy, initial conditions, and GR limit must be preserved in
+   the solver before spectra are computed.
 
 4. Install the official Planck 2018 likelihood code and data from the Planck
 Legacy Archive, then connect them to Cobaya.

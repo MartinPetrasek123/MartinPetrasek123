@@ -38,27 +38,15 @@ from rfg_regularized import (
     Q_second,
     potential,
     potential_prime,
+    potential_second,
     response_prime,
+    response_second,
     solve_E,
 )
 
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLES = ROOT / "generated" / "tables"
-
-
-def _response_second(x: float, params: RFGRegularizedParams) -> float:
-    """Second response derivative, independent of the background root solve."""
-    step = max(1.0e-6 * x, 1.0e-10)
-    left = max(0.0, x - step)
-    return (response_prime(x + step, params) - response_prime(left, params)) / (x + step - left)
-
-
-def _potential_second(x: float, params: RFGRegularizedParams) -> float:
-    """V_XX from the defining first-order reconstruction equation."""
-    step = max(1.0e-6 * x, 1.0e-10)
-    left = max(0.0, x - step)
-    return (potential_prime(x + step, params) - potential_prime(left, params)) / (x + step - left)
 
 
 def background_derivatives(a: float, params: RFGRegularizedParams) -> dict[str, float]:
@@ -70,7 +58,7 @@ def background_derivatives(a: float, params: RFGRegularizedParams) -> dict[str, 
     source_nn = 9.0 * matter + 16.0 * radiation
     denominator = 2.0 * x - response_prime(x, params)
     x_n = source_n / denominator
-    x_nn = (source_nn - (2.0 - _response_second(x, params)) * x_n * x_n) / denominator
+    x_nn = (source_nn - (2.0 - response_second(x, params)) * x_n * x_n) / denominator
     h_dot = x * x_n
     h_ddot = x * (x_n * x_n + x * x_nn)
     return {
@@ -100,7 +88,7 @@ def extended_eft_coefficients(a: float, params: RFGRegularizedParams) -> dict[st
     q_xx = Q_second(x, params)
     v = potential(x, params)
     v_x = potential_prime(x, params)
-    v_xx = _potential_second(x, params)
+    v_xx = potential_second(x, params)
     h_dot = d["Hdot_over_H0_sq"]
     h_ddot = d["Hddot_over_H0_cu"]
 

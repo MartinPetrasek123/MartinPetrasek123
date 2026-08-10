@@ -59,14 +59,15 @@
 \newcommand{\threeR}{{}^{(3)}R}
 % Permanent public source location; the complete local bundle is nested below.
 \newcommand{\RFGRepoURL}{https://github.com/MartinPetrasek123/MartinPetrasek123}
-\newcommand{\RFGRepoPath}[1]{\href{\RFGRepoURL/tree/main/r-universe-complete-chain/rfg-r-completion/r\_universe\_completion/#1}{\texttt{#1}}}
+\newcommand{\RFGRepoPath}[1]{\href{\RFGRepoURL/blob/main/r-universe-complete-chain/rfg-r-completion/r\_universe\_completion/#1}{\texttt{#1}}}
+\newcommand{\RFGRepoNamed}[2]{\href{\RFGRepoURL/blob/main/r-universe-complete-chain/rfg-r-completion/r\_universe\_completion/#1}{\texttt{#2}}}
 \newcommand{\RFGLocalPath}[1]{\texttt{r\_universe\_completion/#1}}
 % note: keep single outer brace group for safe use inside \bigl( ... \bigr)
 \newcommand{\Boxed}[1]{\boxed{\displaystyle #1}}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\textcolor{blue}{doi:#1}}}
 
 \title{\textbf{Relational Capacity Dynamics, Relational Foliation Gravity, and RFG-R}\\[0.4em]
-\large Full proof version: original branch, regular effective completion,\\ local-GR matching, and a reproducible matter/CMB likelihood specification}
+\large Full proof version: original branch, regular effective completion,\\ local-GR matching, and an exact extended-EFT likelihood boundary}
 
 \author{Martin Petr\'{a}sek\\[0.3em]
 \small ORCID: \href{https://orcid.org/0009-0007-4512-9528}{0009-0007-4512-9528}\\[0.2em]
@@ -89,7 +90,7 @@ E^2=\Omega_{m0}a^{-3}+\Omega_{r0}a^{-4}+\Omega_{R0}E^{2-\theta},
 \]
 together with a proof of existence and uniqueness of the expanding branch, exact expressions for the logarithmic Hubble derivative, deceleration parameter, effective equation of state, acceleration--capacity identity, early- and late-time asymptotics, and a falsifiable standard-siren distance relation with \(c_T=1\).
 
-The RFG-R extension introduced here is a separate, explicitly defined low-energy multiscale EFT. It regularizes the \(X\to0\) action, preserves the original homogeneous branch to controlled order, and matches exactly to GR in a specified local-curvature domain. It consequently gives a definite local PPN prediction. Its regularized action, potential reconstruction, numerical validation, and Cassini likelihood factor are supplied as executable source files. For RFG-R coupled to one minimally coupled canonical scalar, the sourced lapse--shift constraints and the reduced quadratic action are also evaluated exactly, including the GR normalization check \(K=6\), \(c_s^2=1\). The matter/CMB contribution beyond that one-field diagnostic is a full-spectrum Einstein--Boltzmann likelihood \emph{specification}, with fixed inputs, stability rejections, and outputs; no CMB likelihood has yet been run. The original RFG scalar linearization degeneracy and the absence of a completed multi-fluid matter reduction are retained as limitations, not hidden by the RFG-R definition. No claim is made that either construction has displaced \(\Lambda\)CDM.
+The RFG-R extension introduced here is a separate, explicitly defined low-energy multiscale EFT. It regularizes the \(X\to0\) action, preserves the original homogeneous branch to controlled order, and matches exactly to GR in a specified local-curvature domain. It consequently gives a definite local PPN prediction. Its regularized action, potential reconstruction, numerical validation, and Cassini likelihood factor are supplied as executable source files. For RFG-R coupled to one minimally coupled canonical scalar, the sourced lapse--shift constraints and the reduced quadratic action are also evaluated exactly, including the GR normalization check \(K=6\), \(c_s^2=1\). The action is mapped exactly into the extended EFT basis; the map forces a nonzero \(\bar m_5\,\delta{}^{(3)}R\,\delta K\) operator that is absent from the public stock H-EFTCAMB input basis. The complete \emph{pure-gravity} extended-EFT scalar action is degenerate, but the sourced photon--baryon--CDM--neutrino constraint reduction and untruncated kinetic hierarchy are derived directly from the same action. The associated data likelihood has not been executed, so no claim is made that either construction has displaced \(\Lambda\)CDM.
 \end{abstract}
 
 \bigskip
@@ -121,7 +122,7 @@ We distinguish three logically separate statements that must not be conflated:
 \item \textbf{Empirical viability:} cosmological, Solar-System, binary-pulsar, gravitational-wave and laboratory data must be fitted with a reproducible likelihood.
 \end{enumerate}
 
-The original calculation completes item~(i) for the scalar macroscopic sector and for the homogeneous and tensor sectors of the preferred-foliation theory. RFG-R additionally defines a regular action and an exact local-GR domain, but it does not make the original scalar perturbation degeneracy disappear. Preferred-foliation and ADM-based constructions provide the broader mathematical context~\cite{ADM,JacobsonMattingly,Horava,BlasPujolasSibiryakov}. The likelihood protocol uses a full 3+1 EFT Einstein--Boltzmann backend rather than a background-only surrogate~\cite{EFTCAMB,HEFTCAMB}.
+The original calculation completes item~(i) for the scalar macroscopic sector and for the homogeneous and tensor sectors of the preferred-foliation theory. RFG-R additionally defines a regular action and an exact local-GR domain, but it does not make the original scalar perturbation degeneracy disappear. Preferred-foliation and ADM-based constructions provide the broader mathematical context~\cite{ADM,JacobsonMattingly,Horava,BlasPujolasSibiryakov}. Its ADM action is now mapped to the extended EFT basis~\cite{ExtendedEFTMap}; that mapping identifies the operator which a full 3+1 Einstein--Boltzmann implementation must retain, rather than replacing the perturbation theory by a background-only surrogate.
 
 The logical hierarchy followed throughout is
 \[
@@ -146,7 +147,7 @@ Framework & Scalar status & Tensor speed & Effective \(w_R(a)\) & Analytic backg
 Quintessence / K-essence & Conditional (\(c_s^2>0\)) & \(c_T=1\) & Potential-dependent & Selected potentials only \\
 Horndeski / DHOST & After cleaning & Generally \(c_T(z)\neq1\) & Dynamical & Varies \\
 \textbf{RCD / original RFG} & RCD stable; RFG FLRW scalar degeneracy & \(c_T=1\) (exact) & \(w_R(a)>-1\) (derived) & Yes (Eq.~\eqref{eq:background}) \\
-\textbf{RFG-R EFT} & Exact one-field canonical-scalar check; multi-fluid open & \(c_T=1\) on FLRW & Regularized branch & Yes (Eq.~\eqref{eq:RFGR-background}) \\
+\textbf{RFG-R EFT} & Exact finite multi-fluid constraint core; kinetic hierarchy & \(c_T=1\) on FLRW & Regularized branch & Yes (Eq.~\eqref{eq:RFGR-background}) \\
 \bottomrule
 \end{tabular}%
 }
@@ -170,7 +171,22 @@ RFG pure-gravity FLRW scalar reduction & Computed & The lapse and scalar shift a
 RFG full scalar constraints with matter & Open completion gate & The metric Legendre rank and the local \({\cal C}\)--\({\cal C}\) bracket are explicit. The global kernel, boundary-condition dependence, complete constraint classification, and matter-coupled scalar reduction remain open before a final degree-of-freedom statement can be claimed. \\
 RFG-R local gravitational domain & Defined EFT matching sector & A smooth Weyl-invariant switch makes the local action and all its variations exactly GR; this yields \(\gamma=\beta=1\), \(\alpha_1=\alpha_2=0\) wherever the switch is constant. \\
 RFG-R canonical scalar & Computed reference-sector reduction & For one minimally coupled canonical scalar in comoving gauge, the sourced lapse--shift Hessian, its determinant, and the exact Schur-complement action are derived. The GR stiff-field limit and a regular reference branch pass the stated kinetic and low-gradient checks. \\
-Matter/CMB likelihood & Reproducible computation contract & Action derivatives, stability rejections, required spectra, datasets, and likelihood factors are specified. A compiled RFG-R multi-fluid Boltzmann module and an actual joint data run remain outstanding. \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Closure ledger used throughout the manuscript (continued).}
+\label{tab:closure-ledger-continued}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}p{0.23\textwidth}p{0.25\textwidth}p{0.42\textwidth}@{}}
+\toprule
+Layer & Status in this manuscript & Precise content \\
+\midrule
+RFG-R multi-fluid core & Computed action reduction and kinetic hierarchy & Exact Sorkin--Schutz constraint matrix, full \(\bar m_5\) contribution, rational GR rank check, documented RFG-R inertia audit, photon polarization and massless/massive neutrino kinetic equations. \\
+Matter/CMB likelihood & Reproducible computation contract; not evaluated & The action derivatives and hierarchy are specified, including nonzero \(\bar m_5\delta{}^{(3)}R\delta K\). An implementation retaining that operator and an actual joint data run remain outstanding. \\
 \bottomrule
 \end{tabular}%
 }
@@ -1772,7 +1788,7 @@ difference \(\lvert Q_\epsilon-Q_{\rm original}\rvert\) are evaluated with
 \(X\simeq\epsilon\) domain, RFG-R recovers the original cosmological branch;
 the analytic high-\(X\) error is given in Eq.~\eqref{eq:RFGR-recovery}.
 This is an action-level numerical validation, not an observational fit.
-The generating script is \RFGRepoPath{scripts/generate\_outputs.py}.}
+The generating script is \RFGRepoNamed{scripts/generate\_outputs.py}{output generator}.}
 \label{fig:rfgr-regularization}
 \end{figure}
 
@@ -1786,7 +1802,7 @@ Eq.~\eqref{eq:RFGR-background}, with
 \(\epsilon=10^{-8}\). The curves show radiation, matter, and relational
 components computed from the action-reconstructed background equation. They
 are not a compressed CMB constraint. The generating script is
-\RFGRepoPath{scripts/generate\_outputs.py}.}
+\RFGRepoNamed{scripts/generate\_outputs.py}{output generator}.}
 \label{fig:rfgr-background-fractions}
 \end{figure}
 \FloatBarrier
@@ -1802,7 +1818,7 @@ rule. Let
 \end{equation}
 Choose a \(C^\infty\) switch \(s(W)\) with \(s=1\) for \(W\leq10^8\)
 and \(s=0\) for \(W\geq10^9\); its explicit bump-function construction is
-given in \RFGRepoPath{docs/completion\_derivation.md}. The complete
+given in \RFGRepoNamed{docs/completion\_derivation.md}{completion derivation}. The complete
 low-energy EFT is
 \begin{equation}
  S_{\rm eff}=S_{\rm GR}+\int\dd^4x\,s(W)
@@ -1854,7 +1870,7 @@ positive \(Q_T\) curve verifies the tensor no-ghost condition, while the
 quadratic tensor action gives \(c_T=1\) exactly. The plot defines the
 standard-siren propagation prediction in Eq.~\eqref{eq:RFGR-siren}; it is not
 itself a gravitational-wave or CMB likelihood evaluation. The generating
-script is \RFGRepoPath{scripts/generate\_outputs.py}.}
+script is \RFGRepoNamed{scripts/generate\_outputs.py}{output generator}.}
 \label{fig:rfgr-tensor-running}
 \end{figure}
 \FloatBarrier
@@ -1864,15 +1880,117 @@ assumed quasi-static \(\mu(a,k)\). In particular,
 \begin{align}
  \mathcal L_{{}^{(3)}R}&=Q_\epsilon,\\
  \mathcal L_{K_{ij}{}^{(3)}R}&=\frac{Q_{\epsilon,X}}{3H_0}\gamma^{ij},\\
- \mathcal L_{K_{ij}}&=2Q_\epsilon(K^{ij}-K\gamma^{ij})
+\mathcal L_{K_{ij}}&=2Q_\epsilon(K^{ij}-K\gamma^{ij})
  +\left[\frac{Q_{\epsilon,X}}{3H_0}
  \left({}^{(3)}R+K_{mn}K^{mn}-K^2\right)
  +\frac{2H_0}{3}V_{\epsilon,X}\right]\gamma^{ij}.
  \label{eq:RFGR-ADM-derivatives}
 \end{align}
-The full kinetic Hessian is obtained by differentiating
-Eq.~\eqref{eq:RFGR-ADM-derivatives}. For every sampled cosmology, a full
-3+1 Einstein--Boltzmann implementation must reject absent background roots,
+\subsubsection{Exact ADM-to-extended-EFT map and solver boundary}
+\label{sec:rfgr-extended-eft-map}
+
+The preceding derivatives can be translated into a perturbation basis without
+fitting a background surrogate.  The extended-EFT map of
+Ref.~\cite{ExtendedEFTMap} uses the opposite extrinsic-curvature sign from the
+convention of this manuscript.  Thus, for the map only,
+\begin{equation}
+ K_{ij}^{\rm map}=-K_{ij}^{\rm RFG},\qquad
+ X=-\frac{K^{\rm map}}{3H_0}.
+ \label{eq:RFGR-map-convention}
+\end{equation}
+With this explicit conversion, the exact RFG-R action gives
+\begin{align}
+ 1+\Omega_{\rm EFT}&=Q_\epsilon,
+ &\bar M_1^3&=-M_{\rm Pl}^2\dot Q_\epsilon,\nonumber\\
+ \frac{\bar M_2^2}{M_{\rm Pl}^2}
+ &=\frac{X^2Q_{\epsilon,XX}}{3}
+   +\frac{4XQ_{\epsilon,X}}{3}-\frac{V_{\epsilon,XX}}9,
+ &\bar M_3^2&=0,\nonumber\\
+ \bar m_5&=-\frac{M_{\rm Pl}^2Q_{\epsilon,X}}{3H_0}.
+ \label{eq:RFGR-extended-EFT-map}
+\end{align}
+In particular, the last coefficient multiplies
+\begin{equation}
+ \frac{\bar m_5}{2}\,\delta{}^{(3)}R\,\delta K
+ =-\frac{M_{\rm Pl}^2Q_{\epsilon,X}}{6H_0}
+ \,\delta{}^{(3)}R\,\delta K .
+ \label{eq:RFGR-m5-operator}
+\end{equation}
+It is required by the \(Q_\epsilon(K){}^{(3)}R\) term in the action, hence
+cannot consistently be set to zero.  The executable
+\RFGRepoNamed{docs/extended\_eft\_mapping.md}{mapping note},
+\RFGRepoNamed{scripts/extended\_eft\_mapping.py}{generator}, and
+\RFGRepoNamed{generated/tables/extended\_eft\_mapping.csv}{CSV table}
+are public and mutually linked.  On the published
+mapping grid \(10^{-7}\leq a\leq1\), the independent validation gives
+\(\min Q_\epsilon=0.7308038462\),
+\(\max\lvert H_0\bar m_5/M_{\rm Pl}^2\rvert=0.1435712821\), a maximum
+finite-difference error \(8.018\times10^{-7}\) for the second implicit
+background derivative, and zero numerical error in the algebraic
+\(\bar m_5\) identity.
+
+\subsubsection{Executed pure-gravity extended-EFT scalar audit}
+\label{sec:rfgr-extended-scalar-audit}
+
+The scalar action must also be checked in the same operator basis before it
+is handed to a Boltzmann hierarchy.  For the exact RFG-R map,
+\(m_2^2=\lambda_i=\hat M^2=0\), while both \(\bar m_5\) and
+\(W_7=-(\bar M_3^2+\bar M_2^2)/(2a^4)\) are nonzero.  Eliminating the
+lapse and shift in the pure-gravity unitary-gauge action of
+Ref.~\cite{ExtendedEFTMap} gives
+\begin{equation}
+ L_{\dot\zeta\dot\zeta}=
+ \frac{(6a^2W_7+W_5)\bigl(3a^4W_4^2+2a^2W_1W_5\bigr)}
+ {2a^2\bigl(W_4^2-4W_1W_7\bigr)} .
+ \label{eq:RFGR-extended-scalar-kinetic}
+\end{equation}
+The full \(\bar m_5\) dependence is retained in the gradient and mixing
+terms; its absence from Eq.~\eqref{eq:RFGR-extended-scalar-kinetic} is not a
+licence to delete the operator.  The executable
+\RFGRepoNamed{scripts/extended\_eft\_scalar\_stability.py}{scalar audit},
+its independent
+\RFGRepoNamed{scripts/validate\_extended\_eft\_scalar\_stability.py}{regression test},
+the complete \RFGRepoNamed{docs/extended\_eft\_scalar\_audit.md}{derivation note},
+and the machine-readable
+\RFGRepoNamed{generated/tables/extended\_eft\_scalar\_stability.csv}{audit table}
+are public.  On a \(49\times49\) logarithmic grid
+\(10^{-7}\leq a\leq1\) and \(10^{-4}\leq k/H_0\leq10^5\), all
+\(2401\) points satisfy
+\begin{equation}
+ \mathcal A_K:=6a^2W_7+W_5,\qquad
+ \mathcal B_+:=3a^4W_4^2,\qquad
+ \mathcal B_-:=2a^2W_1W_5,
+ \label{eq:RFGR-extended-scalar-audit-definitions}
+\end{equation}
+\begin{equation}
+ \min\bigl(W_4^2-4W_1W_7\bigr)=2.514017848646>0,
+ \qquad
+ \max\frac{|\mathcal A_K(\mathcal B_++\mathcal B_-)|}
+ {|\mathcal A_K|\,(|\mathcal B_+|+|\mathcal B_-|)}
+ =4.357\times10^{-16}.
+ \label{eq:RFGR-extended-scalar-audit}
+\end{equation}
+Thus the pure-gravity scalar quadratic kinetic coefficient is degenerate to
+the precision of the calculation; a standalone scalar sound speed is
+undefined.  This is a pre-Boltzmann strong-coupling/constraint gate, not a
+successful scalar-stability result.  It does \emph{not} by itself prove that
+the physical matter-coupled theory is ill posed: matter sources the lapse and
+shift constraints, and the separate one-canonical-scalar reduction below has
+a different, nondegenerate sourced Hessian.  The decisive missing object is
+therefore the complete photon--baryon--CDM--neutrino kinetic and gradient
+matrix derived from the same action.
+
+The compiled public H-EFTCAMB revision used for a GR reference calculation
+exposes the usual \(\Omega,\gamma_1,\ldots,\gamma_6\) interface, but not the
+coefficient in Eq.~\eqref{eq:RFGR-m5-operator}.  It therefore cannot produce
+an exact RFG-R CMB, lensing, or matter spectrum without an extension of its
+scalar equations and stability checks.  Independently of that backend gap,
+Eq.~\eqref{eq:RFGR-extended-scalar-audit} blocks a direct one-scalar EFT run.
+This is a precise implementation boundary, not a negative data result and not
+a licence to omit the operator.  The full kinetic Hessian must be obtained by
+differentiating Eq.~\eqref{eq:RFGR-ADM-derivatives} after the physical matter
+species are included. For every sampled cosmology, a full 3+1
+Einstein--Boltzmann implementation must reject absent background roots,
 \(Q_T\leq0\), ghosts, gradient instabilities, and singular constraint
 matrices before computing
 \(C_\ell^{TT,TE,EE}\), \(C_L^{\phi\phi}\), \(P(k,z)\),
@@ -1887,11 +2005,157 @@ likelihood is
 \end{equation}
 The public calculation protocol, exact input/output contract, and deterministic
 rejection conditions are supplied in
-\RFGRepoPath{docs/likelihood\_pipeline.md}. The protocol is compatible with
-the full 3+1 EFT route in H-EFTCAMB~\cite{EFTCAMB,HEFTCAMB} and with the
-official Planck likelihoods~\cite{PlanckLikelihood}. It is intentionally not
-a claim that the likelihood in Eq.~\eqref{eq:RFGR-likelihood} has already been
-evaluated.
+\RFGRepoNamed{docs/likelihood\_pipeline.md}{likelihood protocol}.  The installed Planck likelihood
+components provide the data interface~\cite{PlanckLikelihood}; an RFG-R
+solver must implement the physical multi-fluid reduction, retain
+Eq.~\eqref{eq:RFGR-m5-operator}, reproduce its GR limit, and then be coupled
+to that interface.  This is intentionally not a claim that the likelihood in
+Eq.~\eqref{eq:RFGR-likelihood} has already been evaluated.
+
+\subsubsection{Exact photon--baryon--CDM--neutrino reduction}
+\label{sec:rfgr-multifluid-reduction}
+
+The physical sourced reduction is obtained directly from the RFG-R action,
+rather than by adding a phenomenological \(\mu(a,k)\), a sound-speed closure,
+or a quasi-static approximation.  For each barotropic monopole--dipole
+matter source, the starting point is the Sorkin--Schutz action
+\cite{DeFeliceMatter}
+\begin{equation}
+ S_i=-\int\dd^4x\left[\sqrt{-g}\,\rho_i(n_i)
+       +J_i^\mu\partial_\mu\ell_i\right],
+ \qquad p_i=n_i\rho_{i,n}-\rho_i .
+ \label{eq:RFGR-Sorkin-Schutz}
+\end{equation}
+Let \(s=k^2\psi/a^2\), and define the physical and auxiliary vectors
+\begin{equation}
+ \mathbf q=(\zeta,\delta_b,\delta_c,\delta_\gamma,\delta_\nu)^T,
+ \qquad
+ \mathbf x=(\alpha,s,v_b,v_c,v_\gamma,v_\nu)^T .
+ \label{eq:RFGR-multifluid-variables}
+\end{equation}
+The exact finite scalar density, retaining the complete extended-EFT gravity
+action, is
+\begin{equation}
+ L^{(2)}=\frac12\dot{\mathbf q}^{T}K_0\dot{\mathbf q}
+ +\mathbf x^TC\dot{\mathbf q}+\frac12\mathbf x^TA\mathbf x
+ +\mathbf x^TD\mathbf q+\frac12\mathbf q^TM_0\mathbf q .
+ \label{eq:RFGR-multifluid-block-action}
+\end{equation}
+Its nonzero entries are
+\begin{align}
+ (K_0)_{\zeta\zeta}&=-3a^2W_5,&
+ C_{\alpha\zeta}&=-3a^2W_4,& C_{s\zeta}&=-a^2W_5,\nonumber\\
+ A_{\alpha\alpha}&=2W_1,& A_{\alpha s}&=-a^2W_4,&
+ A_{ss}&=2a^4W_7,\nonumber\\
+ D_{\alpha\zeta}&=-W_6k^2,&
+ D_{s\zeta}&=-2\bar m_5\frac{k^2}{a^2},&
+ (M_0)_{\zeta\zeta}&=-2W_0k^2,\nonumber\\
+ C_{v_i\zeta}&=-3\rho_i(1+w_i),&
+ C_{v_i\delta_i}&=-\rho_i,&
+ A_{sv_i}&=-\rho_i(1+w_i),\nonumber\\
+ A_{v_iv_i}&=-\rho_i(1+w_i)\frac{k^2}{a^2},&
+ D_{\alpha\delta_i}&=-\rho_i,&
+ (M_0)_{\delta_i\delta_i}&=-\frac{\rho_iw_i}{1+w_i}.
+ \label{eq:RFGR-multifluid-blocks}
+\end{align}
+Here \(i=b,c,\gamma,\nu\), with \(w_{b,c}=0\) and \(w_{\gamma,\nu}=1/3\)
+only in the density--momentum constraint rows.  It is not a closure of the
+photon or neutrino hierarchy.
+
+Varying \(\alpha\) and \(s\) gives the exact sourced lapse--shift system
+\begin{align}
+ 2W_1\alpha-a^2W_4s-3a^2W_4\dot\zeta-W_6k^2\zeta
+ -\sum_i\rho_i\delta_i&=0,\nonumber\\
+ -a^2W_4\alpha+2a^4W_7s-a^2W_5\dot\zeta
+ -2\bar m_5\frac{k^2}{a^2}\zeta
+ -\sum_i\rho_i(1+w_i)v_i&=0.
+ \label{eq:RFGR-multifluid-constraints}
+\end{align}
+The determinant is the analytic identity
+\begin{equation}
+ \det A_{(\alpha,s)}=-a^4\left(W_4^2-4W_1W_7\right),
+ \label{eq:RFGR-multifluid-constraint-determinant}
+\end{equation}
+and eliminating all auxiliary variables yields the complete finite Schur
+reduction
+\begin{equation}
+ K=K_0-C^TA^{-1}C,\qquad
+ B=-C^TA^{-1}D,\qquad
+ M=M_0-D^TA^{-1}D.
+ \label{eq:RFGR-multifluid-Schur}
+\end{equation}
+
+The photon and neutrino anisotropic-stress sectors are not discarded.  In the
+same spatial gauge, \(\chi=-\psi\), their exact massless Boltzmann hierarchy
+is \cite{HwangNoh}
+\begin{equation}
+ \dot\Theta_\ell=\frac{k}{a}\left[
+ \frac{\Theta_{\ell-1}}{2\ell-1}
+ -\frac{\Theta_{\ell+1}}{2\ell+3}\right]+M_\ell+C_\ell,
+ \label{eq:RFGR-massless-hierarchy}
+\end{equation}
+where the \(\ell=0\) streaming term is \(-k\Theta_1/(3a)\), and
+\begin{equation}
+ M_0=-\dot\zeta-\frac{s}{3},\qquad
+ M_1=\frac{k}{a}\alpha,\qquad M_2=\frac{2s}{3},
+ \qquad M_{\ell\ge3}=0 .
+ \label{eq:RFGR-hierarchy-metric-sources}
+\end{equation}
+For photons \(C_0=0\), \(C_1=\dot\tau(v_b-\Theta_1)\),
+\(C_2=\dot\tau(P-\Theta_2)\), \(C_{\ell\ge3}=-\dot\tau\Theta_\ell\),
+where
+\begin{equation}
+ P=\frac{\Theta_2-\sqrt6E_2}{10},\qquad
+ \dot\tau=n_e x_e\sigma_T\ge0 .
+ \label{eq:RFGR-Thomson}
+\end{equation}
+The exact scalar polarization hierarchy, for \(\ell\ge2\), is
+\begin{equation}
+ \dot E_\ell=\frac{k}{a}\left[
+ \frac{\sqrt{\ell^2-4}}{2\ell-1}E_{\ell-1}
+ -\frac{\sqrt{(\ell+1)^2-4}}{2\ell+3}E_{\ell+1}\right]
+ -\dot\tau\left(E_\ell+\sqrt6P\,\delta_{\ell2}\right),
+ \qquad B_\ell^{(0)}=0 .
+ \label{eq:RFGR-polarization-hierarchy}
+\end{equation}
+For a collisionless massless neutrino, \(C_\ell=0\) at every \(\ell\).  Thus
+Eqs.~\eqref{eq:RFGR-massless-hierarchy}--\eqref{eq:RFGR-polarization-hierarchy}
+are an infinite hierarchy, not a fluid approximation or a prescribed
+\(\ell_{\max}\) terminal closure.  Their first moments obey
+\(\delta_{\gamma,\nu}=4\Theta_{\gamma,\nu,0}\),
+\(v_{\gamma,\nu}=\Theta_{\gamma,\nu,1}\), and
+\(\pi_{\gamma,\nu}/\rho_{\gamma,\nu}=4\Theta_{\gamma,\nu,2}/5\), which
+matches the constraint action above exactly.
+
+For a massive neutrino no massless substitution is made.  With
+\(\epsilon(q,a)=\sqrt{q^2+a^2m_\nu^2}\), the collisionless phase-space
+equation is
+\begin{equation}
+ \delta f'=-\frac{q}{\epsilon}\mathcal D_\gamma\delta f
+ +q\frac{\partial f_0}{\partial q}
+ \left[\frac{\epsilon}{q}A_{,\alpha}\gamma^\alpha
+ +(B_{\alpha|\beta}+C'_{\alpha\beta})\gamma^\alpha\gamma^\beta\right].
+ \label{eq:RFGR-massive-neutrino}
+\end{equation}
+The density, momentum and anisotropic stress are the corresponding exact
+momentum integrals with the \(\epsilon\) weights; no effective equation of
+state is inserted.
+
+The executable derivation is
+\RFGRepoNamed{docs/photon\_baryon\_cdm\_neutrino\_reduction.md}{the full reduction note};
+the matrix/hierarchy implementation is
+\RFGRepoNamed{scripts/multifluid\_reduction.py}{the reduction module}, and
+the independent validation is
+\RFGRepoNamed{scripts/validate\_multifluid\_reduction.py}{the audit script}.
+The GR test is performed with rational arithmetic and gives
+\(\operatorname{rank}K=4\) exactly.  The separate 425-point RFG-R audit uses
+the published Planck 2018 Table~2 species split solely as a documented input
+record~\cite{Planck}: it gives a maximum constraint-determinant residual
+\(4.148\times10^{-15}\) and inertia
+\((n_+,n_-,n_0)=(4,0,1)\) at every point.  Those values are not an RFG-R fit,
+and neither this reduction nor the audit evaluates a CMB likelihood.  The
+machine table is
+\RFGRepoNamed{generated/tables/multifluid\_core\_audit.csv}{multifluid audit CSV}.
 
 \subsection{Exact canonical-scalar reference reduction}
 \label{sec:rfgr-canonical-scalar}
@@ -1948,10 +2212,10 @@ matrix reduction.  The physical low-gradient and \(k^4\) coefficients are
 Equations~\eqref{eq:RFGR-canonical-hessian}--\eqref{eq:RFGR-canonical-gradients}
 are exact for the stated one-field system.  The full derivation, including
 the curvature term needed to recover the GR sound speed, is available in
-\RFGRepoPath{docs/canonical\_scalar\_reduction.md}; the executable
-calculation is \RFGRepoPath{scripts/canonical\_scalar.py} and its machine
+\RFGRepoNamed{docs/canonical\_scalar\_reduction.md}{canonical-scalar derivation}; the executable
+calculation is \RFGRepoNamed{scripts/canonical\_scalar.py}{canonical-scalar solver} and its machine
 readable reference output is
-\RFGRepoPath{generated/tables/canonical\_scalar\_reference.csv}.
+\RFGRepoNamed{generated/tables/canonical\_scalar\_reference.csv}{reference CSV}.
 
 Two checks are built into the calculation.  First, GR coupled to a massless
 canonical (stiff) scalar gives exactly \(K=6\) and
@@ -1959,10 +2223,12 @@ canonical (stiff) scalar gives exactly \(K=6\) and
 \(\theta=1.6\), \(\Omega_{\phi0}=0.30\), \(\Omega_{R0}=0.70\), and
 \(0.03\le a\le1\), the numerical scan returns
 \begin{equation}
- \min\Delta=8.006769231,\qquad
- \min K=1.695411575,\qquad
- \min G_1=0.5673484131,
- \qquad c_{s,\rm low}^2(a=1)=0.3346375721.
+\begin{aligned}
+ \min\Delta&=8.006769231,\qquad
+ \min K=1.695411575,\\
+ \min G_1&=0.5673484131,\qquad
+ c_{s,\rm low}^2(a=1)=0.3346375721.
+\end{aligned}
  \label{eq:RFGR-canonical-reference}
 \end{equation}
 The calculated \(G_2\) is non-negative to numerical precision; its minimum
@@ -1973,17 +2239,20 @@ one-field branch, not a multi-fluid stability theorem or a CMB data result.
 \subsection{Reproducibility and public links}
 
 The self-contained supplement distributed beside this \LaTeX{} source is
-\RFGRepoPath{README.md}. Its calculation manifest is
-\RFGRepoPath{CALCULATION\_MANIFEST.md}; the executable validation command is
+\RFGRepoNamed{README.md}{README}. Its calculation manifest is
+\RFGRepoNamed{CALCULATION\_MANIFEST.md}{calculation manifest}; the executable validation command is
 \texttt{bash r\_universe\_completion/scripts/run\_all.sh}. The permanent
 public counterparts are linked directly from the paper:
-\RFGRepoPath{docs/completion\_derivation.md},
-\RFGRepoPath{docs/likelihood\_pipeline.md}, and
-\RFGRepoPath{docs/canonical\_scalar\_reduction.md},
-\RFGRepoPath{scripts/canonical\_scalar.py}, and
-\RFGRepoPath{scripts/validate\_completion.py}. The repository directory also
+\RFGRepoNamed{docs/completion\_derivation.md}{completion derivation},
+\RFGRepoNamed{docs/likelihood\_pipeline.md}{likelihood protocol},
+\RFGRepoNamed{docs/photon\_baryon\_cdm\_neutrino\_reduction.md}{multifluid reduction}, and
+\RFGRepoNamed{docs/canonical\_scalar\_reduction.md}{canonical-scalar derivation},
+\RFGRepoNamed{scripts/multifluid\_reduction.py}{multifluid module},
+\RFGRepoNamed{scripts/validate\_multifluid\_reduction.py}{multifluid audit},
+\RFGRepoNamed{scripts/canonical\_scalar.py}{canonical-scalar solver}, and
+\RFGRepoNamed{scripts/validate\_completion.py}{validation script}. The repository directory also
 contains the exact source of the manuscript, generated tables, figures, and
-the standalone RFG-R completion article.
+the \RFGRepoNamed{paper/R\_Universe\_RFG\_R\_Completion.pdf}{standalone RFG-R completion article}.
 
 \section{Quadratic scalar geometry and constraint kernel}
 \label{sec:quadratic_scalar}
@@ -2694,6 +2963,21 @@ Standard-siren ratio & WKB tensor amplitude transport & Derived under assumption
 Pure-gravity FLRW scalar reduction & Lapse--shift variation of Eq.~\eqref{eq:scalar_full_L} & Derived; \(L_{\rm red}=A\zeta\dot\zeta+B\zeta^2\), no \(\dot\zeta^2\), and \(S_{\rm red,IBP}^{(2)}\) is governed by \(M(t,p)\). \\
 Matter-coupled scalar \(K,G,M\) matrices & Quadratic reduction after adding a matter scalar or fluid & Gate; the pure-gravity result does not determine the matter-coupled kinetic eigenvalues. \\
 RFG-R one-field scalar \(K,G_1,G_2\) & Exact Schur complement of the RFG-R ADM action plus a canonical scalar & Derived for the stated comoving-gauge one-field system; the GR normalization and the regular reference branch are checked in Sec.~\ref{sec:rfgr-canonical-scalar}. This does not establish a multi-fluid result. \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Derivation map for the central equations (continued).}
+\label{tab:derivation-map-continued}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}p{0.22\textwidth}p{0.28\textwidth}p{0.40\textwidth}@{}}
+\toprule
+Equation or sector & Origin & Status \\
+\midrule
+RFG-R photon--baryon--CDM--neutrino core & Exact Sorkin--Schutz Schur reduction plus kinetic theory & Derived in Sec.~\ref{sec:rfgr-multifluid-reduction}; exact lapse--shift determinant, rational GR rank test, RFG-R inertia audit, photon polarization and neutrino hierarchy. No data likelihood is implied. \\
 Nonperturbative Dirac rank & Canonical constraint algebra & Partially derived: the metric Legendre rank and the local Hamiltonian-constraint bracket are explicit. The global kernel, boundary-condition dependence, possible zero modes, and complete first-/second-class classification remain open. \\
 PPN and screening & Static weak-field solution & Gate. \\
 \bottomrule
@@ -2703,7 +2987,7 @@ PPN and screening & Static weak-field solution & Gate. \\
 
 \section{Absolute completion protocol}
 
-The present proof version is deliberately conservative. It separates two kinds of closure: a closed mathematical \emph{definition} of an EFT and a completed empirical \emph{test} of that EFT. RFG-R closes the former for its regular cosmological action and its explicitly matched local-GR domain, and it now contains an exact one-field canonical-scalar constraint reduction. It does not convert that restricted diagnostic, an unrun CMB likelihood, or an unresolved multi-fluid matter reduction into a result. A future version may be called a complete fundamental theory only if every remaining gate below is closed by equations and evaluated data likelihoods, not by wording.
+The present proof version is deliberately conservative. It separates a closed mathematical \emph{definition} of an EFT from a completed empirical \emph{test} of that EFT. RFG-R now contains its regular cosmological action, explicitly matched local-GR domain, exact finite physical multi-fluid constraint reduction, and untruncated kinetic hierarchy. It does not convert an unrun CMB likelihood, an unimplemented Einstein--Boltzmann solver, or the unresolved original-RFG Dirac problem into a result. A future version may be called a complete fundamental theory only if every remaining gate below is closed by equations and evaluated data likelihoods, not by wording.
 
 \subsection{Gate A: common microscopic action}
 
@@ -2742,7 +3026,7 @@ with no independent \(\dot\zeta^2\) term. Thus the pure-gravity scalar gate is n
 
 \subsection{Gate B2: matter-coupled scalar reduction}
 
-For the original RFG action, the matter-coupled scalar calculation remains open.  The pure-gravity degeneracy cannot be resolved by importing a result from a different EFT.  For RFG-R, the one-canonical-scalar calculation of Sec.~\ref{sec:rfgr-canonical-scalar} is complete and gives the exact one-dimensional counterpart of the following construction.  The still-open multi-component calculation, for a canonical scalar plus fluids or for the physical photon--baryon--CDM--neutrino system, must take the matrix form
+For the original RFG action, the matter-coupled scalar calculation remains open.  The pure-gravity degeneracy cannot be resolved by importing a result from a different EFT.  For RFG-R, Sec.~\ref{sec:rfgr-multifluid-reduction} now gives the exact physical photon--baryon--CDM--neutrino constraint reduction, while Sec.~\ref{sec:rfgr-canonical-scalar} supplies the one-canonical-scalar check.  The general matter-coupled reduced action has the matrix form
 \[
 S_{\rm red,m}^{(2)}
 =
@@ -2759,7 +3043,7 @@ followed by
 \operatorname{eig}(K)>0,\qquad
 \det(c_s^2K-G)=0,\qquad c_{s,i}^2>0.
 \]
-This multi-component calculation is not implied by the pure-gravity result because matter sources the lapse and shift constraints.  The one-field RFG-R calculation verifies that the sourced constraints are invertible on a published branch; it neither supplies the multi-fluid kinetic matrix nor settles the original RFG scalar degeneracy.
+This multi-component calculation is not implied by the pure-gravity result because matter sources the lapse and shift constraints.  For RFG-R its finite constraint matrix and its exact kinetic hierarchy are now explicit; an actual spectrum calculation must still solve that differential--algebraic system together with recombination and test the resulting gradients.  None of this settles the original RFG scalar degeneracy.
 
 \subsection{Gate C: Dirac constraint count}
 
@@ -2786,7 +3070,7 @@ homogeneous background. It would require the static weak-field parametrization
 \qquad
 T=t+\pi(r),
 \]
-and direct solution of the field equations generated by Eq.~\eqref{eq:RFG-four-action}. RFG-R instead gives a different, explicit low-energy model with the matching action in Eq.~\eqref{eq:RFGR-matching}. In its local \(s=0\) domain the complete action is exactly GR, which is sufficient to derive the PPN prediction in Eq.~\eqref{eq:RFGR-PPN}; the packaged calculation and Cassini factor are reproducible from \RFGRepoPath{scripts/ppn\_likelihood.py}. This is a defined EFT matching rule, not a proof that the original singular RFG action has an independently derived screening solution.
+and direct solution of the field equations generated by Eq.~\eqref{eq:RFG-four-action}. RFG-R instead gives a different, explicit low-energy model with the matching action in Eq.~\eqref{eq:RFGR-matching}. In its local \(s=0\) domain the complete action is exactly GR, which is sufficient to derive the PPN prediction in Eq.~\eqref{eq:RFGR-PPN}; the packaged calculation and Cassini factor are reproducible from \RFGRepoNamed{scripts/ppn\_likelihood.py}{PPN script}. This is a defined EFT matching rule, not a proof that the original singular RFG action has an independently derived screening solution.
 
 The direct-original-RFG calculation would still return
 \[
@@ -2799,7 +3083,7 @@ and a derived screening or suppression mechanism. It is not used to justify the 
 
 \subsection{Gate E: Boltzmann and CMB completion}
 
-The cosmological background is not a CMB theory. RFG-R supplies the action derivatives, parameter set, rejection criteria, likelihood factors, and an exact input/output contract in \RFGRepoPath{docs/likelihood\_pipeline.md}. A complete empirical evaluation must still provide the perturbation hierarchy, photon--baryon dynamics, neutrinos, recombination, drag epoch and sound horizon from those same action derivatives. The required Boltzmann implementation produces
+The cosmological background is not a CMB theory. RFG-R supplies the action derivatives, the exact extended-EFT map in Eq.~\eqref{eq:RFGR-extended-EFT-map}, the sourced photon--baryon--CDM--neutrino reduction in Sec.~\ref{sec:rfgr-multifluid-reduction}, parameter set, rejection criteria, likelihood factors, and an exact input/output contract in \RFGRepoNamed{docs/likelihood\_pipeline.md}{likelihood protocol}.  The nonzero operator in Eq.~\eqref{eq:RFGR-m5-operator} is absent from the public stock H-EFTCAMB interface, so that code is a validated GR reference only, not an exact RFG-R Boltzmann implementation. Moreover, the pure-gravity extended-EFT audit in Sec.~\ref{sec:rfgr-extended-scalar-audit} finds a degenerate \(\dot\zeta^2\) coefficient. A complete empirical evaluation must implement the action-defined differential--algebraic hierarchy, retain that operator, and compute recombination, the drag epoch and sound horizon from the same action derivatives. The required extended Boltzmann implementation produces
 \[
 C_\ell^{TT},\quad C_\ell^{TE},\quad C_\ell^{EE},\quad
 C_\ell^{\phi\phi},\quad P(k,z),\quad r_d,
@@ -2824,7 +3108,7 @@ The absence of a \(\dot\zeta^2\) term in the pure-gravity FLRW scalar reduction 
 \end{openproblem}
 
 \begin{openproblem}[RFG-R matter/CMB implementation and data inference]
-The exact RFG-R reduction for one canonical scalar is supplied in Sec.~\ref{sec:rfgr-canonical-scalar}.  Extend it to the physical multi-fluid perturbation system, implement the ADM derivatives in Eq.~\eqref{eq:RFGR-ADM-derivatives} in a full 3+1 Einstein--Boltzmann module, and run the public likelihood in Eq.~\eqref{eq:RFGR-likelihood}. The completion criterion is not a background fit: it is a released chain yielding CMB temperature, polarization and lensing spectra, matter power, growth, standard-siren predictions, stability flags, posterior samples, and a model-comparison statistic against \(\Lambda\)CDM and standard dark-energy competitors.
+The exact RFG-R finite photon--baryon--CDM--neutrino constraint reduction is supplied in Sec.~\ref{sec:rfgr-multifluid-reduction}, alongside the exact massless and massive neutrino kinetic equations; the exact action-to-extended-EFT map is in Sec.~\ref{sec:rfgr-extended-eft-map}. The pure-gravity audit in Sec.~\ref{sec:rfgr-extended-scalar-audit} still prevents a one-scalar backend. Implement the action-defined hierarchy with the nonzero coefficient \(\bar m_5\) in Eq.~\eqref{eq:RFGR-m5-operator}; reproduce the GR limit; test the integrated gradient/stability conditions; then run the public likelihood in Eq.~\eqref{eq:RFGR-likelihood}. The completion criterion is not a background fit: it is a released chain yielding CMB temperature, polarization and lensing spectra, matter power, growth, standard-siren predictions, stability flags, posterior samples, and a model-comparison statistic against \(\Lambda\)CDM and standard dark-energy competitors.
 \end{openproblem}
 
 \begin{openproblem}[Compatibility of matter coupling]
@@ -3091,16 +3375,17 @@ The following are not yet completed and must not be presented as proved:
 \item RFG-R is an explicit regular multiscale EFT. Its potential is reconstructed from its target background equation, its recovery of the original cosmological branch and regular \(X\to0\) limit are numerically tested, and its tensor normalization remains positive on the published grid. Every source file, input, output table, and validation result is public through the links in Sec.~\ref{sec:rfg-r}.
 \item RFG-R has a defined local-GR domain. In that domain its PPN prediction is exactly the GR value and the included Cassini likelihood factor is reproducible. This is a property of the stated matching action, not an observational model-selection result.
 \item For RFG-R plus one minimally coupled canonical scalar, the sourced lapse--shift system and exact reduced quadratic action are derived. The GR stiff-field normalization \(K=6\), \(c_s^2=1\) is recovered, and the published reference branch has positive \(\Delta\), \(K\), and \(G_1\), with \(G_2\) non-negative to numerical precision. This is a one-field internal check, not a physical multi-fluid cosmology.
-\item The full matter/CMB likelihood is specified but not yet evaluated. All remaining open problems are stated without ambiguity; no hidden assumptions are introduced to mask them.
+\item The RFG-R action is exactly mapped into the extended EFT basis. The required \(\bar m_5\delta{}^{(3)}R\delta K\) coefficient is nonzero on the reference branch and has an independent numerical validation. The complete pure-gravity extended-EFT scalar audit retains that operator and finds a degenerate \(\dot\zeta^2\) coefficient on all 2,401 reference \((a,k)\) points. The public stock Boltzmann backend also lacks \(\bar m_5\), so it supplies a GR reference calculation rather than an RFG-R CMB prediction.
+\item The RFG-R photon--baryon--CDM--neutrino finite constraint action is explicitly reduced, with a rational-arithmetic GR rank check and a data-documented RFG-R reference inertia audit. Photon polarization and neutrino anisotropic stress remain in their exact kinetic hierarchies, including the unprojected massive-neutrino equation. The full matter/CMB likelihood has fixed data, spectra and rejection rules, but has not yet been evaluated; an action-faithful Einstein--Boltzmann solver and a data run are still required.
 \end{enumerate}
 
 
 \newpage
 \section{Conclusion}
 
-We have assembled a single, transparent theoretical document that contains the mathematically derived layers of Relational Capacity Dynamics and its preferred-foliation construction, plus a separate, explicit RFG-R effective completion. The scalar macroscopic theory is ghost-free, gradient-stable and hyperbolic under the stated conditions. The covariant branch produces a predictive homogeneous cosmology, a clean tensor sector with \(c_T=1\), and an exactly reduced pure-gravity FLRW scalar sector with no independent \(\dot\zeta^2\) kinetic wave. RFG-R regularizes the low-\(X\) action, gives an unambiguous local-GR/PPN domain, and makes every stated numerical validation reproducible from the public source. Its exact one-canonical-scalar reduction provides a nontrivial sourced-constraint and GR-limit check on the regular reference branch.
+We have assembled a single, transparent theoretical document that contains the mathematically derived layers of Relational Capacity Dynamics and its preferred-foliation construction, plus a separate, explicit RFG-R effective completion. The scalar macroscopic theory is ghost-free, gradient-stable and hyperbolic under the stated conditions. The covariant branch produces a predictive homogeneous cosmology, a clean tensor sector with \(c_T=1\), and an exactly reduced pure-gravity FLRW scalar sector with no independent \(\dot\zeta^2\) kinetic wave. RFG-R regularizes the low-\(X\) action, gives an unambiguous local-GR/PPN domain, and makes every stated numerical validation reproducible from the public source. Its exact one-canonical-scalar reduction provides a nontrivial sourced-constraint and GR-limit check on the regular reference branch. The action is also mapped directly into the extended EFT perturbation basis; that derivation fixes the nonzero \(\bar m_5\delta{}^{(3)}R\delta K\) term rather than treating it as a tunable omission.
 
-The metric Legendre map is regular on the physical branch, while the full Dirac rank and the cubic scalar cutoff remain open. Exact FLRW has vanishing quadratic scalar kinetic normalization. The RFG-R multi-fluid perturbation module and its Planck/BAO/SN/RSD/GW likelihood have not yet been run. Thus this paper delivers a falsifiable and reproducible candidate theory with a complete calculation map; it does not claim that RFG-R has already outperformed or replaced \(\Lambda\)CDM.
+The metric Legendre map is regular on the physical branch, while the full Dirac rank and the cubic scalar cutoff remain open. Exact FLRW has vanishing quadratic scalar kinetic normalization. For the regular RFG-R action, the complete pure-gravity extended-EFT audit likewise yields a degenerate \(\dot\zeta^2\) coefficient despite a nonsingular lapse--shift determinant. The sourced photon--baryon--CDM--neutrino constraint reduction has now been derived from the same action, retaining \(\bar m_5\), and shows one constraint plus four positive finite matter directions; photons and neutrinos remain kinetic hierarchies rather than fluid closures. An action-faithful Einstein--Boltzmann implementation and its Planck/BAO/SN/RSD/GW likelihood have not been run. Thus this paper delivers a falsifiable and reproducible candidate theory with a delimited action-to-solver calculation boundary; it does not claim that RFG-R has already outperformed or replaced \(\Lambda\)CDM.
 
 \vspace{1.2em}
 \noindent\textit{This manuscript is offered as a rigorously delimited theoretical foundation, not as a completed theory of nature.}
@@ -3154,7 +3439,7 @@ This research received no external funding.
 \textbf{Data Availability:}
 No original observational or experimental datasets were generated during the
 present theoretical study. The RFG-R numerical illustrations, parameter values,
-generated tables, validation tests, canonical-scalar reduction, and PPN likelihood factor are publicly
+generated tables, validation tests, canonical-scalar reduction, extended-EFT pure-gravity scalar audit, multi-fluid action reduction, and PPN likelihood factor are publicly
 available in the reproducibility package linked in Sec.~\ref{sec:rfg-r}.
 The RFG-R multi-fluid CMB/matter likelihood is a released computation
 specification, not an executed observational inference.
@@ -3242,6 +3527,26 @@ B.~Hu, M.~Raveri, N.~Frusciante and A.~Silvestri,
 ``Effective Field Theory of Cosmic Acceleration: an implementation in CAMB,''
 \emph{Phys.\ Rev.\ D} \textbf{89}, 103530 (2014).
 \doi{10.1103/PhysRevD.89.103530}
+
+\bibitem{ExtendedEFTMap}
+N.~Frusciante, G.~Papadomanolakis and A.~Silvestri,
+``An Extended action for the effective field theory of dark energy: stability
+analysis and a complete guide to the mapping at the basis of EFTCAMB,''
+\emph{JCAP} \textbf{07}, 018 (2016), arXiv:1601.04064.
+\doi{10.1088/1475-7516/2016/07/018}
+
+\bibitem{DeFeliceMatter}
+A.~De Felice, N.~Frusciante and G.~Papadomanolakis,
+``On the stability of Horndeski theories with matter fields,''
+\emph{JCAP} \textbf{03}, 027 (2017), arXiv:1609.03599.
+\doi{10.1088/1475-7516/2017/03/027}
+
+\bibitem{HwangNoh}
+J.~Hwang and H.~Noh,
+``Cosmic microwave background anisotropies and power spectra from a unified
+gauge-ready formulation,''
+\emph{Phys.\ Rev.\ D} \textbf{65}, 023512 (2001), arXiv:astro-ph/0102005.
+\doi{10.1103/PhysRevD.65.023512}
 
 \bibitem{HEFTCAMB}
 G.~Ye et al.,

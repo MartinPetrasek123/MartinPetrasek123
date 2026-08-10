@@ -28,14 +28,14 @@ For each proposed point:
    with `extended_eft_mapping.py`, and write
    `generated/tables/extended_eft_mapping.csv`. The map contains the nonzero
    extended coefficient `bar_m5=-M_Pl^2 Q_X/(3H0)`.
-4. Before coupling any species hierarchy, reduce the complete extended EFT
-   *pure-gravity* scalar action, including ``bar_m5 delta R3 delta K``. If its
-   scalar kinetic term vanishes, derive the full sourced multi-fluid kinetic
-   matrix instead of treating a gravity-only sound speed as physical.
-5. Only after a non-degenerate, constrained multi-fluid system has been
-   established, evolve the full scalar, vector, and tensor linear system
-   without a quasi-static approximation. The scalar constraints must be solved
-   with the standard photon-baryon, neutrino, baryon, and CDM hierarchy present.
+4. Reduce the complete extended EFT *pure-gravity* scalar action, including
+   ``bar_m5 delta R3 delta K``, then use the exact sourced finite reduction in
+   `docs/photon_baryon_cdm_neutrino_reduction.md`. Its lapse--shift equations
+   must be solved with the density and momentum moments of every hierarchy.
+5. Evolve the full scalar, vector, and tensor system without a quasi-static
+   approximation. For the scalar sector this means the exact photon
+   temperature/polarization hierarchy and collisionless neutrino hierarchy;
+   no fluid closure or compressed CMB observable is permitted.
 6. Reject a point when the module reports a ghost, gradient instability,
    singular constraint matrix, or non-positive tensor kinetic coefficient.
 7. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
@@ -62,13 +62,14 @@ degenerate and its standalone scalar sound speed is undefined.  This is a
 strong-coupling/closure gate, not a successful stability result.
 
 Consequently the reference RFG-R branch cannot be passed directly to a
-single-scalar EFT/Boltzmann backend.  A Planck, BAO, RSD, or matter-power
-likelihood requires the physical photon--baryon--CDM--neutrino reduction from
-the same action.  Its combined kinetic matrix must show whether matter lifts
-the degeneracy or whether an additional constraint removes the scalar.  The
+single-scalar EFT/Boltzmann backend. The physical
+photon--baryon--CDM--neutrino reduction from the same action is now recorded in
+`docs/photon_baryon_cdm_neutrino_reduction.md`: its finite monopole/dipole core
+has four positive material directions and one constraint, while the photon and
+neutrino anisotropic-stress sectors remain exact kinetic hierarchies. The
 existing one-canonical-scalar diagnostic is not a substitute for that system.
-Adding a gravitational kinetic operator instead would define a different
-theory and would have to be stated, derived, and tested as such.
+Adding a gravitational kinetic operator would define a different theory and
+would have to be stated, derived, and tested as such.
 
 ## 3. Likelihoods
 
@@ -110,11 +111,12 @@ measurements can be added as Gaussian factors with their published covariance.
 ## 5. Reproducible Execution Boundary
 
 The repository contains every RFG-R background function, the exact
-ADM-to-extended-EFT map, and the decisive pre-Boltzmann pure-gravity gate.
-The present action does not pass directly to a one-scalar backend. A full CMB
-likelihood first requires the physical multi-fluid RFG-R reduction retaining
-`bar_m5`, then an extension of a Boltzmann solver and the official Planck
-likelihood data package. The input/output contract for that calculation is:
+ADM-to-extended-EFT map, the finite physical constraint reduction, and the
+untruncated kinetic hierarchy. The present action does not pass directly to a
+one-scalar backend. A full CMB likelihood still requires an implementation of
+this action-defined differential-algebraic hierarchy in a solver retaining
+`bar_m5`, followed by the official Planck likelihood data package. The
+input/output contract for that calculation is:
 
 ```text
 input:  generated/tables/extended_eft_mapping.csv
@@ -124,9 +126,8 @@ data:   Planck Legacy Archive likelihood packages
 sampler: Cobaya nested or MCMC sampler
 ```
 
-The boundary is operational: the required multi-fluid reduction has not yet
-been derived. No empirical result is claimed and no CMB/matter likelihood is
-reported.
+The remaining boundary is numerical/data-facing: no RFG-R spectra, posterior,
+or CMB/matter likelihood has been executed. No empirical result is claimed.
 
 ## 6. References For The Pipeline
 
@@ -143,3 +144,9 @@ reported.
    likelihoods, Astron. Astrophys. 641, A5 (2020), arXiv:1907.12875.
 5. B. Bertotti, L. Iess, and P. Tortora, A test of general relativity using
    radio links with the Cassini spacecraft, Nature 425, 374-376 (2003).
+6. A. De Felice, N. Frusciante, and G. Papadomanolakis, On the stability of
+   Horndeski theories with matter fields, JCAP 03, 027 (2017),
+   arXiv:1609.03599.
+7. J. Hwang and H. Noh, Cosmic microwave background anisotropies and
+   power spectra from a unified gauge-ready formulation, Phys. Rev. D 65,
+   023512 (2001), arXiv:astro-ph/0102005.

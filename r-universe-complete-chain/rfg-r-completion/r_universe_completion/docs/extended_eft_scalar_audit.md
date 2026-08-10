@@ -71,9 +71,9 @@ For the reference branch the audit uses 49 logarithmic scale factors over
 `10^-4 <= k/H0 <= 10^5`, for 2,401 points. It finds
 
 ```text
-min D                            = 2.514012405360e+00
+min constraint discriminant       = 2.514017848646e+00
 kinetic-degenerate points        = 2401 / 2401
-max relative kinetic numerator   = 2.614e-16
+max relative kinetic numerator   = 4.357e-16
 ```
 
 Thus the cancellation in the numerator of `L_zeta_dot_zeta` is numerical-zero
@@ -91,10 +91,11 @@ sector: matter sources the lapse and shift constraints. The package's separate
 one-canonical-scalar calculation already illustrates that the sourced
 reduction need not have the same kinetic rank.
 
-The unresolved required calculation is therefore the complete
-photon--baryon--CDM--neutrino quadratic action from the same RFG-R action,
-including the mapped `bar_m5` operator. It must provide the full kinetic and
-gradient matrices, initial conditions, GR limit, and stability decision before
-any CMB or matter likelihood can be evaluated. Adding a new gravitational
-kinetic operator instead would define a new theory, not complete this RFG-R
-action.
+The exact photon--baryon--CDM--neutrino finite constraint action and kinetic
+hierarchy are now supplied in
+[`photon_baryon_cdm_neutrino_reduction.md`](photon_baryon_cdm_neutrino_reduction.md),
+including the mapped `bar_m5` operator. The remaining task is to implement
+that differential--algebraic hierarchy, its recombination and initial
+conditions, in a solver; then its integrated gradients, spectra and likelihood
+can be evaluated. Adding a new gravitational kinetic operator instead would
+define a new theory, not complete this RFG-R action.

@@ -126,11 +126,24 @@ def Q_prime(x: float, p: RFGRegularizedParams) -> float:
 
 
 def Q_second(x: float, p: RFGRegularizedParams) -> float:
-    """Stable central difference for the coefficient table and checks."""
+    """Analytic second derivative of the regularized curvature coefficient."""
     if x == 0.0:
         return 0.0 if p.p > 2 else math.nan
-    step = max(1.0e-7 * x, 1.0e-14)
-    return (Q_prime(x + step, p) - Q_prime(max(0.0, x - step), p)) / (x + step - max(0.0, x - step))
+    s, correction = _transition_terms(x, p)
+    slope = p.p - (p.p + p.theta) * s
+    curvature = p.p * (p.p + p.theta) * s * (1.0 - s)
+    return correction * (slope - slope * slope + curvature) / (x * x)
+
+
+def response_second(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic second derivative of the regularized homogeneous response."""
+    if x == 0.0:
+        return 0.0
+    value = response(x, p)
+    s, _ = _transition_terms(x, p)
+    slope = p.p + 2.0 - (p.p + p.theta) * s
+    curvature = p.p * (p.p + p.theta) * s * (1.0 - s)
+    return value * (slope * slope - slope - curvature) / (x * x)
 
 
 def Q_minimum(p: RFGRegularizedParams) -> tuple[float, float]:
@@ -162,6 +175,19 @@ def source_for_potential(x: float, p: RFGRegularizedParams) -> float:
     # low-X term to cancellation when Q rounds to 1 in double precision.
     _, correction = _transition_terms(x, p)
     return x * x * correction - response(x, p) - x**3 * Q_prime(x, p)
+
+
+def source_for_potential_prime(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic derivative of F=(V-X V_X)/3 fixed by the branch equation."""
+    if x == 0.0:
+        return 0.0
+    _, correction = _transition_terms(x, p)
+    return (
+        2.0 * x * correction
+        - response_prime(x, p)
+        - 4.0 * x * x * Q_prime(x, p)
+        - x**3 * Q_second(x, p)
+    )
 
 
 def potential(x: float, p: RFGRegularizedParams, points: int | None = None) -> float:
@@ -228,6 +254,13 @@ def potential_prime(x: float, p: RFGRegularizedParams) -> float:
     if x == 0.0:
         return 0.0
     return (potential(x, p) - 3.0 * source_for_potential(x, p)) / x
+
+
+def potential_second(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic V_XX obtained by differentiating V-X V_X=3F."""
+    if x == 0.0:
+        return 0.0
+    return -3.0 * source_for_potential_prime(x, p) / x
 
 
 def potential_small_x_coefficient(p: RFGRegularizedParams) -> float:
@@ -324,12 +357,7 @@ def eft_coefficients(a: float, p: RFGRegularizedParams) -> dict[str, float]:
     qxx = Q_second(x, p)
     v = potential(x, p)
     vx = potential_prime(x, p)
-    # V_XX by a stable finite difference. The term is used only as a table value;
-    # the defining equation for V_X is exact above.
-    step = max(1.0e-6 * x, 1.0e-10)
-    vxx = (potential_prime(x + step, p) - potential_prime(max(0.0, x - step), p)) / (
-        x + step - max(0.0, x - step)
-    )
+    vxx = potential_second(x, p)
     row.update(
         {
             "X": x,

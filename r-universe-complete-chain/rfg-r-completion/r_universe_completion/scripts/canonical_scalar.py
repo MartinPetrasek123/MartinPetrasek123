@@ -25,6 +25,7 @@ from rfg_regularized import (
     RFGRegularizedParams,
     Q,
     Q_prime,
+    Q_second,
     potential,
     response,
     response_prime,
@@ -80,12 +81,6 @@ class MasslessScalarReference:
             else:
                 lo = mid
         return 0.5 * (lo + hi)
-
-
-def _second_derivative(function, x: float, params: RFGRegularizedParams) -> float:
-    step = max(1.0e-6 * x, 1.0e-7)
-    left = max(0.0, x - step)
-    return (function(x + step, params) - function(left, params)) / (x + step - left)
 
 
 def _dot_inverse(u: tuple[float, float], inverse, v: tuple[float, float]) -> float:
@@ -155,7 +150,7 @@ def instantaneous_reduction(a: float, background: MasslessScalarReference) -> di
     h = background.solve_E(a)
     q = Q(h, params)
     q_x = Q_prime(h, params)
-    q_xx = _second_derivative(Q_prime, h, params)
+    q_xx = Q_second(h, params)
     source_f = h * h - response(h, params) - h * h * q - h**3 * q_x
     source_f_x = (
         2.0 * h

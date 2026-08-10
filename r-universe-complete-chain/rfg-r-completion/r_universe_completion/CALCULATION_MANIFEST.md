@@ -3,7 +3,7 @@
 | Claim or calculation | Definition or file | Verification |
 |---|---|---|
 | Smooth RFG-R response | `scripts/rfg_regularized.py` | High-X and low-X tests |
-| Exact potential reconstruction | `scripts/rfg_regularized.py` | Finite-difference ODE residual |
+| Exact potential reconstruction | `scripts/rfg_regularized.py` | Defining reconstruction identity; finite-difference residual used only as an independent regression check |
 | Original cosmological branch recovery | `scripts/rfg_regularized.py` | Relative response and Q checks |
 | Positive expanding background branch | `scripts/rfg_regularized.py` | Root residual and density closure |
 | Tensor normalization and siren relation | `scripts/rfg_regularized.py` | `Q_T>0` on validation grid |
@@ -13,7 +13,8 @@
 | Canonical-scalar sourced constraint reduction | `docs/canonical_scalar_reduction.md` | Exact Schur complement; GR limit `K=6`, `c_s^2=1` |
 | Exact ADM-to-extended-EFT map | `scripts/extended_eft_mapping.py` | Independent implicit-background and `bar_m5` identity checks |
 | Extended scalar-action audit | `scripts/extended_eft_scalar_stability.py` | Reduced action, lapse/shift determinant and scalar kinetic test |
-| Full CMB/matter likelihood definition | `docs/likelihood_pipeline.md` | Blocked pending multi-fluid reduction after pure-gravity scalar degeneracy |
+| Photon--baryon--CDM--neutrino reduction | `docs/photon_baryon_cdm_neutrino_reduction.md` | Exact Sorkin--Schutz Schur complement, infinite photon/neutrino hierarchy, GR rational-rank and RFG-R inertia audits |
+| Full CMB/matter likelihood definition | `docs/likelihood_pipeline.md` | Exact action and hierarchy interface specified; no RFG-R spectra or data likelihood has been evaluated |
 | Standalone article | `paper/R_Universe_RFG_R_Completion.pdf` | Rendered PDF and text extraction |
 
 ## Reference Validation
@@ -35,14 +36,16 @@ max density closure error  <= 1e-11
 min Q_T                    > 0
 Solar W at one AU          > 1e9
 canonical scalar GR limit  K=6, c_s^2=1
-extended-EFT map           finite-difference checks and exact bar_m5 identity
+extended-EFT map           analytic action derivatives; finite-difference regression and exact bar_m5 identity
 extended scalar action     degenerate zeta-dot squared coefficient on 2,401-point (a,k) grid
+multi-fluid core           exact GR rank(K)=4; RFG-R reference inertia (4,0,1) on 425 points
 ```
 
 The mapped coefficient `bar_m5=-M_Pl^2 Q_X/(3H0)` is nonzero on the reference
 branch. The complete pure-gravity reduced extended-EFT action nevertheless has
 a degenerate quadratic scalar kinetic term on the audited cosmological domain.
-The physical multi-fluid reduction must determine whether matter lifts this
-degeneracy or supplies an additional constraint before a CMB or matter
-calculation. The public stock H-EFTCAMB coefficient interface also does not
-expose `bar_m5`, so its compiled GR run remains a reference calculation only.
+The exact finite multi-fluid reduction supplies one null constraint and four
+positive monopole/dipole material directions; photons and neutrinos retain
+their untruncated kinetic hierarchy. The public stock H-EFTCAMB coefficient
+interface does not expose `bar_m5`, so its compiled GR run remains a reference
+calculation only.
