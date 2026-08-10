@@ -68,7 +68,13 @@ python3 scripts/validate_extended_eft_mapping.py
 python3 scripts/extended_eft_mapping.py
 ```
 
-The machine-readable result is `generated/tables/extended_eft_mapping.csv`.
+The executable files are
+[`validate_extended_eft_mapping.py`](../scripts/validate_extended_eft_mapping.py)
+and [`extended_eft_mapping.py`](../scripts/extended_eft_mapping.py). The
+machine-readable result is
+[`extended_eft_mapping.csv`](../generated/tables/extended_eft_mapping.csv),
+with a concise
+[`summary`](../generated/tables/extended_eft_mapping_summary.md).
 Values use the dimensionless normalizations stated in the script header. The
 validation independently finite-differences both implicit-background
 derivatives and checks the exact `bar_m5=-M_Pl^2 Q_X/(3H0)` identity.
