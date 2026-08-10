@@ -68,16 +68,16 @@ The denominator is checked numerically on the entire released domain.
 The KGB braiding is fixed without an additional fitted cosmological parameter:
 
 \[
-\alpha_B=-b_{\rm rad}+(1+b_{\rm rad})
-\frac{x}{1+x}\Omega_R,
-\qquad b_{\rm rad}=\alpha\Omega_{r0}.
+\alpha_B=\frac{\Omega_R}{3},\qquad
+\alpha_{B,N}=\frac{\Omega_{R,N}}{3}.
 \]
 
-The small radiation floor is determined by already present R-alpha quantities.
-Its negative sign is fixed by the scalar gradient condition in radiation
-domination, where a positive constant braiding would give a negative gradient
-numerator. It vanishes in the exact `alpha=0` LCDM limit, but keeps the scalar
-kinetic coefficient nonzero instead of leaving a vanishing-Qs branch.
+This is a regularity closure, not a fitted parameter. In radiation domination
+`Omega_R,N -> 4 Omega_R` and `-E_N/E -> 2`. The exact scalar numerator written
+below then obeys `D/Omega_R -> 1`, so the scalar kinetic sector decouples with
+the R-sector energy fraction rather than retaining a spurious finite early-time
+EFT coupling. Requiring this unit regular radiation-limit coefficient fixes
+the factor `1/3` uniquely.
 
 For luminal KGB coupled to conserved matter and radiation, the standard
 Bellini--Sawicki coefficients, with `alpha_M=alpha_T=0`, are
@@ -87,15 +87,26 @@ Q_s/M_{\rm Pl}^2=\frac{2D}{(2-\alpha_B)^2},
 \]
 
 \[
-\mathcal N_s=(2-\alpha_B)
-\left(-\frac{E_N}{E}+\frac{\alpha_B}{2}\right)
-+\alpha_{B,N}-(3\Omega_m+4\Omega_r),
+\mathcal H_e=3\Omega_m+4\Omega_r,\qquad
+-\frac{E_N}{E}=
+\frac{\mathcal H_e-\Omega_Rx_N\ln E}{2-\Omega_Rx},
+\]
+
+\[
+\mathcal N_s^{(0)}=
+\frac{\Omega_R\left(\mathcal H_e x-2x_N\ln E\right)}
+{2-\Omega_Rx},
+\qquad
+\mathcal N_s=\mathcal N_s^{(0)}+
+\alpha_B\left(1+\frac{E_N}{E}\right)
++\alpha_{B,N}-\frac{\alpha_B^2}{2},
 \qquad c_s^2=\frac{\mathcal N_s}{D}.
 \]
 
-The matter/radiation enthalpy is necessary: in the `alpha_B=0` canonical
-scalar limit it returns `c_s^2=1`, rather than incorrectly counting fluid
-enthalpy as scalar gradient energy.
+The second expression is algebraically identical to the standard
+Bellini--Sawicki numerator with `alpha_M=alpha_T=0`, but avoids cancellation
+between order-unity radiation terms. The matter/radiation enthalpy is retained
+explicitly.
 
 The scalar sector is closed by choosing
 
@@ -142,12 +153,30 @@ exactly.  Since `phi_dot=H Mpl` never vanishes on the branch, the verified
 continuity equation is equivalent to the homogeneous scalar equation of
 motion by the Bianchi identity.
 
-## Gates that this package closes, and what a likelihood is
+## Executed Boltzmann and fixed-point Planck calculation
 
 The package closes the mathematical background, global-future, action-density,
 scalar no-ghost, scalar no-gradient, scalar sound-speed, tensor-speed, and
-tensor-friction gates for this explicit action.  It does not manufacture a
-Planck/DESI joint posterior.  That separate empirical calculation requires
-compiling the derived KGB functions into a Boltzmann solver and evaluating the
-published CMB and large-scale-structure likelihoods.  No numerical likelihood
-value is claimed until that executable run exists.
+tensor-friction gates for this explicit action. It also executes the derived
+`w_R(a)`, `alpha_K(a)`, and `alpha_B(a)` functions in the native RPH interface
+of H-EFTCAMB. The run evolves photons, baryons, CDM, three massless standard
+neutrinos, metric constraints, and the KGB scalar; it recomputes
+recombination, drag, lensed CMB spectra, the lensing-potential spectrum, and
+linear matter power.
+
+`scripts/evaluate_planck_2018_fixed.py` converts CAMB's `D_ell` outputs to
+raw `C_ell` values and evaluates the official Planck 2018 Plik-lite TTTEEE,
+Commander low-ell TT, SimAll low-ell EE, and CMB-dependent lensing likelihood
+objects. At the declared fixed parameter point, with `A_planck=1`, the
+601-node reference run gives
+
+\[
+-2\ln\mathcal L_{\rm Planck}=1210.1599180060.
+\]
+
+Component values and numerical convergence tests are recorded in
+`generated/planck_2018_fixed_summary.json`. This is a reproducible fixed-point
+likelihood evaluation, not an optimized likelihood, posterior, Bayesian
+evidence, or comparison with LambdaCDM. Matter/BAO/RSD likelihoods, an
+ephemeris fit, and a joint parameter inference are not represented by this
+calculation.

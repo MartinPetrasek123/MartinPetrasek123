@@ -1,0 +1,98 @@
+{
+  "numerical_checks": {
+    "spline_201_minus_601_delta_minus_2_log_likelihood": 8.840857162795146e-06,
+    "turn_on_1e-3_minus_1e-4_delta_minus_2_log_likelihood": -2.941312754956016e-05,
+    "turn_on_values": [
+      0.0001,
+      0.001
+    ]
+  },
+  "provenance": {
+    "evaluator": "scripts/evaluate_planck_2018_fixed.py",
+    "reports": {
+      "nodes_201": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_201",
+      "nodes_601": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_601",
+      "turn_on_a_1e-3": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/turn_on/a_1e-3",
+      "turn_on_a_1e-4": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/turn_on/a_1e-4"
+    },
+    "solver_convergence": "generated/heftcamb/convergence/heftcamb_convergence.json",
+    "solver_generator": "scripts/generate_heftcamb_rph.py"
+  },
+  "reference_fixed_point": {
+    "a_planck_fixed": 1.0,
+    "components": {
+      "commander_lowl_TT": {
+        "extra_parameters": [
+          "A_planck"
+        ],
+        "label": "Planck 2018 Commander low-ell TT",
+        "lmax": [
+          29,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "log_likelihood": -11.549329008469357,
+        "minus_2_log_likelihood": 23.098658016938714
+      },
+      "lensing": {
+        "extra_parameters": [
+          "A_planck"
+        ],
+        "label": "Planck 2018 CMB-dependent lensing",
+        "lmax": [
+          2500,
+          2500,
+          2500,
+          -1,
+          2500,
+          -1,
+          -1
+        ],
+        "log_likelihood": -21.71526352836203,
+        "minus_2_log_likelihood": 43.43052705672406
+      },
+      "plik_lite_TTTEEE": {
+        "extra_parameters": [
+          "A_planck"
+        ],
+        "label": "Planck 2018 Plik-lite TTTEEE",
+        "lmax": [
+          2508,
+          2508,
+          -1,
+          2508,
+          -1,
+          -1
+        ],
+        "log_likelihood": -373.825395041766,
+        "minus_2_log_likelihood": 747.650790083532
+      },
+      "simall_lowl_EE": {
+        "extra_parameters": [
+          "A_planck"
+        ],
+        "label": "Planck 2018 SimAll low-ell EE",
+        "lmax": [
+          -1,
+          29,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "log_likelihood": -197.98997142440479,
+        "minus_2_log_likelihood": 395.97994284880957
+      }
+    },
+    "spline_nodes": 601,
+    "total": {
+      "log_likelihood": -605.0799590030022,
+      "minus_2_log_likelihood": 1210.1599180060043
+    }
+  },
+  "scope": "Official Planck 2018 likelihood evaluation at one fixed R-Universe KGB point. This is not an optimization, posterior, evidence, or comparison to LambdaCDM.",
+  "status": "completed"
+}

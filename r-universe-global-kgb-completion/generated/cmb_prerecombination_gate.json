@@ -16,25 +16,25 @@
       "a": 1e-09,
       "Omega_R": 7.679881147575549e-33,
       "relative_H_minus_LCDM": 0.0,
-      "mu_infinity_minus_one": 2.259322326738441e-05,
-      "alpha_B": -4.518535047109375e-05,
-      "Q_s_over_Mpl2": 2.2591106418410455e-05
+      "mu_infinity_minus_one": 4.266603052998825e-34,
+      "alpha_B": 2.559960382525183e-33,
+      "Q_s_over_Mpl2": 3.839938399877837e-33
     },
     "recombination_z_1090": {
       "a": 0.0009165902841429881,
       "Omega_R": 1.3445814747533016e-09,
       "relative_H_minus_LCDM": 3.0691005292737827e-12,
-      "mu_infinity_minus_one": 3.62391050636816e-05,
-      "alpha_B": -4.5185349858307643e-05,
-      "Q_s_over_Mpl2": 1.4084395749506853e-05
+      "mu_infinity_minus_one": 8.567098963444816e-11,
+      "alpha_B": 4.481938249177672e-10,
+      "Q_s_over_Mpl2": 5.861894021581307e-10
     },
     "drag_z_1060": {
       "a": 0.0009424981856909926,
       "Omega_R": 1.4719993776611375e-09,
       "relative_H_minus_LCDM": 3.439470930288735e-12,
-      "mu_infinity_minus_one": 3.6389298987721896e-05,
-      "alpha_B": -4.518534978128437e-05,
-      "Q_s_over_Mpl2": 1.402626348358679e-05
+      "mu_infinity_minus_one": 9.388822013222441e-11,
+      "alpha_B": 4.906664592203791e-10,
+      "Q_s_over_Mpl2": 6.410643794901433e-10
     }
   },
   "verdict": "PASS: the R-sector background and the action-derived early scalar response are small before recombination; the sound-horizon background shift is explicitly quantified.",

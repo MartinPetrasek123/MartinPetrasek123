@@ -1,0 +1,86 @@
+{
+  "components": {
+    "commander_lowl_TT": {
+      "extra_parameters": [
+        "A_planck"
+      ],
+      "label": "Planck 2018 Commander low-ell TT",
+      "lmax": [
+        29,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "log_likelihood": -11.549329008469357,
+      "minus_2_log_likelihood": 23.098658016938714
+    },
+    "lensing": {
+      "extra_parameters": [
+        "A_planck"
+      ],
+      "label": "Planck 2018 CMB-dependent lensing",
+      "lmax": [
+        2500,
+        2500,
+        2500,
+        -1,
+        2500,
+        -1,
+        -1
+      ],
+      "log_likelihood": -21.71526352836203,
+      "minus_2_log_likelihood": 43.43052705672406
+    },
+    "plik_lite_TTTEEE": {
+      "extra_parameters": [
+        "A_planck"
+      ],
+      "label": "Planck 2018 Plik-lite TTTEEE",
+      "lmax": [
+        2508,
+        2508,
+        -1,
+        2508,
+        -1,
+        -1
+      ],
+      "log_likelihood": -373.825395041766,
+      "minus_2_log_likelihood": 747.650790083532
+    },
+    "simall_lowl_EE": {
+      "extra_parameters": [
+        "A_planck"
+      ],
+      "label": "Planck 2018 SimAll low-ell EE",
+      "lmax": [
+        -1,
+        29,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "log_likelihood": -197.98997142440479,
+      "minus_2_log_likelihood": 395.97994284880957
+    }
+  },
+  "inputs": {
+    "a_planck_fixed": 1.0,
+    "lensed_ell_max": 2600,
+    "lenspotential_ell_max": 2700,
+    "planck_base": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/cobaya-planck-2018/data/planck_2018/baseline/plc_3.0",
+    "spectra_dir": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_601",
+    "spectrum_convention": {
+      "cmb": "CAMB D_ell converted to raw C_ell before clik evaluation",
+      "phi_phi": "CAMB D_ell^phi_phi converted to raw C_ell^phi_phi before clik evaluation"
+    }
+  },
+  "scope": "Official Planck 2018 likelihood evaluation at one fixed R-Universe KGB point. This is not an optimization, posterior, evidence, or comparison to LambdaCDM.",
+  "status": "completed",
+  "total": {
+    "log_likelihood": -605.0799590030022,
+    "minus_2_log_likelihood": 1210.1599180060043
+  }
+}

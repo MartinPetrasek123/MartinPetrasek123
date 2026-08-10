@@ -1,0 +1,37 @@
+{
+  "model": "R-Universe covariant KGB, native H-EFTCAMB RPH execution",
+  "scope": "fixed-parameter CMB and linear-matter solver convergence; not a data likelihood or posterior",
+  "nodes": [
+    201,
+    401,
+    601
+  ],
+  "reference_nodes": 601,
+  "comparisons_to_reference": {
+    "201": {
+      "TT_fractional_rms": 1.3629970557008715e-07,
+      "TT_fractional_max": 6.493604881428729e-06,
+      "EE_fractional_rms": 0.0,
+      "EE_fractional_max": 0.0,
+      "TE_fractional_rms": 1.9828672980171756e-07,
+      "TE_fractional_max": 7.634228828329564e-06,
+      "Pk_fractional_rms": 1.0345964886934485e-06,
+      "Pk_fractional_max": 9.440107239609656e-06
+    },
+    "401": {
+      "TT_fractional_rms": 2.1229094451391032e-08,
+      "TT_fractional_max": 1.082267480217615e-06,
+      "EE_fractional_rms": 0.0,
+      "EE_fractional_max": 0.0,
+      "TE_fractional_rms": 7.549436522191918e-08,
+      "TE_fractional_max": 3.3261045993592297e-06,
+      "Pk_fractional_rms": 0.0,
+      "Pk_fractional_max": 0.0
+    }
+  },
+  "outputs": {
+    "201": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_201",
+    "401": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_401",
+    "601": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/heftcamb/convergence/nodes_601"
+  }
+}

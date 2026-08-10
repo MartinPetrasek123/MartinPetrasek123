@@ -1,0 +1,13 @@
+Exact source: scripts/ru_kgb.py
+spline_points = 601
+a_min = 1.00000000000000004e-10
+a_max = 1.01000000000000001e+00
+grid = power
+grid_power = 3.00000000000000000e+00
+perturbation_turn_on_a = 1.00000000000000005e-04
+H0_from_Omega_r_km_s_Mpc = 6.78623079680040604e+01
+ombh2 = 2.23700000000000010e-02
+omch2 = 1.16835769827044494e-01
+neutrino_sector = three massless standard neutrinos
+braiding_convention = RPH alpha_B = -BelliniSawicki alpha_B / 2
+primordial_sector = fixed spectrum gate, not an inferred likelihood point

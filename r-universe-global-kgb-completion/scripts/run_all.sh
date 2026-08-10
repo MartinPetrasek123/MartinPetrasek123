@@ -2,6 +2,7 @@
 set -eu
 cd "$(dirname "$0")/.."
 python3 scripts/validate_ru_kgb.py
+python3 scripts/validate_independent_kgb_identities.py
 python3 scripts/stability_scan.py
 python3 scripts/matter_qs.py
 python3 scripts/ppn_screening.py

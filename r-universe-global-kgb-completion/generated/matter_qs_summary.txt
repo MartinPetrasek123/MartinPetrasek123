@@ -1,1 +1,1 @@
-Quasi-static KGB growth prediction: max mu_infinity=1.04371870, D/D_LCDM in [0.99984951, 1.01446436].
+Quasi-static KGB growth prediction: max mu_infinity=1.05876714, D/D_LCDM in [0.99939305, 1.01046983].

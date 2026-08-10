@@ -31,7 +31,6 @@ def high_precision_action_gate(params: RUKGBParams) -> float:
     orad = mp.mpf(str(params.omega_r0))
     alpha = mp.mpf(str(params.alpha))
     oR = 1 - om - orad
-    beta_floor = alpha * orad
     worst = mp.mpf("0")
     for a_text in ["1e-8", "1e-5", "1e-3", "0.1", "1", "1.5", "2", "1000"]:
         a = mp.mpf(a_text)
@@ -67,14 +66,15 @@ def high_precision_action_gate(params: RUKGBParams) -> float:
         e_n = (r * exponent_n * mp.log(e) - 3 * matter - 4 * radiation) / (2 * e - r * exponent / e)
         r_n = r * (exponent_n * mp.log(e) + exponent * e_n / e)
         omega_R = r / e**2
-        gate = exponent / (1 + exponent)
-        gate_n = exponent_n / (1 + exponent) ** 2
         omega_R_n = omega_R * (r_n / r - 2 * e_n / e)
-        b = -beta_floor + (1 + beta_floor) * gate * omega_R
-        b_n = (1 + beta_floor) * (gate_n * omega_R + gate * omega_R_n)
+        b = omega_R / 3
+        b_n = omega_R_n / 3
         omega_m = matter / e**2
         omega_r = radiation / e**2
-        sound_numerator = (2 - b) * (-e_n / e + b / 2) + b_n - (3 * omega_m + 4 * omega_r)
+        enthalpy = 3 * omega_m + 4 * omega_r
+        minus_e_n_over_e = (enthalpy - omega_R * exponent_n * mp.log(e)) / (2 - omega_R * exponent)
+        baseline_numerator = omega_R * (enthalpy * exponent - 2 * exponent_n * mp.log(e)) / (2 - omega_R * exponent)
+        sound_numerator = baseline_numerator + b * (1 - minus_e_n_over_e) + b_n - b**2 / 2
         D = sound_numerator
         alpha_k = D - mp.mpf("1.5") * b**2
         X = e**2 / 2
@@ -162,7 +162,7 @@ def main() -> None:
             "Omega_r0": params.omega_r0,
             "Omega_R0": params.omega_R0,
             "alpha": params.alpha,
-            "beta_radiation": params.beta_radiation,
+            "braiding_closure": "alpha_B = Omega_R / 3",
             "a_saturation": params.a_saturation,
             "target_cs2": params.target_cs2,
         },

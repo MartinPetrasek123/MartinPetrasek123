@@ -38,19 +38,6 @@ class RUKGBParams:
     def omega_R0(self) -> float:
         return 1.0 - self.omega_m0 - self.omega_r0
 
-    @property
-    def beta_radiation(self) -> float:
-        """Fixed, non-fitted radiation regularizer for the scalar kinetic term.
-
-        Its magnitude is determined entirely by the already fitted R-alpha
-        coefficient and the radiation density; it is not an additional sampled
-        parameter.  The physical early-time alpha_B floor uses the opposite
-        sign, which is required for a positive scalar gradient numerator in
-        radiation domination.  For alpha -> 0 it vanishes and the exact LCDM
-        limit is recovered.
-        """
-        return self.alpha * self.omega_r0
-
     def validate(self) -> None:
         if not (0.0 <= self.omega_m0 < 1.0):
             raise ValueError("omega_m0 must lie in [0, 1)")
@@ -149,26 +136,26 @@ def background(a: float, params: RUKGBParams) -> dict[str, float]:
     omega_r = radiation / (e * e)
     omega_R = r / (e * e)
 
-    # The original R-alpha braiding target is retained for a <= 1.  A fixed
-    # negative radiation floor removes the vanishing-Qs branch and makes the
-    # standard Horndeski scalar gradient numerator positive in radiation
-    # domination.  Its magnitude adds no cosmological parameter.
-    raw_gate = exponent / (1.0 + exponent)
-    raw_gate_n = exponent_n / ((1.0 + exponent) ** 2)
+    # Capacity-decoupling closure.  In radiation domination Omega_R,N -> 4
+    # Omega_R and -E_N/E -> 2, hence alpha_B=Omega_R/3 gives D/Omega_R -> 1.
+    # The scalar kinetic sector then vanishes with its energy fraction instead
+    # of retaining a spurious finite early-time EFT coupling.
     omega_R_n = omega_R * (r_n / r - 2.0 * e_n / e)
-    beta_floor = params.beta_radiation
-    alpha_b = -beta_floor + (1.0 + beta_floor) * raw_gate * omega_R
-    alpha_b_n = (1.0 + beta_floor) * (raw_gate_n * omega_R + raw_gate * omega_R_n)
+    alpha_b = omega_R / 3.0
+    alpha_b_n = omega_R_n / 3.0
 
     # Bellini-Sawicki scalar sound-speed numerator for alpha_M=alpha_T=0.
     # c_s^2=N_s/D and D=alpha_K+3 alpha_B^2/2.  The matter/radiation
     # enthalpy is the final term.  This is the convention associated with
     # Q_s=2 Mpl^2 D/(2-alpha_B)^2.
-    sound_numerator = (
-        (2.0 - alpha_b) * (-e_n / e + 0.5 * alpha_b)
-        + alpha_b_n
-        - (3.0 * omega_m + 4.0 * omega_r)
+    enthalpy = 3.0 * omega_m + 4.0 * omega_r
+    minus_e_n_over_e = (enthalpy - omega_R * exponent_n * math.log(e)) / (2.0 - omega_R * exponent)
+    # This algebraic form is identical to the Bellini--Sawicki numerator but
+    # avoids subtracting two order-unity radiation-era terms.
+    baseline_numerator = omega_R * (enthalpy * exponent - 2.0 * exponent_n * math.log(e)) / (
+        2.0 - omega_R * exponent
     )
+    sound_numerator = baseline_numerator + alpha_b * (1.0 - minus_e_n_over_e) + alpha_b_n - 0.5 * alpha_b * alpha_b
     if sound_numerator <= 0.0:
         raise RuntimeError("chosen braiding branch has a scalar gradient instability")
 

@@ -15,9 +15,9 @@
     "samples": 240
   },
   "global_minima": {
-    "sound_numerator": 9.161241663058206e-07,
-    "D": 9.161241663058206e-07,
-    "Qs_over_Mpl2": 4.5806125527919097e-07,
+    "sound_numerator": 6.823922494735952e-29,
+    "D": 6.823922494735952e-29,
+    "Qs_over_Mpl2": 3.411961247367976e-29,
     "cs2": 1.0
   },
   "verdict": "PASS: physical scalar stability discriminants are positive throughout the scan"
