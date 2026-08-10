@@ -16,10 +16,12 @@ from multifluid_reduction import (
     ScalarMetricSource,
     baryon_cdm_continuity_rhs,
     massless_hierarchy_rhs,
+    massless_anisotropic_stress,
     normalized_inertia,
     photon_collision,
     quadratic_blocks,
     reduce_auxiliaries,
+    spatial_traceless_shear_rhs_from_coefficients,
 )
 
 
@@ -117,9 +119,32 @@ def _check_hierarchy_action_match() -> None:
     assert abs(baryon_cdm_continuity_rhs(metric.zeta_dot, metric.s, theta_1, k_over_a) - (-k_over_a * theta_1 - 3.0 * metric.zeta_dot - metric.s)) < 1.0e-14
 
 
+def _check_spatial_traceless_equation() -> None:
+    """Verify the new shear equation exactly reduces to its GR identity."""
+    a, k, h = 0.73, 1.9, 0.81
+    alpha, zeta, zeta_dot, shear, pi = 0.11, -0.23, 0.37, -0.19, 0.07
+    actual = spatial_traceless_shear_rhs_from_coefficients(
+        a=a,
+        k_over_h0=k,
+        hubble=h,
+        q=1.0,
+        q_x=0.0,
+        q_dot=0.0,
+        alpha=alpha,
+        zeta=zeta,
+        zeta_dot=zeta_dot,
+        shear=shear,
+        anisotropic_stress=pi,
+    )
+    expected = -3.0 * h * shear - (k * k / (a * a)) * (alpha + zeta) - pi
+    assert abs(actual - expected) < 1.0e-14
+    assert massless_anisotropic_stress(3.0, 0.25) == 0.6
+
+
 def main() -> None:
     assert _exact_gr_kinetic_rank() == 4
     _check_hierarchy_action_match()
+    _check_spatial_traceless_equation()
 
     reference = Planck2018Reference()
     params = reference.rfg_background_parameters()
@@ -187,4 +212,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

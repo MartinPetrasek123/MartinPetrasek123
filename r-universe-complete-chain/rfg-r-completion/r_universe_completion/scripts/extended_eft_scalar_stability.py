@@ -22,7 +22,7 @@ from pathlib import Path
 
 import numpy as np
 
-from extended_eft_mapping import extended_eft_coefficients
+from extended_eft_mapping import extended_eft_w_coefficients
 from rfg_regularized import RFGRegularizedParams
 
 
@@ -32,35 +32,7 @@ TABLES = ROOT / "generated" / "tables"
 
 def _w_coefficients(a: float, params: RFGRegularizedParams) -> dict[str, float]:
     """Return W_i of Eqs. (85)--(86), in units H0=M_Pl=1."""
-    row = extended_eft_coefficients(a, params)
-    h = row["E"]
-    q = row["Q"]
-    omega_dot = row["Q_X"] * row["Hdot_over_H0_sq"]
-    # bar_m5=-Q_X/3, therefore dot(bar_m5)=-Q_XX dot(H)/3 exactly.
-    # This is a defining action derivative, not a finite-difference input.
-    m5_dot = -row["Q_XX"] * row["Hdot_over_H0_sq"] / 3.0
-
-    w0 = -(q + 3.0 * h * row["m5_bar_hat"] + 3.0 * m5_dot) / a**2
-    w1 = (
-        row["c_hat"]
-        + 2.0 * row["M2_4_hat"]
-        - 3.0 * h * h * q
-        - 3.0 * h * omega_dot
-        - 1.5 * h * h * row["M3_bar_hat"]
-        - 4.5 * h * h * row["M2_bar_hat"]
-        - 3.0 * h * row["M1_3_hat"]
-    )
-    w4 = (
-        -2.0 * h * q
-        - omega_dot
-        - h * row["M3_bar_hat"]
-        - row["M1_3_hat"]
-        - 3.0 * h * row["M2_bar_hat"]
-    ) / a**2
-    w5 = (2.0 * q + row["M3_bar_hat"] + 3.0 * row["M2_bar_hat"]) / a**2
-    w6 = (-2.0 * q - 6.0 * h * row["m5_bar_hat"]) / a**2
-    w7 = -(row["M3_bar_hat"] + row["M2_bar_hat"]) / (2.0 * a**4)
-    return {"W0": w0, "W1": w1, "W4": w4, "W5": w5, "W6": w6, "W7": w7, **row}
+    return extended_eft_w_coefficients(a, params)
 
 
 def _reduced_coefficients(a: float, k_over_h0: float, params: RFGRegularizedParams) -> dict[str, float]:

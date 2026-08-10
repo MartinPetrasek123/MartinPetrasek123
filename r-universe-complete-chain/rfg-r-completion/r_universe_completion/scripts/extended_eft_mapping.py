@@ -26,6 +26,7 @@ CMB or matter spectrum.
 from __future__ import annotations
 
 import csv
+from functools import lru_cache
 import math
 from pathlib import Path
 
@@ -36,9 +37,11 @@ from rfg_regularized import (
     Q,
     Q_prime,
     Q_second,
+    Q_third,
     potential,
     potential_prime,
     potential_second,
+    potential_third,
     response_prime,
     response_second,
     solve_E,
@@ -71,6 +74,7 @@ def background_derivatives(a: float, params: RFGRegularizedParams) -> dict[str, 
     }
 
 
+@lru_cache(maxsize=None)
 def extended_eft_coefficients(a: float, params: RFGRegularizedParams) -> dict[str, float]:
     """Map the RFG-R ADM action to all nonzero extended-EFT coefficients.
 
@@ -146,6 +150,79 @@ def extended_eft_coefficients(a: float, params: RFGRegularizedParams) -> dict[st
         "deltaR_deltaK_coefficient_hat": 0.5 * m5_bar_hat,
         "F_hat": f_hat,
         "Fdot_hat": f_dot_hat,
+    }
+
+
+@lru_cache(maxsize=None)
+def extended_eft_w_coefficients(a: float, params: RFGRegularizedParams) -> dict[str, float]:
+    """Return W_i and their analytic cosmic-time derivatives.
+
+    The simplifications below use the RFG-R identities
+    ``M2_4=-c/2`` and ``M1_3=-dot(Q)`` before evaluation, avoiding any
+    cancellation between independently rounded EFT entries.  No finite
+    difference in time or scale factor is used.
+    """
+    row = extended_eft_coefficients(a, params)
+    h = float(row["E"])
+    h_dot = float(row["Hdot_over_H0_sq"])
+    h_ddot = float(row["Hddot_over_H0_cu"])
+    q = float(row["Q"])
+    q_x = float(row["Q_X"])
+    q_xx = float(row["Q_XX"])
+    q_xxx = Q_third(h, params)
+    v_xx = float(row["V_XX"])
+    v_xxx = potential_third(h, params)
+    q_dot = q_x * h_dot
+    m2 = float(row["M2_bar_hat"])
+    m2_dot = (2.0 * h * q_xx + h * h * q_xxx + 4.0 * q_x + 4.0 * h * q_xx) * h_dot / 3.0 - v_xxx * h_dot / 9.0
+    m5 = -q_x / 3.0
+    m5_dot = -q_xx * h_dot / 3.0
+    m5_ddot = -(q_xxx * h_dot * h_dot + q_xx * h_ddot) / 3.0
+
+    w0_numerator = q + 3.0 * h * m5 + 3.0 * m5_dot
+    w0_numerator_dot = q_dot + 3.0 * (h_dot * m5 + h * m5_dot) + 3.0 * m5_ddot
+    w0 = -w0_numerator / (a * a)
+    w0_dot = -(w0_numerator_dot - 2.0 * h * w0_numerator) / (a * a)
+
+    w1 = -3.0 * h * h * q - 4.5 * h * h * m2
+    w1_dot = -6.0 * h * h_dot * q - 3.0 * h * h * q_dot - 9.0 * h * h_dot * m2 - 4.5 * h * h * m2_dot
+
+    w4_numerator = -2.0 * h * q - 3.0 * h * m2
+    w4_numerator_dot = -2.0 * h_dot * q - 2.0 * h * q_dot - 3.0 * h_dot * m2 - 3.0 * h * m2_dot
+    w4 = w4_numerator / (a * a)
+    w4_dot = (w4_numerator_dot - 2.0 * h * w4_numerator) / (a * a)
+
+    w5_numerator = 2.0 * q + 3.0 * m2
+    w5_numerator_dot = 2.0 * q_dot + 3.0 * m2_dot
+    w5 = w5_numerator / (a * a)
+    w5_dot = (w5_numerator_dot - 2.0 * h * w5_numerator) / (a * a)
+
+    w6_numerator = -2.0 * q - 6.0 * h * m5
+    w6_numerator_dot = -2.0 * q_dot - 6.0 * (h_dot * m5 + h * m5_dot)
+    w6 = w6_numerator / (a * a)
+    w6_dot = (w6_numerator_dot - 2.0 * h * w6_numerator) / (a * a)
+
+    w7 = -m2 / (2.0 * a**4)
+    w7_dot = -(m2_dot - 4.0 * h * m2) / (2.0 * a**4)
+    return {
+        **row,
+        "Q_XXX": q_xxx,
+        "V_XXX": v_xxx,
+        "Qdot": q_dot,
+        "M2_bar_dot_hat": m2_dot,
+        "m5_bar_dot_hat": m5_dot,
+        "W0": w0,
+        "W1": w1,
+        "W4": w4,
+        "W5": w5,
+        "W6": w6,
+        "W7": w7,
+        "W0_dot": w0_dot,
+        "W1_dot": w1_dot,
+        "W4_dot": w4_dot,
+        "W5_dot": w5_dot,
+        "W6_dot": w6_dot,
+        "W7_dot": w7_dot,
     }
 
 

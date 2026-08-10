@@ -135,6 +135,24 @@ def Q_second(x: float, p: RFGRegularizedParams) -> float:
     return correction * (slope - slope * slope + curvature) / (x * x)
 
 
+def Q_third(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic third derivative of the regularized curvature coefficient."""
+    if x == 0.0:
+        return 0.0 if p.p > 3 else math.nan
+    s, correction = _transition_terms(x, p)
+    slope = p.p - (p.p + p.theta) * s
+    curvature = p.p * (p.p + p.theta) * s * (1.0 - s)
+    curvature_log_derivative = p.p * curvature * (1.0 - 2.0 * s)
+    return correction * (
+        -slope**3
+        + 3.0 * slope * slope
+        + 3.0 * slope * curvature
+        + curvature_log_derivative
+        - 3.0 * curvature
+        - 2.0 * slope
+    ) / (x**3)
+
+
 def response_second(x: float, p: RFGRegularizedParams) -> float:
     """Analytic second derivative of the regularized homogeneous response."""
     if x == 0.0:
@@ -144,6 +162,25 @@ def response_second(x: float, p: RFGRegularizedParams) -> float:
     slope = p.p + 2.0 - (p.p + p.theta) * s
     curvature = p.p * (p.p + p.theta) * s * (1.0 - s)
     return value * (slope * slope - slope - curvature) / (x * x)
+
+
+def response_third(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic third derivative of the regularized homogeneous response."""
+    if x == 0.0:
+        return 0.0
+    s, _ = _transition_terms(x, p)
+    value = response(x, p)
+    slope = p.p + 2.0 - (p.p + p.theta) * s
+    curvature = p.p * (p.p + p.theta) * s * (1.0 - s)
+    curvature_log_derivative = p.p * curvature * (1.0 - 2.0 * s)
+    return value * (
+        slope**3
+        - 3.0 * slope * slope
+        - 3.0 * slope * curvature
+        + 2.0 * slope
+        + 3.0 * curvature
+        - curvature_log_derivative
+    ) / (x**3)
 
 
 def Q_minimum(p: RFGRegularizedParams) -> tuple[float, float]:
@@ -187,6 +224,20 @@ def source_for_potential_prime(x: float, p: RFGRegularizedParams) -> float:
         - response_prime(x, p)
         - 4.0 * x * x * Q_prime(x, p)
         - x**3 * Q_second(x, p)
+    )
+
+
+def source_for_potential_second(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic second derivative of F=(V-X V_X)/3 on the RFG-R branch."""
+    if x == 0.0:
+        return 0.0
+    _, correction = _transition_terms(x, p)
+    return (
+        2.0 * correction
+        - 10.0 * x * Q_prime(x, p)
+        - 7.0 * x * x * Q_second(x, p)
+        - x**3 * Q_third(x, p)
+        - response_second(x, p)
     )
 
 
@@ -261,6 +312,14 @@ def potential_second(x: float, p: RFGRegularizedParams) -> float:
     if x == 0.0:
         return 0.0
     return -3.0 * source_for_potential_prime(x, p) / x
+
+
+def potential_third(x: float, p: RFGRegularizedParams) -> float:
+    """Analytic V_XXX from the differentiated reconstruction identity."""
+    if x == 0.0:
+        return 0.0
+    source_prime = source_for_potential_prime(x, p)
+    return -3.0 * (source_for_potential_second(x, p) / x - source_prime / (x * x))
 
 
 def potential_small_x_coefficient(p: RFGRegularizedParams) -> float:

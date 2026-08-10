@@ -21,6 +21,7 @@ from typing import Iterable
 
 import numpy as np
 
+from extended_eft_mapping import extended_eft_coefficients
 from extended_eft_scalar_stability import _w_coefficients
 from rfg_regularized import RFGRegularizedParams
 
@@ -296,6 +297,78 @@ def photon_baryon_momentum_exchange(
 ) -> float:
     """The Thomson term in the baryon Euler equation from total momentum conservation."""
     return 4.0 * rho_gamma * optical_depth_dot * (photon_velocity - baryon_velocity) / (3.0 * rho_baryon)
+
+
+def massless_anisotropic_stress(rho: float, theta_2: float) -> float:
+    """Return Pi=(4/5) rho Theta_2 in the scalar kinetic convention."""
+    return 4.0 * rho * theta_2 / 5.0
+
+
+def spatial_traceless_shear_rhs_from_coefficients(
+    *,
+    a: float,
+    k_over_h0: float,
+    hubble: float,
+    q: float,
+    q_x: float,
+    q_dot: float,
+    alpha: float,
+    zeta: float,
+    zeta_dot: float,
+    shear: float,
+    anisotropic_stress: float,
+) -> float:
+    """Return dot(s) from the scalar spatial-traceless field equation.
+
+    This is obtained by retaining the traceless scalar spatial metric mode E,
+    varying the original ADM RFG-R action, and only then fixing E=0.  The
+    derivation is reproduced in ``derive_spatial_traceless_equation.py``.
+    Units are H0=M_Pl=1 and ``s=k^2 beta/a^2``. ``anisotropic_stress`` is the
+    total Pi/M_Pl^2 H0^2 of the photon, massless-neutrino and massive-neutrino
+    kinetic moments.
+    """
+    if a <= 0.0 or k_over_h0 <= 0.0 or q == 0.0:
+        raise ValueError("a, k_over_h0 and q must be nonzero on the physical branch")
+    gradient = k_over_h0 * k_over_h0 / (a * a)
+    return (
+        -(3.0 * hubble + q_dot / q + q_x * gradient / (3.0 * q)) * shear
+        - gradient * (alpha + zeta)
+        + gradient * hubble * q_x * alpha / q
+        - gradient * q_x * zeta_dot / q
+        - anisotropic_stress / q
+    )
+
+
+def spatial_traceless_shear_rhs(
+    a: float,
+    k_over_h0: float,
+    params: RFGRegularizedParams,
+    *,
+    alpha: float,
+    zeta: float,
+    zeta_dot: float,
+    shear: float,
+    anisotropic_stress: float,
+) -> float:
+    """Evaluate the action-derived RFG-R shear equation on the background."""
+    row = extended_eft_coefficients(a, params)
+    h = float(row["E"])
+    q = float(row["Q"])
+    q_x = float(row["Q_X"])
+    q_dot = q_x * float(row["Hdot_over_H0_sq"])
+    return spatial_traceless_shear_rhs_from_coefficients(
+        a=a,
+        k_over_h0=k_over_h0,
+        hubble=h,
+        q=q,
+        q_x=q_x,
+        q_dot=q_dot,
+        alpha=alpha,
+        zeta=zeta,
+        zeta_dot=zeta_dot,
+        shear=shear,
+        anisotropic_stress=anisotropic_stress,
+    )
 
 
 def massive_neutrino_delta_f_rhs(

@@ -37,7 +37,8 @@ For each proposed point:
    temperature/polarization hierarchy and collisionless neutrino hierarchy;
    no fluid closure or compressed CMB observable is permitted.
 6. Reject a point when the module reports a ghost, gradient instability,
-   singular constraint matrix, or non-positive tensor kinetic coefficient.
+   singular constraint matrix, a zero of the derived curvature coefficient
+   `mu_zeta=M_00-dot(B_00)`, or non-positive tensor kinetic coefficient.
 7. Export `C_ell^TT`, `C_ell^TE`, `C_ell^EE`, `C_L^phiphi`, `P(k,z)`,
    `f sigma8(z)`, and the standard-siren distance ratio.
 
@@ -61,17 +62,41 @@ discriminant is positive, but the coefficient of `zeta_dot^2` cancels on all
 degenerate and its standalone scalar sound speed is undefined.  This is a
 strong-coupling/closure gate, not a successful stability result.
 
-Consequently the reference RFG-R branch cannot be passed directly to a
-single-scalar EFT/Boltzmann backend. The physical
-photon--baryon--CDM--neutrino reduction from the same action is now recorded in
-`docs/photon_baryon_cdm_neutrino_reduction.md`: its finite monopole/dipole core
-has four positive material directions and one constraint, while the photon and
-neutrino anisotropic-stress sectors remain exact kinetic hierarchies. The
-existing one-canonical-scalar diagnostic is not a substitute for that system.
-Adding a gravitational kinetic operator would define a different theory and
-would have to be stated, derived, and tested as such.
+The exact multi-fluid reduction now identifies the null direction as the
+algebraic curvature constraint after
+`Delta_i=delta_i+3(1+w_i)zeta`.  Its coefficient
+`mu_zeta=M_00-dot(B_00)` is derived with analytic action derivatives in
+`scripts/rfg_dae_closure.py`.  It crosses zero on the reference branch: the
+generated 49-point table has 24 root-bearing scale factors and gives
+`k/H0=2.51545672221` at `a=1`.  The zero is a singularity of the exact linear
+DAE, not an unimplemented collision or hierarchy term.  Therefore the
+reference RFG-R action must be rejected before spectra, a sampler, or any
+likelihood component is evaluated.  Adding a gravitational kinetic operator
+to avoid it would define a different theory and would have to be stated,
+derived, and tested as such.
 
-## 2.2 Executed GR Infrastructure Reference
+## 2.2 RFG-RXi Decision Gate
+
+RFG-RXi is not a numerical repair of the rejected RFG-R branch.  Its action
+adds the separately derived background-null operator
+
+```text
+M_Pl^2/2 int d^4x N sqrt(gamma) Xi [R3 + sigma_ij sigma^ij].
+```
+
+Xi is a new dimensionless EFT coefficient.  The package does not infer it
+from data: the unfitted checks at Xi=1 and Xi=2 are two declared benchmark
+evaluations.  Both retain the R-Universe background exactly and return no
+sampled `mu_zeta` root on their separate 49-by-81 `(a,k)` audits.  This is a
+necessary internal gate, not a spectrum, posterior, or likelihood value.
+
+An RFG-RXi Boltzmann module must start from its own augmented ADM derivatives,
+repeat the lapse--shift and spatial-metric reduction, and use the resulting
+Xi-dependent hierarchy throughout recombination and propagation.  It may not
+reuse an RFG-R transfer function across the rejected curvature-constraint
+surface or declare the GR/CAMB reference to be an RFG-RXi prediction.
+
+## 2.3 Executed GR Infrastructure Reference
 
 The standard photon/baryon/CDM/neutrino, recombination, lensing and transfer
 machinery was executed with the pinned public `camb==2.0.1` wheel at the
@@ -135,12 +160,11 @@ measurements can be added as Gaussian factors with their published covariance.
 ## 5. Reproducible Execution Boundary
 
 The repository contains every RFG-R background function, the exact
-ADM-to-extended-EFT map, the finite physical constraint reduction, and the
-untruncated kinetic hierarchy. The present action does not pass directly to a
-one-scalar backend. A full CMB likelihood still requires an implementation of
-this action-defined differential-algebraic hierarchy in a solver retaining
-`bar_m5`, followed by the official Planck likelihood data package. The
-input/output contract for that calculation is:
+ADM-to-extended-EFT map, the finite physical constraint reduction, the
+untruncated kinetic hierarchy, and the action-derived DAE closure.  The last
+step rejects the published reference branch because its curvature constraint
+loses rank at finite wavenumber.  The following input/output contract applies
+only to a newly specified action that first passes the same `mu_zeta` gate:
 
 ```text
 input:  generated/tables/extended_eft_mapping.csv
@@ -150,9 +174,11 @@ data:   Planck Legacy Archive likelihood packages
 sampler: Cobaya nested or MCMC sampler
 ```
 
-The remaining RFG-R boundary is numerical/data-facing: no RFG-R spectra,
-posterior, or CMB/matter likelihood has been executed. The executed GR
-reference does not change that statement.
+The boundary is therefore physical as well as numerical: no RFG-R spectra,
+posterior, or CMB/matter likelihood is valid for the published reference
+branch. The same data-interface boundary applies to RFG-RXi until its own
+action-faithful solver and likelihood have been run. The executed GR reference
+does not change either statement.
 
 ## 6. References For The Pipeline
 

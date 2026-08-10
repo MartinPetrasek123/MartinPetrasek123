@@ -24,19 +24,23 @@ EFT infrastructure reference, not an RFG-R spectrum calculation.
 1. Add `bar_m5(a)` and its analytic action derivatives to the EFT cache and
    model interface.
 2. Vary the `bar_m5 deltaR3 deltaK` operator in the scalar lapse, shift,
-   trace and spatial-traceless field equations. The latter must include the
-   photon and neutrino anisotropic stresses.
+   trace and spatial-traceless field equations. This variation is now
+   executable in `scripts/derive_spatial_traceless_equation.py`; the latter
+   includes the photon and neutrino anisotropic stresses.
 3. Couple the exact photon temperature/polarization hierarchy and the
    collisionless massless/massive-neutrino equations to the metric source
    moments. A finite perfect-fluid closure is not permitted.
-4. Derive regular adiabatic initial conditions for this specific constrained
-   system and verify its GR limit using identical primordial inputs.
-5. Add the full constraint/ghost/gradient gate at every time and wavenumber,
-   then compare spectra across integration tolerances and hierarchy
-   resolutions before evaluating any likelihood.
+4. Apply the exact curvature-constraint gate from
+   `scripts/rfg_dae_closure.py`. The published reference branch already fails
+   it because `mu_zeta=M_00-dot(B_00)` has finite-wavenumber zeros.
+5. Only for a newly specified action that passes this gate: derive regular
+   adiabatic initial conditions, add the full constraint/ghost/gradient gate,
+   and compare spectra across integration tolerances and hierarchy resolutions
+   before evaluating any likelihood.
 
 The first step cannot be replaced by a mapping to an existing `Gamma1`--
 `Gamma6` input: those functions parameterize a different operator basis. The
-second through fourth steps require the complete action variation. Until they
-are independently derived and regression-tested, this package must refuse to
-label spectra or likelihoods as RFG-R.
+complete action variation and its DAE closure are now independently
+regression-tested, and they reject the reference branch before a spectrum can
+be formed. This package must therefore refuse to label spectra or likelihoods
+as predictions of that RFG-R branch.

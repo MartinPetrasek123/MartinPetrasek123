@@ -158,7 +158,60 @@ The generated machine table is
 The numerical values test the analytic matrix identity; they are not fitted
 RFG-R cosmological parameters and not a likelihood value.
 
-## 4. Photon and massless-neutrino hierarchy
+## 4. Spatial metric equations and DAE closure
+
+The spatially traceless scalar deformation must be retained until after
+variation.  With
+
+```text
+gamma_ij=a^2 exp(2 zeta) exp(2 D_ij E),
+D_ij=partial_i partial_j-delta_ij partial^2/3,
+```
+
+direct variation of the original ADM action and only then `E=0` gives, for
+`s=k^2 beta/a^2`,
+
+```math
+dot(s) = -[3H+dot(Q)/Q+Q_X k^2/(3Qa^2)]s
+         -(k^2/a^2)(alpha+zeta)
+         +(Q_X/Q)(k^2/a^2)(H alpha-dot(zeta))
+         -Pi/Q.
+```
+
+Here `Pi` is the total scalar anisotropic stress in `M_Pl^2 H0^2` units; a
+massless species contributes `Pi=(4/5)rho Theta_2`.  The independently
+derived GR identity is
+
+```math
+dot(s)=-3Hs-(k^2/a^2)(alpha+zeta)-Pi.
+```
+
+The complete scalar variation (lapse, shift, trace and traceless spatial
+equations) is executable in
+[`derive_spatial_traceless_equation.py`](../scripts/derive_spatial_traceless_equation.py).
+It performs a direct Einstein-Hilbert ADM regression test for all four
+residuals.
+
+The finite Schur reduction has a precise null direction, not a missing
+equation.  Define `Delta_i=delta_i+3(1+w_i)zeta`.  The transformed kinetic
+matrix has a zero `zeta` row and column, and its symmetric mixing matrix gives
+the algebraic curvature equation
+
+```math
+mu_zeta zeta + [M_(0i)-dot(B_(0i))] Delta_i=0,
+mu_zeta=M_00-dot(B_00).
+```
+
+All rates are analytic action derivatives.  The closure audit finds that the
+published RFG-R reference branch has `mu_zeta=0` at finite `(a,k)`; for
+example `k/H0=2.51545672221` at `a=1`.  This is a linear DAE singularity, so
+the reference branch does not define globally regular transfer functions.
+The derivation, root table, and independent regression are in
+[`rfg_dae_closure.md`](rfg_dae_closure.md),
+[`rfg_dae_closure.py`](../scripts/rfg_dae_closure.py), and
+[`multifluid_dae_closure.csv`](../generated/tables/multifluid_dae_closure.csv).
+
+## 5. Photon and massless-neutrino hierarchy
 
 The finite action is deliberately not used to eliminate `Theta_2` or any
 higher moment.  In the same spatial gauge, the exact scalar intensity
@@ -234,7 +287,7 @@ before the physical baryon pressure and recombination functions are supplied.
 Those functions must come from a specified atomic-recombination calculation,
 not a fitted effective sound speed.
 
-## 5. Massive neutrinos
+## 6. Massive neutrinos
 
 No massless approximation is made for a massive neutrino.  Its exact
 collisionless phase-space equation uses
@@ -253,7 +306,7 @@ the `epsilon` weights, as given in Eqs. (46)--(48) of Hwang & Noh.  The
 function `massive_neutrino_delta_f_rhs` implements the local equation with
 the full `epsilon`; it does not substitute `epsilon=q`.
 
-## 6. Data provenance and scope
+## 7. Data provenance and scope
 
 The 425-point matrix audit uses a published **reference record**, not an
 RFG-R inference:
@@ -288,4 +341,3 @@ PYTHONPATH=scripts python3 scripts/validate_multifluid_reduction.py
 ```
 
 The complete package run is `bash scripts/run_all.sh`.
-
