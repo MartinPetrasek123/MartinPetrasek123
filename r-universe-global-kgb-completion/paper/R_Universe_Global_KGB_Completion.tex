@@ -26,7 +26,7 @@
 \maketitle
 
 \begin{abstract}
-The R$\alpha$ R-Universe branch fits a finite-window late-time background but, by itself, does not define a covariant perturbation theory. This note gives one explicit covariant completion. The action is a luminal kinetic-gravity-braiding (KGB) theory with constant Planck mass and minimally coupled matter. It reproduces the fitted R$\alpha$ background exactly on the entire observed past light cone, smoothly completes the previously unspecified future to a de Sitter branch, and specifies the action functions $A(\phi)$, $B(\phi)$, $C(\phi)$ and $V(\phi)$ for every scalar-field value. The scalar no-ghost discriminant, scalar gradient numerator, tensor kinetic coefficient and tensor speed are positive on $10^{-8}\le a\le10^3$; the construction sets $c_s^2=1$. A native H--EFTCAMB run evolves the photon--baryon--CDM--neutrino--KGB system, and its CMB plus lensing spectra are evaluated at one declared point with the official Planck 2018 likelihoods. A further fixed-input local profile in $(\alpha,\Omega_{m0})$, paired with standard $\Lambda$CDM at the same matter and radiation densities, has a KGB minimum higher by $10.3500351$ in $-2\ln\mathcal L$ after the stated calibration grid. The stated KGB action is intended as a physical replacement candidate for the phenomenological role of $\Lambda$CDM; these restricted diagnostics do not yet establish that empirical replacement.
+The R$\alpha$ R-Universe branch fits a finite-window late-time background but, by itself, does not define a covariant perturbation theory. This note gives one explicit covariant completion. The action is a luminal kinetic-gravity-braiding (KGB) theory with constant Planck mass and minimally coupled matter. It reproduces the fitted R$\alpha$ background exactly on the entire observed past light cone, smoothly completes the previously unspecified future to a de Sitter branch, and specifies the action functions $A(\phi)$, $B(\phi)$, $C(\phi)$ and $V(\phi)$ for every scalar-field value. The scalar no-ghost discriminant, scalar gradient numerator, tensor kinetic coefficient and tensor speed are positive on $10^{-8}\le a\le10^3$; the construction sets $c_s^2=1$. A native H--EFTCAMB run evolves the photon--baryon--CDM--neutrino--KGB system, and its CMB plus lensing spectra are evaluated with the official Planck 2018 likelihood. At a separately refined, matched fixed-input point, the executed Planck-calibration plus Pantheon+--DESI DR2 BAO--chronometer sum is lower for KGB than for standard $\Lambda$CDM by $2.5637653$. Native linear $f\sigma_8$ predictions are directly integrated from the same solver's $P(k,z)$ outputs and are numerically cross-checked, but the supplied RSD compilation is not promoted to a likelihood. The stated KGB action is a physical replacement candidate; the conditional results are not a posterior, Bayesian evidence, or an established empirical replacement.
 \end{abstract}
 
 \section{Defined theory}
@@ -161,41 +161,59 @@ $10^{-3}$ is $-2.94\times10^{-5}$. The source and machine-readable reports
 are in \repo. This absolute likelihood includes normalization terms and is not
 a goodness-of-fit $\chi^2$.
 
-To test whether that fixed point is numerically atypical, a deliberately
-restricted local grid was then run at
-$\alpha\in\{0.030,0.035,0.040,0.045\}$ and
-$\Omega_{m0}\in\{0.30825,0.30850,0.30875\}$, holding the primordial sector,
-recombination inputs, and initial $A_{\rm Planck}=1$ fixed. At every sampled
-$\Omega_{m0}$ an otherwise matched standard-$\Lambda$CDM spectrum was
-evaluated by exactly the same official likelihood objects. The KGB local
-minimum is $-2\ln\mathcal L=1075.3470998$ at
-$\alpha=0.040$, $\Omega_{m0}=0.30850$, while its paired $\Lambda$CDM value is
-$1066.1743939$, giving $\Delta(-2\ln\mathcal L)=+9.1727059$. A separate
-one-dimensional fixed-spectrum scan of
-$A_{\rm Planck}\in\{1.0010,1.0015,1.0020,1.0025,1.0030\}$ has both local
-minima at $A_{\rm Planck}=1.0025$: $1066.1369111$ for KGB and $1055.7868759$
-for $\Lambda$CDM, hence $\Delta(-2\ln\mathcal L)=+10.3500351$. The
-401-, 601-, and 801-node KGB realizations give 1075.3471052, 1075.3470998,
-and 1075.3471035, respectively. The profile source and records are in
-\repo. This restricted grid is not a parameter posterior, a Bayesian-evidence
-calculation, or a complete model comparison. $\Lambda$CDM serves here as an
-observational benchmark, while the specified KGB action is the proposed
-physical replacement candidate. The reported local profile is higher than
-that benchmark and therefore does not yet establish the observational adequacy
-required for empirical replacement.
+The executed fixed-$A_{\rm Planck}=1$ conditional surface contains 154 KGB
+points. It combines official Planck ordinates with exact-background Pantheon+
+relative distances, DESI DR2 BAO, and cosmic chronometers, using the drag scale
+read from the H--EFTCAMB log for every point. Its lowest sampled ordinate is
+$2493.222580514448$ at $\alpha=0.1$, $\Omega_{m0}=0.3075$. The primordial
+sector, recombination inputs, calibration, and high-ell nuisance inputs are
+held fixed: this records local conditional behavior, not a parameter posterior.
+
+A refinement at $\alpha=0.0975$, $\Omega_{m0}=0.3075$ validates the full KGB
+action and the RPH realization at 601 spline nodes. The separate fixed-spectrum
+calibration grids give $-2\ln\mathcal L_{\rm Planck}=1063.6712514661913$ for
+KGB at $A_{\rm Planck}=1.00275$ and $1060.2194088862268$ for the matched
+standard-$\Lambda$CDM spectrum at $A_{\rm Planck}=1.00325$. With the
+solver-derived $r_{\rm drag}=147.32\,{\rm Mpc}$, the independently integrated
+Pantheon+--DESI--chronometer statistics are $1416.5609849186849$ and
+$1422.5765927552$. Thus the executed conditional sums are
+
+\begin{equation}
+\left[-2\ln\mathcal L_{\rm Planck}+\chi^2_{\rm late}\right]_{\rm KGB}
+-\left[-2\ln\mathcal L_{\rm Planck}+\chi^2_{\rm late}\right]_{\Lambda{\rm CDM}}
+=-2.563765256550596.
+\end{equation}
+
+This comparison matches the matter and radiation densities and all fixed
+primordial/recombination inputs, but lets each fixed spectrum take its own
+executed $A_{\rm Planck}$ grid minimum. It is therefore neither a common-nuisance
+fit nor Bayesian evidence. The KGB point has an independently recomputed
+action residual below $2.1\times10^{-81}$ and a local cubic-screening gate
+$|\gamma_{\rm PPN}-1|\le1.0463\times10^{-15}$ at $r_V=102.56\,{\rm pc}$.
+
+The same executed KGB point was evolved at 58 transfer redshifts. Direct
+integration of the solver's linear total-matter $P(k,z)$ gives $\sigma_8(z)$,
+and symmetric $d\sigma_8/d\ln a$ gives $f\sigma_8(z)$ for all 23 rows of the
+local RSD compilation. Its largest discrepancy from the independently printed
+H--EFTCAMB velocity--density estimator is $9.39\times10^{-5}$; halving the
+redshift difference changes the largest prediction by $5.01\times10^{-5}$.
+The compilation lacks covariance, window/AP, and nonlinear-likelihood inputs
+for its correlated survey groups. It is consequently a native RSD residual
+audit and is not added to the conditional sum. The source, immutable records,
+and a machine-readable ledger are in \repo.
 
 \section{Reproducibility and claim boundary}
 
-All equations, precision checks, parameter scan, source table, figure, matter prediction, early-universe gate, and PPN screening calculation are regenerated by
+All action-level equations, precision checks, parameter scan, source table, figure, matter prediction, early-universe gate, and PPN screening calculation are regenerated by
 \begin{verbatim}
 bash scripts/run_all.sh
 \end{verbatim}
-in \repo. The Planck fixed-point and conditional-profile evaluations
-additionally use the official Planck distribution and the H--EFTCAMB
-executable. A statement that R-Universe replaces $\Lambda$CDM requires a joint
-parameter posterior, BAO, supernova, RSD, matter-lensing, and local-gravity
-inference, followed by a declared model comparison. This technical note does
-not predeclare that outcome.
+in \repo. The Planck, late-time, and native-RSD records additionally use the
+official Planck distribution, the stated external data files, and the
+H--EFTCAMB executable. A statement that R-Universe replaces $\Lambda$CDM
+requires a joint parameter posterior, official BAO/supernova/RSD/lensing and
+local-gravity likelihoods, and a declared comparison protocol. This technical
+note does not predeclare that outcome.
 
 The independent action-identity validation additionally recomputes $E_N$,
 $r_N$, $\alpha_B$, $\alpha_K$, and the homogeneous scalar equation from the

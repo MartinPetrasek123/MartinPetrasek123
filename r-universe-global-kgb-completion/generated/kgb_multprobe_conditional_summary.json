@@ -1,0 +1,175 @@
+{
+  "model": "R-Universe covariant KGB completion",
+  "scope": "Executed, fixed-input records only. The Planck--Pantheon+--DESI DR2 BAO--chronometer sum is conditional, not a posterior, evidence calculation, or complete global fit. Native RSD values are a residual audit and are intentionally excluded from that sum because the supplied compilation lacks the survey likelihood inputs.",
+  "selected_matched_point": {
+    "omega_m0": 0.3075,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.69240916091,
+    "alpha": 0.0975,
+    "H0_km_s_Mpc": 67.86230796800406,
+    "r_drag_Mpc": 147.32,
+    "rph_spline_nodes": 601,
+    "fixed_primordial_inputs": {
+      "omega_b": 0.02237,
+      "A_s": 2.1e-09,
+      "n_s": 0.9649,
+      "tau": 0.0544
+    }
+  },
+  "action_validation": {
+    "model": "global R-alpha luminal KGB completion",
+    "parameters": {
+      "Omega_m0": 0.3075,
+      "Omega_r0": 9.083909e-05,
+      "Omega_R0": 0.69240916091,
+      "alpha": 0.0975,
+      "braiding_closure": "alpha_B = Omega_R / 3",
+      "a_saturation": 2.0,
+      "target_cs2": 1.0
+    },
+    "gates": {
+      "max_relative_background_residual": 6.308660970278916e-16,
+      "max_relative_conservation_residual": 1.6329379284814857e-16,
+      "max_relative_rho_reconstruction_residual": 4.270784956088082e-16,
+      "max_relative_p_reconstruction_residual": 2.2356098254025616e-16,
+      "max_high_precision_action_reconstruction_residual": 2.076256349822712e-81,
+      "min_D": 7.622069142902616e-29,
+      "min_Qs_over_Mpl2": 3.811034571451308e-29,
+      "min_Fs": 3.811034571451308e-29,
+      "min_sound_numerator": 7.622069142902616e-29,
+      "min_alpha_K": 7.622069142902616e-29,
+      "max_abs_cs2_minus_target": 0.0,
+      "observed_window_match": 0.0,
+      "future_E_at_a_100": 0.8157525724503494,
+      "future_E_at_a_1000": 0.8157523638205795
+    },
+    "present": {
+      "E": 1.0,
+      "Omega_R": 0.69240916091,
+      "w_R": -0.9844795794938426,
+      "alpha_B": 0.23080305363666667,
+      "alpha_K": 0.255976238612117,
+      "Q_s_over_Mpl2": 0.21461668165108633,
+      "c_s2": 1.0
+    },
+    "tensor": {
+      "Q_T_over_Mpl2": 1.0,
+      "c_T2": 1.0,
+      "dL_GW_over_dL_EM": 1.0
+    },
+    "scope": "This validates the exact covariant background reconstruction and the high-frequency scalar/tensor no-ghost and no-gradient gates. A Boltzmann likelihood still requires a compiled perturbation module and public CMB likelihood data."
+  },
+  "selected_point_ppn_screening_gate": {
+    "parameters": {
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "alpha": 0.0975,
+      "H0_km_s_Mpc": 67.86230796800406
+    },
+    "r_V_pc": 102.55866003368482,
+    "absolute_gamma_minus_one_envelope": 1.0462269740540104e-15,
+    "Cassini_absolute_bound": 2.3e-05,
+    "margin_factor": 21983757416.30673,
+    "scope": "This is the analytic local screening gate of the stated cubic action. A full ephemeris likelihood would additionally fit planetary initial conditions and nuisance parameters; no such likelihood is claimed here.",
+    "source_record": "generated/planck_profile_joint_center_refined_0975/best_point_ppn_screening.json"
+  },
+  "conditional_planck_late_time_pair": {
+    "definition": "Each model uses its own minimum on the executed fixed-spectrum A_planck grid; all remaining cosmological, primordial, recombination, and high-ell nuisance inputs are fixed and matched.",
+    "kgb": {
+      "A_planck": 1.00275,
+      "planck_minus_2_log_likelihood": 1063.6712514661913,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4250468760729,
+        "desi_dr2_bao": 14.411897077748243,
+        "cosmic_chronometers": 14.724040964863713,
+        "total": 1416.5609849186849,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_sum": 2480.232236384876
+    },
+    "matched_lcdm": {
+      "A_planck": 1.00325,
+      "planck_minus_2_log_likelihood": 1060.2194088862268,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.3441987037659,
+        "desi_dr2_bao": 19.418304332402407,
+        "cosmic_chronometers": 14.814089719031687,
+        "total": 1422.5765927552,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_sum": 2482.7960016414268
+    },
+    "KGB_minus_LCDM_conditional_sum": -2.563765256550596,
+    "source_records": {
+      "kgb_calibration": "generated/planck_profile_joint_center_refined_0975/calibration_kgb_fine/summary.json",
+      "lcdm_calibration": "generated/planck_profile_joint_center_refined_0975/calibration_lcdm_fine/summary.json",
+      "kgb_late_time": "generated/planck_profile_joint_center_refined_0975/kgb_late_time_nodes_32769.json",
+      "lcdm_late_time": "generated/planck_profile_joint_center_refined_0975/lcdm_late_time.json"
+    }
+  },
+  "fixed_A_planck_conditional_surfaces": {
+    "existing_154_point_surface_minimum": {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.7896882885211,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4041252955794,
+        "desi_dr2_bao": 14.3066885361123,
+        "cosmic_chronometers": 14.722078394235586,
+        "total": 1416.4328922259272,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.222580514448,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000/planck.json"
+    },
+    "center_refinement_minimum": {
+      "status": "completed",
+      "alpha": 0.0975,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.6513450275702,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4251486584544,
+        "desi_dr2_bao": 14.41189341362438,
+        "cosmic_chronometers": 14.724040902773709,
+        "total": 1416.5610829748525,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.2124280024227,
+      "solver_directory": "generated/planck_profile_joint_center_refined_0975/kgb_alpha_0.09750000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_joint_center_refined_0975/kgb_alpha_0.09750000_omega_m0_0.30750000/planck.json"
+    },
+    "scope": "A_planck=1 and all other non-displayed inputs fixed; the records establish local behavior only."
+  },
+  "native_rsd_audit": {
+    "scope": "Native linear-theory prediction and RSD residual audit. This is not an RSD likelihood and is not added to the Planck--Pantheon+--DESI--chronometer conditional statistic: survey window functions, fiducial-cosmology/AP transformations, nonlinear nuisance parameters, and covariances for the WiggleZ and SDSS-IV groups are absent.",
+    "record_count": 23,
+    "diag_labelled_count": 16,
+    "diagonal_residual_sum_not_a_likelihood": 18.947293535743064,
+    "f_sigma8_range": {
+      "minimum": 0.3344721111826821,
+      "maximum": 0.48290486849744485
+    },
+    "numerical_checks": {
+      "max_abs_sigma8_power_integral_minus_solver_printout": 7.780577653548892e-05,
+      "max_abs_f_sigma8_power_derivative_minus_velocity_density": 9.385121718008538e-05,
+      "max_abs_f_sigma8_change_when_dz_is_halved": 5.00883760279347e-05,
+      "mean_abs_f_sigma8_change_when_dz_is_halved": 1.3469564228574743e-05
+    },
+    "source_records": {
+      "dz_0p005": "generated/rsd_native_best_point/rsd_native_dz_0p005.json",
+      "dz_0p0025": "generated/rsd_native_best_point_dz_0p0025/rsd_native_dz_0p0025.json"
+    }
+  },
+  "empirical_boundary": "No claim of empirical replacement follows from this record. A released full inference must sample the cosmological and nuisance parameters and include official survey likelihoods, covariance/window/AP treatments, nonlinear modeling, and a declared comparison protocol."
+}

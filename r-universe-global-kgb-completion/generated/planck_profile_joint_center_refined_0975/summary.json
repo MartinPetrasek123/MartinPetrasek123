@@ -1,0 +1,125 @@
+{
+  "model": "R-Universe covariant KGB",
+  "scope": "Declared two-parameter Planck profile grid with fixed primordial and calibration inputs; not a posterior, Bayesian evidence calculation, or full model comparison.",
+  "fixed_inputs": {
+    "omega_b": 0.02237,
+    "A_s": 2.1e-09,
+    "n_s": 0.9649,
+    "tau": 0.0544,
+    "A_planck": 1.0,
+    "rph_spline_nodes": 601
+  },
+  "grid": {
+    "alpha_values": [
+      0.0975
+    ],
+    "omega_m0_values": [
+      0.30725,
+      0.3075,
+      0.30775
+    ],
+    "omega_r0": 9.083909e-05,
+    "records": [
+      {
+        "status": "completed",
+        "alpha": 0.0975,
+        "omega_m0": 0.30725,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69265916091,
+        "minus_2_log_likelihood": 1076.8581368837288,
+        "components": {
+          "commander_lowl_TT": 22.473944674709685,
+          "lensing": 66.8518460882429,
+          "plik_lite_TTTEEE": 591.5345553741081,
+          "simall_lowl_EE": 395.9977907466681
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": -5.133618131477306
+      },
+      {
+        "status": "completed",
+        "alpha": 0.0975,
+        "omega_m0": 0.3075,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69240916091,
+        "minus_2_log_likelihood": 1076.6513450275702,
+        "components": {
+          "commander_lowl_TT": 22.466988362983784,
+          "lensing": 66.72912161303978,
+          "plik_lite_TTTEEE": 591.4574443048784,
+          "simall_lowl_EE": 395.9977907466681
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": -1.0817028721835413
+      },
+      {
+        "status": "completed",
+        "alpha": 0.0975,
+        "omega_m0": 0.30775,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.6921591609100001,
+        "minus_2_log_likelihood": 1076.9979098155507,
+        "components": {
+          "commander_lowl_TT": 22.459988497624465,
+          "lensing": 66.60135965105476,
+          "plik_lite_TTTEEE": 591.9273365313032,
+          "simall_lowl_EE": 396.00922513556804
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 2.983255179464777
+      }
+    ],
+    "completed_points": 3,
+    "grid_minimum": {
+      "status": "completed",
+      "alpha": 0.0975,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "minus_2_log_likelihood": 1076.6513450275702,
+      "components": {
+        "commander_lowl_TT": 22.466988362983784,
+        "lensing": 66.72912161303978,
+        "plik_lite_TTTEEE": 591.4574443048784,
+        "simall_lowl_EE": 395.9977907466681
+      },
+      "delta_minus_2_log_likelihood_vs_matched_lcdm": -1.0817028721835413
+    }
+  },
+  "lcdm_matched_fixed_references": [
+    {
+      "status": "completed",
+      "omega_m0": 0.30725,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1081.991755015206,
+      "components": {
+        "commander_lowl_TT": 23.659076060346138,
+        "lensing": 56.85276212406241,
+        "plik_lite_TTTEEE": 605.4320929444608,
+        "simall_lowl_EE": 396.04782388633674
+      }
+    },
+    {
+      "status": "completed",
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1077.7330478997537,
+      "components": {
+        "commander_lowl_TT": 23.648668237863376,
+        "lensing": 56.788601827070025,
+        "plik_lite_TTTEEE": 601.2454507793786,
+        "simall_lowl_EE": 396.0503270554415
+      }
+    },
+    {
+      "status": "completed",
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1074.0146546360859,
+      "components": {
+        "commander_lowl_TT": 23.638311029302372,
+        "lensing": 56.70199322997168,
+        "plik_lite_TTTEEE": 597.61789957921,
+        "simall_lowl_EE": 396.0564507976017
+      }
+    }
+  ],
+  "grid_minimum_minus_matched_lcdm_fixed_delta_minus_2_log_likelihood": -1.0817028721835413
+}

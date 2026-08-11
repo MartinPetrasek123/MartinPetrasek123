@@ -1,0 +1,43 @@
+{
+  "model": "global R-alpha luminal KGB completion",
+  "parameters": {
+    "Omega_m0": 0.3075,
+    "Omega_r0": 9.083909e-05,
+    "Omega_R0": 0.69240916091,
+    "alpha": 0.0975,
+    "braiding_closure": "alpha_B = Omega_R / 3",
+    "a_saturation": 2.0,
+    "target_cs2": 1.0
+  },
+  "gates": {
+    "max_relative_background_residual": 6.308660970278916e-16,
+    "max_relative_conservation_residual": 1.6329379284814857e-16,
+    "max_relative_rho_reconstruction_residual": 4.270784956088082e-16,
+    "max_relative_p_reconstruction_residual": 2.2356098254025616e-16,
+    "max_high_precision_action_reconstruction_residual": 2.076256349822712e-81,
+    "min_D": 7.622069142902616e-29,
+    "min_Qs_over_Mpl2": 3.811034571451308e-29,
+    "min_Fs": 3.811034571451308e-29,
+    "min_sound_numerator": 7.622069142902616e-29,
+    "min_alpha_K": 7.622069142902616e-29,
+    "max_abs_cs2_minus_target": 0.0,
+    "observed_window_match": 0.0,
+    "future_E_at_a_100": 0.8157525724503494,
+    "future_E_at_a_1000": 0.8157523638205795
+  },
+  "present": {
+    "E": 1.0,
+    "Omega_R": 0.69240916091,
+    "w_R": -0.9844795794938426,
+    "alpha_B": 0.23080305363666667,
+    "alpha_K": 0.255976238612117,
+    "Q_s_over_Mpl2": 0.21461668165108633,
+    "c_s2": 1.0
+  },
+  "tensor": {
+    "Q_T_over_Mpl2": 1.0,
+    "c_T2": 1.0,
+    "dL_GW_over_dL_EM": 1.0
+  },
+  "scope": "This validates the exact covariant background reconstruction and the high-frequency scalar/tensor no-ghost and no-gradient gates. A Boltzmann likelihood still requires a compiled perturbation module and public CMB likelihood data."
+}

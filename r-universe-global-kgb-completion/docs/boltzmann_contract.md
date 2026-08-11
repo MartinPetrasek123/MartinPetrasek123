@@ -47,3 +47,25 @@ python3 scripts/summarize_planck_fixed_runs.py
 The Planck data files are not redistributed by this package; the output report
 records their local base directory and all spectrum conventions used in the
 evaluation.
+
+## Executed multi-redshift matter audit
+
+`generate_heftcamb_rph.py --transfer-redshifts ...` writes the requested
+transfer and linear total-matter power outputs in descending redshift order,
+which is the forward-time order consumed by H-EFTCAMB. The exact selected KGB
+point `alpha=0.0975`, `Omega_m0=0.3075` was executed at the central RSD
+redshifts and at both sides of two finite-difference steps. The evaluator
+`scripts/evaluate_kgb_rsd_native.py` computes
+
+\[
+\sigma_8^2(z)=\int d\ln k\,\frac{k^3P(k,z)}{2\pi^2}W^2(8k),
+\qquad f\sigma_8=\frac{d\sigma_8}{d\ln a},
+\]
+
+directly from those H-EFTCAMB outputs and cross-checks the result against the
+solver's velocity-density value `sigma8^2_vd/sigma8`. The produced records are
+`generated/rsd_native_best_point/rsd_native_dz_0p005.json` and
+`generated/rsd_native_best_point_dz_0p0025/rsd_native_dz_0p0025.json`.
+They are a numerical and physical audit, not an RSD likelihood: a full survey
+calculation requires the survey covariance, window/AP mapping, and nonlinear
+nuisance model and is not represented by the compact local data file.

@@ -1,0 +1,49 @@
+{
+  "scope": "One-dimensional A_planck nuisance profile at fixed cosmological spectra; not a cosmological posterior or a model comparison.",
+  "records": [
+    {
+      "status": "completed",
+      "A_planck": 1.00275,
+      "minus_2_log_likelihood": 1063.6712514661913,
+      "components": {
+        "commander_lowl_TT": 22.145095921553263,
+        "lensing": 59.7006800059162,
+        "plik_lite_TTTEEE": 585.8214452259549,
+        "simall_lowl_EE": 396.00403031276693
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.003,
+      "minus_2_log_likelihood": 1063.7641317595592,
+      "components": {
+        "commander_lowl_TT": 22.11698840780315,
+        "lensing": 59.089043373323406,
+        "plik_lite_TTTEEE": 586.5540696656657,
+        "simall_lowl_EE": 396.00403031276693
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.00325,
+      "minus_2_log_likelihood": 1064.0709194531921,
+      "components": {
+        "commander_lowl_TT": 22.08912400901977,
+        "lensing": 58.481917202526425,
+        "plik_lite_TTTEEE": 587.4921787076087,
+        "simall_lowl_EE": 396.0076995340373
+      }
+    }
+  ],
+  "minimum": {
+    "status": "completed",
+    "A_planck": 1.00275,
+    "minus_2_log_likelihood": 1063.6712514661913,
+    "components": {
+      "commander_lowl_TT": 22.145095921553263,
+      "lensing": 59.7006800059162,
+      "plik_lite_TTTEEE": 585.8214452259549,
+      "simall_lowl_EE": 396.00403031276693
+    }
+  }
+}

@@ -3,10 +3,12 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 from pathlib import Path
 
+from generate_heftcamb_rph import radiation_h
 from ru_kgb import RUKGBParams, background
 
 
@@ -23,8 +25,20 @@ def schwarzschild_radius(mass_kg: float) -> float:
     return 2.0 * G_NEWTON * mass_kg / (C_LIGHT * C_LIGHT)
 
 
+def parse_args() -> argparse.Namespace:
+    defaults = RUKGBParams()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--omega-m0", type=float, default=defaults.omega_m0)
+    parser.add_argument("--omega-r0", type=float, default=defaults.omega_r0)
+    parser.add_argument("--alpha", type=float, default=defaults.alpha)
+    parser.add_argument("--output", type=Path, default=ROOT / "generated" / "ppn_screening.json")
+    return parser.parse_args()
+
+
 def main() -> None:
-    params = RUKGBParams()
+    args = parse_args()
+    params = RUKGBParams(omega_m0=args.omega_m0, omega_r0=args.omega_r0, alpha=args.alpha)
+    params.validate()
     present = background(1.0, params)
     alpha_b = present["alpha_B"]
     D = present["D"]
@@ -32,7 +46,7 @@ def main() -> None:
     # This definition matches the high-k linear response
     # mu_infinity-1 = 2 beta_eff^2 = alpha_B^2/(2D) for c_s^2=1.
     beta_eff = abs(alpha_b) / (2.0 * math.sqrt(D))
-    h0_s = 67.8625e3 / MPC_M
+    h0_s = 100.0 * radiation_h(params) * 1.0e3 / MPC_M
     h0_inverse_m = C_LIGHT / h0_s
     h0_length_inverse = 1.0 / h0_inverse_m
     r_sun = schwarzschild_radius(M_SUN)
@@ -50,6 +64,13 @@ def main() -> None:
     cassini_bound = 2.3e-5
     result = {
         "model": "cubic KGB decoupling-limit Vainshtein gate",
+        "parameters": {
+            "omega_m0": params.omega_m0,
+            "omega_r0": params.omega_r0,
+            "omega_R0": params.omega_R0,
+            "alpha": params.alpha,
+            "H0_km_s_Mpc": 100.0 * radiation_h(params),
+        },
         "present_action_values": {"alpha_B": alpha_b, "D": D, "C_hat": c_hat, "beta_eff": beta_eff},
         "source": {"mass_kg": M_SUN, "schwarzschild_radius_m": r_sun, "cassini_impact_m": cassini_impact},
         "screening": {
@@ -71,12 +92,12 @@ def main() -> None:
             "would additionally fit planetary initial conditions and nuisance parameters; no such likelihood is claimed here."
         ),
     }
-    output = ROOT / "generated" / "ppn_screening.json"
-    output.write_text(json.dumps(result, indent=2))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="ascii")
     print(result["verdict"])
     print(f"r_V(Sun) = {r_v / PC_M:.6f} pc")
     print(f"|gamma-1| envelope = {gamma_minus_one_bound:.3e}; Cassini bound = {cassini_bound:.3e}")
-    print(f"wrote {output}")
+    print(f"wrote {args.output}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,36 @@
+{
+  "model": "cubic KGB decoupling-limit Vainshtein gate",
+  "parameters": {
+    "omega_m0": 0.3075,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.69240916091,
+    "alpha": 0.0975,
+    "H0_km_s_Mpc": 67.86230796800406
+  },
+  "present_action_values": {
+    "alpha_B": 0.23080305363666667,
+    "D": 0.33588131296413204,
+    "C_hat": 0.23080305363666667,
+    "beta_eff": 0.1991217193911207
+  },
+  "source": {
+    "mass_kg": 1.98847e+30,
+    "schwarzschild_radius_m": 2953.3393820668784,
+    "cassini_impact_m": 1113120000.0
+  },
+  "screening": {
+    "H0_inverse_length_m_inverse": 7.335967144196897e-27,
+    "r_V_m": 3.164629580537359e+18,
+    "r_V_pc": 102.55866003368482,
+    "impact_over_rV": 3.517378485133766e-10,
+    "screened_fraction": 6.59672916682963e-15
+  },
+  "PPN_gamma": {
+    "absolute_gamma_minus_one_envelope": 1.0462269740540104e-15,
+    "Cassini_absolute_bound": 2.3e-05,
+    "margin_factor": 21983757416.30673,
+    "gaussian_chi2_if_centered_at_GR": 2.0691699078227048e-21
+  },
+  "verdict": "PASS: the cubic-KGB decoupling-limit PPN envelope is Vainshtein suppressed below the Cassini bound",
+  "scope": "This is the analytic local screening gate of the stated cubic action. A full ephemeris likelihood would additionally fit planetary initial conditions and nuisance parameters; no such likelihood is claimed here."
+}

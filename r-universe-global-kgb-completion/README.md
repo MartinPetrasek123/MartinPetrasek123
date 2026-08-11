@@ -25,6 +25,8 @@ Outputs:
 - `generated/planck_profile_final_local/summary.json` - final local conditional KGB Planck grid with matched fixed LCDM references;
 - `generated/planck_profile_final_local/best_point_action_validation.json` - action-level validation at the local grid minimum;
 - `generated/planck_profile_final_local/calibration_kgb_refined/summary.json` and `calibration_lcdm_refined/summary.json` - fixed-spectrum Planck-calibration profiles;
+- `generated/kgb_multprobe_conditional_summary.json` - ledger joining the executed fixed-input Planck, Pantheon+, DESI DR2 BAO, chronometer, PPN, and native-RSD-audit records without conflating them into a global posterior;
+- `generated/rsd_native_best_point/rsd_native_dz_0p005.json` and `generated/rsd_native_best_point_dz_0p0025/rsd_native_dz_0p0025.json` - native H-EFTCAMB `f sigma8` audits and finite-difference convergence records;
 - `generated/ru_kgb_stability.pdf` and `.png` - stability figure.
 
 The standalone technical paper source is
@@ -38,13 +40,17 @@ decoupling-limit PPN screening gate, and a native H-EFTCAMB calculation of the
 photon--baryon--CDM--massless-neutrino hierarchy. In addition to the declared
 fixed point, the package contains a coarse-to-local conditional grid in
 `alpha` and `Omega_m0`, with the primordial sector and calibration held fixed.
-At its final local grid minimum, a one-dimensional `A_planck` profile is also
-evaluated for both the KGB and matched fixed LCDM spectra. The KGB action is
-proposed as a physical replacement candidate for the phenomenological LCDM
-description, with LCDM used here only as an observational benchmark. This is
-not an optimization over all cosmological and nuisance parameters, a posterior,
-Bayesian evidence calculation, or a completed demonstration of empirical
-replacement.
+At the selected matched point `(alpha, Omega_m0)=(0.0975, 0.3075)`, separate
+fixed-spectrum `A_planck` profiles and exact-background Pantheon+--DESI DR2
+BAO--chronometer evaluations give a conditional KGB-minus-LCDM sum of
+`-2.5637653`. This is not a posterior or evidence calculation: the two
+`A_planck` values are independently profiled and all remaining
+cosmological/nuisance inputs are fixed. The same KGB point has a native linear
+`f sigma8` residual audit, but the supplied RSD compilation lacks the survey
+covariance, window, AP, and nonlinear ingredients required for a likelihood
+and is deliberately excluded from that sum. The KGB action remains a physical
+replacement candidate, with LCDM used only as an observational benchmark; no
+empirical replacement is asserted.
 
 The precise physical status and the empirical boundary are in
 `docs/physical_status.md`.

@@ -1,0 +1,5 @@
+# Preserve fixed-width H-EFTCAMB output byte-for-byte; solver formatting includes trailing spaces.
+generated/rsd_native_best_point/*.dat -whitespace
+generated/rsd_native_best_point/solver.log -whitespace
+generated/rsd_native_best_point_dz_0p0025/*.dat -whitespace
+generated/rsd_native_best_point_dz_0p0025/solver.log -whitespace

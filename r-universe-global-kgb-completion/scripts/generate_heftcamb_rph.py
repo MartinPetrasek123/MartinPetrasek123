@@ -49,6 +49,13 @@ def main() -> None:
     parser.add_argument("--omega-m0", type=float, default=defaults.omega_m0)
     parser.add_argument("--omega-r0", type=float, default=defaults.omega_r0)
     parser.add_argument("--alpha", type=float, default=defaults.alpha)
+    parser.add_argument(
+        "--transfer-redshifts",
+        type=float,
+        nargs="+",
+        default=[0.0],
+        help="redshifts for linear transfer and matter-power outputs (written high to low z)",
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     if args.points < 6:
@@ -59,6 +66,15 @@ def main() -> None:
         raise ValueError("power grid exponent must exceed one")
     if not args.a_min < args.turn_on < 1.0:
         raise ValueError("require a-min < turn-on < 1")
+    if not 1 <= len(args.transfer_redshifts) <= 256:
+        raise ValueError("H-EFTCAMB accepts between one and 256 transfer redshifts")
+    if any(not math.isfinite(z) or z < 0.0 for z in args.transfer_redshifts):
+        raise ValueError("transfer redshifts must be finite and non-negative")
+    if len(set(args.transfer_redshifts)) != len(args.transfer_redshifts):
+        raise ValueError("transfer redshifts must be unique")
+    # CAMB evolves forward in conformal time and consumes transfer outputs in
+    # their declared order, hence high z (early time) must appear first.
+    transfer_redshifts = sorted(args.transfer_redshifts, reverse=True)
 
     params = RUKGBParams(
         omega_m0=args.omega_m0,
@@ -101,6 +117,25 @@ def main() -> None:
         header="a,w_R,alpha_K,alpha_B_BelliniSawicki,RPH_alpha_B_EFTCAMB",
         comments="",
     )
+
+    if transfer_redshifts == [0.0]:
+        transfer_lines = [
+            "transfer_num_redshifts = 1",
+            "transfer_redshift(1) = 0",
+            "transfer_filename(1) = transfer_out.dat",
+            "transfer_matterpower(1) = matterpower.dat",
+        ]
+    else:
+        transfer_lines = [f"transfer_num_redshifts = {len(transfer_redshifts)}"]
+        for index, redshift in enumerate(transfer_redshifts, start=1):
+            tag = f"z{redshift:.6f}".replace(".", "p")
+            transfer_lines.extend(
+                [
+                    f"transfer_redshift({index}) = {redshift:.17e}",
+                    f"transfer_filename({index}) = transfer_{tag}.dat",
+                    f"transfer_matterpower({index}) = matterpower_{tag}.dat",
+                ]
+            )
 
     lines = [
         "# Generated from scripts/ru_kgb.py; do not edit numerical functions by hand.",
@@ -145,10 +180,7 @@ def main() -> None:
         "transfer_high_precision = T",
         "transfer_kmax = 2",
         "transfer_k_per_logint = 0",
-        "transfer_num_redshifts = 1",
-        "transfer_redshift(1) = 0",
-        "transfer_filename(1) = transfer_out.dat",
-        "transfer_matterpower(1) = matterpower.dat",
+        *transfer_lines,
         "transfer_power_var = 7",
         "scalar_output_file = scalCls.dat",
         "lensed_output_file = lensedCls.dat",
@@ -207,6 +239,7 @@ def main() -> None:
                 f"a_max = {args.a_max:.17e}",
                 f"grid = {args.grid}",
                 f"grid_power = {args.power:.17e}",
+                "transfer_redshifts = " + ", ".join(f"{z:.17e}" for z in transfer_redshifts),
                 f"perturbation_turn_on_a = {args.turn_on:.17e}",
                 f"H0_from_Omega_r_km_s_Mpc = {100.0 * h:.17e}",
                 f"Omega_m0 = {params.omega_m0:.17e}",

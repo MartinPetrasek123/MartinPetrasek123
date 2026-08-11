@@ -1,0 +1,3001 @@
+{
+  "model": "R-Universe covariant KGB",
+  "scope": "Conditional joint profile constructed from executed official Planck 2018 likelihood ordinates and exact-background Pantheon+ plus DESI DR2 BAO plus cosmic-chronometer likelihoods. All Planck primordial, calibration, and high-ell nuisance inputs are fixed at the values in the source grids; this is not a posterior, evidence calculation, or complete multi-probe fit.",
+  "source_assemblies": [
+    "generated/joint_planck_late_time_initial_grid.json",
+    "generated/joint_planck_late_time_alpha_coarse.json",
+    "generated/joint_planck_late_time_refined.json",
+    "generated/joint_planck_late_time_low_alpha.json",
+    "generated/joint_planck_late_time_alpha_zero.json",
+    "generated/joint_planck_late_time_local_minimum.json",
+    "generated/joint_planck_late_time_minimum_refinement.json",
+    "generated/joint_planck_late_time_final_local.json"
+  ],
+  "completed_points": 154,
+  "failed_points": 0,
+  "conditional_joint_minimum": {
+    "status": "completed",
+    "alpha": 0.1,
+    "omega_m0": 0.3075,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.69240916091,
+    "planck_minus_2_log_likelihood": 1076.7896882885211,
+    "late_time_chi2": {
+      "pantheon_plus_relative": 1387.4041252955794,
+      "desi_dr2_bao": 14.3066885361123,
+      "cosmic_chronometers": 14.722078394235586,
+      "total": 1416.4328922259272,
+      "H0_km_s_Mpc": 67.86230796800406,
+      "r_drag_Mpc": 147.32
+    },
+    "conditional_joint_statistic": 2493.222580514448,
+    "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000",
+    "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000/planck.json"
+  },
+  "planck_only_minimum_within_surface": {
+    "status": "completed",
+    "alpha": 0.04,
+    "omega_m0": 0.3085,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.69140916091,
+    "planck_minus_2_log_likelihood": 1075.3470998357473,
+    "late_time_chi2": {
+      "pantheon_plus_relative": 1387.80440402776,
+      "desi_dr2_bao": 17.64774028172534,
+      "cosmic_chronometers": 14.741049641073468,
+      "total": 1420.193193950559,
+      "H0_km_s_Mpc": 67.86230796800406,
+      "r_drag_Mpc": 147.19
+    },
+    "conditional_joint_statistic": 2495.5402937863064,
+    "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30850000",
+    "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30850000/planck.json"
+  },
+  "late_time_only_minimum_within_surface": {
+    "status": "completed",
+    "alpha": 0.3,
+    "omega_m0": 0.305,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.6949091609100001,
+    "planck_minus_2_log_likelihood": 1113.9061526568778,
+    "late_time_chi2": {
+      "pantheon_plus_relative": 1386.321798875928,
+      "desi_dr2_bao": 9.714408109942118,
+      "cosmic_chronometers": 14.673021563216983,
+      "total": 1410.709228549087,
+      "H0_km_s_Mpc": 67.86230796800406,
+      "r_drag_Mpc": 147.62
+    },
+    "conditional_joint_statistic": 2524.6153812059647,
+    "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30500000",
+    "planck_record": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30500000/planck.json"
+  },
+  "records": [
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1297.8699987539708,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1389.2623115107417,
+        "desi_dr2_bao": 17.677846130833778,
+        "cosmic_chronometers": 15.038641725959124,
+        "total": 1421.9787993675347,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2719.8487981215058,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.00000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.00000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1090.0996352570462,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.3443003967404,
+        "desi_dr2_bao": 19.41830079637738,
+        "cosmic_chronometers": 14.814089635087933,
+        "total": 1422.5766908282058,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2512.676326085252,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1083.2973694163456,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.266101628542,
+        "desi_dr2_bao": 19.612167868685116,
+        "cosmic_chronometers": 14.795887594772719,
+        "total": 1422.6741570919999,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2505.9715265083455,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1080.720054699265,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.2276270091534,
+        "desi_dr2_bao": 19.850850177658387,
+        "cosmic_chronometers": 14.786999971598615,
+        "total": 1422.8654771584104,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2503.585531857675,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1078.6997021269897,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1895683258772,
+        "desi_dr2_bao": 19.952767797270955,
+        "cosmic_chronometers": 14.77825446089527,
+        "total": 1422.9205905840436,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2501.6202927110335,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.0,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1077.2113136326766,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1519250944257,
+        "desi_dr2_bao": 20.056557482649986,
+        "cosmic_chronometers": 14.769650948730778,
+        "total": 1422.9781335258065,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2500.189447158483,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.00000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.01,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1087.0858694322105,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.2414914742112,
+        "desi_dr2_bao": 18.826473643282636,
+        "cosmic_chronometers": 14.803692040647789,
+        "total": 1421.8716571581417,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2508.9575265903522,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.01,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1081.1011162143777,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1651163846254,
+        "desi_dr2_bao": 19.017462879829502,
+        "cosmic_chronometers": 14.785842248750594,
+        "total": 1421.9684215132056,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2503.0695377275833,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.01,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1078.930662143665,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1275532245636,
+        "desi_dr2_bao": 19.24988097932934,
+        "cosmic_chronometers": 14.777130682458514,
+        "total": 1422.1545648863516,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2501.0852270300165,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.01,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1077.3095349385976,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.0904056876898,
+        "desi_dr2_bao": 19.350330463949902,
+        "cosmic_chronometers": 14.7685611834393,
+        "total": 1422.2092973350789,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2499.5188322736767,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.01,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1076.2240453977342,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.0536733418703,
+        "desi_dr2_bao": 19.45264053642834,
+        "cosmic_chronometers": 14.760133637526746,
+        "total": 1422.2664475158253,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2498.4904929135596,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.01000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.02,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1084.4416676312524,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1405632346869,
+        "desi_dr2_bao": 18.252031045455897,
+        "cosmic_chronometers": 14.793550312882955,
+        "total": 1421.1861445930256,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2505.627812224278,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.02,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1079.2695041038464,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.0660197585821,
+        "desi_dr2_bao": 18.4401182421557,
+        "cosmic_chronometers": 14.776054296398014,
+        "total": 1421.282192297136,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2500.551696400982,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.02,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1077.5020686725825,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.0293719545007,
+        "desi_dr2_bao": 18.666245117828325,
+        "cosmic_chronometers": 14.767519549686549,
+        "total": 1421.4631366220156,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2498.965205294598,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.02,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1076.2830761062125,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9931395202875,
+        "desi_dr2_bao": 18.765214260303456,
+        "cosmic_chronometers": 14.759126824516887,
+        "total": 1421.517480605108,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2497.8005567113205,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.02,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.5984003200176,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9573220014572,
+        "desi_dr2_bao": 18.866032471339068,
+        "cosmic_chronometers": 14.750876006487852,
+        "total": 1421.5742304792843,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2497.172630799302,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.02000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.03,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1082.165014652067,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.0415423959494,
+        "desi_dr2_bao": 17.69517172558791,
+        "cosmic_chronometers": 14.783668113880948,
+        "total": 1420.5203822354183,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2502.6853968874852,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.03,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1077.8061575102352,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9688384234905,
+        "desi_dr2_bao": 17.880332440109555,
+        "cosmic_chronometers": 14.76652740953986,
+        "total": 1420.61569827314,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2498.421855783375,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.03,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1076.4472810141508,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9331099689007,
+        "desi_dr2_bao": 18.10014088078572,
+        "cosmic_chronometers": 14.758170249965694,
+        "total": 1420.791421099652,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2497.238702113803,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.03,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.625476228178,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8977965936065,
+        "desi_dr2_bao": 18.197617354245136,
+        "cosmic_chronometers": 14.749955065661876,
+        "total": 1420.8453690135134,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2496.4708452416917,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.03,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.351054841586,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8628978282213,
+        "desi_dr2_bao": 18.296931335338314,
+        "cosmic_chronometers": 14.741881741991717,
+        "total": 1420.9017109055512,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2496.2527657471373,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.03000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.035,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1076.058145054418,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.88570715487,
+        "desi_dr2_bao": 17.823725733338648,
+        "cosmic_chronometers": 14.753594950829036,
+        "total": 1420.4630278390377,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2496.5211728934555,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.035,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.4375539316115,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8508547917008,
+        "desi_dr2_bao": 17.920451211865686,
+        "cosmic_chronometers": 14.745468826115697,
+        "total": 1420.5167748296822,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.9543287612937,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.035,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.3678127782393,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8164169043303,
+        "desi_dr2_bao": 18.01900840186252,
+        "cosmic_chronometers": 14.737484538577354,
+        "total": 1420.57290984477,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2495.9407226230096,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.03500000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1080.2388423092962,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9444559589028,
+        "desi_dr2_bao": 17.15609678161053,
+        "cosmic_chronometers": 14.774049158239983,
+        "total": 1419.8746018987533,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2500.1134442080493,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1076.7157337123551,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8735995143652,
+        "desi_dr2_bao": 17.338306330079448,
+        "cosmic_chronometers": 14.757265312589338,
+        "total": 1419.969171157034,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2496.6849048693894,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1075.759238544684,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8387943729758,
+        "desi_dr2_bao": 17.5517689254919,
+        "cosmic_chronometers": 14.74908651260574,
+        "total": 1420.1396498110735,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2495.8988883557577,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.3470998357473,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.80440402776,
+        "desi_dr2_bao": 17.64774028172534,
+        "cosmic_chronometers": 14.741049641073468,
+        "total": 1420.193193950559,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.5402937863064,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.481185974569,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7704280018806,
+        "desi_dr2_bao": 17.745537542788824,
+        "cosmic_chronometers": 14.733154583119584,
+        "total": 1420.249120127789,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2495.7303061023576,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.04000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.045,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1075.559354629895,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.792375035584,
+        "desi_dr2_bao": 17.284295915267883,
+        "cosmic_chronometers": 14.744645409826916,
+        "total": 1419.8213163606788,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2495.380670990574,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.045,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.3512889676751,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.75844771415,
+        "desi_dr2_bao": 17.379510006428884,
+        "cosmic_chronometers": 14.736697985683591,
+        "total": 1419.8746557062625,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.2259446739376,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.045,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.6856459099322,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7249345481396,
+        "desi_dr2_bao": 17.476544185251818,
+        "cosmic_chronometers": 14.728892351383118,
+        "total": 1419.9303710847746,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2495.616016994707,
+      "solver_directory": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_final_local/kgb_alpha_0.04500000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1394.93454129969,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1389.0860127359629,
+        "desi_dr2_bao": 14.62358885411382,
+        "cosmic_chronometers": 15.079871941318364,
+        "total": 1418.789473531395,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2813.724014831085,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1229.9549854720897,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.631432108581,
+        "desi_dr2_bao": 15.139398491879014,
+        "cosmic_chronometers": 14.9603954091158,
+        "total": 1418.731226009576,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2648.686211481666,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1125.5527161960986,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.219359971583,
+        "desi_dr2_bao": 15.84853379600274,
+        "cosmic_chronometers": 14.855376593930803,
+        "total": 1418.9232703615164,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2544.475986557615,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1078.7092972181213,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.849331408739,
+        "desi_dr2_bao": 16.635009720930633,
+        "cosmic_chronometers": 14.764697213948713,
+        "total": 1419.2490383436184,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2497.9583355617397,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1076.0056402976952,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7803304865956,
+        "desi_dr2_bao": 16.81424317462166,
+        "cosmic_chronometers": 14.748271783428175,
+        "total": 1419.3428454446455,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2495.348485742341,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1075.4554383351915,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7464526817203,
+        "desi_dr2_bao": 17.02133231311244,
+        "cosmic_chronometers": 14.740272120423928,
+        "total": 1419.5080571152566,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.963495450448,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.4497804893836,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7129893526435,
+        "desi_dr2_bao": 17.115785980888546,
+        "cosmic_chronometers": 14.732414338497046,
+        "total": 1419.561189672029,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.010970161413,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1075.9868058420907,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6799400523305,
+        "desi_dr2_bao": 17.21205390859954,
+        "cosmic_chronometers": 14.724698322537686,
+        "total": 1419.6166922834677,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2495.6034981255584,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05000000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.05,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1086.5884648757112,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5208883732557,
+        "desi_dr2_bao": 17.72052432795148,
+        "cosmic_chronometers": 14.688240715124584,
+        "total": 1419.9296534163318,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2506.5181182920433,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.05000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1078.0843131457573,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.802513487637,
+        "desi_dr2_bao": 16.38127591031356,
+        "cosmic_chronometers": 14.7601225633751,
+        "total": 1418.9439119613257,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2497.028225107083,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6921591609100001,
+      "planck_minus_2_log_likelihood": 1076.6763933329107,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7682708129287,
+        "desi_dr2_bao": 16.46923751707596,
+        "cosmic_chronometers": 14.751928701215137,
+        "total": 1418.9894370312197,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.29
+      },
+      "conditional_joint_statistic": 2495.6658303641307,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.05500000_omega_m0_0.30775000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.05500000_omega_m0_0.30775000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1075.7803314917605,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7344433814287,
+        "desi_dr2_bao": 16.559011890900013,
+        "cosmic_chronometers": 14.743876927197547,
+        "total": 1419.0373321995262,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2494.8176636912867,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1075.4481241438002,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7010307237506,
+        "desi_dr2_bao": 16.76290388297477,
+        "cosmic_chronometers": 14.73596712575681,
+        "total": 1419.1999017324822,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.648025876282,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1075.645075981358,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.668032437563,
+        "desi_dr2_bao": 16.856593953400463,
+        "cosmic_chronometers": 14.728199181496079,
+        "total": 1419.2528255724596,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2494.897901553818,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.055,
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69115916091,
+      "planck_minus_2_log_likelihood": 1076.3796315587447,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6354480013251,
+        "desi_dr2_bao": 16.952092445457485,
+        "cosmic_chronometers": 14.720572979186727,
+        "total": 1419.3081134259694,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.16
+      },
+      "conditional_joint_statistic": 2495.6877449847143,
+      "solver_directory": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30875000",
+      "planck_record": "generated/planck_profile_alpha_zero/kgb_alpha_0.05500000_omega_m0_0.30875000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.065,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1077.1227255390877,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7103840485215,
+        "desi_dr2_bao": 15.887557607710693,
+        "cosmic_chronometers": 14.751178320091192,
+        "total": 1418.3491199763234,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2495.471845515411,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.065,
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6921591609100001,
+      "planck_minus_2_log_likelihood": 1076.108858097329,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.677075356245,
+        "desi_dr2_bao": 15.974018120802484,
+        "cosmic_chronometers": 14.74316486605842,
+        "total": 1418.3942583431058,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.29
+      },
+      "conditional_joint_statistic": 2494.5031164404345,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30775000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30775000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.065,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1075.6495515395616,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6441815942526,
+        "desi_dr2_bao": 16.062279633899507,
+        "cosmic_chronometers": 14.735293452425136,
+        "total": 1418.4417546805773,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2494.091306220139,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.065,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1075.7144538257135,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6117023155093,
+        "desi_dr2_bao": 16.259756368803462,
+        "cosmic_chronometers": 14.727563963386803,
+        "total": 1418.5990226476995,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.313476473413,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.065,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1076.3213257039636,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5796370878816,
+        "desi_dr2_bao": 16.35190965954712,
+        "cosmic_chronometers": 14.719976283308124,
+        "total": 1418.6515230307368,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2494.9728487347,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.06500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.075,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.5426622139228,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6202868521214,
+        "desi_dr2_bao": 15.412346728787732,
+        "cosmic_chronometers": 14.742510747643937,
+        "total": 1417.775144328553,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2494.317806542476,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.075,
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6921591609100001,
+      "planck_minus_2_log_likelihood": 1075.9381596496296,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5879162028432,
+        "desi_dr2_bao": 15.4972933917735,
+        "cosmic_chronometers": 14.734678492783567,
+        "total": 1417.8198880874004,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.29
+      },
+      "conditional_joint_statistic": 2493.75804773703,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30775000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30775000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.075,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1075.8984589958393,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5559601709247,
+        "desi_dr2_bao": 15.58402924476871,
+        "cosmic_chronometers": 14.726988230007427,
+        "total": 1417.866977645701,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2493.76543664154,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.075,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1076.3620201140257,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5244183316827,
+        "desi_dr2_bao": 15.775062597018453,
+        "cosmic_chronometers": 14.719439843271264,
+        "total": 1418.0189207719723,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.380940885998,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.075,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1077.3775662696976,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4932902231812,
+        "desi_dr2_bao": 15.865666221815617,
+        "cosmic_chronometers": 14.712033216700638,
+        "total": 1418.0709896616975,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.4485559313953,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.07500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.3065,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69340916091,
+      "planck_minus_2_log_likelihood": 1083.4258691920134,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7077636569738,
+        "desi_dr2_bao": 14.862890773880105,
+        "cosmic_chronometers": 14.770669383408958,
+        "total": 1417.3413238142628,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.44
+      },
+      "conditional_joint_statistic": 2500.767193006276,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.08000000_omega_m0_0.30650000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.08000000_omega_m0_0.30650000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.307,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6929091609100001,
+      "planck_minus_2_log_likelihood": 1078.8153858990352,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6410547867417,
+        "desi_dr2_bao": 15.018737695869088,
+        "cosmic_chronometers": 14.754191031608217,
+        "total": 1417.413983514219,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.38
+      },
+      "conditional_joint_statistic": 2496.229369413254,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.08000000_omega_m0_0.30700000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.08000000_omega_m0_0.30700000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.399256032943,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5760093331337,
+        "desi_dr2_bao": 15.181747791729101,
+        "cosmic_chronometers": 14.738281948883705,
+        "total": 1417.4960390737465,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.8952951066894,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6921591609100001,
+      "planck_minus_2_log_likelihood": 1076.0020005842757,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5441092401743,
+        "desi_dr2_bao": 15.265932705944696,
+        "cosmic_chronometers": 14.730540591840429,
+        "total": 1417.5405825379596,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.29
+      },
+      "conditional_joint_statistic": 2493.5425831222356,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30775000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30775000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1076.1542047912078,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.512623615563,
+        "desi_dr2_bao": 15.351900889013514,
+        "cosmic_chronometers": 14.722941202506648,
+        "total": 1417.587465707083,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2493.7416704982907,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1076.8308763531008,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4815520197153,
+        "desi_dr2_bao": 15.539701937417965,
+        "cosmic_chronometers": 14.715483664718047,
+        "total": 1417.7367376218513,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.567613974952,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.08,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1078.0582767502403,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4508939906955,
+        "desi_dr2_bao": 15.62952585662924,
+        "cosmic_chronometers": 14.708167862480334,
+        "total": 1417.7885877098051,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2495.8468644600453,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.085,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.3474171350658,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5322507321835,
+        "desi_dr2_bao": 14.955855492816465,
+        "cosmic_chronometers": 14.73412380807212,
+        "total": 1417.222230033072,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.5696471681376,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.085,
+      "omega_m0": 0.30775,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6921591609100001,
+      "planck_minus_2_log_likelihood": 1076.15080329192,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5008222311735,
+        "desi_dr2_bao": 15.039275420881834,
+        "cosmic_chronometers": 14.72647354851899,
+        "total": 1417.2665712005742,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.29
+      },
+      "conditional_joint_statistic": 2493.417374492494,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30775000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30775000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.085,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1076.5226487335867,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4698080271482,
+        "desi_dr2_bao": 15.124472685812066,
+        "cosmic_chronometers": 14.71896523215462,
+        "total": 1417.313245945115,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2493.835894678702,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.085,
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69165916091,
+      "planck_minus_2_log_likelihood": 1077.4058548282278,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4392077103257,
+        "desi_dr2_bao": 15.3090343201422,
+        "cosmic_chronometers": 14.711598742694436,
+        "total": 1417.4598407731623,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.22
+      },
+      "conditional_joint_statistic": 2494.86569560139,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30825000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30825000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.085,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1078.8470196074372,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4090207666159,
+        "desi_dr2_bao": 15.398075263652498,
+        "cosmic_chronometers": 14.704373964024185,
+        "total": 1417.5114699942926,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2496.35848960173,
+      "solver_directory": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_local_minimum/kgb_alpha_0.08500000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.09,
+      "omega_m0": 0.3065,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69340916091,
+      "planck_minus_2_log_likelihood": 1081.7710036211583,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6169890910387,
+        "desi_dr2_bao": 14.421853497996974,
+        "cosmic_chronometers": 14.761694195757467,
+        "total": 1416.8005367847932,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.44
+      },
+      "conditional_joint_statistic": 2498.5715404059515,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30650000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30650000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.09,
+      "omega_m0": 0.307,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6929091609100001,
+      "planck_minus_2_log_likelihood": 1077.987425853263,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5521708354354,
+        "desi_dr2_bao": 14.574717413002018,
+        "cosmic_chronometers": 14.745580975000014,
+        "total": 1416.8724692234373,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.38
+      },
+      "conditional_joint_statistic": 2494.8598950767,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30700000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30700000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.09,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.3886007409674,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4890147224069,
+        "desi_dr2_bao": 14.734696761516311,
+        "cosmic_chronometers": 14.730036829467045,
+        "total": 1416.9537483133902,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.3423490543573,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.09,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1076.975291676713,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4275170862675,
+        "desi_dr2_bao": 14.90177153195015,
+        "cosmic_chronometers": 14.71506082449326,
+        "total": 1417.0443494427109,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2494.019641119424,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.09,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1079.725406061361,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.367674253881,
+        "desi_dr2_bao": 15.171341296651056,
+        "cosmic_chronometers": 14.700652028154158,
+        "total": 1417.239667578686,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2496.965073640047,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.09000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1327.936495634181,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.49909863621,
+        "desi_dr2_bao": 12.54429142003418,
+        "cosmic_chronometers": 15.00990590884743,
+        "total": 1416.0532959650916,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2743.9897915992724,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1195.7469460270918,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.1270470172167,
+        "desi_dr2_bao": 12.912643454604744,
+        "cosmic_chronometers": 14.908970034438205,
+        "total": 1415.9486605062596,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2611.6956065333516,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.10000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.10000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1185.3356574939423,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.091897316277,
+        "desi_dr2_bao": 12.9750508656995,
+        "cosmic_chronometers": 14.899567248359114,
+        "total": 1415.9665154303357,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2601.3021729242782,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1102.6187509081442,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.7270637005568,
+        "desi_dr2_bao": 13.592957090915721,
+        "cosmic_chronometers": 14.803664586325423,
+        "total": 1416.1236853777978,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2518.742436285942,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3065,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69340916091,
+      "planck_minus_2_log_likelihood": 1080.4977794835122,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.5283031761646,
+        "desi_dr2_bao": 13.999910912911453,
+        "cosmic_chronometers": 14.753002471004264,
+        "total": 1416.2812165600803,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.44
+      },
+      "conditional_joint_statistic": 2496.7789960435925,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30650000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30650000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.307,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6929091609100001,
+      "planck_minus_2_log_likelihood": 1077.5433637288957,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4653838053346,
+        "desi_dr2_bao": 14.14976596547213,
+        "cosmic_chronometers": 14.737255993113367,
+        "total": 1416.3524057639202,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.38
+      },
+      "conditional_joint_statistic": 2493.895769492816,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30700000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30700000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1076.7896882885211,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4041252955794,
+        "desi_dr2_bao": 14.3066885361123,
+        "cosmic_chronometers": 14.722078394235586,
+        "total": 1416.4328922259272,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.222580514448,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1078.2026669619586,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.344523973763,
+        "desi_dr2_bao": 14.470658774695963,
+        "cosmic_chronometers": 14.70746873776348,
+        "total": 1416.5226514862225,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2494.725318448181,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1081.7771996286403,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2865761518478,
+        "desi_dr2_bao": 14.732131469552591,
+        "cosmic_chronometers": 14.693426089839434,
+        "total": 1416.7121337112399,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2498.4893333398804,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.10000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.1,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1105.1171020712193,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.1226168572903,
+        "desi_dr2_bao": 15.288948505918135,
+        "cosmic_chronometers": 14.654690899779775,
+        "total": 1417.0662562629882,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2522.1833583342077,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.10000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.11,
+      "omega_m0": 0.3065,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69340916091,
+      "planck_minus_2_log_likelihood": 1079.6015188987633,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4417357295752,
+        "desi_dr2_bao": 13.597282266290874,
+        "cosmic_chronometers": 14.744598296115022,
+        "total": 1415.7836162919812,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.44
+      },
+      "conditional_joint_statistic": 2495.385135190744,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30650000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30650000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.11,
+      "omega_m0": 0.307,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6929091609100001,
+      "planck_minus_2_log_likelihood": 1077.5043609103955,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.380723580718,
+        "desi_dr2_bao": 13.74410233685708,
+        "cosmic_chronometers": 14.72922018335308,
+        "total": 1415.8540461009284,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.38
+      },
+      "conditional_joint_statistic": 2493.358407011324,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30700000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30700000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.11,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1077.5865967709083,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.3213709890842,
+        "desi_dr2_bao": 13.897941833995196,
+        "cosmic_chronometers": 14.714410751000969,
+        "total": 1415.9337235740804,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2493.5203203449887,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.11,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1079.8466999233697,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2636742815375,
+        "desi_dr2_bao": 14.05878106964991,
+        "cosmic_chronometers": 14.700169060503798,
+        "total": 1416.0226244116914,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2495.869324335061,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.11,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1084.2307534040906,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2076297029853,
+        "desi_dr2_bao": 14.312114478044563,
+        "cosmic_chronometers": 14.686494176065462,
+        "total": 1416.2062383570953,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2500.4369917611857,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.11000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.12,
+      "omega_m0": 0.3065,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69340916091,
+      "planck_minus_2_log_likelihood": 1079.1321241174012,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.3573170378804,
+        "desi_dr2_bao": 13.214189480186072,
+        "cosmic_chronometers": 14.736485817949522,
+        "total": 1415.307992336016,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.44
+      },
+      "conditional_joint_statistic": 2494.4401164534174,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30650000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30650000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.12,
+      "omega_m0": 0.307,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6929091609100001,
+      "planck_minus_2_log_likelihood": 1077.8725233319408,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2982204854488,
+        "desi_dr2_bao": 13.357948181383865,
+        "cosmic_chronometers": 14.721477703101296,
+        "total": 1415.377646369934,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.38
+      },
+      "conditional_joint_statistic": 2493.2501697018747,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30700000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30700000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.12,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1078.798939865444,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2407821789384,
+        "desi_dr2_bao": 13.508678040548421,
+        "cosmic_chronometers": 14.707038067635231,
+        "total": 1415.456498287122,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2494.255438152566,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.12,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1081.8838857462115,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.1849983781576,
+        "desi_dr2_bao": 13.666359532352491,
+        "cosmic_chronometers": 14.693165971043614,
+        "total": 1415.5445238815537,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2497.428409627765,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.12,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "planck_minus_2_log_likelihood": 1087.1302299857502,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.1308653876185,
+        "desi_dr2_bao": 13.911511083490717,
+        "cosmic_chronometers": 14.679860475586427,
+        "total": 1415.7222369466956,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.19
+      },
+      "conditional_joint_statistic": 2502.852466932446,
+      "solver_directory": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30850000",
+      "planck_record": "generated/planck_profile_minimum_refinement/kgb_alpha_0.12000000_omega_m0_0.30850000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.15,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1270.137202177573,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9624030068517,
+        "desi_dr2_bao": 10.95683576759216,
+        "cosmic_chronometers": 14.946598948602997,
+        "total": 1413.8658377230468,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2684.00303990062,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.15,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1150.1549818911187,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.603657104075,
+        "desi_dr2_bao": 11.299138904617255,
+        "cosmic_chronometers": 14.845604206811313,
+        "total": 1413.7484002155034,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2563.9033821066223,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.15,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1089.413492067555,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2871224880219,
+        "desi_dr2_bao": 11.822295545643582,
+        "cosmic_chronometers": 14.759022280991273,
+        "total": 1413.8684403146567,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2503.2819323822114,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.15,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1084.9085669601834,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.0123192220926,
+        "desi_dr2_bao": 12.460038802886185,
+        "cosmic_chronometers": 14.68673237817904,
+        "total": 1414.1590904031577,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2499.067657363341,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.15,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1133.9192766961012,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.7787747755647,
+        "desi_dr2_bao": 13.335301263909964,
+        "cosmic_chronometers": 14.628615490654312,
+        "total": 1414.742691530129,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2548.66196822623,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.15000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.18,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1240.0665216742188,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6660699173808,
+        "desi_dr2_bao": 10.252392652852791,
+        "cosmic_chronometers": 14.9120243071311,
+        "total": 1412.8304868773648,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2652.897008551584,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.18,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1133.8081766490864,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.3369261547923,
+        "desi_dr2_bao": 10.53991450324239,
+        "cosmic_chronometers": 14.816737683471048,
+        "total": 1412.6935783415058,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2546.5017549905924,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.18,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1086.396558316796,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.0498919934034,
+        "desi_dr2_bao": 11.004457604348968,
+        "cosmic_chronometers": 14.73584922029091,
+        "total": 1412.7901988180433,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2499.1867571348394,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.18,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1094.8216362850887,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.804483026266,
+        "desi_dr2_bao": 11.594980063744321,
+        "cosmic_chronometers": 14.669237357450758,
+        "total": 1413.0687004474612,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2507.89033673255,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.18,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1156.319777116684,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.6002223491669,
+        "desi_dr2_bao": 12.404170828677367,
+        "cosmic_chronometers": 14.616782337782741,
+        "total": 1413.621175515627,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2569.940952632311,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.18000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.2,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1131.3149516030815,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.1968472898006,
+        "desi_dr2_bao": 10.104426698164449,
+        "cosmic_chronometers": 14.806721400180383,
+        "total": 1412.1079953881454,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2543.422946991227,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.20000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.20000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.21,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1213.6124973408853,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.3900640457869,
+        "desi_dr2_bao": 9.741934124575284,
+        "cosmic_chronometers": 14.880150395524293,
+        "total": 1412.0121485658863,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2625.6246459067715,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.21,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1121.2029027707629,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.0909270569682,
+        "desi_dr2_bao": 9.973345322847155,
+        "cosmic_chronometers": 14.79065009334182,
+        "total": 1411.854922473157,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2533.05782524392,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.21,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1087.1791134276286,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.8337918817997,
+        "desi_dr2_bao": 10.377902398704924,
+        "cosmic_chronometers": 14.715532707465504,
+        "total": 1411.92722698797,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2499.1063404155984,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.21,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1108.6394492792947,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.6181695759296,
+        "desi_dr2_bao": 10.919935503646661,
+        "cosmic_chronometers": 14.65467590422543,
+        "total": 1412.1927809838019,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2520.832230263097,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.21,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1182.7490278842965,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.4435790106654,
+        "desi_dr2_bao": 11.661598292794292,
+        "cosmic_chronometers": 14.607959170885753,
+        "total": 1412.7131364743454,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2595.462164358642,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.21000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.296,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.70390916091,
+      "planck_minus_2_log_likelihood": 1444.7961374171223,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.6536337286234,
+        "desi_dr2_bao": 9.509709413131915,
+        "cosmic_chronometers": 15.01511192709989,
+        "total": 1412.1784550688553,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.74
+      },
+      "conditional_joint_statistic": 2856.9745924859776,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.29600000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.29600000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.299,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.7009091609100001,
+      "planck_minus_2_log_likelihood": 1239.1942256960147,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.2546311840415,
+        "desi_dr2_bao": 9.406374974796638,
+        "cosmic_chronometers": 14.88860541921276,
+        "total": 1411.5496115780509,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.37
+      },
+      "conditional_joint_statistic": 2650.7438372740653,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.29900000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.29900000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1190.8831512898862,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.135303080082,
+        "desi_dr2_bao": 9.432262863461911,
+        "cosmic_chronometers": 14.85110103002435,
+        "total": 1411.4186669735682,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2602.301818263454,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1117.1190400574217,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.8892033472657,
+        "desi_dr2_bao": 9.581282776189466,
+        "cosmic_chronometers": 14.774452314290931,
+        "total": 1411.2449384377462,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2528.363978495168,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1112.4445647254045,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.866584174335,
+        "desi_dr2_bao": 9.606192104277431,
+        "cosmic_chronometers": 14.767466833907559,
+        "total": 1411.24024311252,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2523.6848078379244,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1091.9576881439043,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.639752857387,
+        "desi_dr2_bao": 9.94934797006037,
+        "cosmic_chronometers": 14.698199696076378,
+        "total": 1411.287300523524,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2503.2449886674285,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1126.5157475593942,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.4543158710003,
+        "desi_dr2_bao": 10.441582154152588,
+        "cosmic_chronometers": 14.64317650300656,
+        "total": 1411.5390745281595,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2538.0548220875535,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1139.7692979159751,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.4221529364586,
+        "desi_dr2_bao": 10.55918125932867,
+        "cosmic_chronometers": 14.63387043369959,
+        "total": 1411.6152046294867,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2551.384502545462,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.24000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.24,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1213.3669571054074,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.30978769809,
+        "desi_dr2_bao": 11.114216523973042,
+        "cosmic_chronometers": 14.602275980308866,
+        "total": 1412.026280202372,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2625.3932373077796,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.24000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.296,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.70390916091,
+      "planck_minus_2_log_likelihood": 1402.5723086145504,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.371500968933,
+        "desi_dr2_bao": 9.499922560061147,
+        "cosmic_chronometers": 14.979468379714671,
+        "total": 1411.850891908709,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.74
+      },
+      "conditional_joint_statistic": 2814.4232005232593,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.29600000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.29600000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.299,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.7009091609100001,
+      "planck_minus_2_log_likelihood": 1214.6215282918497,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.0097085535526,
+        "desi_dr2_bao": 9.336317038198422,
+        "cosmic_chronometers": 14.86012674479893,
+        "total": 1411.2061523365498,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.37
+      },
+      "conditional_joint_statistic": 2625.8276806283993,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.29900000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.29900000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.3,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69990916091,
+      "planck_minus_2_log_likelihood": 1172.0513146284243,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.9027476459742,
+        "desi_dr2_bao": 9.330441824071837,
+        "cosmic_chronometers": 14.825005799859511,
+        "total": 1411.0581952699056,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.24
+      },
+      "conditional_joint_statistic": 2583.1095098983296,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1111.1033386249899,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.6846943423152,
+        "desi_dr2_bao": 9.42903498501243,
+        "cosmic_chronometers": 14.753766269948606,
+        "total": 1410.867495597276,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2521.9708342222657,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.3025,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69740916091,
+      "planck_minus_2_log_likelihood": 1107.6730483511828,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.664864771068,
+        "desi_dr2_bao": 9.445473980170114,
+        "cosmic_chronometers": 14.747319114857456,
+        "total": 1410.8576578660957,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.93
+      },
+      "conditional_joint_statistic": 2518.5307062172787,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30250000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30250000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1100.7976197789465,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.4687487855554,
+        "desi_dr2_bao": 9.725768851834413,
+        "cosmic_chronometers": 14.683982989936824,
+        "total": 1410.8785006273265,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2511.676120406273,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.3075,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69240916091,
+      "planck_minus_2_log_likelihood": 1148.6083240232151,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.313901990652,
+        "desi_dr2_bao": 10.166851686834436,
+        "cosmic_chronometers": 14.634873525433774,
+        "total": 1411.1156272029202,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.32
+      },
+      "conditional_joint_statistic": 2559.7239512261353,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30750000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.30750000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1164.4725717234655,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.2878416851163,
+        "desi_dr2_bao": 10.273762271090941,
+        "cosmic_chronometers": 14.626748059842884,
+        "total": 1411.18835201605,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2575.6609237395155,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.27000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.27,
+      "omega_m0": 0.31,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.68990916091,
+      "planck_minus_2_log_likelihood": 1248.2696993868653,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.1998345330358,
+        "desi_dr2_bao": 10.768911096841979,
+        "cosmic_chronometers": 14.59986867926455,
+        "total": 1411.5686143091423,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.01
+      },
+      "conditional_joint_statistic": 2659.8383136960074,
+      "solver_directory": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.31000000",
+      "planck_record": "generated/planck_profile_low_alpha/kgb_alpha_0.27000000_omega_m0_0.31000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.3,
+      "omega_m0": 0.296,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.70390916091,
+      "planck_minus_2_log_likelihood": 1364.1570135885813,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.1118859052658,
+        "desi_dr2_bao": 9.707623523136641,
+        "cosmic_chronometers": 14.946780370634798,
+        "total": 1411.7662897990372,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.74
+      },
+      "conditional_joint_statistic": 2775.9233033876185,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.29600000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.29600000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.3,
+      "omega_m0": 0.299,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.7009091609100001,
+      "planck_minus_2_log_likelihood": 1194.0060302033262,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.7878255471587,
+        "desi_dr2_bao": 9.482108255637929,
+        "cosmic_chronometers": 14.83470447453709,
+        "total": 1411.1046382773338,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.37
+      },
+      "conditional_joint_statistic": 2605.11066848066,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.29900000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.29900000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.3,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1109.1484955222327,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.5037832930684,
+        "desi_dr2_bao": 9.490675504891767,
+        "cosmic_chronometers": 14.736245606755253,
+        "total": 1410.7307044047154,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2519.879199926948,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.30000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.30000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.3,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1113.9061526568778,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.321798875928,
+        "desi_dr2_bao": 9.714408109942118,
+        "cosmic_chronometers": 14.673021563216983,
+        "total": 1410.709228549087,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2524.6153812059647,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.3,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1193.5187518007426,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.178077235818,
+        "desi_dr2_bao": 10.198879706377141,
+        "cosmic_chronometers": 14.622978952648925,
+        "total": 1410.999935894844,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2604.518687695587,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.30000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.33,
+      "omega_m0": 0.296,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.70390916091,
+      "planck_minus_2_log_likelihood": 1329.6882620474853,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.8758307471871,
+        "desi_dr2_bao": 10.140509274365769,
+        "cosmic_chronometers": 14.917187228481637,
+        "total": 1411.9335272500346,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.74
+      },
+      "conditional_joint_statistic": 2741.62178929752,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.29600000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.29600000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.33,
+      "omega_m0": 0.299,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.7009091609100001,
+      "planck_minus_2_log_likelihood": 1177.4828763007006,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.590033069253,
+        "desi_dr2_bao": 9.851390135755189,
+        "cosmic_chronometers": 14.812480031029034,
+        "total": 1411.253903236037,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.37
+      },
+      "conditional_joint_statistic": 2588.7367795367377,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.29900000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.29900000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.33,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1111.4906928025898,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.3475301787257,
+        "desi_dr2_bao": 9.773782284254484,
+        "cosmic_chronometers": 14.722033984598124,
+        "total": 1410.8433464475784,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2522.334039250168,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.33,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1131.405074593474,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.199970267713,
+        "desi_dr2_bao": 9.922790079534614,
+        "cosmic_chronometers": 14.665460901520019,
+        "total": 1410.7882212487677,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2542.1932958422417,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.33,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1227.074491492262,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.0939343348145,
+        "desi_dr2_bao": 10.342001532723952,
+        "cosmic_chronometers": 14.622710566936417,
+        "total": 1411.058646434475,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2638.1331379267367,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.33000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.36,
+      "omega_m0": 0.296,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.70390916091,
+      "planck_minus_2_log_likelihood": 1299.3234854432235,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.6644281670451,
+        "desi_dr2_bao": 10.806579579994235,
+        "cosmic_chronometers": 14.890835004740946,
+        "total": 1412.3618427517802,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.74
+      },
+      "conditional_joint_statistic": 2711.6853281950034,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.29600000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.29600000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.36,
+      "omega_m0": 0.299,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.7009091609100001,
+      "planck_minus_2_log_likelihood": 1165.2252837843498,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.4174324721098,
+        "desi_dr2_bao": 10.452104352960612,
+        "cosmic_chronometers": 14.793601612480023,
+        "total": 1411.6631384375503,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 148.37
+      },
+      "conditional_joint_statistic": 2576.8884222219003,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.29900000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.29900000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.36,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1118.2444727498355,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.2170454338193,
+        "desi_dr2_bao": 10.286230490575793,
+        "cosmic_chronometers": 14.711281894233874,
+        "total": 1411.214557818629,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2529.459030568464,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.36,
+      "omega_m0": 0.305,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6949091609100001,
+      "planck_minus_2_log_likelihood": 1153.416998729775,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.104380697012,
+        "desi_dr2_bao": 10.358733846751608,
+        "cosmic_chronometers": 14.661453365553939,
+        "total": 1411.1245679093176,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.62
+      },
+      "conditional_joint_statistic": 2564.5415666390927,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30500000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.36,
+      "omega_m0": 0.308,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69190916091,
+      "planck_minus_2_log_likelihood": 1265.3284017280002,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.0365384295583,
+        "desi_dr2_bao": 10.710887830614883,
+        "cosmic_chronometers": 14.626097279433035,
+        "total": 1411.3735235396061,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.26
+      },
+      "conditional_joint_statistic": 2676.7019252676064,
+      "solver_directory": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30800000",
+      "planck_record": "generated/planck_profile_refined/kgb_alpha_0.36000000_omega_m0_0.30800000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.4,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1134.3885801278773,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.0851695686579,
+        "desi_dr2_bao": 11.340444927038877,
+        "cosmic_chronometers": 14.702600941659556,
+        "total": 1412.1282154373562,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2546.516795565233,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.40000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.40000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.45,
+      "omega_m0": 0.28,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.71990916091,
+      "planck_minus_2_log_likelihood": 3338.654014264717,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.9211897999048,
+        "desi_dr2_bao": 22.09948822537329,
+        "cosmic_chronometers": 15.588761016039605,
+        "total": 1425.6094390413177,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 150.81
+      },
+      "conditional_joint_statistic": 4764.2634533060345,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.28000000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.28000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.45,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1166.614821482657,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1385.992125555873,
+        "desi_dr2_bao": 13.283142708965727,
+        "cosmic_chronometers": 14.701398501985414,
+        "total": 1413.976666766824,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2580.591488249481,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.45,
+      "omega_m0": 0.325,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6749091609100001,
+      "planck_minus_2_log_likelihood": 3520.8031099188597,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.37556578964,
+        "desi_dr2_bao": 17.624203440301137,
+        "cosmic_chronometers": 14.96217484924528,
+        "total": 1419.9619440791864,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 145.23
+      },
+      "conditional_joint_statistic": 4940.765053998046,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.32500000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.45000000_omega_m0_0.32500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.497421875,
+      "omega_m0": 0.28,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.71990916091,
+      "planck_minus_2_log_likelihood": 3144.030476850244,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.4225780963898,
+        "desi_dr2_bao": 25.586248005040574,
+        "cosmic_chronometers": 15.504276193540376,
+        "total": 1428.5131022949706,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 150.81
+      },
+      "conditional_joint_statistic": 4572.543579145215,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.28000000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.28000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.497421875,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1210.1599180060043,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1385.9827911779284,
+        "desi_dr2_bao": 15.802999110843071,
+        "cosmic_chronometers": 14.710868116355245,
+        "total": 1416.4966584051267,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2626.656576411131,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.497421875,
+      "omega_m0": 0.325,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6749091609100001,
+      "planck_minus_2_log_likelihood": 3746.8572270705977,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1387.8428504318,
+        "desi_dr2_bao": 19.069066656150078,
+        "cosmic_chronometers": 15.064674891113388,
+        "total": 1421.9765919790632,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 145.23
+      },
+      "conditional_joint_statistic": 5168.833819049661,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.32500000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.49742188_omega_m0_0.32500000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.5,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1212.9053245730074,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1385.9845971763134,
+        "desi_dr2_bao": 15.959652363218613,
+        "cosmic_chronometers": 14.711694107231475,
+        "total": 1416.6559436467635,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2629.5612682197707,
+      "solver_directory": "generated/planck_profile_alpha_coarse/kgb_alpha_0.50000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_alpha_coarse/kgb_alpha_0.50000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.55,
+      "omega_m0": 0.28,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.71990916091,
+      "planck_minus_2_log_likelihood": 2939.9570294142914,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.9531460404396,
+        "desi_dr2_bao": 30.318145008257957,
+        "cosmic_chronometers": 15.42100083170203,
+        "total": 1432.6922918803996,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 150.81
+      },
+      "conditional_joint_statistic": 4372.649321294691,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.28000000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.28000000/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.55,
+      "omega_m0": 0.3022734375,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69763572341,
+      "planck_minus_2_log_likelihood": 1274.1034131483473,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1386.069223985076,
+        "desi_dr2_bao": 19.415024071849437,
+        "cosmic_chronometers": 14.734387165272395,
+        "total": 1420.218635222198,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 147.96
+      },
+      "conditional_joint_statistic": 2694.3220483705454,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.30227344",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.30227344/planck.json"
+    },
+    {
+      "status": "completed",
+      "alpha": 0.55,
+      "omega_m0": 0.325,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.6749091609100001,
+      "planck_minus_2_log_likelihood": 4015.4663745982116,
+      "late_time_chi2": {
+        "pantheon_plus_relative": 1388.4692808762193,
+        "desi_dr2_bao": 21.437025051538424,
+        "cosmic_chronometers": 15.193796204775232,
+        "total": 1425.100102132533,
+        "H0_km_s_Mpc": 67.86230796800406,
+        "r_drag_Mpc": 145.23
+      },
+      "conditional_joint_statistic": 5440.566476730744,
+      "solver_directory": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.32500000",
+      "planck_record": "generated/planck_profile_grid/kgb_alpha_0.55000000_omega_m0_0.32500000/planck.json"
+    }
+  ]
+}

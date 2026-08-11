@@ -177,6 +177,34 @@ objects. At the declared fixed parameter point, with `A_planck=1`, the
 Component values and numerical convergence tests are recorded in
 `generated/planck_2018_fixed_summary.json`. This is a reproducible fixed-point
 likelihood evaluation, not an optimized likelihood, posterior, Bayesian
-evidence, or comparison with LambdaCDM. Matter/BAO/RSD likelihoods, an
-ephemeris fit, and a joint parameter inference are not represented by this
-calculation.
+evidence, or comparison with LambdaCDM.
+
+## Executed conditional extension and native RSD audit
+
+The fixed-input Planck ordinates are combined only after an independently
+executed late-time calculation. `evaluate_kgb_late_time.py` uses the exact
+KGB background, the drag scale parsed from the same H-EFTCAMB solver log,
+Pantheon+ with its full covariance and analytically marginalized intercept,
+DESI DR2 BAO with its full 13-by-13 covariance, and 31 chronometer points.
+`assemble_kgb_joint_profile.py` adds these likelihood ordinates without a
+distance-prior replacement. The merged 154-point, fixed-`A_planck=1` surface
+has its lowest executed record at `alpha=0.1`, `Omega_m0=0.3075`, with
+`-2 ln L_Planck + chi2_late = 2493.222580514448`.
+
+At the independently refined point `alpha=0.0975`, `Omega_m0=0.3075`, each
+matched model is separately evaluated on a fixed-spectrum `A_planck` grid.
+KGB gives `1063.6712514661913 + 1416.5609849186849 =
+2480.232236384876`; matched LCDM gives `1060.2194088862268 +
+1422.5765927552 = 2482.7960016414268`. The resulting KGB-minus-LCDM value is
+`-2.563765256550596`. All remaining cosmological, primordial, recombination,
+and high-ell nuisance inputs are fixed, so this is a conditional diagnostic,
+not a posterior, evidence calculation, or global comparison.
+
+For the same KGB point, `evaluate_kgb_rsd_native.py` integrates `sigma8` from
+the native linear total-matter spectra and obtains `f sigma8` by a symmetric
+time derivative. It evaluates 23 local RSD rows and verifies the derivative
+against H-EFTCAMB's velocity-density output. The available compilation lacks
+the survey covariance, window/AP mapping, and nonlinear nuisance model, so it
+is an RSD residual audit rather than a likelihood and is deliberately excluded
+from the conditional sum. The complete ledger is
+`generated/kgb_multprobe_conditional_summary.json`.

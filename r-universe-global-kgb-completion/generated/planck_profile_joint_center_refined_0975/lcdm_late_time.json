@@ -1,0 +1,44 @@
+{
+  "model": "R-Universe covariant KGB exact background",
+  "scope": "Late-time geometric likelihood with Pantheon+ relative distances, DESI DR2 BAO, and cosmic chronometers. The sound horizon is read from the native H--EFTCAMB run of this exact point. This is not a CMB posterior, RSD/weak-lensing likelihood, or full multi-probe model comparison.",
+  "parameters": {
+    "omega_m0": 0.3075,
+    "omega_r0": 9.083909e-05,
+    "omega_R0": 0.69240916091,
+    "alpha": 0.0
+  },
+  "solver": {
+    "directory": "generated/planck_profile_joint_center_refined_0975/lcdm_omega_m0_0.30750000",
+    "solver_log_sha256": "42918faca50d8e6f4a38c95ccab5c345db9efe1d3454e7ac1b7e7b4c2a200f2e",
+    "r_drag_source": "H--EFTCAMB solver.log r_s(zdrag)/Mpc"
+  },
+  "data": {
+    "pantheon_plus": {
+      "count": 1580,
+      "selection": "IS_CALIBRATOR=0 and zHD>0.01; additive intercept analytically marginalized",
+      "table_sha256": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
+      "covariance_sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc"
+    },
+    "desi_dr2_bao": {
+      "count": 13,
+      "mean_sha256": "9ac154ab583ce759c0f7eef3c978c7c70a6ead2d18774caceadf1a350a640585",
+      "covariance_sha256": "252a143274c8a07c78694c119617d36594f6d7965d00319ca611c6ffb886e509"
+    },
+    "cosmic_chronometers": {
+      "count": 31,
+      "uncertainty": "quadrature of sigma_stat and supplied sigma_sys; diagonal covariance",
+      "sha256": "784f6d0387acadb5335f607a2182f48b138eebfa11aa844ce8f9e1904076b36a"
+    }
+  },
+  "numerics": {
+    "distance_integration_nodes": 16385
+  },
+  "chi2": {
+    "pantheon_plus_relative": 1388.3441987037659,
+    "desi_dr2_bao": 19.418304332402407,
+    "cosmic_chronometers": 14.814089719031687,
+    "total": 1422.5765927552,
+    "H0_km_s_Mpc": 67.86230796800406,
+    "r_drag_Mpc": 147.32
+  }
+}
