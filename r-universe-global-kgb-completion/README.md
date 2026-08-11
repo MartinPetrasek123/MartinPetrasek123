@@ -39,9 +39,12 @@ photon--baryon--CDM--massless-neutrino hierarchy. In addition to the declared
 fixed point, the package contains a coarse-to-local conditional grid in
 `alpha` and `Omega_m0`, with the primordial sector and calibration held fixed.
 At its final local grid minimum, a one-dimensional `A_planck` profile is also
-evaluated for both the KGB and matched fixed LCDM spectra. This is not an
-optimization over all cosmological and nuisance parameters, a posterior,
-Bayesian evidence calculation, or a replacement claim for LambdaCDM.
+evaluated for both the KGB and matched fixed LCDM spectra. The KGB action is
+proposed as a physical replacement candidate for the phenomenological LCDM
+description, with LCDM used here only as an observational benchmark. This is
+not an optimization over all cosmological and nuisance parameters, a posterior,
+Bayesian evidence calculation, or a completed demonstration of empirical
+replacement.
 
 The precise physical status and the empirical boundary are in
 `docs/physical_status.md`.

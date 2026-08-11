@@ -52,8 +52,11 @@ Profiling only the Planck absolute-calibration nuisance on the declared
 `A_planck` grid gives minima `1066.1369110626738` for KGB and
 `1055.786875917371` for LCDM, both at `A_planck=1.0025`.  Thus the local
 conditional KGB point is higher by `10.350035145302854` in `-2 ln L` than the
-matched fixed LCDM point.  This is a diagnostic comparison at fixed remaining
-parameters, not a posterior, evidence calculation, or model-selection claim.
+matched fixed LCDM point. The R-Universe KGB action is proposed as a physical
+replacement candidate for the phenomenological LCDM description; LCDM is used
+in this calculation as an observational benchmark. This is a diagnostic
+comparison at fixed remaining parameters, not a posterior, evidence
+calculation, or completed demonstration of empirical replacement.
 
 ## Boundary of the conclusion
 
