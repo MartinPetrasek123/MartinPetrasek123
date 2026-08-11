@@ -8,6 +8,8 @@
 - Reproduction command: `bash scripts/run_all.sh`
 - Native CMB solver: `HEFTCAMB_BIN=/path/to/camb python3 scripts/run_heftcamb_rph.py`
 - Fixed Planck point: `CLIPY_SOURCE=/path/to/clipy PLANCK_2018_BASE=/path/to/plc_3.0 /path/to/python-with-clipy scripts/evaluate_planck_2018_fixed.py --spectra-dir generated/heftcamb/convergence/nodes_601`
+- Conditional KGB profile: `scripts/profile_planck_kgb.py --binary /path/to/camb --template /path/to/HighLExtrapTemplate_lenspotentialCls.dat --clipy-source /path/to/clipy --planck-base /path/to/plc_3.0 --python /path/to/python-with-clipy --alpha-values 0.030 0.035 0.040 0.045 --omega-m0-values 0.30825 0.30850 0.30875 --output generated/planck_profile_final_local`
+- Fixed-spectrum calibration profiles: `scripts/profile_planck_calibration.py --spectra-dir /path/to/spectra --clipy-source /path/to/clipy --planck-base /path/to/plc_3.0 --python /path/to/python-with-clipy --a-planck-values 1.0010 1.0015 1.0020 1.0025 1.0030 --output /path/to/profile-output`
 
 ## Primary scripts
 
@@ -24,6 +26,8 @@
 | `scripts/run_heftcamb_rph.py` | Native CMB and linear-matter solver plus spline convergence |
 | `scripts/evaluate_planck_2018_fixed.py` | Official Planck 2018 fixed-point CMB and lensing likelihood |
 | `scripts/summarize_planck_fixed_runs.py` | Fixed-point likelihood and numerical-convergence audit record |
+| `scripts/profile_planck_kgb.py` | Fixed-input local KGB Planck grid with a matched fixed LCDM reference |
+| `scripts/profile_planck_calibration.py` | One-dimensional Planck absolute-calibration grid at fixed spectra |
 | `scripts/make_figures.py` | Stability figure |
 
 ## Scope discipline
@@ -37,6 +41,15 @@ stored separately under `generated/heftcamb/` and
 full RSD/BAO likelihood, ephemeris fit, parameter posterior, evidence
 calculation, or model comparison.
 
+`generated/planck_profile_final_local/summary.json` records a deliberately
+limited local grid in `alpha` and `Omega_m0`; every sampled KGB point is
+paired with a standard LCDM calculation at the same matter and radiation
+densities and the same fixed primordial inputs. The calibration records vary
+only `A_planck` at fixed spectra. These products are diagnostics, not a
+posterior, an evidence calculation, or an optimization over all cosmological
+and nuisance parameters.
+
 `docs/physical_status.md` records the sharper physical conclusion: this is a
-covariant KGB candidate whose fixed-point CMB calculation does not by itself
-establish an empirical preference or a derivation from RCD.
+covariant KGB candidate whose fixed-point and limited conditional CMB
+calculations do not establish an empirical preference or a derivation from
+RCD.

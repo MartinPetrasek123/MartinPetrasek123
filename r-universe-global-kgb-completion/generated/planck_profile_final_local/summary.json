@@ -1,0 +1,263 @@
+{
+  "model": "R-Universe covariant KGB",
+  "scope": "Declared two-parameter Planck profile grid with fixed primordial and calibration inputs; not a posterior, Bayesian evidence calculation, or full model comparison.",
+  "fixed_inputs": {
+    "omega_b": 0.02237,
+    "A_s": 2.1e-09,
+    "n_s": 0.9649,
+    "tau": 0.0544,
+    "A_planck": 1.0,
+    "rph_spline_nodes": 601
+  },
+  "grid": {
+    "alpha_values": [
+      0.03,
+      0.035,
+      0.04,
+      0.045
+    ],
+    "omega_m0_values": [
+      0.30825,
+      0.3085,
+      0.30875
+    ],
+    "omega_r0": 9.083909e-05,
+    "records": [
+      {
+        "status": "completed",
+        "alpha": 0.03,
+        "omega_m0": 0.30825,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69165916091,
+        "minus_2_log_likelihood": 1076.4472810141508,
+        "components": {
+          "commander_lowl_TT": 22.386006796238973,
+          "lensing": 70.86043119090327,
+          "plik_lite_TTTEEE": 587.1697780697453,
+          "simall_lowl_EE": 396.03106495726325
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 8.210470528593532
+      },
+      {
+        "status": "completed",
+        "alpha": 0.03,
+        "omega_m0": 0.3085,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69140916091,
+        "minus_2_log_likelihood": 1075.625476228178,
+        "components": {
+          "commander_lowl_TT": 22.379283577958972,
+          "lensing": 70.75437220391785,
+          "plik_lite_TTTEEE": 586.463741168391,
+          "simall_lowl_EE": 396.02807927791014
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 9.451082324017761
+      },
+      {
+        "status": "completed",
+        "alpha": 0.03,
+        "omega_m0": 0.30875,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69115916091,
+        "minus_2_log_likelihood": 1075.351054841586,
+        "components": {
+          "commander_lowl_TT": 22.372607196020965,
+          "lensing": 70.64348102427566,
+          "plik_lite_TTTEEE": 586.3006892792263,
+          "simall_lowl_EE": 396.0342773420629
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 10.695731977096784
+      },
+      {
+        "status": "completed",
+        "alpha": 0.035,
+        "omega_m0": 0.30825,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69165916091,
+        "minus_2_log_likelihood": 1076.058145054418,
+        "components": {
+          "commander_lowl_TT": 22.390285959324956,
+          "lensing": 70.53033813403697,
+          "plik_lite_TTTEEE": 587.1064560037927,
+          "simall_lowl_EE": 396.03106495726325
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 7.8213345688607205
+      },
+      {
+        "status": "completed",
+        "alpha": 0.035,
+        "omega_m0": 0.3085,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69140916091,
+        "minus_2_log_likelihood": 1075.4375539316115,
+        "components": {
+          "commander_lowl_TT": 22.38355185166165,
+          "lensing": 70.42155540509194,
+          "plik_lite_TTTEEE": 586.6068705660525,
+          "simall_lowl_EE": 396.02557610880535
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 9.26316002745125
+      },
+      {
+        "status": "completed",
+        "alpha": 0.035,
+        "omega_m0": 0.30875,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69115916091,
+        "minus_2_log_likelihood": 1075.3678127782393,
+        "components": {
+          "commander_lowl_TT": 22.376866639227615,
+          "lensing": 70.30758575848967,
+          "plik_lite_TTTEEE": 586.649083038459,
+          "simall_lowl_EE": 396.0342773420629
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 10.712489913750233
+      },
+      {
+        "status": "completed",
+        "alpha": 0.04,
+        "omega_m0": 0.30825,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69165916091,
+        "minus_2_log_likelihood": 1075.759238544684,
+        "components": {
+          "commander_lowl_TT": 22.394624823610513,
+          "lensing": 70.19912137085475,
+          "plik_lite_TTTEEE": 587.1399162414134,
+          "simall_lowl_EE": 396.02557610880535
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 7.522428059126696
+      },
+      {
+        "status": "completed",
+        "alpha": 0.04,
+        "omega_m0": 0.3085,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69140916091,
+        "minus_2_log_likelihood": 1075.3470998357473,
+        "components": {
+          "commander_lowl_TT": 22.38789047248372,
+          "lensing": 70.08771633889822,
+          "plik_lite_TTTEEE": 586.8459169155599,
+          "simall_lowl_EE": 396.02557610880535
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 9.172705931586961
+      },
+      {
+        "status": "completed",
+        "alpha": 0.04,
+        "omega_m0": 0.30875,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69115916091,
+        "minus_2_log_likelihood": 1075.481185974569,
+        "components": {
+          "commander_lowl_TT": 22.381128081123506,
+          "lensing": 69.9712606012707,
+          "plik_lite_TTTEEE": 587.0945199501118,
+          "simall_lowl_EE": 396.0342773420629
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 10.825863110079808
+      },
+      {
+        "status": "completed",
+        "alpha": 0.045,
+        "omega_m0": 0.30825,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69165916091,
+        "minus_2_log_likelihood": 1075.559354629895,
+        "components": {
+          "commander_lowl_TT": 22.398942401906083,
+          "lensing": 69.86689583622041,
+          "plik_lite_TTTEEE": 587.2679402829633,
+          "simall_lowl_EE": 396.02557610880535
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 7.322544144337826
+      },
+      {
+        "status": "completed",
+        "alpha": 0.045,
+        "omega_m0": 0.3085,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69140916091,
+        "minus_2_log_likelihood": 1075.3512889676751,
+        "components": {
+          "commander_lowl_TT": 22.392152254775,
+          "lensing": 69.75309580979393,
+          "plik_lite_TTTEEE": 587.1804647943009,
+          "simall_lowl_EE": 396.02557610880535
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 9.176895063514849
+      },
+      {
+        "status": "completed",
+        "alpha": 0.045,
+        "omega_m0": 0.30875,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69115916091,
+        "minus_2_log_likelihood": 1075.6856459099322,
+        "components": {
+          "commander_lowl_TT": 22.385414633336097,
+          "lensing": 69.63385558413904,
+          "plik_lite_TTTEEE": 587.6320983503942,
+          "simall_lowl_EE": 396.0342773420629
+        },
+        "delta_minus_2_log_likelihood_vs_matched_lcdm": 11.030323045443083
+      }
+    ],
+    "completed_points": 12,
+    "grid_minimum": {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "minus_2_log_likelihood": 1075.3470998357473,
+      "components": {
+        "commander_lowl_TT": 22.38789047248372,
+        "lensing": 70.08771633889822,
+        "plik_lite_TTTEEE": 586.8459169155599,
+        "simall_lowl_EE": 396.02557610880535
+      },
+      "delta_minus_2_log_likelihood_vs_matched_lcdm": 9.172705931586961
+    }
+  },
+  "lcdm_matched_fixed_references": [
+    {
+      "status": "completed",
+      "omega_m0": 0.30825,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1068.2368104855573,
+      "components": {
+        "commander_lowl_TT": 23.617617396627736,
+        "lensing": 56.550988675372025,
+        "plik_lite_TTTEEE": 592.0217374801189,
+        "simall_lowl_EE": 396.0464669334385
+      }
+    },
+    {
+      "status": "completed",
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1066.1743939041603,
+      "components": {
+        "commander_lowl_TT": 23.607320842814943,
+        "lensing": 56.466040689823664,
+        "plik_lite_TTTEEE": 590.0546657173886,
+        "simall_lowl_EE": 396.04636665413324
+      }
+    },
+    {
+      "status": "completed",
+      "omega_m0": 0.30875,
+      "omega_r0": 9.083909e-05,
+      "minus_2_log_likelihood": 1064.655322864489,
+      "components": {
+        "commander_lowl_TT": 23.59707206941181,
+        "lensing": 56.37931122762953,
+        "plik_lite_TTTEEE": 588.6325729133146,
+        "simall_lowl_EE": 396.04636665413324
+      }
+    }
+  ],
+  "grid_minimum_minus_matched_lcdm_fixed_delta_minus_2_log_likelihood": 9.172705931586961
+}

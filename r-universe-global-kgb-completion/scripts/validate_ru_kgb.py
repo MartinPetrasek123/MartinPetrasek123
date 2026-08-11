@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 from pathlib import Path
@@ -13,6 +14,27 @@ from ru_kgb import RUKGBParams, background, trajectory
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def parse_args() -> argparse.Namespace:
+    defaults = RUKGBParams()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--omega-m0", type=float, default=defaults.omega_m0)
+    parser.add_argument("--omega-r0", type=float, default=defaults.omega_r0)
+    parser.add_argument("--alpha", type=float, default=defaults.alpha)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=ROOT / "generated" / "validation.json",
+        help="JSON validation output.",
+    )
+    parser.add_argument(
+        "--trajectory-output",
+        type=Path,
+        default=ROOT / "generated" / "ru_kgb_trajectory.csv",
+        help="CSV trajectory output.",
+    )
+    return parser.parse_args()
 
 
 def scaled(value: float, scale: float) -> float:
@@ -94,7 +116,12 @@ def high_precision_action_gate(params: RUKGBParams) -> float:
 
 
 def main() -> None:
-    params = RUKGBParams()
+    args = parse_args()
+    params = RUKGBParams(
+        omega_m0=args.omega_m0,
+        omega_r0=args.omega_r0,
+        alpha=args.alpha,
+    )
     params.validate()
     rows = trajectory(params)
     observed_rows = [row for row in rows if row["a"] <= 1.0]
@@ -141,7 +168,7 @@ def main() -> None:
     assert max_observed_match == 0.0
     assert abs(future["E"] / future_next["E"] - 1.0) < 2.0e-5
 
-    output = ROOT / "generated" / "ru_kgb_trajectory.csv"
+    output = args.trajectory_output
     output.parent.mkdir(parents=True, exist_ok=True)
     fields = [
         "a", "z", "phi_over_Mpl", "a_effective", "E", "E_N", "response_exponent",
@@ -193,7 +220,8 @@ def main() -> None:
             "a compiled perturbation module and public CMB likelihood data."
         ),
     }
-    (ROOT / "generated" / "validation.json").write_text(json.dumps(summary, indent=2))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(summary, indent=2))
 
     print("R-Universe global KGB completion validation OK")
     print(f"max relative background residual = {max_background:.3e}")

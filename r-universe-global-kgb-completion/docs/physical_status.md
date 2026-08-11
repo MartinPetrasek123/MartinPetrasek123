@@ -35,12 +35,34 @@ are not observational inferences. The regular early-time braiding closure
 is not a sampled cosmological parameter or a derivation from the RCD capacity
 field.
 
+## Conditional Planck profile
+
+The package now includes a declared coarse-to-local grid in the two action
+parameters `alpha` and `Omega_m0`, using native H-EFTCAMB spectra and the
+official Planck 2018 Plik-lite TTTEEE, Commander, SimAll, and lensing
+likelihood objects.  The final local 601-node grid has its minimum at
+`alpha=0.04`, `Omega_m0=0.3085`, with
+`-2 ln L = 1075.3470998357473` at fixed `A_planck=1`.  Its independent action
+validation is recorded in
+`generated/planck_profile_final_local/best_point_action_validation.json`.
+
+For the same `Omega_m0`, radiation, primordial inputs, and fixed spectra, the
+standard LCDM reference has `-2 ln L = 1066.1743939041603` at `A_planck=1`.
+Profiling only the Planck absolute-calibration nuisance on the declared
+`A_planck` grid gives minima `1066.1369110626738` for KGB and
+`1055.786875917371` for LCDM, both at `A_planck=1.0025`.  Thus the local
+conditional KGB point is higher by `10.350035145302854` in `-2 ln L` than the
+matched fixed LCDM point.  This is a diagnostic comparison at fixed remaining
+parameters, not a posterior, evidence calculation, or model-selection claim.
+
 ## Boundary of the conclusion
 
 These computations establish a globally specified, classically regular
 covariant scalar-tensor candidate on the stated branch. A native
-Einstein--Boltzmann evolution and an official Planck 2018 fixed-point CMB plus
-lensing likelihood have been executed. They do **not** derive this KGB action
-from the primitive RCD capacity field, provide a Planck posterior or model
-comparison, perform a non-linear screening solution, or supply a quantum UV
-completion. Those remaining statements are not implied by this document.
+Einstein--Boltzmann evolution, an official Planck 2018 fixed-point CMB plus
+lensing likelihood, and a limited conditional two-parameter grid have been
+executed. They do **not** derive this KGB action from the primitive RCD
+capacity field, provide a Planck posterior, optimize the full cosmological and
+nuisance parameter space, perform a non-linear screening solution, or supply
+a quantum UV completion. Those remaining statements are not implied by this
+document.

@@ -39,12 +39,16 @@ def spline_lines(prefix: str, a: np.ndarray, values: np.ndarray, null_value: flo
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    defaults = RUKGBParams()
     parser.add_argument("--points", type=int, default=401)
     parser.add_argument("--a-min", type=float, default=1.0e-10)
     parser.add_argument("--a-max", type=float, default=1.01)
     parser.add_argument("--grid", choices=("linear", "power", "log"), default="power")
     parser.add_argument("--power", type=float, default=3.0)
     parser.add_argument("--turn-on", type=float, default=1.0e-4)
+    parser.add_argument("--omega-m0", type=float, default=defaults.omega_m0)
+    parser.add_argument("--omega-r0", type=float, default=defaults.omega_r0)
+    parser.add_argument("--alpha", type=float, default=defaults.alpha)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     if args.points < 6:
@@ -56,7 +60,12 @@ def main() -> None:
     if not args.a_min < args.turn_on < 1.0:
         raise ValueError("require a-min < turn-on < 1")
 
-    params = RUKGBParams()
+    params = RUKGBParams(
+        omega_m0=args.omega_m0,
+        omega_r0=args.omega_r0,
+        alpha=args.alpha,
+    )
+    params.validate()
     # RPH differentiates a cubic spline with respect to a itself.  A logarithmic
     # spacing therefore creates artificial derivatives at early times; use a
     # uniform a grid and calculate every node from the exact KGB construction.
@@ -200,6 +209,10 @@ def main() -> None:
                 f"grid_power = {args.power:.17e}",
                 f"perturbation_turn_on_a = {args.turn_on:.17e}",
                 f"H0_from_Omega_r_km_s_Mpc = {100.0 * h:.17e}",
+                f"Omega_m0 = {params.omega_m0:.17e}",
+                f"Omega_r0 = {params.omega_r0:.17e}",
+                f"Omega_R0 = {params.omega_R0:.17e}",
+                f"alpha = {params.alpha:.17e}",
                 f"ombh2 = {ombh2:.17e}",
                 f"omch2 = {omch2:.17e}",
                 "neutrino_sector = three massless standard neutrinos",

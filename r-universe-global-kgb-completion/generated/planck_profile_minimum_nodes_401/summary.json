@@ -1,0 +1,65 @@
+{
+  "model": "R-Universe covariant KGB",
+  "scope": "Declared two-parameter Planck profile grid with fixed primordial and calibration inputs; not a posterior, Bayesian evidence calculation, or full model comparison.",
+  "fixed_inputs": {
+    "omega_b": 0.02237,
+    "A_s": 2.1e-09,
+    "n_s": 0.9649,
+    "tau": 0.0544,
+    "A_planck": 1.0,
+    "rph_spline_nodes": 401
+  },
+  "grid": {
+    "alpha_values": [
+      0.04
+    ],
+    "omega_m0_values": [
+      0.3085
+    ],
+    "omega_r0": 9.083909e-05,
+    "records": [
+      {
+        "status": "completed",
+        "alpha": 0.04,
+        "omega_m0": 0.3085,
+        "omega_r0": 9.083909e-05,
+        "omega_R0": 0.69140916091,
+        "minus_2_log_likelihood": 1075.3471051903316,
+        "components": {
+          "commander_lowl_TT": 22.387886156608374,
+          "lensing": 70.08772039412659,
+          "plik_lite_TTTEEE": 586.8459225307912,
+          "simall_lowl_EE": 396.02557610880535
+        }
+      }
+    ],
+    "completed_points": 1,
+    "grid_minimum": {
+      "status": "completed",
+      "alpha": 0.04,
+      "omega_m0": 0.3085,
+      "omega_r0": 9.083909e-05,
+      "omega_R0": 0.69140916091,
+      "minus_2_log_likelihood": 1075.3471051903316,
+      "components": {
+        "commander_lowl_TT": 22.387886156608374,
+        "lensing": 70.08772039412659,
+        "plik_lite_TTTEEE": 586.8459225307912,
+        "simall_lowl_EE": 396.02557610880535
+      }
+    }
+  },
+  "lcdm_matched_fixed_reference": {
+    "status": "completed",
+    "omega_m0": 0.3022734375,
+    "omega_r0": 9.083909e-05,
+    "minus_2_log_likelihood": 1286.8021105654195,
+    "components": {
+      "commander_lowl_TT": 23.871444106784452,
+      "lensing": 57.133294844952005,
+      "plik_lite_TTTEEE": 809.7807744857041,
+      "simall_lowl_EE": 396.016597127979
+    }
+  },
+  "grid_minimum_minus_lcdm_fixed_delta_minus_2_log_likelihood": -211.45500537508792
+}

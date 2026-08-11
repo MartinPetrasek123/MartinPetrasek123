@@ -1,0 +1,71 @@
+{
+  "scope": "One-dimensional A_planck nuisance profile at fixed cosmological spectra; not a cosmological posterior or a model comparison.",
+  "records": [
+    {
+      "status": "completed",
+      "A_planck": 1.001,
+      "minus_2_log_likelihood": 1059.454674327746,
+      "components": {
+        "commander_lowl_TT": 23.453373979853666,
+        "lensing": 54.09556844352847,
+        "plik_lite_TTTEEE": 585.8621341550734,
+        "simall_lowl_EE": 396.04359774929054
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.0015,
+      "minus_2_log_likelihood": 1057.3925820253685,
+      "components": {
+        "commander_lowl_TT": 23.37763582501276,
+        "lensing": 52.937654764276346,
+        "plik_lite_TTTEEE": 585.0209709338275,
+        "simall_lowl_EE": 396.0563205022517
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.002,
+      "minus_2_log_likelihood": 1056.1703856151425,
+      "components": {
+        "commander_lowl_TT": 23.302768873118225,
+        "lensing": 51.79785295047163,
+        "plik_lite_TTTEEE": 585.0115463346901,
+        "simall_lowl_EE": 396.0582174568626
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.0025,
+      "minus_2_log_likelihood": 1055.786875917371,
+      "components": {
+        "commander_lowl_TT": 23.22865057365516,
+        "lensing": 50.67608607333524,
+        "plik_lite_TTTEEE": 585.8301324860547,
+        "simall_lowl_EE": 396.0520067843257
+      }
+    },
+    {
+      "status": "completed",
+      "A_planck": 1.003,
+      "minus_2_log_likelihood": 1056.2626250935189,
+      "components": {
+        "commander_lowl_TT": 23.155192532992203,
+        "lensing": 49.572277517713786,
+        "plik_lite_TTTEEE": 587.4730169879399,
+        "simall_lowl_EE": 396.0621380548729
+      }
+    }
+  ],
+  "minimum": {
+    "status": "completed",
+    "A_planck": 1.0025,
+    "minus_2_log_likelihood": 1055.786875917371,
+    "components": {
+      "commander_lowl_TT": 23.22865057365516,
+      "lensing": 50.67608607333524,
+      "plik_lite_TTTEEE": 585.8301324860547,
+      "simall_lowl_EE": 396.0520067843257
+    }
+  }
+}
