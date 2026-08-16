@@ -26,6 +26,7 @@ Outputs:
 - `generated/planck_profile_final_local/best_point_action_validation.json` - action-level validation at the local grid minimum;
 - `generated/planck_profile_final_local/calibration_kgb_refined/summary.json` and `calibration_lcdm_refined/summary.json` - fixed-spectrum Planck-calibration profiles;
 - `generated/kgb_multprobe_conditional_summary.json` - ledger joining the executed fixed-input Planck, Pantheon+, DESI DR2 BAO, chronometer, PPN, and native-RSD-audit records without conflating them into a global posterior;
+- `generated/kgb_joint_posterior_production_seeded_v4/` - the released four-chain exact KGB posterior, its production and deep point-cache audits, the immutable execution contract, and the generated manuscript block;
 - `generated/rsd_native_best_point/rsd_native_dz_0p005.json` and `generated/rsd_native_best_point_dz_0p0025/rsd_native_dz_0p0025.json` - native H-EFTCAMB `f sigma8` audits and finite-difference convergence records;
 - `generated/ru_kgb_stability.pdf` and `.png` - stability figure.
 
@@ -54,3 +55,26 @@ empirical replacement is asserted.
 
 The precise physical status and the empirical boundary are in
 `docs/physical_status.md`.
+
+## Exact posterior release
+
+`generated/kgb_joint_posterior_production_seeded_v4/` is the public,
+hash-preserving record for the reported exact four-chain KGB posterior. It
+contains the four chains, their saved Cobaya inputs and checkpoints, the
+production summary, the independent production-bundle audit, the deep
+point-cache audit, and the TeX block used by the manuscript. The release also
+contains the exact configuration, proposal covariance, executable sources, and
+H-EFTCAMB template recorded by the execution contract.
+
+Verify the released posterior without modifying any artifact:
+
+```sh
+PYTHONPATH=. python3 inference/verify_kgb_exact_posterior_release.py
+```
+
+The verifier checks the published SHA-256 values, regenerates the posterior
+summary from the four released chains, validates the production contract, and
+checks the source hashes recorded for the generator, Planck wrapper, late-time
+evaluator, and joint evaluator. See
+`docs/exact_posterior_release.md` for the precise scope and external
+dependencies.

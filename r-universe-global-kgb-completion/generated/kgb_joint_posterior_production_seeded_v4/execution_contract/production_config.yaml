@@ -1,0 +1,60 @@
+# Final immutable contract for the exact covariant-KGB posterior campaign.
+#
+# It has an independent cache root.  Cache keys additionally include hashes of
+# every executable likelihood component, so no pilot or prior source revision
+# can be reused by this campaign.
+likelihood:
+  likelihoods.kgb_joint_likelihood.KGBJointLikelihood:
+    source_root: /Users/mpetr/Desktop/R_Universe_Global_KGB_Completion
+    output_root: /Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/kgb_joint_chain_points_production_final
+    python_executable: /Users/mpetr/Documents/Codex/2026-08-09/m/work/toolchains/rfg-inference/bin/python3.11
+    heftcamb_binary: /Users/mpetr/Documents/Codex/2026-08-09/m/work/EFTCAMB/fortran/camb
+    heftcamb_template: /Users/mpetr/Documents/Codex/2026-08-09/m/work/EFTCAMB/fortran/HighLExtrapTemplate_lenspotentialCls.dat
+    clipy_source: /Users/mpetr/Documents/Codex/2026-08-09/m/work/planck2018_packages/code/planck/clipy
+    planck_base: /Users/mpetr/Documents/Codex/2026-08-09/m/work/planck2018_packages/data/planck_2018/baseline/plc_3.0
+    data_root: /Users/mpetr/Documents/Codex/2026-08-09/m/work/github_profile/r-universe-complete-chain/data/raw
+    spline_points: 601
+    late_time_integration_nodes: 16385
+params:
+  alpha:
+    prior: {min: 0.0, max: 0.95}
+    ref: {dist: norm, loc: 0.40, scale: 0.12}
+    proposal: 0.001
+  omega_m0:
+    prior: {min: 0.25, max: 0.38}
+    ref: {dist: norm, loc: 0.305, scale: 0.008}
+    proposal: 0.0002
+  omega_r0:
+    prior: {min: 7.5e-5, max: 1.15e-4}
+    ref: {dist: norm, loc: 9.15e-5, scale: 2.0e-6}
+    proposal: 1.0e-7
+  ombh2:
+    prior: {min: 0.020, max: 0.025}
+    ref: {dist: norm, loc: 0.0225, scale: 0.00030}
+    proposal: 5.0e-5
+  logA:
+    prior: {min: 2.7, max: 3.4}
+    ref: {dist: norm, loc: 3.00, scale: 0.030}
+    proposal: 0.005
+  ns:
+    prior: {min: 0.90, max: 1.05}
+    ref: {dist: norm, loc: 0.970, scale: 0.010}
+    proposal: 0.002
+  tau:
+    prior: {min: 0.01, max: 0.12}
+    ref: {dist: norm, loc: 0.040, scale: 0.010}
+    proposal: 0.001
+  A_planck:
+    prior: {min: 0.95, max: 1.05}
+    ref: {dist: norm, loc: 1.000, scale: 0.005}
+    proposal: 0.0005
+sampler:
+  mcmc:
+    covmat: /Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/kgb_joint_hessian_calibrated/step_1.0_proposal.covmat
+    proposal_scale: 2.4
+    max_samples: 4000
+    learn_proposal: true
+    learn_every: 40
+    Rminus1_stop: 0.001
+    Rminus1_cl_stop: 0.01
+    max_tries: 1000

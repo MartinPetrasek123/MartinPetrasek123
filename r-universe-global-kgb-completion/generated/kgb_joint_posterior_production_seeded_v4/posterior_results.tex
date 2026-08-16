@@ -1,0 +1,52 @@
+% Generated from production_summary.json; do not edit numerical values by hand.
+% production_summary_sha256: 50ab83daf9572e3c7b694d0dbe363845a834a2718370e3c56700d75e5669c048
+\subsection{Exact joint posterior and convergence diagnostic}
+\label{sec:kgb-joint-posterior}
+The covariant KGB realization was sampled with 4 independent exact
+chains. Every likelihood evaluation regenerated the R-Universe KGB response,
+ran H--EFTCAMB, and evaluated Planck 2018 CMB plus lensing (including the
+Gaussian absolute-calibration factor for $A_{\rm Planck}$), Pantheon+,
+DESI DR2 BAO, and cosmic-chronometer data. The RSD compilation is not included:
+the available rows do not supply the survey covariance, window, AP mapping, and
+nonlinear nuisance likelihood required for a valid RSD inference. A per-chain
+25\% burn-in is removed before forming the reported marginal intervals.
+
+All rank-normalized, folded split-$\hat R$ diagnostics are below
+1.01; the largest is $\hat R=1.0066$. The
+rank-normalized bulk and 5\%/95\% tail ESS values are each at least
+400 and 400, respectively;
+their minima are 690.2 and 1214.6. The retained sample set contains 29256 weighted MCMC states. The smallest
+retained value is $-2\ln\mathcal L=2451.92$; it is a sampled
+likelihood ordinate, not a Bayesian evidence or a model-selection statistic.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Marginal KGB posterior summaries from the converged exact
+Planck--Pantheon+--DESI DR2 BAO--chronometer chain set. The interval is the
+equal-tail 68\% credible interval after the declared burn-in removal.}
+\label{tab:kgb-joint-posterior}
+\begin{tabular}{lccccc}
+\hline
+Parameter & Median & 68\% interval & $\hat R$ & bulk ESS & tail ESS \\
+\hline
+$\alpha$ & $0.420905$ & $[0.276975, 0.579224]$ & $1.0023$ & $823.9$ & $1420.8$ \\
+$\Omega_{m0}$ & $0.306403$ & $[0.300921, 0.312209]$ & $1.0035$ & $959.9$ & $1577.5$ \\
+$\Omega_{r0}$ & $9.21285\times10^{-5}$ & $[9.05209\times10^{-5}, 9.38543\times10^{-5}]$ & $1.0030$ & $926.9$ & $1489.3$ \\
+$\omega_b$ & $0.022495$ & $[0.022365, 0.022627]$ & $1.0056$ & $690.2$ & $1330.0$ \\
+$\ln(10^{10}A_s)$ & $3.00121$ & $[2.98266, 3.01686]$ & $1.0035$ & $944.2$ & $1429.1$ \\
+$n_s$ & $0.97077$ & $[0.967194, 0.974032]$ & $1.0029$ & $779.4$ & $1214.6$ \\
+$\tau$ & $0.0399769$ & $[0.0300871, 0.0475536]$ & $1.0034$ & $938.2$ & $1341.3$ \\
+$A_{\rm Planck}$ & $0.998996$ & $[0.996612, 1.0016]$ & $1.0066$ & $965.0$ & $1541.9$ \\
+\hline
+\end{tabular}
+\end{table}
+
+The calculation is reproducible from the saved chain files,
+\texttt{inference/run\_kgb\_joint\_chain.py},
+\texttt{inference/analyze\_kgb\_joint\_chains.py}, and the machine-readable
+\texttt{production\_summary.json} together with the hash-bound
+\texttt{production\_audit.json}. It establishes a converged posterior only
+for the explicitly stated KGB action and probe set; it does not constitute a
+Bayesian evidence comparison with $\Lambda$CDM or an inference for the distinct
+RFG-R and RFG-R$\Xi$ actions.

@@ -49,6 +49,10 @@ def main() -> None:
     parser.add_argument("--omega-m0", type=float, default=defaults.omega_m0)
     parser.add_argument("--omega-r0", type=float, default=defaults.omega_r0)
     parser.add_argument("--alpha", type=float, default=defaults.alpha)
+    parser.add_argument("--ombh2", type=float, default=0.02237, help="physical baryon density")
+    parser.add_argument("--scalar-amp", type=float, default=2.1e-9, help="primordial scalar amplitude at the pivot")
+    parser.add_argument("--scalar-spectral-index", type=float, default=0.9649, help="primordial scalar tilt")
+    parser.add_argument("--tau", type=float, default=0.0544, help="reionization optical depth")
     parser.add_argument(
         "--transfer-redshifts",
         type=float,
@@ -82,6 +86,14 @@ def main() -> None:
         alpha=args.alpha,
     )
     params.validate()
+    if not (args.ombh2 > 0.0):
+        raise ValueError("ombh2 must be positive")
+    if not (args.scalar_amp > 0.0):
+        raise ValueError("scalar-amp must be positive")
+    if not (0.0 < args.scalar_spectral_index < 2.0):
+        raise ValueError("scalar-spectral-index must lie in (0, 2)")
+    if not (0.0 < args.tau < 1.0):
+        raise ValueError("tau must lie in (0, 1)")
     # RPH differentiates a cubic spline with respect to a itself.  A logarithmic
     # spacing therefore creates artificial derivatives at early times; use a
     # uniform a grid and calculate every node from the exact KGB construction.
@@ -102,7 +114,7 @@ def main() -> None:
     # ru_kgb.py and the action validation use the Bellini--Sawicki convention.
     alpha_b_rph = -0.5 * alpha_b_bs
     h = radiation_h(params)
-    ombh2 = 0.02237
+    ombh2 = args.ombh2
     ommh2 = params.omega_m0 * h * h
     omch2 = ommh2 - ombh2
     if omch2 <= 0.0:
@@ -164,13 +176,13 @@ def main() -> None:
         "massive_neutrinos = 0",
         "initial_power_num = 1",
         "pivot_scalar = 0.05",
-        "scalar_amp(1) = 2.1e-9",
-        "scalar_spectral_index(1) = 0.9649",
+        f"scalar_amp(1) = {args.scalar_amp:.17e}",
+        f"scalar_spectral_index(1) = {args.scalar_spectral_index:.17e}",
         "scalar_nrun(1) = 0",
         "scalar_nrunrun(1) = 0",
         "reionization = T",
         "re_use_optical_depth = T",
-        "re_optical_depth = 0.0544",
+        f"re_optical_depth = {args.tau:.17e}",
         "RECFAST_fudge = 1.14",
         "RECFAST_fudge_He = 0.86",
         "RECFAST_Heswitch = 6",
@@ -248,6 +260,9 @@ def main() -> None:
                 f"alpha = {params.alpha:.17e}",
                 f"ombh2 = {ombh2:.17e}",
                 f"omch2 = {omch2:.17e}",
+                f"scalar_amp = {args.scalar_amp:.17e}",
+                f"scalar_spectral_index = {args.scalar_spectral_index:.17e}",
+                f"tau = {args.tau:.17e}",
                 "neutrino_sector = three massless standard neutrinos",
                 "braiding_convention = RPH alpha_B = -BelliniSawicki alpha_B / 2",
                 "primordial_sector = fixed spectrum gate, not an inferred likelihood point",

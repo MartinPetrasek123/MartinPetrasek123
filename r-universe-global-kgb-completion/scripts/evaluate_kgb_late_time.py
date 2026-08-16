@@ -29,7 +29,7 @@ from scipy.integrate import cumulative_trapezoid
 from scipy.linalg import cho_factor, cho_solve
 
 from generate_heftcamb_rph import radiation_h
-from ru_kgb import RUKGBParams, solve_E
+from ru_kgb import RUKGBParams, solve_E_array
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -152,7 +152,7 @@ def load_chronometers(data_root: Path) -> dict[str, Any]:
 
 
 def e_of_z(z: np.ndarray, params: RUKGBParams) -> np.ndarray:
-    return np.fromiter((solve_E(1.0 / (1.0 + float(value)), params) for value in z), dtype=float, count=len(z))
+    return solve_E_array(1.0 / (1.0 + z), params)
 
 
 def distance_grid(params: RUKGBParams, z_max: float, nodes: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:

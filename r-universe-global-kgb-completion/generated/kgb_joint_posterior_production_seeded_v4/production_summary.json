@@ -1,0 +1,129 @@
+{
+  "model": "R-Universe covariant KGB",
+  "scope": "Exact-chain summary after an explicitly declared per-chain burn-in removal. This is a posterior result only when the reported independent-chain convergence diagnostics are satisfactory.",
+  "diagnostic_method": {
+    "split_rhat": "rank-normalized folded split-Rhat",
+    "bulk_ess": "rank-normalized split-chain ESS with Geyer's initial-positive monotone sequence",
+    "tail_ess": "minimum of 5-percent and 95-percent indicator ESS with Geyer's initial-positive monotone sequence"
+  },
+  "publication_gate": {
+    "rank_normalized_split_rhat_less_than": 1.01,
+    "minimum_bulk_ess": 400.0,
+    "minimum_tail_ess": 400.0
+  },
+  "chains": [
+    "generated/kgb_joint_posterior_production_seeded_v4/chain_05.1.txt",
+    "generated/kgb_joint_posterior_production_seeded_v4/chain_06.1.txt",
+    "generated/kgb_joint_posterior_production_seeded_v4/chain_07.1.txt",
+    "generated/kgb_joint_posterior_production_seeded_v4/chain_08.1.txt"
+  ],
+  "burn_in_fraction": 0.25,
+  "per_chain_total_weight": [
+    9630,
+    9575,
+    9750,
+    10050
+  ],
+  "per_chain_retained_weight": [
+    7223,
+    7182,
+    7313,
+    7538
+  ],
+  "combined_retained_weight": 29256,
+  "minimum_minus_2_log_likelihood_in_retained_samples": 2451.9217,
+  "maximum_rank_normalized_split_rhat": 1.0065529928509793,
+  "minimum_bulk_ess": 690.1833066566973,
+  "minimum_tail_ess": 1214.5866032197273,
+  "passes_publication_gate": true,
+  "parameters": {
+    "alpha": {
+      "mean": 0.4226834518463221,
+      "standard_deviation": 0.14951419873667846,
+      "median": 0.42090505,
+      "lower_68_percent": 0.276974932,
+      "upper_68_percent": 0.5792240280000001,
+      "split_rhat": 1.001311480231618,
+      "rank_normalized_split_rhat": 1.0023384852420378,
+      "bulk_ess": 823.8684617316259,
+      "tail_ess": 1420.7892053897665
+    },
+    "omega_m0": {
+      "mean": 0.30651220508818705,
+      "standard_deviation": 0.005610196157484595,
+      "median": 0.306403395,
+      "lower_68_percent": 0.3009213,
+      "upper_68_percent": 0.31220918,
+      "split_rhat": 1.0034669475590232,
+      "rank_normalized_split_rhat": 1.003493986091063,
+      "bulk_ess": 959.8706300707629,
+      "tail_ess": 1577.4759149362967
+    },
+    "omega_r0": {
+      "mean": 9.216283920306947e-05,
+      "standard_deviation": 1.6622452881360031e-06,
+      "median": 9.21284745e-05,
+      "lower_68_percent": 9.0520858e-05,
+      "upper_68_percent": 9.3854319e-05,
+      "split_rhat": 1.0029636160750508,
+      "rank_normalized_split_rhat": 1.0029563848735443,
+      "bulk_ess": 926.8574484495031,
+      "tail_ess": 1489.2561169017301
+    },
+    "ombh2": {
+      "mean": 0.02249474479515313,
+      "standard_deviation": 0.0001310401467091301,
+      "median": 0.022495,
+      "lower_68_percent": 0.022365014,
+      "upper_68_percent": 0.0226269854,
+      "split_rhat": 1.0055751596293647,
+      "rank_normalized_split_rhat": 1.0055885867394945,
+      "bulk_ess": 690.1833066566973,
+      "tail_ess": 1330.0011338633883
+    },
+    "logA": {
+      "mean": 2.999967081887476,
+      "standard_deviation": 0.017492908953294962,
+      "median": 3.0012134,
+      "lower_68_percent": 2.9826618,
+      "upper_68_percent": 3.0168581,
+      "split_rhat": 1.0036892245553897,
+      "rank_normalized_split_rhat": 1.0034878821926414,
+      "bulk_ess": 944.2007399781837,
+      "tail_ess": 1429.064341225658
+    },
+    "ns": {
+      "mean": 0.9707282820074515,
+      "standard_deviation": 0.0034521720735005233,
+      "median": 0.97076994,
+      "lower_68_percent": 0.96719402,
+      "upper_68_percent": 0.97403208,
+      "split_rhat": 1.0029488424978308,
+      "rank_normalized_split_rhat": 1.0029185650206554,
+      "bulk_ess": 779.4315598994298,
+      "tail_ess": 1214.5866032197273
+    },
+    "tau": {
+      "mean": 0.03903877073253349,
+      "standard_deviation": 0.008977153536558237,
+      "median": 0.0399769175,
+      "lower_68_percent": 0.03008708,
+      "upper_68_percent": 0.047553572,
+      "split_rhat": 1.003693733796381,
+      "rank_normalized_split_rhat": 1.0033607363046944,
+      "bulk_ess": 938.2150672524683,
+      "tail_ess": 1341.2561219157096
+    },
+    "A_planck": {
+      "mean": 0.9990789417329778,
+      "standard_deviation": 0.0025001528455879623,
+      "median": 0.99899613,
+      "lower_68_percent": 0.99661222,
+      "upper_68_percent": 1.0015977,
+      "split_rhat": 1.0066299787238455,
+      "rank_normalized_split_rhat": 1.0065529928509793,
+      "bulk_ess": 964.9871590538688,
+      "tail_ess": 1541.8966568286414
+    }
+  }
+}

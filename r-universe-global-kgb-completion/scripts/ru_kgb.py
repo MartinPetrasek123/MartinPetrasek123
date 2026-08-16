@@ -119,6 +119,57 @@ def solve_E(a: float, params: RUKGBParams, iterations: int = 260) -> float:
     return 0.5 * (lo + hi)
 
 
+def solve_E_array(a: np.ndarray, params: RUKGBParams, iterations: int = 260) -> np.ndarray:
+    """Solve the same positive background root for an array of scale factors.
+
+    This is a vectorized implementation of the scalar bracket-and-bisection
+    routine above.  It performs the same fixed number of bisection updates at
+    each point, so it changes evaluation throughput rather than the defining
+    R-alpha equation or its numerical tolerance.
+    """
+    params.validate()
+    values = np.asarray(a, dtype=float)
+    if np.any(~np.isfinite(values)) or np.any(values <= 0.0):
+        raise ValueError("all scale factors must be finite and positive")
+    if iterations < 1:
+        raise ValueError("iterations must be positive")
+
+    a_sat = params.a_saturation
+    effective = np.empty_like(values)
+    observed = values <= 1.0
+    saturated = values >= a_sat
+    transition = ~(observed | saturated)
+    effective[observed] = values[observed]
+    effective[saturated] = a_sat
+    if np.any(transition):
+        a_transition = values[transition]
+        t = (a_transition - 1.0) / (a_sat - 1.0)
+        left = np.exp(-1.0 / t)
+        right = np.exp(-1.0 / (1.0 - t))
+        effective[transition] = a_transition + (a_sat - a_transition) * left / (left + right)
+
+    exponent = params.alpha * effective
+    matter = params.omega_m0 * values**-3
+    radiation = params.omega_r0 * values**-4
+    sources = matter + radiation
+
+    def residual(e: np.ndarray) -> np.ndarray:
+        return e * e - params.omega_R0 * np.power(e, exponent) - sources
+
+    lo = np.zeros_like(values)
+    hi = np.maximum(1.0, np.sqrt(sources + params.omega_R0) + 1.0)
+    unbracketed = residual(hi) <= 0.0
+    while np.any(unbracketed):
+        hi[unbracketed] *= 2.0
+        unbracketed = residual(hi) <= 0.0
+    for _ in range(iterations):
+        mid = 0.5 * (lo + hi)
+        positive = residual(mid) > 0.0
+        hi = np.where(positive, mid, hi)
+        lo = np.where(positive, lo, mid)
+    return 0.5 * (lo + hi)
+
+
 def background(a: float, params: RUKGBParams) -> dict[str, float]:
     """Evaluate the exact KGB reconstruction in Mpl=H0=1 units."""
     params.validate()

@@ -1,0 +1,34 @@
+{
+  "model": "R-Universe covariant KGB",
+  "purpose": "independent exact posterior production campaign",
+  "config": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/inference/kgb_joint_planck_late_production_final.yaml",
+  "config_sha256": "1ca7fd491e2c4018a27638bb90d66b1738ccd21a33c186ef274cab3a59b701f6",
+  "initial_states": 1000,
+  "extension_states": 1000,
+  "maximum_states": 4000,
+  "maximum_parallel": 4,
+  "omp_num_threads_per_solver": 2,
+  "openblas_num_threads": 1,
+  "seed_base": 292000,
+  "sampler_rng": {
+    "engine": "Cobaya native MCMC random generator",
+    "chain_seeds": {
+      "5": 292005,
+      "6": 292006,
+      "7": 292007,
+      "8": 292008
+    },
+    "resume_policy": "The seed in each saved Cobaya input is verified before a resumed extension."
+  },
+  "threading_verification": {
+    "source": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/kgb_threading_verification_seeded_omp2_20260814/threading_verification_omp2.json",
+    "sha256": "212cceb1d5d755dbdacbf6e14656fc821e8962f4b0d4d6026cc3d78cc3eff14f",
+    "absolute_difference": 0.0,
+    "tolerance": 1e-10
+  },
+  "publication_gate": {
+    "rank_normalized_split_rhat_less_than": 1.01,
+    "minimum_bulk_ess": 400.0,
+    "minimum_tail_ess": 400.0
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "format": 1,
+  "scope": "Execution scheduling only; no physics or likelihood-contract change.",
+  "config": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/inference/kgb_joint_planck_late_production_final.yaml",
+  "config_sha256": "1ca7fd491e2c4018a27638bb90d66b1738ccd21a33c186ef274cab3a59b701f6",
+  "reference_omp_num_threads": 1,
+  "selected_omp_num_threads": 2,
+  "openblas_num_threads": 1,
+  "benchmark": {
+    "inputs": {
+      "alpha": 0.4,
+      "omega_m0": 0.305,
+      "omega_r0": 9.15e-05,
+      "ombh2": 0.0225,
+      "scalar_amp": 2e-09,
+      "scalar_spectral_index": 0.97,
+      "tau": 0.04,
+      "a_planck": 1.0,
+      "spline_points": 601,
+      "late_time_integration_nodes": 16385
+    },
+    "reference": {
+      "wall_seconds": 1241.0014098749962,
+      "minus_2_log_likelihood": 2495.284787813579
+    },
+    "selected": {
+      "wall_seconds": 1025.4868459999561,
+      "minus_2_log_likelihood": 2495.284787813579
+    },
+    "absolute_difference": 0.0,
+    "tolerance": 1e-10
+  },
+  "passes": true
+}

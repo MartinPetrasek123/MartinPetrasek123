@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "model": "R-Universe covariant KGB",
+  "scope": "One digest-verified shared copy of the immutable production configuration and H-EFTCAMB template. Per-point spectra, component reports, and logs remain in their own verified archives.",
+  "config_source": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/inference/kgb_joint_planck_late_production_final.yaml",
+  "config_copy": "production_config.yaml",
+  "config_sha256": "1ca7fd491e2c4018a27638bb90d66b1738ccd21a33c186ef274cab3a59b701f6",
+  "template_source": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/EFTCAMB/fortran/HighLExtrapTemplate_lenspotentialCls.dat",
+  "template_copy": "HighLExtrapTemplate_lenspotentialCls.dat",
+  "template_sha256": "506ddef3d81ae0b5e62b675742c87f0de09fa2b39a31fdebf3091d3e0197c44f",
+  "execution_contract": {
+    "format": 1,
+    "generator_sha256": "02a77d3c9911c76f8db33d4d0b4cb335ba888fc28f01b81513930c0ccdb74f4b",
+    "planck_wrapper_sha256": "d6e9f37bcca1ff03bf7375f1de1ae9009a39fc32af8e9349db40f00b2ef88e6d",
+    "late_time_evaluator_sha256": "205b3ed244210d9231fe1fdecd771c621480d36a04334cec8b951b13f5ca60b9",
+    "joint_evaluator_sha256": "6d00f0ea456c72c0b2606adbbf34cde7435d57adb2907a4350b2e782bd29cbcc",
+    "heftcamb_binary_sha256": "8fafcb5054df9ec79983823005dc809ddf48b26469234ad4d5087ad724aa60e3",
+    "heftcamb_template_sha256": "506ddef3d81ae0b5e62b675742c87f0de09fa2b39a31fdebf3091d3e0197c44f",
+    "clipy_source": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/planck2018_packages/code/planck/clipy",
+    "planck_base": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/planck2018_packages/data/planck_2018/baseline/plc_3.0",
+    "data_root": "/Users/mpetr/Documents/Codex/2026-08-09/m/work/github_profile/r-universe-complete-chain/data/raw",
+    "spline_points": 601,
+    "late_time_integration_nodes": 16385
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "model": "R-Universe covariant KGB",
+  "summary": "production_summary.json",
+  "summary_sha256": "50ab83daf9572e3c7b694d0dbe363845a834a2718370e3c56700d75e5669c048",
+  "publication_gate": {
+    "rank_normalized_split_rhat_less_than": 1.01,
+    "minimum_bulk_ess": 400.0,
+    "minimum_tail_ess": 400.0
+  },
+  "burn_in_fraction": 0.25,
+  "target_sampler_controls": {
+    "covmat": "/Users/mpetr/Desktop/R_Universe_Global_KGB_Completion/generated/kgb_joint_hessian_calibrated/step_1.0_proposal.covmat",
+    "learn_proposal": true,
+    "learn_every": 40,
+    "Rminus1_stop": 0.001,
+    "Rminus1_cl_stop": 0.01,
+    "max_tries": 1000
+  },
+  "chain_sampler_seeds": [
+    292005,
+    292006,
+    292007,
+    292008
+  ],
+  "allowed_chain_specific_sampler_settings": [
+    "output",
+    "proposal_scale",
+    "max_samples",
+    "seed",
+    "checkpoint state"
+  ],
+  "chains": [
+    {
+      "index": 5,
+      "sample": "chain_05.1.txt",
+      "input": "chain_05.input.yaml",
+      "updated": "chain_05.updated.yaml",
+      "checkpoint": "chain_05.checkpoint",
+      "total_weight": 9630,
+      "retained_weight": 7223,
+      "sha256": {
+        "sample": "686550195ce0bda8656973f3acb795832ee741014d0cfe8b5b150f5582978283",
+        "input": "5c6b53389d8e9e21056fdbb65c74a74d5b083f6ac798e3819eb8f4e23911d8da",
+        "updated": "6d7eba3f006ccd645a987cf8e5d7ec04b126a8b3b626c46b74878785f95a6e96",
+        "checkpoint": "0c3fdccb42a70439141aaf01ec1a80fa3726b97546e0938200470427688e993b"
+      }
+    },
+    {
+      "index": 6,
+      "sample": "chain_06.1.txt",
+      "input": "chain_06.input.yaml",
+      "updated": "chain_06.updated.yaml",
+      "checkpoint": "chain_06.checkpoint",
+      "total_weight": 9575,
+      "retained_weight": 7182,
+      "sha256": {
+        "sample": "90afeb435d3f9378bf7367a4e8ad182a6b40c928220a0017d7f2d4813d43ae3e",
+        "input": "4fdd13f4f8dfccb2ef8024778be24d2f5ec99e0db0ba6ee3aac9278c10114dc8",
+        "updated": "279ba2b0f051e062e65aadba74e071fa57cc840f501a4ed9d9dd97e589ed8105",
+        "checkpoint": "21128fbb101f7c1ccc2c43796ae639998267bd9271383af58fbfab68b98d65ee"
+      }
+    },
+    {
+      "index": 7,
+      "sample": "chain_07.1.txt",
+      "input": "chain_07.input.yaml",
+      "updated": "chain_07.updated.yaml",
+      "checkpoint": "chain_07.checkpoint",
+      "total_weight": 9750,
+      "retained_weight": 7313,
+      "sha256": {
+        "sample": "a1d7eaa680a1c85dd6f134d7141798785c712cb77f0b56391746484caf908a9b",
+        "input": "675ac2e5b35c65a30dec2b187edf9696ff50ff815f8d5dfc21f1f0086f26afb5",
+        "updated": "c514059ce612a0d4f818512d57f363ad08ab8131c748923fa685dd5c9862fb1e",
+        "checkpoint": "713731d5e45160d6523d23c51d75e94837b4234ecdc967466b47aa44c99c0647"
+      }
+    },
+    {
+      "index": 8,
+      "sample": "chain_08.1.txt",
+      "input": "chain_08.input.yaml",
+      "updated": "chain_08.updated.yaml",
+      "checkpoint": "chain_08.checkpoint",
+      "total_weight": 10050,
+      "retained_weight": 7538,
+      "sha256": {
+        "sample": "e341f1b1b500962f4b0d3941ac562599a24f5f53227b7a4ada509f909762d1b2",
+        "input": "4bc71d1aaa5de89cb4e9e384361df91ffbbaa7ccc59fe28d0fed6703e24aaba6",
+        "updated": "18f3806c972b8fa47d8622fb0b21699ea52a721c657c78e3da8278d361ec8031",
+        "checkpoint": "92d6d291521e5cfc35b27b144d33c53bba5f72a64dfa0f7b2bf5e5d21ac00a02"
+      }
+    }
+  ],
+  "campaign_contract": "campaign_contract.json",
+  "campaign_contract_sha256": "c04b79c1b7f1c747c957310334e71930e1e3c90f0ec7bf7fbf11b16b619640e3",
+  "threading_verification": "threading_verification_omp2.json",
+  "threading_verification_sha256": "212cceb1d5d755dbdacbf6e14656fc821e8962f4b0d4d6026cc3d78cc3eff14f",
+  "omp_num_threads_per_solver": 2
+}

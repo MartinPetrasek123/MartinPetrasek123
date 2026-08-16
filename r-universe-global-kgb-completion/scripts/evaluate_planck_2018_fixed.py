@@ -23,6 +23,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SPECTRA = ROOT / "generated" / "heftcamb"
+PLANCK_ABSOLUTE_CALIBRATION_MEAN = 1.0
+PLANCK_ABSOLUTE_CALIBRATION_SIGMA = 0.0025
 
 
 def parse_args() -> argparse.Namespace:
@@ -123,6 +125,18 @@ def scalar_value(value: Any) -> float:
     return float(np.asarray(value))
 
 
+def absolute_calibration_prior(a_planck: float) -> dict[str, Any]:
+    pull = (a_planck - PLANCK_ABSOLUTE_CALIBRATION_MEAN) / PLANCK_ABSOLUTE_CALIBRATION_SIGMA
+    log_likelihood = -0.5 * pull * pull
+    return {
+        "log_likelihood": log_likelihood,
+        "minus_2_log_likelihood": -2.0 * log_likelihood,
+        "mean": PLANCK_ABSOLUTE_CALIBRATION_MEAN,
+        "sigma": PLANCK_ABSOLUTE_CALIBRATION_SIGMA,
+        "label": "Planck absolute-calibration Gaussian prior",
+    }
+
+
 def report_path(path: Path, external_label: str) -> str:
     """Keep public reports reproducible without exposing machine-specific paths."""
     try:
@@ -179,19 +193,25 @@ def main() -> None:
         "commander_lowl_TT": evaluate("Planck 2018 Commander low-ell TT", lowt, cmb, nuisance),
         "simall_lowl_EE": evaluate("Planck 2018 SimAll low-ell EE", lowe, cmb, nuisance),
         "lensing": evaluate("Planck 2018 CMB-dependent lensing", lens, lens_cls, nuisance),
+        "absolute_calibration_prior": absolute_calibration_prior(args.a_planck),
     }
     total_loglike = sum(item["log_likelihood"] for item in components.values())
     report = {
         "status": "completed",
         "scope": (
             "Official Planck 2018 likelihood evaluation at one fixed R-Universe "
-            "KGB point. This is not an optimization, posterior, evidence, or "
-            "comparison to LambdaCDM."
+            "KGB point, including the documented Planck absolute-calibration "
+            "Gaussian prior A_planck=1.0000+-0.0025. This is not an optimization, "
+            "posterior, evidence, or comparison to LambdaCDM."
         ),
         "inputs": {
             "spectra_dir": report_path(args.spectra_dir, "external spectrum directory supplied at runtime"),
             "planck_base": report_path(args.planck_base, "external Planck 2018 plc_3.0 distribution"),
             "a_planck_fixed": args.a_planck,
+            "absolute_calibration_prior": {
+                "mean": PLANCK_ABSOLUTE_CALIBRATION_MEAN,
+                "sigma": PLANCK_ABSOLUTE_CALIBRATION_SIGMA,
+            },
             "lensed_ell_max": int(lensed[-1, 0]),
             "lenspotential_ell_max": int(unlensed_with_phi[-1, 0]),
             "spectrum_convention": {
