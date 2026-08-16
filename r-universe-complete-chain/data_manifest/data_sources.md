@@ -8,8 +8,8 @@ number in the manuscript.
 ## Package release
 
 - Public package: https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain
-- Manuscript release tag: `v1.5.4`
-- Permanent archive: Zenodo DOI must be minted from the `v1.5.4` GitHub
+- Manuscript release tag: `v1.6.1`
+- Permanent archive: Zenodo DOI must be minted from the `v1.6.1` GitHub
   release before journal submission. No DOI is invented in the draft.
 
 ## Pantheon+
@@ -126,9 +126,12 @@ number in the manuscript.
 
 - Full dataset name: 31-point cosmic chronometer H(z) compilation used for transparent late-time stress testing.
 - Authors: compiled from Simon, Stern, Moresco, Zhang, Ratsimbazafy and related cosmic-chronometer measurements.
-- DOI: individual literature DOIs are not fully resolved in this release; the reference column is explicit and must be upgraded to DOI-complete form before journal submission.
+- Reference record: the row-level `reference` column identifies the original
+  measurements. The manuscript cites the 31-point compilation of
+  Vagnozzi, Loeb and Moresco (arXiv:2011.11645); original-source provenance
+  is retained in the CSV rather than being represented as a survey likelihood.
 - URL: values are stored in this release at `data/raw/chronometers/cosmic_chronometers.csv`.
-- Release/version: package release `v1.5.4`.
+- Release/version: package release `v1.6.1`.
 - Download/access date: inherited from the previous local pilot compilation; package creation date 2026-07-21.
 - License: not applicable as a manually assembled literature-value table; cite original measurements.
 - Analysis scripts:

@@ -1,79 +1,60 @@
-# R-Universe complete-chain reproducibility package
+# R-Universe full manuscript and reproducibility package
 
-This package accompanies the manuscript:
+This directory is the authoritative source bundle for the manuscript
+**Relational Capacity Dynamics, Relational Foliation Gravity, RFG-R, and the
+Covariant KGB Realization**.
 
-**A Reproducible Late-Time Test of an Infrared-Scaling Extension of Flat LCDM: Background Equations, Public Data Fits, Numerical Validation, and Robustness Audits**
+The release is deliberately explicit about scope. It contains derived
+classical RCD/RFG/RFG-R results and a separately specified covariant KGB
+realization. The KGB package includes an audited posterior for its stated
+Planck 2018 CMB plus lensing, Pantheon+, DESI DR2 BAO, and
+cosmic-chronometer probe set. It does not claim a Bayesian-evidence result, a
+matched full model comparison with LambdaCDM, an official RSD likelihood, or
+an executed CMB/matter likelihood for RFG-R or RFG-R-Xi.
 
-## Contents
+## Authoritative artifacts
 
-- `main.tex` - English manuscript.
-- `references.bib` - bibliography.
-- `graf.tex` - all figure environments used by the manuscript.
-- `figures/` - generated figures.
-- `data/raw/` - exact public data files used by the released scripts.
-- `tables/all_model_fits.csv` - all fitted model summaries.
-- `tables/competitor_model_comparison.csv` - direct LCDM/wCDM/CPL/R1 audit on the same late-time likelihood.
-- `tables/r_running_scan.csv` - one-parameter running R-branch scan.
-- `tables/ralpha_laplace_posterior.csv` - Laplace posterior intervals for the R-alpha absorption branch.
-- `tables/ralpha_prior_sensitivity.csv` - prior-volume sensitivity of the Laplace evidence proxy.
-- `tables/ralpha_master_predictions.csv` - parameter-free mu/eta/Xi predictions from the minimal relational-kernel closure.
-- `tables/desi_dr2_bao_predictions.csv` - DESI DR2 BAO predictions and diagnostic pulls.
-- `tables/camb_lensed_cls_lcdm_reference.csv` - CAMB reference CMB spectra.
-- `tables/camb_matter_power_lcdm_reference.csv` - CAMB reference matter power.
-- `code/r_universe_core.py` - shared data loaders, background solver and likelihood blocks.
-- `code/run_all.py` - canonical reproduction entry point.
-- `code/extended_fit.py` - Pantheon+ full-covariance + DESI DR1/DR2 + cosmic-chronometer fits.
-- `code/des_dovekie_fit.py` - DES-Dovekie STAT+SYS + DESI DR2 + cosmic-chronometer cross-check.
-- `code/make_figures_and_tables.py` - figure and table generation.
-- `code/derived_predictions.py` - cosmographic, growth and null-test predictions.
-- `code/numerical_validation.py` - Newton/bisection, LCDM-limit and distance-integration validation.
-- `code/boltzmann_camb.py` - CAMB reference early-universe calculation.
-- `code/robustness_suite.py` - SN/BAO/CC/free-rd and BAO jackknife robustness tests.
-- `code/profile_likelihood.py` - profiled likelihood scan for theta.
-- `code/competitor_models.py` - independent direct competitor audit for LCDM, wCDM, CPL and R1.
-- `code/r_running_scan.py` - adversarial scan of one-parameter running R branches with an exact LCDM absorption limit.
-- `code/ralpha_statistics.py` - R-alpha Hessian posterior, evidence proxy and look-elsewhere calibration.
-- `code/ralpha_master_predictions.py` - minimal relational-kernel predictions for mu, eta, Sigma, Xi and growth.
-- `code/*.json` - generated numerical results used by the manuscript.
-- `data_manifest/data_sources.md` - source URLs and local file mapping.
-- `requirements.txt`, `environment.yml` - software environment records.
-- `Dockerfile` - container recipe for reproduction.
-- `CITATION.cff`, `codemeta.json` - software citation metadata.
-- `LICENSE` - MIT license for package code; third-party data retain source terms.
+- `main.tex` - complete manuscript source.
+- `R_Universe_v1.6.1.pdf` - compiled manuscript corresponding to this tag.
+- `CITATION.cff` and `codemeta.json` - citation and software metadata.
+- `data_manifest/data_sources.md` - input provenance, selections, covariance
+  treatment, and SHA-256 fingerprints for the late-time data blocks.
+- `rfg-r-completion/r_universe_completion/` - RFG-R and RFG-R-Xi action,
+  validation, EFT-map, and constraint-audit source records.
+- `../r-universe-global-kgb-completion/` - covariant KGB action,
+  H--EFTCAMB contracts, released chains, production audit, and read-only
+  posterior verifier.
 
-## Reproduction
+## Reproduction routes
 
-Use Python 3.10+ with `numpy`, `scipy`, `pandas` and `matplotlib`.
-From this package root:
+The historical late-time background scripts and their public input files are
+kept in this directory under `code/` and `data/raw/`. Their declared runtime
+is Python 3.10 or newer with the packages listed in `requirements.txt`:
 
-```bash
+```sh
 python3 code/run_all.py
 ```
 
-The scripts expect the public data files listed in `data_manifest/data_sources.md`.
-The generated JSON, CSV and figure files are the numerical source of the manuscript tables and plots.
+The KGB exact-posterior release is independently verifiable without a long
+solver campaign. From `../r-universe-global-kgb-completion/`, use Python 3.9
+or newer with NumPy and SciPy:
 
-## Versioning and archive
+```sh
+PYTHONPATH=. python3 inference/verify_kgb_exact_posterior_release.py
+```
 
-- Manuscript release tag: `v1.5.4`
-- GitHub package: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/main/r-universe-complete-chain>
-- A Zenodo DOI should be minted from the `v1.5.4` GitHub release before journal submission. This draft does not invent or claim a DOI that has not been issued.
-- Data filenames, masks, covariance files, vector order and SHA256 checksums are recorded in `data_manifest/data_sources.md`.
-- Reproduction command: `python3 code/run_all.py`.
-- Docker command: `docker build -t r-universe-complete-chain . && docker run --rm r-universe-complete-chain`.
+This second command validates the released chain, contract, executable, and
+audit hashes, then regenerates the posterior summary from the four released
+chains. It does not redistribute the licensed Planck likelihood files or
+rerun the 46,206 cached solver evaluations.
 
-## Main numerical result
+## Versioning
 
-For Pantheon+ full covariance + DESI DR2 BAO + cosmic chronometers:
+- Manuscript release: `v1.6.1`.
+- Source snapshot: <https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.6.1/r-universe-complete-chain>
+- A Zenodo DOI may be minted from this immutable tag before submission. No
+  DOI is claimed until one is issued.
 
-- R1 vs LCDM: Delta chi2 = -3.7117, Delta AIC = -1.7117, Delta BIC = +3.6809.
-- Direct competitor audit: wCDM has lower AIC than R1 on the same likelihood, while flat LCDM retains the lowest BIC.
-- Running absorption branch `theta(a)=2-alpha a`: Delta chi2 = -4.5008, Delta AIC = -2.5008, Delta BIC = +2.8918. This is lower AIC than wCDM on the same likelihood, but still not lower BIC than LCDM.
-- Laplace posterior for R-alpha: alpha = 0.4974 +/- 0.2093.
-- Minimal kernel closure at z=1 and k=0.01 h/Mpc: Xi = 1.0951, mu = 1.000712, eta = 0.999644, with (eta-1)/(mu-1) = -1/2.
-
-For DES-Dovekie STAT+SYS + DESI DR2 BAO + cosmic chronometers:
-
-- R1 vs LCDM: Delta chi2 = -4.2133, Delta AIC = -2.2133, Delta BIC = +3.3172.
-
-The R1 branch is therefore suggestive but not decisive in the present late-time data-only implementation. The package must not be cited as a discovery claim or as a completed replacement for LCDM until the Level-II perturbative/CMB program is implemented and survives direct comparison with standard dark-energy parameterizations.
+The MIT license covers the repository's original code and documentation.
+Third-party observational inputs retain their source terms and must be cited
+according to `data_manifest/data_sources.md`.

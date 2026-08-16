@@ -31,6 +31,13 @@ From the package root, run:
 PYTHONPATH=. python3 inference/verify_kgb_exact_posterior_release.py
 ```
 
+The portable verifier requires Python 3.9 or newer and NumPy plus SciPy. It
+accepts only platform-level floating-point rounding in regenerated summary
+values (relative or absolute tolerance \(10^{-12}\)); all released files,
+contract records, and executable inputs are verified by exact SHA-256 hashes.
+Its scope is a deterministic validation of released artifacts, not a fresh
+cosmological sampling campaign.
+
 The command is read-only. It validates the production summary and contract
 hashes, the four chain/input/updated/checkpoint hash records, the threading
 record, the executable hashes in the execution-contract manifest, and the

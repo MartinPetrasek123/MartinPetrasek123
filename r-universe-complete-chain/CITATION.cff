@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this reproducibility package, please cite the manuscript and the archived software release."
-title: "R-Universe complete-chain late-time reproducibility package"
+title: "Relational Capacity Dynamics, Relational Foliation Gravity, RFG-R, and the covariant KGB realization"
 authors:
   - family-names: "Petrasek"
     given-names: "Martin"
     orcid: "https://orcid.org/0009-0007-4512-9528"
-version: "v1.5.4"
-date-released: "2026-07-21"
-repository-code: "https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.5.4/r-universe-complete-chain"
+version: "v1.6.1"
+date-released: "2026-08-16"
+repository-code: "https://github.com/MartinPetrasek123/MartinPetrasek123/tree/v1.6.1/r-universe-complete-chain"
 license: "MIT"
-abstract: "Reproducible public-data package for a late-time background-level test of R-Universe, including an absorption branch in which LambdaCDM is recovered as the zero-running and early-time limit and a minimal relational-kernel consistency prediction for mu, eta and Xi."
+abstract: "Versioned manuscript and reproducibility package for Relational Capacity Dynamics, preferred-foliation RFG/RFG-R constructions, and a separately defined covariant KGB realization with an audited Planck--Pantheon+--DESI DR2 BAO--chronometer posterior."

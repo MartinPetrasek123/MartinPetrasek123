@@ -72,6 +72,12 @@ Verify the released posterior without modifying any artifact:
 PYTHONPATH=. python3 inference/verify_kgb_exact_posterior_release.py
 ```
 
+The portable verifier requires Python 3.9 or newer together with NumPy and
+SciPy. It regenerates the posterior summary from the released chains and
+compares floating-point fields at a relative or absolute tolerance of
+\(10^{-12}\), while all recorded files and execution-contract inputs remain
+SHA-256 exact. It does not rerun the long H--EFTCAMB likelihood campaign.
+
 The verifier checks the published SHA-256 values, regenerates the posterior
 summary from the four released chains, validates the production contract, and
 checks the source hashes recorded for the generator, Planck wrapper, late-time

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -54,7 +55,7 @@ def verify_chain_records(bundle: Path, summary: dict[str, Any], audit: dict[str,
     records = audit.get("chains")
     if not isinstance(records, list) or len(records) != len(CHAIN_INDICES):
         raise RuntimeError("production audit does not contain four chain records")
-    for index, record in zip(CHAIN_INDICES, records, strict=True):
+    for index, record in zip(CHAIN_INDICES, records):
         if record.get("index") != index:
             raise RuntimeError("production audit has a mismatched chain index")
         prefix = f"chain_{index:02d}"
@@ -70,6 +71,32 @@ def verify_chain_records(bundle: Path, summary: dict[str, Any], audit: dict[str,
         for key, name in expected.items():
             if record.get(key) != name or sha256(required_path(bundle, name)) != hashes.get(key):
                 raise RuntimeError(f"release hash mismatch for {name}")
+
+
+def require_numerically_equivalent(expected: Any, actual: Any, location: str = "summary") -> None:
+    """Compare JSON results while tolerating platform-level float rounding."""
+    if isinstance(expected, bool) or isinstance(actual, bool):
+        if expected != actual:
+            raise RuntimeError(f"recomputed posterior summary differs at {location}")
+        return
+    if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        if not math.isclose(float(expected), float(actual), rel_tol=1.0e-12, abs_tol=1.0e-12):
+            raise RuntimeError(f"recomputed posterior summary differs at {location}")
+        return
+    if isinstance(expected, dict) and isinstance(actual, dict):
+        if set(expected) != set(actual):
+            raise RuntimeError(f"recomputed posterior summary has different fields at {location}")
+        for key in expected:
+            require_numerically_equivalent(expected[key], actual[key], f"{location}.{key}")
+        return
+    if isinstance(expected, list) and isinstance(actual, list):
+        if len(expected) != len(actual):
+            raise RuntimeError(f"recomputed posterior summary has a different list length at {location}")
+        for index, (expected_item, actual_item) in enumerate(zip(expected, actual)):
+            require_numerically_equivalent(expected_item, actual_item, f"{location}[{index}]")
+        return
+    if expected != actual:
+        raise RuntimeError(f"recomputed posterior summary differs at {location}")
 
 
 def recompute_summary(bundle: Path, stored: dict[str, Any]) -> None:
@@ -98,8 +125,7 @@ def recompute_summary(bundle: Path, stored: dict[str, Any]) -> None:
     # Every posterior-derived field must nevertheless be identical after relocation.
     stored_portable = {key: value for key, value in stored.items() if key != "chains"}
     recomputed_portable = {key: value for key, value in recomputed.items() if key != "chains"}
-    if recomputed_portable != stored_portable:
-        raise RuntimeError("recomputed posterior summary differs from the released record")
+    require_numerically_equivalent(stored_portable, recomputed_portable)
 
 
 def verify(bundle: Path) -> dict[str, Any]:
@@ -135,6 +161,8 @@ def verify(bundle: Path) -> dict[str, Any]:
 
 
 def main() -> None:
+    if sys.version_info < (3, 9):
+        raise SystemExit("the portable posterior verifier requires Python 3.9 or newer")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bundle", type=Path, default=DEFAULT_BUNDLE)
     args = parser.parse_args()
